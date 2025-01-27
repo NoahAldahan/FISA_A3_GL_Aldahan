@@ -90,6 +90,7 @@ Si la version 1.0 est jugée satisfaisante, une **version 2.0** avec une interfa
   - PlantUML
   - WPF
   - Package nuget
+  - Pipeline (déploiement / test)
   - Github : 
     - Convention de commit :
       - type : correspondant à une information sur le type de rajout ou de décrément de
