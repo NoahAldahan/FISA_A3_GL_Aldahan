@@ -1,0 +1,78 @@
+@startuml
+/' Model '/
+class SaveWorkFactory <<factory>> {
+    +createSaveWork(type: String): SaveWork
+}
+
+abstract class SaveWork {
+    +save()
+}
+
+class SaveWorkDiff {
+    +calculateDiff()
+}
+
+class SaveWorkComplete {
+    +saveAll()
+}
+
+class Directory {
+    +path: String
+    +listFiles(): List<String>
+}
+
+class SaveWorkManager{}
+
+class Log {
+    +message: String
+    +writeLog(message: String)
+}
+
+class JsonManager {
+    +readJson(file: String): Object
+    +writeJson(file: String, data: Object)
+}
+
+/' ViewModel '/
+class LogVM {
+    +logData: String
+    +addLog(message: String)
+    +getLogs(): List<String>
+}
+
+class SaveWorkVM {
+    +currentSaveWork: SaveWork
+    +executeSave(type: String)
+}
+
+class DirectoryVM {
+    +directoryPath: String
+    +loadDirectory(path: String): Direc::::::tory
+}
+
+/' View '/
+class Cli {
+    +displayMenu()
+    +getInput(): String
+    +printOutput(message: String)
+}
+
+/' Relations '/
+SaveWorkFactory --> SaveWork : "create"
+SaveWork <|--- SaveWorkDiff : "inherited"
+SaveWork <|--- SaveWorkComplete : "inherited"
+
+Log <-- SaveWork : "use"
+JsonManager <-- Log : "use"
+
+SaveWorkVM --> SaveWorkManager : "manage"
+SaveWorkManager --> SaveWorkFactory : "manage"
+SaveWorkVM --> LogVM : "notify"
+DirectoryVM --> Directory : "manage"
+
+LogVM --> Log : "manages"
+
+Cli --> SaveWorkVM : "interacts"
+Cli --> LogVM : "interacts"
+Cli --> DirectoryVM : "interacts"
+@enduml
