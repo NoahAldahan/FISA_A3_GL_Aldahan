@@ -87,15 +87,37 @@ Si la version 1.0 est jugée satisfaisante, une **version 2.0** avec une interfa
 #### **5. Contraintes**
 - **Outils** :
   - Visual studio 2022
-  - Github
   - PlantUML
   - WPF
   - Package nuget
+  - Github : 
+    - Convention de commit :
+      - type : correspondant à une information sur le type de rajout ou de décrément de
+        contenu dans le commit (par exemple fix, feat, test, init, docs, etc),
+      - sujet (scope) : équivaut à l’information de la modification effectuée (style, logic,
+        structure, documentation,...)
+      - description : détails des modifications comme dans un commit sans convention
+    - Workflow :
+
+      ![workflow](img/workflow.png)
+
+      Chaque développeur travaille sur sa propre branche. Lorsqu'il effectue un commit pour 
+      ajouter une nouvelle fonctionnalité, corriger un bug ou toute autre modification, un merge 
+      est effectué vers une branche TEST dédiée au livrable en cours, par exemple, `TEST-lv1`. Une fois les modifications
+      validées, elles sont ensuite poussées sur une branche MAIN spécifique au même livrable, par exemple, `lv1`.
+
+      Lorsqu'un nouveau livrable débute, une nouvelle paire de branches est créée : une branche TEST 
+      pour les développements (`TEST-lv2`) et une branche MAIN pour les livraisons finales (`lv2`).
+      Ces nouvelles branches partent de l'état final de la branche MAIN du livrable précédent (par exemple, `lv1`), 
+      garantissant ainsi une continuité et une base de travail stable pour le nouveau cycle de développement.
+
 - **Langages et Frameworks** :
   - C#
   - Dotnet 8.0
   - Architecture logiciel extensible
   - Convention de nommage
+
+
 ---
 
 ### **Conclusion**
