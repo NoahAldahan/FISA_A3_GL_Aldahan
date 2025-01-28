@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EasySaveConsole.CLI;
+using DotNetEnv;
+using System.IO;
+using EasySaveConsole.Utilities;
 
 
 namespace EasySaveConsole
@@ -12,8 +15,10 @@ namespace EasySaveConsole
     {
         static void Main(string[] args)
         {
+            // Charger les variables d'environnement depuis le fichier .env
+            Env.Load(@".env");
             CLI.CLI cLI = new CLI.CLI();
-            cLI.test();
+            cLI.CliApp();
         }
     }
 }

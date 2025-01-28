@@ -1,0 +1,16 @@
+{
+  "FR": {
+    "InitMessage": "Options : \n 1 : Stop \n 2 : Création d'une nouvelle sauvegarde \n 3 : Démarrer une sauvegarde \n 4 : Changer le langage par défaut",
+    "StopMessage": "Arrêt du programme en cours...",
+    "StartSaveTaskMessage": "Démarrage de la tâche de sauvegarde...",
+    "LanguageChangeSuccessMessage": "Le langage par défaut a été changé avec succès.",
+    "CreateSaveTaskMessage": "Création d'une nouvelle tâche de sauvegarde."
+  },
+  "EN": {
+    "InitMessage": "Options : \n 1 : Shutdown \n 2 : Create a new save task \n 3 : Start a save task \n 4 : Change default language",
+    "StopMessage": "Shutting down the program...",
+    "StartSaveTaskMessage": "Starting the save task...",
+    "LanguageChangeSuccessMessage": "The default language has been successfully changed.",
+    "CreateSaveTaskMessage": "Creating a new save task."
+  }
+}
