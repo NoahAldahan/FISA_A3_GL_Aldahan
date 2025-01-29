@@ -1,27 +1,32 @@
 @startuml
 /' Model '/
-class SaveWorkFactory <<factory>> {
-    +createSaveWork(type: String): SaveWork
+class SaveTaskFactory <<factory>> {
+    +createSaveTask(type: String): SaveTask
 }
 
-abstract class SaveWork {
+abstract class SaveTask {
     +save()
+    +getInfo(): String
 }
 
-class SaveWorkDiff {
+class SaveTaskDiff {
     +calculateDiff()
 }
 
-class SaveWorkComplete {
+class SaveTaskComplete {
     +saveAll()
 }
 
-class Directory {
-    +path: String
+class DirectoryPair {
+    +sourcePath: String
+    +targetPath: String
     +listFiles(): List<String>
 }
 
-class SaveWorkManager{}
+class SaveTaskManager{
+    +saveTasks: List<SaveTask>
+    +executeSaveTasks(List<String> taskStrings)
+}
 
 class Log {
     +message: String
@@ -40,14 +45,14 @@ class LogVM {
     +getLogs(): List<String>
 }
 
-class SaveWorkVM {
-    +currentSaveWork: SaveWork
+class SaveTaskVM {
+    +currentSaveTask: SaveTask
     +executeSave(type: String)
 }
 
-class DirectoryVM {
-    +directoryPath: String
-    +loadDirectory(path: String): Direc::::::tory
+class DirectoryPairVM {
+    +DirectoryPairPath: String
+    +loadDirectoryPair(path: String): Direc::::::tory
 }
 
 /' View '/
@@ -58,21 +63,21 @@ class Cli {
 }
 
 /' Relations '/
-SaveWorkFactory --> SaveWork : "create"
-SaveWork <|--- SaveWorkDiff : "inherited"
-SaveWork <|--- SaveWorkComplete : "inherited"
+SaveTaskFactory --> SaveTask : "create"
+SaveTask <|--- SaveTaskDiff : "inherited"
+SaveTask <|--- SaveTaskComplete : "inherited"
 
-Log <-- SaveWork : "use"
+Log <-- SaveTask : "use"
 JsonManager <-- Log : "use"
 
-SaveWorkVM --> SaveWorkManager : "manage"
-SaveWorkManager --> SaveWorkFactory : "manage"
-SaveWorkVM --> LogVM : "notify"
-DirectoryVM --> Directory : "manage"
+SaveTaskVM --> SaveTaskManager : "manage"
+SaveTaskManager --> SaveTaskFactory : "manage"
+SaveTaskVM --> LogVM : "notify"
+DirectoryPairVM --> DirectoryPair : "manage"
 
 LogVM --> Log : "manages"
 
-Cli --> SaveWorkVM : "interacts"
+Cli --> SaveTaskVM : "interacts"
 Cli --> LogVM : "interacts"
-Cli --> DirectoryVM : "interacts"
+Cli --> DirectoryPairVM : "interacts"
 @enduml
