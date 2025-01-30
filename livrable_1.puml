@@ -5,16 +5,17 @@ class SaveTaskFactory <<factory>> {
 }
 
 abstract class SaveTask {
+    +CurrentDirectoryPair : DirectoryPair
     +save()
     +getInfo(): String
 }
 
 class SaveTaskDiff {
-    +calculateDiff()
+    +SaveDifferentialRecursive(string sourcePath, string targetPath)
 }
 
 class SaveTaskComplete {
-    +saveAll()
+    +SaveComplete(string sourcePath, string targetPath)
 }
 
 class DirectoryPair {
