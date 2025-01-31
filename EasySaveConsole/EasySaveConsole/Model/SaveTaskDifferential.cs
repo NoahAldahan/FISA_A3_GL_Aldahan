@@ -9,15 +9,18 @@ namespace EasySaveConsole.Model
 {
     internal class SaveTaskDifferential : SaveTask
     {
-        public SaveTaskDifferential(DirectoryPair directoryPair) : base(directoryPair)
+        // Constructor
+        public SaveTaskDifferential(DirectoryPair CurrentDirectoryPair) : base(CurrentDirectoryPair)
         {
         }
 
+        // Wrapper for the recursive function
         public override void Save()
         {
             SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
         }
 
+        // Recursive function to save the updated files and directories since the last save
         private void SaveDifferentialRecursive(string SourcePath, string TargetPath)
         {
             FileAttributes sourceAttr = File.GetAttributes(SourcePath);
@@ -61,9 +64,14 @@ namespace EasySaveConsole.Model
             }
         }
 
-        public override string GetInfo() 
+        // Get the task information
+        public override List<string> GetInfo() 
         {
-            throw new System.NotImplementedException();
+            List<string> infos = new List<string>();
+            infos.Add("Differential save task");
+            infos.Add("Source path : " + CurrentDirectoryPair.SourcePath);
+            infos.Add("Target path : " + CurrentDirectoryPair.TargetPath);
+            return infos;
         }
     }
 }

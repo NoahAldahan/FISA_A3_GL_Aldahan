@@ -1,7 +1,7 @@
 @startuml
 /' Model '/
 class SaveTaskFactory <<factory>> {
-    +createSaveTask(type: String): SaveTask
+    +createSaveTask(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath): SaveTask
 }
 
 abstract class SaveTask {
@@ -26,7 +26,14 @@ class DirectoryPair {
 
 class SaveTaskManager{
     +saveTasks: List<SaveTask>
-    +executeSaveTasks(List<String> taskStrings)
+    +MaxSaveTasks: static int 
+    +executeSaveTask(int index)
+    +executeAllSaveTasks()
+    +addSaveTasks(ESaveTaskTypes type, string SourcePath, string TargetPath)
+    +removeSaveTask(int index)
+    +getSaveTasks(): List<SaveTask>
+    +SerializeSaveTasks()
+    +DeserializeSaveTasks()
 }
 
 class Log {

@@ -10,17 +10,23 @@ namespace EasySaveConsole.Model
 {
     internal class SaveTaskComplete : SaveTask
     {
-        public SaveTaskComplete(DirectoryPair directoryPair) : base(directoryPair)
+        // Constructor
+        public SaveTaskComplete(DirectoryPair CurrentDirectoryPair) : base(CurrentDirectoryPair)
         {
         }
 
+        // Start a complete save task
         public override void Save()
         {
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
             // if both paths are directories
             if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
-                SaveComplete(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+            {
+                DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.SourcePath);
+                DirectoryInfo targetDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.TargetPath);
+                CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo);
+            }
             // if the source path is a single file and the target a directory
             else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
             {
@@ -30,12 +36,8 @@ namespace EasySaveConsole.Model
             else
                 throw new Exception("The target path isn't a directory.");
         }
-        public void SaveComplete(string sourcePathString, string targetPathString)
-        {
-            DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(sourcePathString);
-            DirectoryInfo targetDirectoryInfo = new DirectoryInfo(targetPathString);
-            CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo);
-        }
+
+        // Copies files recursively from a source directory to a target directory
         private void CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo)
         {
             foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
@@ -43,9 +45,15 @@ namespace EasySaveConsole.Model
             foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
         }
-        public override string GetInfo()
+
+        // Get the task information
+        public override List<string> GetInfo()
         {
-            throw new System.NotImplementedException();
+            List<string> info = new List<string>();
+            info.Add("Complete save task");
+            info.Add("Source path: " + CurrentDirectoryPair.SourcePath);
+            info.Add("Target path: " + CurrentDirectoryPair.TargetPath);
+            return info;
         }
     }
 }
