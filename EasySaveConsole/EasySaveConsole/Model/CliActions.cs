@@ -11,6 +11,7 @@ namespace EasySaveConsole.Model
         Stop = 0,
         Init = 1,
         ChangeDefaultLangage = 2,
-        Langages = 3
+        Langages = 3,
+        SaveMenu = 4,
     }
 }

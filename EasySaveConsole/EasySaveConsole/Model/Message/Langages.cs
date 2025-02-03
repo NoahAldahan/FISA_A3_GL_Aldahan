@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Configuration;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,7 +99,15 @@ namespace EasySaveConsole.Utilities
 
         public Messages SetDefaultLangage(string langageValue)
         {
-            Messages msg = jsonManager.SetDefaultLanguage(langageValue, langageLibelle);
+            Messages msg;
+            if (IsValideLangage(langageValue))
+            {
+                msg = jsonManager.SetDefaultLanguage(langageValue, langageLibelle);
+            }
+            else
+            {
+               msg = Messages.DefaultLanguageChangedErrorMessage;
+            }
             return msg;
         }
         public Langages GetLangageInstance(string langage)

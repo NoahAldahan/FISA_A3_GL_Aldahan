@@ -218,7 +218,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\CliController.cs" />
+    <Compile Include="Controller\LanguageController.cs" />
+    <Compile Include="Controller\SaveTaskController.cs" />
     <Compile Include="Model\CliActions.cs" />
     <Compile Include="Model\DirectoryPair.cs" />
     <Compile Include="Model\SaveTask\SaveTask.cs" />
@@ -226,13 +229,14 @@
     <Compile Include="Model\SaveTask\SaveTaskDifferential.cs" />
     <Compile Include="Model\SaveTask\SaveTaskFactory.cs" />
     <Compile Include="Model\SaveTask\SaveTaskManager.cs" />
-    <Compile Include="Controller\MessageController.cs" />
     <Compile Include="Model\Message\Messages.cs" />
     <Compile Include="Model\Message\Langages.cs" />
+    <Compile Include="View\BaseView.cs" />
     <Compile Include="View\CliView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\JsonManager.cs" />
+    <Compile Include="View\SaveTaskView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

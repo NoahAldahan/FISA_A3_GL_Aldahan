@@ -1,69 +1,68 @@
 ﻿using EasySaveConsole.CLI;
 using EasySaveConsole.Model;
+using EasySaveConsole.View;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasySaveConsole.Controller
 {
-    internal class CliController
+    internal class CliController : BaseController
     {
-        MessageController messageController;
-        CliView cliView;
         CliAction state;
-        public CliController(MessageController messageControllerArg, CliView cliViewArg) 
+        SaveTaskController saveTaskController;
+        public CliController(MessagesManager messagesManager, CliView view, SaveTaskController saveTaskController, LanguageController languageController) : base(messagesManager, view)
         {
-            messageController = messageControllerArg;
-            cliView = cliViewArg;
+            this.messagesManager = messagesManager;
+            this.view = view;
+            this.saveTaskController = saveTaskController;
             state = new CliAction();
         }
 
-       internal void showMessage(Messages msg)
-       {
-            string strMsg = messageController.GetMessage(msg);
-            cliView.showMessage(strMsg);
-       }
+        internal void HandleUserInput()
+        {
+            int userInput = view.GetOptionUserInput();
+            if (Enum.IsDefined(typeof(CliAction), userInput))
+            {
+                switch (userInput)
+                {
+                    case ((int)CliAction.Stop):
+                        ShowMessage(Messages.StopMessage);
+                        break;
+                    case ((int)CliAction.Init):
+                        ShowMessage(Messages.InitMessage);
+                        break;
+                    case ((int)CliAction.Langages):
+                        ShowMessage(Messages.LangagesMessage);
+                        break;
+                    case ((int)CliAction.ChangeDefaultLangage):
+                        string langageChoice = ShowQuestion(Messages.AskLangageMessage);
+                        //Messages result = SetDefaultLangage(langageChoice);
+                        //ShowMessage(result);
+                        break;
+                    case ((int)CliAction.SaveMenu):
+                        //showMenu
+                        saveTaskController.startCli();
+                        break;
+                }
+            }
+            else
+            {
+                ShowMessage(Messages.ErrorUserEntryOptionMessage);
+            }
+        }
 
         internal void startCli()
         {
             state = CliAction.Init;
-            showMessage(Messages.InitMessage);
+            ShowMessage(Messages.InitMessage);
             while (state != CliAction.Stop)
             {
                 try
                 {
-                    int userInput = cliView.GetOptionUserInput();
-                    if (Enum.IsDefined(typeof(CliAction), userInput))
-                    {
-                        switch (userInput)
-                        {
-                            case ((int)CliAction.Stop):
-                                showMessage(Messages.StopMessage);
-                                break;
-                            case ((int)CliAction.Init):
-                                showMessage(Messages.InitMessage);
-                                break;
-                            case ((int)CliAction.Langages):
-                                showMessage(Messages.LangagesMessage);
-                                break;
-                            case ((int)CliAction.ChangeDefaultLangage):
-                                string msg = messageController.GetMessage(Messages.AskLangageMessage);
-                                string langageChoice = cliView.showQuestion(msg);
-                                Messages result = messageController.SetDefaultLangage(langageChoice);
-                                showMessage(result);
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        showMessage(Messages.ErrorUserEntryOptionMessage);
-                    }
+                    HandleUserInput();
                 }
                 catch (Exception ex)
                 {
-                    showMessage(Messages.ErrorUserEntryStrMessage);
+                    ShowMessage(Messages.ErrorUserEntryStrMessage);
                 }
             }
         }

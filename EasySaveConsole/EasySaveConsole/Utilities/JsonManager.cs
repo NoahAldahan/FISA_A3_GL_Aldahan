@@ -74,7 +74,6 @@ namespace EasySaveConsole.Utilities
             }
             catch (Exception ex) 
             {
-                Console.WriteLine(ex.ToString());
                 return Messages.DefaultLanguageChangedErrorMessage;
             }
         }

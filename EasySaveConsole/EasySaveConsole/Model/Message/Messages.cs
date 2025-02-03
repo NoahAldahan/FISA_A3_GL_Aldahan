@@ -22,8 +22,9 @@ namespace EasySaveConsole.Model
             DefaultLanguageChangedErrorMessage,
             AskLangageMessage,
             ErrorUserEntryStrMessage,
-            ErrorUserEntryOptionMessage
-    }
+            ErrorUserEntryOptionMessage,
+            SaveTaskMenuMessage
+        }
 
         public static class MessagesExtensions
         {
@@ -31,7 +32,7 @@ namespace EasySaveConsole.Model
             { Messages.InitMessage, "InitMessage" },
             { Messages.ErrorTranslate, "ErrorTranslate" },
             { Messages.StopMessage, "StopMessage" },
-            {Messages.LangagesMessage, "LangagesMessage" },
+            { Messages.LangagesMessage, "LangagesMessage" },
             { Messages.StartSaveTaskMessage, "StartSaveTaskMessage" },
             { Messages.LanguageChangeSuccessMessage, "LanguageChangeSuccessMessage" },
             { Messages.CreateSaveTaskMessage, "CreateSaveTaskMessage" },
@@ -41,7 +42,8 @@ namespace EasySaveConsole.Model
             { Messages.DefaultLanguageChangedErrorMessage, "DefaultLanguageChangedErrorMessage" },
             { Messages.AskLangageMessage, "AskLangageMessage" },
             { Messages.ErrorUserEntryStrMessage, "ErrorUserEntryStrMessage" },
-            { Messages.ErrorUserEntryOptionMessage, "ErrorUserEntryOptionMessage" }
+            { Messages.ErrorUserEntryOptionMessage, "ErrorUserEntryOptionMessage" },
+            { Messages.SaveTaskMenuMessage, "SaveTaskMenuMessage" }
 
         };
 
@@ -78,16 +80,6 @@ namespace EasySaveConsole.Model
             public string GetMessageTranslate(Messages message)
             {   
                 return jsonManager.GetMessage(message, langagesManager.defaultLangage);
-            }
-            public Messages SetDefaultLangage(string langage)
-            {
-                Messages msg = langagesManager.SetDefaultLangage(langage);
-                if(msg == Messages.DefaultLanguageChangedSuccessMessage)
-                {
-                    Langages newDefaultLangage = langagesManager.GetLangageInstance(langage);
-                    langagesManager.defaultLangage = newDefaultLangage;
-                }
-                return msg;
             }
         }
 }
