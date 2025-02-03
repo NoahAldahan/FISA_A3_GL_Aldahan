@@ -1,4 +1,5 @@
 @startuml
+<<<<<<< HEAD
 /' Model '/
 class SaveTaskFactory <<factory>> {
     +createSaveTask(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath): SaveTask
@@ -88,4 +89,79 @@ LogVM --> Log : "manages"
 Cli --> SaveTaskVM : "interacts"
 Cli --> LogVM : "interacts"
 Cli --> DirectoryPairVM : "interacts"
+=======
+/' Packages '/
+package "Model" {
+    class SaveWorkFactory <<factory>> {
+        +createSaveWork(type: String): SaveWork
+    }
+
+    abstract class SaveWork {
+        +save()
+    }
+
+    class SaveWorkDiff {
+        +calculateDiff()
+    }
+
+    class SaveWorkComplete {
+        +saveAll()
+    }
+
+    class DirectoryPair {
+        +path: String
+        +listFiles(): List<String>
+    }
+
+    class SaveWorkManager {}
+
+    class Log {
+        +message: String
+        +writeLog(message: String)
+    }
+
+    class JsonManager {
+        +readJson(file: String): Object
+        +writeJson(file: String, data: Object)
+    }
+
+    SaveWorkFactory *--> SaveWork : "create"
+    SaveWork *--> DirectoryPair : "create"
+    SaveWork <|--- SaveWorkDiff : "inherited"
+    SaveWork <|--- SaveWorkComplete : "inherited"
+
+    Log <-- SaveWork : "use"
+    JsonManager <-- Log : "use"
+}
+
+package "Controller" {
+    class LogController {
+        +logData: String
+        +addLog(message: String)
+        +getLogs(): List<String>
+    }
+
+    class SaveWorkController {
+        +currentSaveWork: SaveWork
+        +executeSave(type: String)
+    }
+
+    SaveWorkController *--> SaveWorkManager : "manage"
+    SaveWorkManager *--> SaveWorkFactory : "manage"
+    SaveWorkController --> LogController : "notify"
+    Log <-- LogController : "manages"
+} 
+
+package "View" {
+    class Cli {
+        +displayMenu()
+        +getInput(): String
+        +printOutput(message: String)
+    }
+
+    Cli *--> SaveWorkController : "interacts"
+    Cli *--> LogController : "interacts"
+}
+>>>>>>> Features-Translation
 @enduml
+
