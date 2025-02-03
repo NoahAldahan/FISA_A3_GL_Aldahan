@@ -8,6 +8,7 @@ using EasySaveConsole.CLI;
 using DotNetEnv;
 using System.IO;
 using EasySaveConsole.Utilities;
+using EasySaveConsole.Controller;
 
 
 namespace EasySaveConsole
@@ -18,8 +19,16 @@ namespace EasySaveConsole
         {
             // Charger les variables d'environnement depuis le fichier .env
             Env.Load(@".env");
-            CLI.CLI cLI = new CLI.CLI();
-            cLI.CliApp();
+            //création des vues 
+            CliView cliView = new CliView();
+            //Création des modèles 
+            MessagesManager messagesManager = new MessagesManager();
+            // création des controllers
+            MessageController messageController = new MessageController(messagesManager);
+            CliController cliController = new CliController(messageController, cliView);
+            cliController.startCli();
+
+           
         }
     }
 }

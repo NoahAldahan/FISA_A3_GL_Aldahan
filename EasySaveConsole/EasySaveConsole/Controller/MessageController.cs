@@ -1,5 +1,6 @@
 ﻿using EasySaveConsole.Model;
 using EasySaveConsole.Utilities;
+using System;
 using System.Collections.Generic;
 
 namespace EasySaveConsole.Controller
@@ -7,19 +8,19 @@ namespace EasySaveConsole.Controller
     internal class MessageController
     {
         MessagesManager messagesManager;
-        public MessageController() 
+        public MessageController(MessagesManager messagesManagerArg) 
         {
-            messagesManager = new MessagesManager();
+            messagesManager = messagesManagerArg;
         }
         public string GetMessage(Messages msg)
         {
             string strMsg = messagesManager.GetMessageTranslate(msg);
             return strMsg;
         }
-        public string ChangeDefaultLangage(string strLangage)
+        public Messages SetDefaultLangage(string strLangage)
         {
             Messages msg = messagesManager.SetDefaultLangage(strLangage);   
-            return messagesManager.GetMessageTranslate(msg);
+            return msg;
         }
     }
 }
