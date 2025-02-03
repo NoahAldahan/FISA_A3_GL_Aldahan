@@ -116,7 +116,12 @@ Si la version 1.0 est jugée satisfaisante, une **version 2.0** avec une interfa
   - C#
   - Dotnet 8.0
   - Architecture logiciel extensible
-  - Convention de nommage
+  - Convention de nommage :
+    - Les conventions de nommage dans un projet C# sont essentielles pour garantir la lisibilité et la cohérence de notre code. 
+    Concernant les conventions générales de programmation, on utilise le PascalCase et le camelCase. 
+    - Le PascalCase est utilisé pour les noms publics dont les noms de classe, les méthodes ou encore les propriétés.
+    - Le camelCase est utilisé pour les noms privés, locaux ou encore les paramètres.
+
 
 
 ---
