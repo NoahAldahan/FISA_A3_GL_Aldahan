@@ -51,14 +51,12 @@ namespace EasySaveConsole.Model
         // Remove a save task of type SaveTaskType with sourcePath and targetPath (stops after the first deletion)
         public void RemoveSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
         {
-            foreach (SaveTask saveTask in SaveTasks)
-            {
-                if (saveTask.CurrentDirectoryPair.SourcePath == sourcePath && saveTask.CurrentDirectoryPair.TargetPath == targetPath)
-                {
-                    SaveTasks.Remove(saveTask);
-                    break;
-                }
-            }
+            if (SaveTasks.Count() == 0)
+                return;
+
+            SaveTask MatchingSaveTask = SaveTasks.FirstOrDefault(saveTask => (saveTask.CurrentDirectoryPair.SourcePath == sourcePath && saveTask.CurrentDirectoryPair.TargetPath == targetPath));
+            if (MatchingSaveTask != null)
+                SaveTasks.Remove(MatchingSaveTask);
         }
 
         // Starts the save task at index
