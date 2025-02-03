@@ -1,16 +1,34 @@
 {
   "FR": {
-    "InitMessage": "Options : \n 1 : Stop \n 2 : Cr�ation d'une nouvelle sauvegarde \n 3 : D�marrer une sauvegarde \n 4 : Changer le langage par d�faut",
-    "StopMessage": "Arr�t du programme en cours...",
-    "StartSaveTaskMessage": "D�marrage de la t�che de sauvegarde...",
-    "LanguageChangeSuccessMessage": "Le langage par d�faut a �t� chang� avec succ�s.",
-    "CreateSaveTaskMessage": "Cr�ation d'une nouvelle t�che de sauvegarde."
+    "InitMessage": "Options : \n 0 : Stop \n 1 : Voir les options \n 2 : Changer le langage par défaut \n 3 : Afficher les langages disponibles",
+    "StopMessage": "Arrêt du programme en cours...",
+    "StartSaveTaskMessage": "Démarrage de la tâche de sauvegarde...",
+    "LanguageChangeSuccessMessage": "Le langage par défaut a été changé avec succès.",
+    "LanguageChangeErrorMessage": "Erreur : le langage par défaut n'a pas pu être changé.",
+    "DefaultLanguageInitSuccessMessage": "Le langage par défaut a été initialisé avec succès.",
+    "DefaultLanguageInitErrorMessage": "Erreur : impossible d'initialiser le langage par défaut.",
+    "CreateSaveTaskMessage": "Création d'une nouvelle tâche de sauvegarde.",
+    "DefaultLanguageChangedErrorMessage": "Erreur : impossible de modifier le langage par défaut.",
+    "DefaultLanguageChangedSuccessMessage": "Le langage par défaut a été modifié avec succès.",
+    "LangagesMessage": "Langages disponible : \n EN \n FR",
+    "AskLangageMessage": "Entrez votre choix de langage : ",
+    "ErrorUserEntryStrMessage": "Erreur: Valeur d'entrée invalide",
+    "ErrorUserEntryOptionMessage": "Erreur : Apprend à compter !!!"
   },
   "EN": {
-    "InitMessage": "Options : \n 1 : Shutdown \n 2 : Create a new save task \n 3 : Start a save task \n 4 : Change default language",
+    "InitMessage": "Options : \n 0 : Shutdown \n 1 : Show options \n 2 : Change default language \n 3 : Show available languages",
     "StopMessage": "Shutting down the program...",
     "StartSaveTaskMessage": "Starting the save task...",
     "LanguageChangeSuccessMessage": "The default language has been successfully changed.",
-    "CreateSaveTaskMessage": "Creating a new save task."
+    "LanguageChangeErrorMessage": "Error: The default language could not be changed.",
+    "DefaultLanguageInitSuccessMessage": "The default language has been successfully initialized.",
+    "DefaultLanguageInitErrorMessage": "Error: Unable to initialize the default language.",
+    "CreateSaveTaskMessage": "Creating a new save task.",
+    "DefaultLanguageChangedSuccessMessage": "The default language has been successfully changed.",
+    "DefaultLanguageChangedErrorMessage": "Error: Unable to changed the default language.",
+    "LangagesMessage": "Languages available : \n EN \n FR",
+    "AskLangageMessage": "Choose your new language : ",
+    "ErrorUserEntryStrMessage": "Error: Invalid text input",
+    "ErrorUserEntryOptionMessage": "Error : Learn to count !!!"
   }
 }

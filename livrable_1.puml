@@ -17,7 +17,7 @@ package "Model" {
         +saveAll()
     }
 
-    class Directory {
+    class DirectoryPair {
         +path: String
         +listFiles(): List<String>
     }
@@ -34,7 +34,8 @@ package "Model" {
         +writeJson(file: String, data: Object)
     }
 
-    SaveWorkFactory --> SaveWork : "create"
+    SaveWorkFactory *--> SaveWork : "create"
+    SaveWork *--> DirectoryPair : "create"
     SaveWork <|--- SaveWorkDiff : "inherited"
     SaveWork <|--- SaveWorkComplete : "inherited"
 
@@ -42,29 +43,23 @@ package "Model" {
     JsonManager <-- Log : "use"
 }
 
-package "ViewModel" {
-    class LogVM {
+package "Controller" {
+    class LogController {
         +logData: String
         +addLog(message: String)
         +getLogs(): List<String>
     }
 
-    class SaveWorkVM {
+    class SaveWorkController {
         +currentSaveWork: SaveWork
         +executeSave(type: String)
     }
 
-    class DirectoryVM {
-        +directoryPath: String
-        +loadDirectory(path: String): Directory
-    }
-
-    SaveWorkVM --> SaveWorkManager : "manage"
-    SaveWorkManager --> SaveWorkFactory : "manage"
-    SaveWorkVM --> LogVM : "notify"
-    DirectoryVM --> Directory : "manage"
-    LogVM --> Log : "manages"
-}
+    SaveWorkController *--> SaveWorkManager : "manage"
+    SaveWorkManager *--> SaveWorkFactory : "manage"
+    SaveWorkController --> LogController : "notify"
+    Log <-- LogController : "manages"
+} 
 
 package "View" {
     class Cli {
@@ -73,8 +68,8 @@ package "View" {
         +printOutput(message: String)
     }
 
-    Cli --> SaveWorkVM : "interacts"
-    Cli --> LogVM : "interacts"
-    Cli --> DirectoryVM : "interacts"
+    Cli *--> SaveWorkController : "interacts"
+    Cli *--> LogController : "interacts"
 }
 @enduml
+

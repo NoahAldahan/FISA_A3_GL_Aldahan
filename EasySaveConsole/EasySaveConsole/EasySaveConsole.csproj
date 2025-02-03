@@ -215,14 +215,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\MessageController.cs" />
     <Compile Include="Model\Messages.cs" />
-    <Compile Include="Utilities\EnumMessages.cs" />
-    <Compile Include="ViewModel\MessageVM.cs" />
+    <Compile Include="Model\Langages.cs" />
     <Compile Include="View\CLI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\JsonManager.cs" />
-    <Compile Include="Utilities\Translate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

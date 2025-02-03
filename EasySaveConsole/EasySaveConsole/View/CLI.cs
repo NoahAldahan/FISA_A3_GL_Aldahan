@@ -1,51 +1,99 @@
-﻿using EasySaveConsole.Utilities;
-using EasySaveConsole.ViewModel;
+﻿using EasySaveConsole.Model;
+using EasySaveConsole.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using EasySaveConsole.Controller;
+using Sprache;
 
 namespace EasySaveConsole.CLI   
 {
     public class CLI
     {
-            
-        // Définition de l'énumération
-        enum CliState
+        enum CliAction
         {   
-            InProgress = 0,    // Par défaut, la numérotation commence à 0
-            Stop = 1,
-            Error = 2, 
-            Waiting = 3,
+            Stop = 0,
+            Init = 1,
+            ChangeDefaultLangage = 2,
+            Langages = 3
         }
-        CliState state;
-        MessageVM messageViewModel;
 
-        private void stopEvent()
+        CliAction state;
+        MessageController messageController;
+
+        private void StopEvent()
         {
             
-            state = CliState.Stop;
-            messageViewModel.SelectedMessage = Messages.StopMessage;
-            Console.WriteLine(messageViewModel.CurrentMessage);
+            state = CliAction.Stop;
+            Console.WriteLine(messageController.GetMessage(Messages.StopMessage));
+        }
+
+        private void ChangeDefaultLangage(string langage)
+        {
+            string msg = messageController.ChangeDefaultLangage(langage);
+            Console.WriteLine(msg);
+        }
+
+        private void ShowOptions()
+        {
+            Console.WriteLine(messageController.GetMessage(Messages.InitMessage));
+        }
+
+        private void ShowLangages()
+        {
+            Console.WriteLine(messageController.GetMessage(Messages.LangagesMessage));
+        }
+        private void ShowAskLangage() 
+        {
+            Console.Write(messageController.GetMessage(Messages.AskLangageMessage));
+        }
+        private void InitCli()
+        {
+            ShowOptions();
         }
 
         public void CliApp()
         {
-            state = CliState.Waiting;
-            messageViewModel = new MessageVM();
-            messageViewModel.SelectedMessage = Messages.InitMessage;
-            Console.WriteLine(messageViewModel.CurrentMessage);
+            messageController = new MessageController();
+            state = CliAction.Init;
+            InitCli();
 
-            while (state != CliState.Stop)
+            while (state != CliAction.Stop)
             {
-                int userInput = int.Parse(Console.ReadLine());
-                switch (userInput)
+                try
                 {
-                    case ((int)CliState.Stop):
-                        stopEvent();
-                        break;
+                    int userInput = int.Parse(Console.ReadLine());
+                    if (Enum.IsDefined(typeof(CliAction), userInput))
+                    {
+                        switch (userInput)
+                        {
+                            case ((int)CliAction.Stop):
+                                StopEvent();
+                                break;
+                            case ((int)CliAction.Init):
+                                ShowOptions();
+                                break;
+                            case ((int)CliAction.Langages):
+                                ShowLangages();
+                                break;
+                            case ((int)CliAction.ChangeDefaultLangage):
+                                ShowAskLangage();
+                                string langageChoice = Console.ReadLine().ToString();
+                                ChangeDefaultLangage(langageChoice);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine(messageController.GetMessage(Messages.ErrorUserEntryOptionMessage));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(messageController.GetMessage(Messages.ErrorUserEntryStrMessage));
                 }
             }
         }
