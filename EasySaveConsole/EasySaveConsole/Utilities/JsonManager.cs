@@ -26,7 +26,7 @@ namespace EasySaveConsole.Utilities
             Environment.GetEnvironmentVariable("TranslationPath"));
         }
 
-        public string GetMessage(Messages msg, Langages langage)
+        public string GetMessage(string msg, ELanguage language)
          {
             try
             {
@@ -34,7 +34,7 @@ namespace EasySaveConsole.Utilities
                 string jsonContent = File.ReadAllText(TranslationPath);
                 JsonDocument doc = JsonDocument.Parse(jsonContent);
                 JsonElement root = doc.RootElement;
-                string value = root.GetProperty(langage.GetValue()).GetProperty(msg.GetValue()).GetString();
+                string value = root.GetProperty(language.GetValue()).GetProperty(msg).GetString();
                 return value;
             }
             catch (Exception ex)
@@ -61,20 +61,20 @@ namespace EasySaveConsole.Utilities
                 return "";
             }
         }
-        public Messages SetDefaultLanguage(string langageValue, string langageKey)
+        public EMessage SetDefaultLanguage(string languageValue, string languageKey)
         {
             try
             {
                 string jsonContent = File.ReadAllText(AppSettingsPath);
                 JsonNode jsonNode = JsonNode.Parse(jsonContent);
-                jsonNode[langageKey] = langageValue;
+                jsonNode[languageKey] = languageValue;
                 // Écrire les modifications dans le fichier JSON
                 File.WriteAllText(AppSettingsPath, jsonNode.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
-                return Messages.DefaultLanguageChangedSuccessMessage;
+                return EMessage.DefaultLanguageChangedSuccessMessage;
             }
             catch (Exception ex) 
             {
-                return Messages.DefaultLanguageChangedErrorMessage;
+                return EMessage.DefaultLanguageChangedErrorMessage;
             }
         }
     }

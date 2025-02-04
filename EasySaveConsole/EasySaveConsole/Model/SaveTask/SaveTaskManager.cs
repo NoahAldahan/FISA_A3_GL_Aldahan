@@ -8,23 +8,23 @@ using System.Text.Json;
 
 namespace EasySaveConsole.Model
 {
-	public class SaveTaskManager
+	internal class SaveTaskManager
 	{
         // All the current save tasks
-        public List<SaveTask> SaveTasks { get; set; }
+        internal List<SaveTask> SaveTasks { get; set; }
         // The save task factory to create new save tasks
-        public SaveTaskFactory SaveTaskFactory { get; set; }
+        internal SaveTaskFactory SaveTaskFactory { get; set; }
         // The maximum number of save tasks that can be created at once
         private static int MaxSaveTasks = 5;
 
         // Getter for the save tasks
-        public List<SaveTask> GetSaveTasksClone()
+        internal List<SaveTask> GetSaveTasksClone()
         {
             return new List<SaveTask>(SaveTasks);
         }
 
         // Constructor
-        public SaveTaskManager()
+        internal SaveTaskManager()
         {
             SaveTaskFactory = new SaveTaskFactory();
             SaveTasks = new List<SaveTask>();
@@ -33,7 +33,7 @@ namespace EasySaveConsole.Model
         }
 
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
-        public void AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
+        internal void AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
         {
             if (SaveTasks.Count >= MaxSaveTasks)
             {
@@ -43,13 +43,13 @@ namespace EasySaveConsole.Model
         }
 
         // Remove a save task at index
-        public void RemoveSaveTask(int index)
+        internal void RemoveSaveTask(int index)
         {
             SaveTasks.RemoveAt(index);
         }
 
         // Remove a save task of type SaveTaskType with sourcePath and targetPath (stops after the first deletion)
-        public void RemoveSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
+        internal void RemoveSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
         {
             if (SaveTasks.Count() == 0)
                 return;
@@ -60,13 +60,13 @@ namespace EasySaveConsole.Model
         }
 
         // Starts the save task at index
-        public void ExecuteSaveTask(int index)
+        internal void ExecuteSaveTask(int index)
         {
             SaveTasks[index].Save();
         }
 
         // Starts all save tasks
-        public void ExecuteAllSaveTasks()
+        internal void ExecuteAllSaveTasks()
         {
             foreach (SaveTask saveTask in SaveTasks)
             {
@@ -75,7 +75,7 @@ namespace EasySaveConsole.Model
         }
 
         // Saves all save tasks config to a json file for persistence
-        public void SerializeSaveTasks()
+        internal void SerializeSaveTasks()
         {
             //TEMP : we're writing in the json, but should use JSON manager
             string json = JsonSerializer.Serialize(SaveTasks);
@@ -83,7 +83,7 @@ namespace EasySaveConsole.Model
         }
 
         // Loads all save tasks config from a json file for persistence
-        public void DeserializeSaveTasks()
+        internal void DeserializeSaveTasks()
         {
             //TEMP : we're reading from the json, but should use JSON manager
             string json = "";

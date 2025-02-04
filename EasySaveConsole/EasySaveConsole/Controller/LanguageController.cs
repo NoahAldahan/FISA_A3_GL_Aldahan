@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Controller
 {
-    internal class LanguageController
+    internal class LanguageController //: BaseController
     {
-        LangagesManager langaguesManager;
-        public LanguageController(LangagesManager langaguesManager)
+        LanguageManager langaguesManager;
+        internal LanguageController(LanguageManager langaguesManager)//: base(messagesManager, view) 
         {
             this.langaguesManager = langaguesManager;
         }
-        public Messages SetDefaultLangage(string strLangage)
+        internal EMessage SetDefaultLanguage(string strLanguage)
         {
-            Messages msg = langaguesManager.SetDefaultLangage(strLangage);
+            EMessage msg = langaguesManager.SetDefaultLanguage(strLanguage);
             return msg;
         }
     }

@@ -1,60 +1,56 @@
-﻿using EasySaveConsole.CLI;
-using EasySaveConsole.Model;
-using EasySaveConsole.View;
+﻿using EasySaveConsole.Model;
 using System;
+using EasySaveConsole.View;
 
 namespace EasySaveConsole.Controller
 {
     internal class CliController : BaseController
     {
-        CliAction state;
+        ECliAction action;
         SaveTaskController saveTaskController;
-        public CliController(MessagesManager messagesManager, CliView view, SaveTaskController saveTaskController, LanguageController languageController) : base(messagesManager, view)
+        internal CliController(MessageManager messagesManager, CliView view, SaveTaskController saveTaskController, LanguageController languageController) : base(messagesManager, view)
         {
-            this.messagesManager = messagesManager;
-            this.view = view;
             this.saveTaskController = saveTaskController;
-            state = new CliAction();
         }
 
         internal void HandleUserInput()
         {
-            int userInput = view.GetOptionUserInput();
-            if (Enum.IsDefined(typeof(CliAction), userInput))
+            int userInput = this.view.GetOptionUserInput();
+            if (Enum.IsDefined(typeof(ECliAction), userInput))
             {
-                switch (userInput)
+                switch ((ECliAction)userInput)
                 {
-                    case ((int)CliAction.Stop):
-                        ShowMessage(Messages.StopMessage);
+                    case ECliAction.Stop:
+                        ShowMessage(EMessage.StopMessage);
                         break;
-                    case ((int)CliAction.Init):
-                        ShowMessage(Messages.InitMessage);
+                    case ECliAction.Init:
+                        ShowMessage(EMessage.InitMessage);
                         break;
-                    case ((int)CliAction.Langages):
-                        ShowMessage(Messages.LangagesMessage);
+                    case ECliAction.Languages:
+                        ShowMessage(EMessage.LanguagesMessage);
                         break;
-                    case ((int)CliAction.ChangeDefaultLangage):
-                        string langageChoice = ShowQuestion(Messages.AskLangageMessage);
-                        //Messages result = SetDefaultLangage(langageChoice);
+                    case ECliAction.ChangeDefaultLanguage:
+                        string languageChoice = ShowQuestion(EMessage.AskLanguageMessage);
+                        //Messages result = SetDefaultLanguage(languageChoice);
                         //ShowMessage(result);
                         break;
-                    case ((int)CliAction.SaveMenu):
+                    case ECliAction.SaveMenu:
                         //showMenu
-                        saveTaskController.startCli();
+                        saveTaskController.StartCli();
                         break;
                 }
             }
             else
             {
-                ShowMessage(Messages.ErrorUserEntryOptionMessage);
+                ShowMessage(EMessage.ErrorUserEntryOptionMessage);
             }
         }
 
-        internal void startCli()
+        internal void StartCli()
         {
-            state = CliAction.Init;
-            ShowMessage(Messages.InitMessage);
-            while (state != CliAction.Stop)
+            action = ECliAction.Init;
+            ShowMessage(EMessage.InitMessage);
+            while (action != ECliAction.Stop)
             {
                 try
                 {
@@ -62,7 +58,7 @@ namespace EasySaveConsole.Controller
                 }
                 catch (Exception ex)
                 {
-                    ShowMessage(Messages.ErrorUserEntryStrMessage);
+                    ShowMessage(EMessage.ErrorUserEntryStrMessage);
                 }
             }
         }

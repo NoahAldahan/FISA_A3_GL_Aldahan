@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.View
 {
-    internal abstract class BaseView
+    public abstract class BaseView
     {
-        internal void ShowMessage(string message)
+        public void ShowMessage(string message)
         {
             Console.WriteLine(message);
-        }
+        }   
 
-        internal string GetUserInput(string input)
+        public string GetUserInput(string input)
         {
             Console.Write(input);
             string userInput = Console.ReadLine();
@@ -29,7 +29,7 @@ namespace EasySaveConsole.View
             return Console.ReadLine();
         }
 
-        internal string ShowQuestion(string question)
+        public string ShowQuestion(string question)
         {
             Console.Write(question);
             return Console.ReadLine();

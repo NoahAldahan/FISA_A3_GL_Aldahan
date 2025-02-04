@@ -11,29 +11,29 @@ namespace EasySaveConsole.Model
 {
     [JsonDerivedType(typeof(SaveTaskComplete), "SaveTaskComplete")]
     [JsonDerivedType(typeof(SaveTaskDifferential), "SaveTaskDifferential")]
-    public abstract class SaveTask
+    internal abstract class SaveTask
     {
         // The directory name storing the target and source directories
         [JsonInclude]
-        public DirectoryPair CurrentDirectoryPair { get; set; }
+        internal DirectoryPair CurrentDirectoryPair { get; set; }
 
         // Constructor
         [JsonConstructor]
-        public SaveTask(DirectoryPair CurrentDirectoryPair) 
+        internal SaveTask(DirectoryPair CurrentDirectoryPair) 
         {
             this.CurrentDirectoryPair = CurrentDirectoryPair;
         }
 
         // Get the directory pair
-        public DirectoryPair GetDirectoryPair()
+        internal DirectoryPair GetDirectoryPair()
         {
             return CurrentDirectoryPair;
         }
 
         // Start the task
-        public abstract void Save();
+        internal abstract void Save();
 
         // Get the task information
-        public abstract List<string> GetInfo();
+        internal abstract List<string> GetInfo();
     }
 }

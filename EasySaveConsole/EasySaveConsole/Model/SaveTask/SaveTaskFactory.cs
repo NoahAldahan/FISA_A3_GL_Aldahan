@@ -8,10 +8,10 @@ namespace EasySaveConsole.Model
         Differential,
         Complete
     }
-    public class SaveTaskFactory
+    internal class SaveTaskFactory
 	{
         // Create a new save task of type saveTaskTypes with sourcePath and targetPath
-        public SaveTask CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath)
+        internal SaveTask CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath)
         {
             switch (saveTaskTypes)
             {

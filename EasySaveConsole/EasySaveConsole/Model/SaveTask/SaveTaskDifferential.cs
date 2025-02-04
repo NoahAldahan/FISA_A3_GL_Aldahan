@@ -10,12 +10,12 @@ namespace EasySaveConsole.Model
     internal class SaveTaskDifferential : SaveTask
     {
         // Constructor
-        public SaveTaskDifferential(DirectoryPair CurrentDirectoryPair) : base(CurrentDirectoryPair)
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair) : base(CurrentDirectoryPair)
         {
         }
 
         // Wrapper for the recursive function
-        public override void Save()
+        internal override void Save()
         {
             SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
         }
@@ -65,7 +65,7 @@ namespace EasySaveConsole.Model
         }
 
         // Get the task information
-        public override List<string> GetInfo() 
+        internal override List<string> GetInfo() 
         {
             List<string> infos = new List<string>();
             infos.Add("Differential save task");

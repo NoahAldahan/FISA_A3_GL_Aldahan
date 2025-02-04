@@ -11,12 +11,12 @@ namespace EasySaveConsole.Model
     internal class SaveTaskComplete : SaveTask
     {
         // Constructor
-        public SaveTaskComplete(DirectoryPair CurrentDirectoryPair) : base(CurrentDirectoryPair)
+        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair) : base(CurrentDirectoryPair)
         {
         }
 
         // Start a complete save task
-        public override void Save()
+        internal override void Save()
         {
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -47,7 +47,7 @@ namespace EasySaveConsole.Model
         }
 
         // Get the task information
-        public override List<string> GetInfo()
+        internal override List<string> GetInfo()
         {
             List<string> info = new List<string>();
             info.Add("Complete save task");

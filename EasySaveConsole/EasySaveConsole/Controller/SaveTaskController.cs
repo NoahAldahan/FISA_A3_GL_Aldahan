@@ -1,5 +1,4 @@
-﻿using EasySaveConsole.CLI;
-using EasySaveConsole.Model;
+﻿using EasySaveConsole.Model;
 using EasySaveConsole.View;
 using System;
 using System.Collections.Generic;
@@ -9,66 +8,56 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Controller
 {
-    enum ESaveTaskAction
-    {
-        Init = 0,
-        StartTasks = 1,
-        CreateTask = 2,
-        ModifyTask = 3,
-        DeleteTask = 4,
-        Help = 5,
-        Quit = 6
-    }
     internal class SaveTaskController : BaseController
     {
-        ESaveTaskAction action;
+        ECliSaveTaskAction action;
         SaveTaskManager saveTaskManager;
-        public SaveTaskController(MessagesManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager) : base(messagesManager, view) 
+        internal SaveTaskController(MessageManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager) : base(messagesManager, view) 
         {
             this.saveTaskManager = saveTaskManager;
         }
 
-        public void HandleUserInput()
+        internal void HandleUserInput()
         {
-            action = (ESaveTaskAction)this.view.GetOptionUserInput();
-            if (Enum.IsDefined(typeof(ESaveTaskAction), action))
+            int userInput = this.view.GetOptionUserInput();
+            if (Enum.IsDefined(typeof(ECliSaveTaskAction), userInput))
             {
-                switch (action)
+                switch ((ECliSaveTaskAction)userInput)
                 {
-                    case ESaveTaskAction.Quit:
-                        ShowMessage(Messages.StopMessage);
-                        action = ESaveTaskAction.Quit;
+                    case ECliSaveTaskAction.Quit:
+                        ShowMessage(EMessage.StopMessage);
+                        action = ECliSaveTaskAction.Quit;
                         break;
-                    case ESaveTaskAction.Init:
-                        ShowMessage(Messages.SaveTaskMenuMessage);
+                    case ECliSaveTaskAction.Init:
+                        ShowMessage(EMessage.SaveTaskMenuMessage);
                         break;
-                    case ESaveTaskAction.StartTasks:
-                        ShowMessage(Messages.StartSaveTaskMessage);
+                    case ECliSaveTaskAction.StartTasks:
+                        ShowMessage(EMessage.StartSaveTaskMessage);
                         break;
-                    case ESaveTaskAction.CreateTask:
-                        ShowMessage(Messages.CreateSaveTaskMessage);
+                    case ECliSaveTaskAction.CreateTask:
+                        ShowMessage(EMessage.CreateSaveTaskMessage);
                         break;
-                    case ESaveTaskAction.ModifyTask:
+                    case ECliSaveTaskAction.ModifyTask:
                         //ShowMessage(Messages.DefaultLanguageChangedSuccessMessage);
                         break;
-                    case ESaveTaskAction.DeleteTask:
+                    case ECliSaveTaskAction.DeleteTask:
                         //ShowMessage(Messages.DefaultLanguageChangedErrorMessage);
                         break;
-                    case ESaveTaskAction.Help:
+                    case ECliSaveTaskAction.Help:
                         //ShowOptions();
                         break;
                 }
             }
             else
             {
-                ShowMessage(Messages.ErrorUserEntryOptionMessage);
+                ShowMessage(EMessage.ErrorUserEntryOptionMessage);
             }
         }
-        internal void startCli()
+        internal void StartCli()
         {
-            action = ESaveTaskAction.Init;
-            ShowMessage(Messages.SaveTaskMenuMessage);
-            while (action != ESaveTaskAction.Quit)
+            action = ECliSaveTaskAction.Init;
+            ShowMessage(EMessage.SaveTaskMenuMessage);
+            while (action != ECliSaveTaskAction.Quit)
             {
                 try
                 {
@@ -76,7 +65,7 @@ namespace EasySaveConsole.Controller
                 }
                 catch (Exception ex)
                 {
-                    ShowMessage(Messages.ErrorUserEntryStrMessage);
+                    ShowMessage(EMessage.ErrorUserEntryStrMessage);
                 }
             }
         }
