@@ -24,12 +24,13 @@ namespace EasySaveConsole
             //création des vues 
             CliView cliView = new CliView();
             SaveTaskView saveTaskView = new SaveTaskView();
+            LanguageView languageView = new LanguageView();
             //Création des modèles 
             LanguageManager languageManager = new LanguageManager();
             MessageManager messagesManager = new MessageManager(languageManager, jsonManager);
             SaveTaskManager saveTaskManager = new SaveTaskManager();
             // création des controllers
-            LanguageController languageController = new LanguageController(languageManager);
+            LanguageController languageController = new LanguageController(messagesManager, languageView, languageManager);
             SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);
             //idée faire un controller factory pour ne pas passer trop de dépendance à cliController
             CliController cliController = new CliController(messagesManager, cliView, saveTaskController, languageController);
