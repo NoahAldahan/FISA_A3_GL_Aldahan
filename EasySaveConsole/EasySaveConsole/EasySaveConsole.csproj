@@ -235,6 +235,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\JsonManager.cs" />
+    <Compile Include="View\LanguageView.cs" />
     <Compile Include="View\SaveTaskView.cs" />
   </ItemGroup>
   <ItemGroup>

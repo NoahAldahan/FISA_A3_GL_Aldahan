@@ -9,22 +9,32 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Utilities
 {
-        internal enum ELanguage
-        {
-            EN,
-            FR,
-            Unknown
-        }
+    internal enum ELanguage
+    {
+        EN, // English
+        FR, // Français
+        ES, // Español
+        DE, // Deutsch
+        IT, // Italiano
+        PT, // Português
+        NL, // Nederlands
+        Unknown // Langue inconnue
+    }
 
-        internal static class LanguageExtension
+    internal static class LanguageExtension
         {
-            private static readonly Dictionary<ELanguage, string> LanguageStrings = new Dictionary<ELanguage, string> {
-            { ELanguage.EN, "EN" },
-            { ELanguage.FR, "FR" },
-            { ELanguage.Unknown, "Unknown" }
+            private static readonly Dictionary<ELanguage, string> LanguageStrings = new Dictionary<ELanguage, string>
+            {
+                { ELanguage.EN, "EN" },
+                { ELanguage.FR, "FR" },
+                { ELanguage.ES, "ES" },
+                { ELanguage.DE, "DE" },
+                { ELanguage.IT, "IT" },
+                { ELanguage.PT, "PT" },
+                { ELanguage.NL, "NL" },
+                { ELanguage.Unknown, "Unknown" }
             };
-
-            internal static string GetValue(this ELanguage language)
+        internal static string GetValue(this ELanguage language)
             {
                 if (LanguageStrings.TryGetValue(language, out var value))
                 {
@@ -103,6 +113,7 @@ namespace EasySaveConsole.Utilities
             if (IsValideLanguage(languageValue))
             {
                 msg = jsonManager.SetDefaultLanguage(languageValue, languageLibelle);
+                defaultLanguage = LanguageExtension.GetLanguageInstance(languageValue);
             }
             else
             {

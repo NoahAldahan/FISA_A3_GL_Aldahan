@@ -13,9 +13,11 @@ namespace EasySaveConsole.Controller
     internal class CliController : BaseController
     {
         private SaveTaskController saveTaskController;
+        private LanguageController languageController;
         internal CliController(MessageManager messagesManager, CliView view, SaveTaskController saveTaskController, LanguageController languageController) : base(messagesManager, view)
         {
             this.saveTaskController = saveTaskController;
+            this.languageController = languageController;
             stopCondition = (int)ECliAction.Stop;
             initCondition = (int)ECliAction.InitMenu;
             InitDictAction();
@@ -25,7 +27,7 @@ namespace EasySaveConsole.Controller
         {
             dictActions.Add((int)ECliAction.InitMenu, () => { ShowMessage(EMessage.MenuMessage); });
             dictActions.Add((int)ECliAction.Stop, () => { ShowMessage(EMessage.StopMessage); });
-            dictActions.Add((int)ECliAction.LanguageMenu, () => { ShowQuestion(EMessage.AskLanguageMessage); });
+            dictActions.Add((int)ECliAction.LanguageMenu, () => { languageController.StartCli(); });
             dictActions.Add((int)ECliAction.SaveMenu, () => { saveTaskController.StartCli(); });
         }
     }

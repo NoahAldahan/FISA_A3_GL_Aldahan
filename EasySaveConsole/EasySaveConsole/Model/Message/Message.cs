@@ -11,7 +11,7 @@ namespace EasySaveConsole.Model
         {
             ErrorTranslate,
             MenuMessage,
-            LanguagesMessage,
+            LanguagesListMessage,
             StopMessage,
             StartSaveTaskMessage,
             LanguageChangeSuccessMessage,
@@ -23,8 +23,10 @@ namespace EasySaveConsole.Model
             AskLanguageMessage,
             ErrorUserEntryStrMessage,
             ErrorUserEntryOptionMessage,
-            MenuSaveTaskMessage
-    }
+            MenuSaveTaskMessage,
+            MenuLanguageMessage,
+            PressKeyToContinue
+        }
 
         public static class MessageExtensions
         {
@@ -32,7 +34,7 @@ namespace EasySaveConsole.Model
             { EMessage.MenuMessage, "MenuMessage" },
             { EMessage.ErrorTranslate, "ErrorTranslate" },
             { EMessage.StopMessage, "StopMessage" },
-            { EMessage.LanguagesMessage, "LanguagesMessage" },
+            { EMessage.LanguagesListMessage, "LanguagesListMessage" },
             { EMessage.StartSaveTaskMessage, "StartSaveTaskMessage" },
             { EMessage.LanguageChangeSuccessMessage, "LanguageChangeSuccessMessage" },
             { EMessage.CreateSaveTaskMessage, "CreateSaveTaskMessage" },
@@ -43,7 +45,9 @@ namespace EasySaveConsole.Model
             { EMessage.AskLanguageMessage, "AskLanguageMessage" },
             { EMessage.ErrorUserEntryStrMessage, "ErrorUserEntryStrMessage" },
             { EMessage.ErrorUserEntryOptionMessage, "ErrorUserEntryOptionMessage" },
-            { EMessage.MenuSaveTaskMessage, "MenuSaveTaskMessage" }
+            { EMessage.MenuSaveTaskMessage, "MenuSaveTaskMessage" },
+            { EMessage.MenuLanguageMessage, "MenuLanguageMessage" },
+            { EMessage.PressKeyToContinue, "PressKeyToContinue" }
             };
 
             internal static string GetValue(this EMessage message)
