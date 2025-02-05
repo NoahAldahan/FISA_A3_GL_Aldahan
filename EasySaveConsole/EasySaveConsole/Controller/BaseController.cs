@@ -37,12 +37,6 @@ namespace EasySaveConsole.Controller
             return view.ShowQuestion(translatedMessage);
         }
 
-        protected void ResetConsole(EMessage msg) 
-        {
-            view.Clear();
-            ShowMessage(msg);
-        }
-
         internal void StartCli()
         {
             int action = initCondition;
@@ -53,6 +47,7 @@ namespace EasySaveConsole.Controller
                     //on vérifie si la initCondition est bien spécifié dans le dictionnaire
                     if (dictActions.ContainsKey(initCondition))
                     {
+                        view.Clear();
                         dictActions[initCondition]();//action d'init (affiche le menu)
                         action = this.view.GetOptionUserInput();
                         if (dictActions.ContainsKey(action))

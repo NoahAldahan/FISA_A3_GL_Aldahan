@@ -14,7 +14,7 @@
     "AskLanguageMessage": "Entrez votre choix de langage : ",
     "ErrorUserEntryStrMessage": "Erreur: Valeur d'entrée invalide",
     "ErrorUserEntryOptionMessage": "Erreur : Apprend à compter !!!",
-    "MenuSaveTaskMessage": "Options \n 0. Afficher toutes les tâches de sauvegarde \n 1. Démarrer une ou plusieurs tâches de sauvegarde \n 2. Créer une tâche de sauvegarde \n 3. Modifier une tâche de sauvegarde existante \n 4. Supprimer une tâche de sauvegarde \n 5. Aide (Afficher les options 0-6) \n 6. Quitter le menu des tâches de sauvegarde"
+    "MenuSaveTaskMessage": "Options : \n 0. Afficher toutes les tâches de sauvegarde \n 1. Démarrer une ou plusieurs tâches de sauvegarde \n 2. Créer une tâche de sauvegarde \n 3. Modifier une tâche de sauvegarde existante \n 4. Supprimer une tâche de sauvegarde \n 5. Aide (Afficher les options 0-6) \n 6. Quitter le menu des tâches de sauvegarde"
   },
   "EN": {
     "MenuMessage": "Options : \n 1. Display the language menu \n 2. Display the save menu \n 3. Quit the application",
@@ -31,6 +31,6 @@
     "AskLanguageMessage": "Choose your new language : ",
     "ErrorUserEntryStrMessage": "Error: Invalid text input",
     "ErrorUserEntryOptionMessage": "Error : Learn to count !!!",
-    "MenuSaveTaskMessage": "Options\n 0. Display all save tasks\n 1. Start one or several save tasks \n 2. Create a save task \n 3. Edit an existing save task \n 4. Delete a save task \n 5. Help (Afficher 0-6 options) \n 6. Exit save task menu"
+    "MenuSaveTaskMessage": "Options : \n 0. Display all save tasks\n 1. Start one or several save tasks \n 2. Create a save task \n 3. Edit an existing save task \n 4. Delete a save task \n 5. Help (Afficher 0-6 options) \n 6. Exit save task menu"
   }
 }
