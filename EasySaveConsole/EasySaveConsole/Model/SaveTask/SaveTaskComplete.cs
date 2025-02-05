@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using EasySaveConsole.Model.Log;
+using System.Runtime.CompilerServices;
 
 namespace EasySaveConsole.Model
 {
@@ -18,19 +20,43 @@ namespace EasySaveConsole.Model
         // Start a complete save task
         internal override void Save()
         {
+            DailyInfo dailyInfo = new DailyInfo();
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
+            StopWatch.Reset();
             // if both paths are directories
             if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
             {
                 DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.SourcePath);
                 DirectoryInfo targetDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.TargetPath);
+                StopWatch.Start();
                 CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo);
+
+                StopWatch.Stop();
+                dailyInfo.FileTransferTime = (StopWatch.ElapsedMilliseconds);
+                dailyInfo.FileSource = CurrentDirectoryPair.SourcePath;
+                dailyInfo.FileTarget = CurrentDirectoryPair.TargetPath;
+                FileInfo fileInfo = new FileInfo(CurrentDirectoryPair.SourcePath);
+                dailyInfo.FileSize = 112;
+                dailyInfo.DateTime = DateTime.Now;
+                SaveTaskInfo.Add("DailyInfo", dailyInfo);
+                Notify();
             }
             // if the source path is a single file and the target a directory
             else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
-            {
+            { 
+                StopWatch.Start();
                 File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, Path.GetFileName(CurrentDirectoryPair.SourcePath)), true);
+
+                StopWatch.Stop();
+                dailyInfo.FileTransferTime = (StopWatch.ElapsedMilliseconds);
+                dailyInfo.FileSource = CurrentDirectoryPair.SourcePath;
+                dailyInfo.FileTarget = CurrentDirectoryPair.TargetPath;
+                FileInfo fileInfo = new FileInfo(CurrentDirectoryPair.SourcePath);
+                dailyInfo.FileSize = fileInfo.Length;
+                dailyInfo.DateTime = DateTime.Now;
+                SaveTaskInfo.Add("DailyInfo", dailyInfo);
+                Notify();
             }
             // if the target isn't a directory
             else
