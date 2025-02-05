@@ -1,66 +1,32 @@
 ﻿using EasySaveConsole.Model;
-using System;
 using EasySaveConsole.View;
 
 namespace EasySaveConsole.Controller
 {
+    enum ECliAction
+    {
+        InitMenu = 0,
+        LanguageMenu = 1,
+        SaveMenu = 2,
+        Stop = 3
+    }
     internal class CliController : BaseController
     {
-        ECliAction action;
-        SaveTaskController saveTaskController;
+        private SaveTaskController saveTaskController;
         internal CliController(MessageManager messagesManager, CliView view, SaveTaskController saveTaskController, LanguageController languageController) : base(messagesManager, view)
         {
             this.saveTaskController = saveTaskController;
+            stopCondition = (int)ECliAction.Stop;
+            initCondition = (int)ECliAction.InitMenu;
+            InitDictAction();
         }
 
-        internal void HandleUserInput()
+        override protected void InitDictAction()
         {
-            int userInput = this.view.GetOptionUserInput();
-            if (Enum.IsDefined(typeof(ECliAction), userInput))
-            {
-                switch ((ECliAction)userInput)
-                {
-                    case ECliAction.Stop:
-                        ShowMessage(EMessage.StopMessage);
-                        break;
-                    case ECliAction.Init:
-                        ShowMessage(EMessage.InitMessage);
-                        break;
-                    case ECliAction.Languages:
-                        ShowMessage(EMessage.LanguagesMessage);
-                        break;
-                    case ECliAction.ChangeDefaultLanguage:
-                        string languageChoice = ShowQuestion(EMessage.AskLanguageMessage);
-                        //Messages result = SetDefaultLanguage(languageChoice);
-                        //ShowMessage(result);
-                        break;
-                    case ECliAction.SaveMenu:
-                        //showMenu
-                        saveTaskController.StartCli();
-                        break;
-                }
-            }
-            else
-            {
-                ShowMessage(EMessage.ErrorUserEntryOptionMessage);
-            }
-        }
-
-        internal void StartCli()
-        {
-            action = ECliAction.Init;
-            ShowMessage(EMessage.InitMessage);
-            while (action != ECliAction.Stop)
-            {
-                try
-                {
-                    HandleUserInput();
-                }
-                catch (Exception ex)
-                {
-                    ShowMessage(EMessage.ErrorUserEntryStrMessage);
-                }
-            }
+            dictActions.Add((int)ECliAction.InitMenu, () => { ShowMessage(EMessage.MenuMessage); });
+            dictActions.Add((int)ECliAction.Stop, () => { ShowMessage(EMessage.StopMessage); });
+            dictActions.Add((int)ECliAction.LanguageMenu, () => { ShowQuestion(EMessage.AskLanguageMessage); });
+            dictActions.Add((int)ECliAction.SaveMenu, () => { saveTaskController.StartCli(); });
         }
     }
 }

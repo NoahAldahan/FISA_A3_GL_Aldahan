@@ -8,66 +8,30 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Controller
 {
+    enum ECliSaveTaskAction
+    {
+        InitMenu = 0,
+        StartTasks = 1,
+        CreateTask = 2,
+        ModifyTask = 3,
+        DeleteTask = 4,
+        Help = 5,
+        Quit = 6
+    }
     internal class SaveTaskController : BaseController
     {
-        ECliSaveTaskAction action;
         SaveTaskManager saveTaskManager;
         internal SaveTaskController(MessageManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager) : base(messagesManager, view) 
         {
             this.saveTaskManager = saveTaskManager;
+            stopCondition = (int)ECliSaveTaskAction.Quit;
+            initCondition = (int)ECliAction.InitMenu;
+            InitDictAction();
         }
-
-        internal void HandleUserInput()
+        override protected void InitDictAction()
         {
-            int userInput = this.view.GetOptionUserInput();
-            if (Enum.IsDefined(typeof(ECliSaveTaskAction), userInput))
-            {
-                switch ((ECliSaveTaskAction)userInput)
-                {
-                    case ECliSaveTaskAction.Quit:
-                        ShowMessage(EMessage.StopMessage);
-                        action = ECliSaveTaskAction.Quit;
-                        break;
-                    case ECliSaveTaskAction.Init:
-                        ShowMessage(EMessage.SaveTaskMenuMessage);
-                        break;
-                    case ECliSaveTaskAction.StartTasks:
-                        ShowMessage(EMessage.StartSaveTaskMessage);
-                        break;
-                    case ECliSaveTaskAction.CreateTask:
-                        ShowMessage(EMessage.CreateSaveTaskMessage);
-                        break;
-                    case ECliSaveTaskAction.ModifyTask:
-                        //ShowMessage(Messages.DefaultLanguageChangedSuccessMessage);
-                        break;
-                    case ECliSaveTaskAction.DeleteTask:
-                        //ShowMessage(Messages.DefaultLanguageChangedErrorMessage);
-                        break;
-                    case ECliSaveTaskAction.Help:
-                        //ShowOptions();
-                        break;
-                }
-            }
-            else
-            {
-                ShowMessage(EMessage.ErrorUserEntryOptionMessage);
-            }
-        }
-        internal void StartCli()
-        {
-            action = ECliSaveTaskAction.Init;
-            ShowMessage(EMessage.SaveTaskMenuMessage);
-            while (action != ECliSaveTaskAction.Quit)
-            {
-                try
-                {
-                    HandleUserInput();
-                }
-                catch (Exception ex)
-                {
-                    ShowMessage(EMessage.ErrorUserEntryStrMessage);
-                }
-            }
+            dictActions.Add((int)ECliSaveTaskAction.InitMenu, () => { ShowMessage(EMessage.MenuSaveTaskMessage); });
+            dictActions.Add((int)ECliSaveTaskAction.Quit, () => { ShowMessage(EMessage.StopMessage); });
         }
     }
 }

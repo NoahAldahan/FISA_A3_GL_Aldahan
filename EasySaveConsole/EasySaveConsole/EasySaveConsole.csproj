@@ -222,7 +222,6 @@
     <Compile Include="Controller\CliController.cs" />
     <Compile Include="Controller\LanguageController.cs" />
     <Compile Include="Controller\SaveTaskController.cs" />
-    <Compile Include="Model\ECli.cs" />
     <Compile Include="Model\DirectoryPair.cs" />
     <Compile Include="Model\SaveTask\SaveTask.cs" />
     <Compile Include="Model\SaveTask\SaveTaskComplete.cs" />

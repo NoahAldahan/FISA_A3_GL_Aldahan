@@ -10,7 +10,7 @@ namespace EasySaveConsole.Model
         public enum EMessage
         {
             ErrorTranslate,
-            InitMessage,
+            MenuMessage,
             LanguagesMessage,
             StopMessage,
             StartSaveTaskMessage,
@@ -23,13 +23,13 @@ namespace EasySaveConsole.Model
             AskLanguageMessage,
             ErrorUserEntryStrMessage,
             ErrorUserEntryOptionMessage,
-            SaveTaskMenuMessage
-        }
+            MenuSaveTaskMessage
+    }
 
         public static class MessageExtensions
         {
             private static readonly Dictionary<EMessage, string> MessageStrings = new Dictionary<EMessage, string> {
-            { EMessage.InitMessage, "InitMessage" },
+            { EMessage.MenuMessage, "MenuMessage" },
             { EMessage.ErrorTranslate, "ErrorTranslate" },
             { EMessage.StopMessage, "StopMessage" },
             { EMessage.LanguagesMessage, "LanguagesMessage" },
@@ -43,7 +43,7 @@ namespace EasySaveConsole.Model
             { EMessage.AskLanguageMessage, "AskLanguageMessage" },
             { EMessage.ErrorUserEntryStrMessage, "ErrorUserEntryStrMessage" },
             { EMessage.ErrorUserEntryOptionMessage, "ErrorUserEntryOptionMessage" },
-            { EMessage.SaveTaskMenuMessage, "SaveTaskMenuMessage" }
+            { EMessage.MenuSaveTaskMessage, "MenuSaveTaskMessage" }
             };
 
             internal static string GetValue(this EMessage message)

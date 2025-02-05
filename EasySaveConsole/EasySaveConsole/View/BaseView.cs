@@ -34,5 +34,10 @@ namespace EasySaveConsole.View
             Console.Write(question);
             return Console.ReadLine();
         }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
     }
 }
