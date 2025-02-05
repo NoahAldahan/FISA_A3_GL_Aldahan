@@ -1,27 +1,41 @@
 @startuml
+<<<<<<< HEAD
 /' Model '/
-class SaveWorkFactory <<factory>> {
-    +createSaveWork(type: String): SaveWork
+class SaveTaskFactory <<factory>> {
+    +createSaveTask(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath): SaveTask
 }
 
-abstract class SaveWork {
+abstract class SaveTask {
+    +CurrentDirectoryPair : DirectoryPair
     +save()
+    +getInfo(): String
 }
 
-class SaveWorkDiff {
-    +calculateDiff()
+class SaveTaskDiff {
+    +SaveDifferentialRecursive(string sourcePath, string targetPath)
 }
 
-class SaveWorkComplete {
-    +saveAll()
+class SaveTaskComplete {
+    +SaveComplete(string sourcePath, string targetPath)
 }
 
-class Directory {
-    +path: String
+class DirectoryPair {
+    +sourcePath: String
+    +targetPath: String
     +listFiles(): List<String>
 }
 
-class SaveWorkManager{}
+class SaveTaskManager{
+    +saveTasks: List<SaveTask>
+    +MaxSaveTasks: static int 
+    +executeSaveTask(int index)
+    +executeAllSaveTasks()
+    +addSaveTasks(ESaveTaskTypes type, string SourcePath, string TargetPath)
+    +removeSaveTask(int index)
+    +getSaveTasks(): List<SaveTask>
+    +SerializeSaveTasks()
+    +DeserializeSaveTasks()
+}
 
 class Log {
     +message: String
@@ -40,14 +54,14 @@ class LogVM {
     +getLogs(): List<String>
 }
 
-class SaveWorkVM {
-    +currentSaveWork: SaveWork
+class SaveTaskVM {
+    +currentSaveTask: SaveTask
     +executeSave(type: String)
 }
 
-class DirectoryVM {
-    +directoryPath: String
-    +loadDirectory(path: String): Direc::::::tory
+class DirectoryPairVM {
+    +DirectoryPairPath: String
+    +loadDirectoryPair(path: String): Direc::::::tory
 }
 
 /' View '/
@@ -58,21 +72,96 @@ class Cli {
 }
 
 /' Relations '/
-SaveWorkFactory --> SaveWork : "create"
-SaveWork <|--- SaveWorkDiff : "inherited"
-SaveWork <|--- SaveWorkComplete : "inherited"
+SaveTaskFactory --> SaveTask : "create"
+SaveTask <|--- SaveTaskDiff : "inherited"
+SaveTask <|--- SaveTaskComplete : "inherited"
 
-Log <-- SaveWork : "use"
+Log <-- SaveTask : "use"
 JsonManager <-- Log : "use"
 
-SaveWorkVM --> SaveWorkManager : "manage"
-SaveWorkManager --> SaveWorkFactory : "manage"
-SaveWorkVM --> LogVM : "notify"
-DirectoryVM --> Directory : "manage"
+SaveTaskVM --> SaveTaskManager : "manage"
+SaveTaskManager --> SaveTaskFactory : "manage"
+SaveTaskVM --> LogVM : "notify"
+DirectoryPairVM --> DirectoryPair : "manage"
 
 LogVM --> Log : "manages"
 
-Cli --> SaveWorkVM : "interacts"
+Cli --> SaveTaskVM : "interacts"
 Cli --> LogVM : "interacts"
-Cli --> DirectoryVM : "interacts"
+Cli --> DirectoryPairVM : "interacts"
+=======
+/' Packages '/
+package "Model" {
+    class SaveWorkFactory <<factory>> {
+        +createSaveWork(type: String): SaveWork
+    }
+
+    abstract class SaveWork {
+        +save()
+    }
+
+    class SaveWorkDiff {
+        +calculateDiff()
+    }
+
+    class SaveWorkComplete {
+        +saveAll()
+    }
+
+    class DirectoryPair {
+        +path: String
+        +listFiles(): List<String>
+    }
+
+    class SaveWorkManager {}
+
+    class Log {
+        +message: String
+        +writeLog(message: String)
+    }
+
+    class JsonManager {
+        +readJson(file: String): Object
+        +writeJson(file: String, data: Object)
+    }
+
+    SaveWorkFactory *--> SaveWork : "create"
+    SaveWork *--> DirectoryPair : "create"
+    SaveWork <|--- SaveWorkDiff : "inherited"
+    SaveWork <|--- SaveWorkComplete : "inherited"
+
+    Log <-- SaveWork : "use"
+    JsonManager <-- Log : "use"
+}
+
+package "Controller" {
+    class LogController {
+        +logData: String
+        +addLog(message: String)
+        +getLogs(): List<String>
+    }
+
+    class SaveWorkController {
+        +currentSaveWork: SaveWork
+        +executeSave(type: String)
+    }
+
+    SaveWorkController *--> SaveWorkManager : "manage"
+    SaveWorkManager *--> SaveWorkFactory : "manage"
+    SaveWorkController --> LogController : "notify"
+    Log <-- LogController : "manages"
+} 
+
+package "View" {
+    class Cli {
+        +displayMenu()
+        +getInput(): String
+        +printOutput(message: String)
+    }
+
+    Cli *--> SaveWorkController : "interacts"
+    Cli *--> LogController : "interacts"
+}
+>>>>>>> Features-Translation
 @enduml
+
