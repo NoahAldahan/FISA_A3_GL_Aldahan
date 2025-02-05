@@ -74,6 +74,26 @@ namespace EasySaveConsole.Model
             }
         }
 
+        // Modify the save task type
+        internal void ModifySaveTaskType(int index, ESaveTaskTypes newSaveTaskType)
+        {
+            SaveTask newSaveTask = SaveTaskFactory.CreateSave(newSaveTaskType, SaveTasks[index].CurrentDirectoryPair.SourcePath, SaveTasks[index].CurrentDirectoryPair.TargetPath);
+            SaveTasks.RemoveAt(index);
+            SaveTasks.Insert(index, newSaveTask);
+        }
+
+        // Modify the save task source path
+        internal void ModifySaveTaskSourcePath(int index, string newSourcePath)
+        {
+            SaveTasks[index].CurrentDirectoryPair.SourcePath = newSourcePath;
+        }
+
+        // Modify the save task target path
+        internal void ModifySaveTaskTargetPath(int index, string newTargetPath)
+        {
+            SaveTasks[index].CurrentDirectoryPair.TargetPath = newTargetPath;
+        }
+
         // Saves all save tasks config to a json file for persistence
         internal void SerializeSaveTasks()
         {

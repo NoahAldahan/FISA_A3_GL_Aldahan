@@ -17,5 +17,10 @@ namespace EasySaveConsole.Model
             this.SourcePath = SourcePath;
             this.TargetPath = TargetPath;
         }
+        internal DirectoryPair(DirectoryPair dp)
+        {
+            this.SourcePath = dp.SourcePath;
+            this.TargetPath = dp.TargetPath;
+        }
     }
 }
