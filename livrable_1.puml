@@ -1,119 +1,122 @@
 @startuml
-<<<<<<< HEAD
-/' Model '/
-class SaveTaskFactory <<factory>> {
-    +createSaveTask(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath): SaveTask
-}
 
-abstract class SaveTask {
-    +CurrentDirectoryPair : DirectoryPair
-    +save()
-    +getInfo(): String
-}
-
-class SaveTaskDiff {
-    +SaveDifferentialRecursive(string sourcePath, string targetPath)
-}
-
-class SaveTaskComplete {
-    +SaveComplete(string sourcePath, string targetPath)
-}
-
-class DirectoryPair {
-    +sourcePath: String
-    +targetPath: String
-    +listFiles(): List<String>
-}
-
-class SaveTaskManager{
-    +saveTasks: List<SaveTask>
-    +MaxSaveTasks: static int 
-    +executeSaveTask(int index)
-    +executeAllSaveTasks()
-    +addSaveTasks(ESaveTaskTypes type, string SourcePath, string TargetPath)
-    +removeSaveTask(int index)
-    +getSaveTasks(): List<SaveTask>
-    +SerializeSaveTasks()
-    +DeserializeSaveTasks()
-}
-
-class Log {
-    +message: String
-    +writeLog(message: String)
-}
-
-class JsonManager {
-    +readJson(file: String): Object
-    +writeJson(file: String, data: Object)
-}
-
-/' ViewModel '/
-class LogVM {
-    +logData: String
-    +addLog(message: String)
-    +getLogs(): List<String>
-}
-
-class SaveTaskVM {
-    +currentSaveTask: SaveTask
-    +executeSave(type: String)
-}
-
-class DirectoryPairVM {
-    +DirectoryPairPath: String
-    +loadDirectoryPair(path: String): Direc::::::tory
-}
-
-/' View '/
-class Cli {
-    +displayMenu()
-    +getInput(): String
-    +printOutput(message: String)
-}
-
-/' Relations '/
-SaveTaskFactory --> SaveTask : "create"
-SaveTask <|--- SaveTaskDiff : "inherited"
-SaveTask <|--- SaveTaskComplete : "inherited"
-
-Log <-- SaveTask : "use"
-JsonManager <-- Log : "use"
-
-SaveTaskVM --> SaveTaskManager : "manage"
-SaveTaskManager --> SaveTaskFactory : "manage"
-SaveTaskVM --> LogVM : "notify"
-DirectoryPairVM --> DirectoryPair : "manage"
-
-LogVM --> Log : "manages"
-
-Cli --> SaveTaskVM : "interacts"
-Cli --> LogVM : "interacts"
-Cli --> DirectoryPairVM : "interacts"
-=======
-/' Packages '/
+/' ==================== Packages ==================== '/
 package "Model" {
-    class SaveWorkFactory <<factory>> {
-        +createSaveWork(type: String): SaveWork
+    class SaveTaskFactory {
+        ~ CreateSave(saveTaskTypes: ESaveTaskTypes, sourcePath: string, targetPath: string): SaveTask
     }
 
-    abstract class SaveWork {
-        +save()
+    abstract class SaveTask {
+        ~ DirectoryPair CurrentDirectoryPair
+        ~ SaveTask(DirectoryPair CurrentDirectoryPair)
+        ~ DirectoryPair GetDirectoryPair()
+        ~ abstract void Save()
+        ~ abstract List<string> GetInfo()
     }
 
-    class SaveWorkDiff {
-        +calculateDiff()
+    class SaveTaskDifferential {
+        ~internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair)
+        ~internal void Save()
+        ~internal List<string> GetInfo()
+        -private void SaveDifferentialRecursive(string SourcePath, string TargetPath)
     }
 
-    class SaveWorkComplete {
-        +saveAll()
+    class SaveTaskComplete {
+        ~ SaveTaskComplete(DirectoryPair CurrentDirectoryPair)
+        ~ override void Save()
+        - void CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo)
+        ~ override List<string> GetInfo()
     }
 
     class DirectoryPair {
-        +path: String
-        +listFiles(): List<String>
+        ~ SourcePath: string
+        ~ TargetPath: string
+        ~ DirectoryPair(SourcePath: string, TargetPath: string)
     }
 
-    class SaveWorkManager {}
+    enum ESaveTaskTypes {
+        Differential
+        Complete
+    }
+
+    class SaveTaskManager {
+        - static MaxSaveTasks: int = 5
+        ~ SaveTasks: List<SaveTask>
+        ~ SaveTaskFactory: SaveTaskFactory
+        ~ GetSaveTasksClone(): List<SaveTask>
+        ~ SaveTaskManager()
+        ~ AddSaveTask(SaveTaskType: ESaveTaskTypes, sourcePath: string, targetPath: string): void
+        ~ RemoveSaveTask(index: int): void
+        ~ RemoveSaveTask(SaveTaskType: ESaveTaskTypes, sourcePath: string, targetPath: string): void
+        ~ ExecuteSaveTask(index: int): void
+        ~ ExecuteAllSaveTasks(): void
+        ~ SerializeSaveTasks(): void
+        ~ DeserializeSaveTasks(): void
+    }
+
+    enum ELanguage {
+        EN (English)
+        FR (Français)
+        ES (Español)
+        DE (Deutsch)
+        IT (Italiano)
+        PT (Português)
+        NL (Nederlands)
+        RU (Русский)
+        JA (日本語)
+        ZH (中文)
+        Unknown
+    }
+
+    class LanguageExtensions {
+        ~ static Dictionary<ELanguage, string> LanguageStrings
+        ~ static string GetValue(ELanguage language)
+        ~ static ELanguage GetLanguageInstance(string language)
+        ~ static List<string> GetAllStrLanguage()
+        ~ static ELanguage ToLanguage(string strLanguage)
+    }
+
+    class LanguageManager {
+        ~ ELanguage defaultLanguage
+        - JsonManager jsonManager
+        ~ LanguageManager()
+        ~ EMessage InitDefaultLanguage()
+        ~ static bool IsValideLanguage(string language)
+        ~ EMessage SetDefaultLanguage(string languageValue)
+        ~ ELanguage GetLanguageInstance(string language)
+    }
+
+    enum EMessage {
+        ErrorTranslate
+        InitMessage
+        LanguagesMessage
+        StopMessage
+        StartSaveTaskMessage
+        LanguageChangeSuccessMessage
+        CreateSaveTaskMessage
+        DefaultLanguageInitSuccessMessage
+        DefaultLanguageInitErrorMessage
+        DefaultLanguageChangedSuccessMessage
+        DefaultLanguageChangedErrorMessage
+        AskLanguageMessage
+        ErrorUserEntryStrMessage
+        ErrorUserEntryOptionMessage
+        SaveTaskMenuMessage
+    }
+
+    class MessageExtensions {
+        ~ static Dictionary<EMessage, string> MessageStrings
+        ~ static string GetValue(EMessage message)
+    }
+
+    class MessageManager {
+        ~ LanguageManager languageManager
+        ~ JsonManager jsonManager
+        + MessageManager(LanguageManager languageManager, JsonManager jsonManager)
+        + string GetMessageTranslate(EMessage message)
+    }
+
+    interface IObserver {}
 
     class Log {
         +message: String
@@ -125,43 +128,124 @@ package "Model" {
         +writeJson(file: String, data: Object)
     }
 
-    SaveWorkFactory *--> SaveWork : "create"
-    SaveWork *--> DirectoryPair : "create"
-    SaveWork <|--- SaveWorkDiff : "inherited"
-    SaveWork <|--- SaveWorkComplete : "inherited"
-
-    Log <-- SaveWork : "use"
-    JsonManager <-- Log : "use"
+    /' Relations '/
+    SaveTaskFactory *--> SaveTask : "create"
+    SaveTask *--> DirectoryPair : "create"
+    SaveTask <|--- SaveTaskDifferential : "inherits"
+    SaveTask <|--- SaveTaskComplete : "inherits"
+    ELanguage <-- LanguageExtensions
+    EMessage <-- MessageExtensions
+    MessageManager o--> JsonManager
+    ESaveTaskTypes <-- SaveTaskFactory
+    SaveTaskDifferential --|> IObserver
+    SaveTaskComplete --|> IObserver
+    LanguageManager --> LanguageExtensions
+    MessageManager --> MessageExtensions
+    SaveTaskManager --> SaveTask 
+    SaveTaskFactory --> DirectoryPair
+    Log o--> JsonManager
+    Log <-- SaveTask : "use"
+    MessageManager o--> LanguageManager
 }
 
 package "Controller" {
+    class CliController {
+        ~ ECliAction action
+        ~ SaveTaskController saveTaskController
+        ~ CliController(MessageManager messageManager, CliView view, SaveTaskController saveTaskController, LanguageController languageController)
+        ~ void HandleUserInput()
+        ~ void StartCli()
+    }
+
     class LogController {
         +logData: String
         +addLog(message: String)
         +getLogs(): List<String>
     }
 
-    class SaveWorkController {
-        +currentSaveWork: SaveWork
-        +executeSave(type: String)
+    class SaveTaskController {
+        ~ ECliSaveTaskAction action
+        ~ SaveTaskManager saveTaskManager
+        ~ SaveTaskController(MessageManager messageManager, SaveTaskView view, SaveTaskManager saveTaskManager)
+        ~ void HandleUserInput()
+        ~ void StartCli()
     }
 
-    SaveWorkController *--> SaveWorkManager : "manage"
-    SaveWorkManager *--> SaveWorkFactory : "manage"
-    SaveWorkController --> LogController : "notify"
+    abstract class BaseController {
+        # MessageManager messageManager
+        # BaseView view
+        # BaseController(MessageManager messageManager, BaseView view)
+        # void ShowMessage(Message msg)
+        # string ShowQuestion(Message msg)
+    }
+
+    class LanguageController {
+        ~ LangagesManager langaguesManager
+        ~ LanguageController(LangagesManager langaguesManager)
+        ~ Message SetDefaultLangage(string strLangage)
+    }
+
+    enum ECliAction {
+        Stop = 0
+        Init = 1
+        ChangeDefaultLanguage = 2
+        Languages = 3
+        SaveMenu = 4
+    }
+
+    enum ECliSaveTaskAction {
+        Init = 0
+        StartTasks = 1
+        CreateTask = 2
+        ModifyTask = 3
+        DeleteTask = 4
+        Help = 5
+        Quit = 6
+    }
+
+    /' Relations '/
+    SaveTaskController o--> SaveTaskManager : "manage"
+    SaveTaskManager *--> SaveTaskFactory : "manage"
     Log <-- LogController : "manages"
-} 
+    CliController o--> LogController
+    CliController o--> SaveTaskController
+    CliController --> ECliAction
+    SaveTaskController --> ECliSaveTaskAction
+    SaveTaskController ---|> BaseController
+    LogController ---|> BaseController
+    CliController ---|> BaseController
+    LanguageController ---|> BaseController
+    BaseController o--> MessageManager
+    CliController o--> LanguageController
+    LanguageController o--> LanguageManager
+    LanguageManager o--> JsonManager
+}
 
 package "View" {
-    class Cli {
-        +displayMenu()
-        +getInput(): String
-        +printOutput(message: String)
+    class CliView {}
+
+    abstract class BaseView {
+        + void ShowMessage(string message)
+        + string GetUserInput(string input)
+        + int GetOptionUserInput()
+        + string GetUserInput()
+        + string ShowQuestion(string question)
     }
 
-    Cli *--> SaveWorkController : "interacts"
-    Cli *--> LogController : "interacts"
-}
->>>>>>> Features-Translation
-@enduml
+    class SaveTaskView {}
+    class LanguageView {}
+    class LogView {}
 
+    /' Relations '/
+    CliController o--u--> CliView
+    SaveTaskController o---> SaveTaskView
+    LanguageController o---> LanguageView
+    CliView --|> BaseView
+    SaveTaskView --|> BaseView
+    LanguageView --|> BaseView
+    LogView --|> BaseView
+    BaseController o--> BaseView
+    LogController o--> LogView
+}
+
+@enduml

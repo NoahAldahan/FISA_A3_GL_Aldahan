@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EasySaveConsole.Controller
@@ -33,7 +34,7 @@ namespace EasySaveConsole.Controller
             dictActions.Add((int)ECliLanguageAction.Quit, () => { ShowMessage(EMessage.StopMessage); });
         }
 
-        internal void SetDefaultLanguage()
+        internal async void SetDefaultLanguage()
         {
             ShowMessage(EMessage.LanguagesListMessage);
             string strLanguage = ShowQuestion(EMessage.AskLanguageMessage);

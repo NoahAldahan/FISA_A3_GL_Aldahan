@@ -32,8 +32,8 @@ namespace EasySaveConsole
             // création des controllers
             LanguageController languageController = new LanguageController(messagesManager, languageView, languageManager);
             SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);
-            //idée faire un controller factory pour ne pas passer trop de dépendance à cliController
             CliController cliController = new CliController(messagesManager, cliView, saveTaskController, languageController);
+            // Démarrage du CLI
             cliController.StartCli();
         }
     }
