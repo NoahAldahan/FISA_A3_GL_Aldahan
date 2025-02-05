@@ -8,6 +8,5 @@ namespace EasySaveConsole.Utilities
 {
     internal class JsonLogManager
     {
-
     }
 }

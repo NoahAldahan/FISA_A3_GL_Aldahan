@@ -36,11 +36,11 @@ namespace EasySaveConsole
             //idée faire un controller factory pour ne pas passer trop de dépendance à cliController
             CliController cliController = new CliController(messagesManager, cliView, saveTaskController, languageController);
             //cliController.StartCli();
-            DirectoryPair directoryPair = new DirectoryPair("C:\\Users\\Travail\\Desktop\\Source", "C:\\Users\\Travail\\Desktop\\Target");
+            DirectoryPair directoryPair = new DirectoryPair("C:\\Users\\matte\\OneDrive\\Bureau\\src", "C:\\Users\\matte\\OneDrive\\Bureau\\target");
             SaveTask saveTask = new SaveTaskComplete(directoryPair);
             saveTask.AddObserver(new LogDaily());
             saveTask.AddObserver(new LogRealTime());
             saveTask.Save();
-            }
+        }
     }
 }

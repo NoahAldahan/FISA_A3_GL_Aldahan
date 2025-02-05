@@ -65,13 +65,6 @@ namespace EasySaveConsole.Model
         }
 
         // Get the task information
-        internal override List<string> GetInfo() 
-        {
-            List<string> infos = new List<string>();
-            infos.Add("Differential save task");
-            infos.Add("Source path : " + CurrentDirectoryPair.SourcePath);
-            infos.Add("Target path : " + CurrentDirectoryPair.TargetPath);
-            return infos;
-        }
+        internal override void UpdateLogs(string PathFileSource, string PathFileDestination) {}
     }
 }

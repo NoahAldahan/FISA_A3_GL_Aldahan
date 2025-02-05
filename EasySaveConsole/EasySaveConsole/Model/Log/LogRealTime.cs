@@ -10,7 +10,7 @@ namespace EasySaveConsole.Model.Log
     {
         public void Notify(Dictionary<string, object> message)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("LogRealTime do nothing");
         }
     }
 }

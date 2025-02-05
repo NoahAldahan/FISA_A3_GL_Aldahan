@@ -23,11 +23,8 @@ namespace EasySaveConsole.Model
         internal SaveTask CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath)
         {
             SaveTask saveTask;
-
             LogDaily logDaily = new LogDaily();
-
             LogRealTime logRealTime = new LogRealTime();
-
             switch (saveTaskTypes)
             {
                 case ESaveTaskTypes.Differential:
