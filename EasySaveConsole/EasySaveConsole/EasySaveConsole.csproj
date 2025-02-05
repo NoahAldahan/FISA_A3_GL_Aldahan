@@ -222,6 +222,7 @@
     <Compile Include="Controller\CliController.cs" />
     <Compile Include="Controller\LanguageController.cs" />
     <Compile Include="Controller\SaveTaskController.cs" />
+    <None Include="Json\Log\RealTimeSave.json" />
     <Compile Include="Model\DirectoryPair.cs" />
     <Compile Include="Model\Log\ILogObserver.cs" />
     <Compile Include="Model\Log\LogDaily.cs" />
@@ -257,6 +258,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Json\Log\Daily\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

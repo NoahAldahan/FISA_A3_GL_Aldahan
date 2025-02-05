@@ -63,8 +63,5 @@ namespace EasySaveConsole.Model
                 }
             }
         }
-
-        // Get the task information
-        internal override void UpdateLogs(string PathFileSource, string PathFileDestination) {}
     }
 }
