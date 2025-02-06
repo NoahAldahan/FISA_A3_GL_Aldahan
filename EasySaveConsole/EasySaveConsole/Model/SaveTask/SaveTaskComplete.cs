@@ -56,7 +56,7 @@ namespace EasySaveConsole.Model
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                 StopWatch.Stop();
                 //notify save of a new file
-                SetDailyInfo(new DirectoryPair(file.FullName, targetDirectoryInfo.FullName + file.Name));
+                SetDailyInfo(new DirectoryPair(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name));
                 NotifyLogsUpdate();
             }
         }

@@ -17,7 +17,8 @@ namespace EasySaveConsole.Model.Log
         }
         internal override void UdpateNotify(DailyInfo DailyInfo, RealTimeInfo RealTimeInfo)
         {
-          Console.WriteLine(DailyInfo.ToString());
+            jsonLogManager.AddSaveToDailyFile(DailyInfo);
+            Console.WriteLine(DailyInfo.ToString());
         }
     }
 }

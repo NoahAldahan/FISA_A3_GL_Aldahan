@@ -24,12 +24,18 @@ namespace EasySaveConsole.Utilities
             Environment.GetEnvironmentVariable("LogPathRealTime"));
         }
 
+        internal string GetFileDailyName(DateTime Date)
+        {
+            return $"{LogDailyPath}backup_{Date:yyyy-MM-dd}.json";
+        }
+
         // Create the daily backup file
-        internal void CreateDailyJsonFile(DateTime Date) 
+        internal void CreateDailyJsonFile(DateTime Date)
         {
             // Nom du fichier JSON basé sur la date
-            string fileName = $"{LogDailyPath}\\backup_{Date:yyyy-MM-dd}.json";
-            try { 
+            string fileName = GetFileDailyName(Date);
+            try
+            {
                 if (!File.Exists(fileName))
                 {
                     File.Create(fileName);
@@ -38,65 +44,81 @@ namespace EasySaveConsole.Utilities
             catch (Exception ex)
             {
                 Console.WriteLine($"Error creating JSON file: {ex.Message}");
-        }
+            }
         }
 
         // Add a backup to the daily file
-        internal void AddSaveToDailyFile(DateTime Date, DailyInfo DailyInfo) { }
-
-    internal void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo)
-    {
-        List<object> saveList = new List<object>();
-
-        // Charger le fichier JSON s'il existe
-        if (File.Exists(LogRealTimePath))
+        internal void AddSaveToDailyFile(DailyInfo DailyInfo)
         {
+            string dailyInfoPath = GetFileDailyName(DailyInfo.DateTime);
+            var jsonDailyInfo = new
+            {
+                DailyInfo.Name,
+                DailyInfo.FileSource,
+                DailyInfo.FileTarget,
+                DailyInfo.FileSize,
+                DailyInfo.FileTransferTime,
+                DailyInfo.DateTime
+            };
+            AddJsonLogObject(dailyInfoPath, jsonDailyInfo);
+        }
+
+        internal void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo)
+        {
+
+            // Nouvelle sauvegarde à ajouter
+            var jsonRealTimeInfo = new
+            {
+                realTimeInfo.Name,
+                realTimeInfo.SourcePath,
+                realTimeInfo.TargetPath,
+                realTimeInfo.State,
+                realTimeInfo.TotalFilesToCopy,
+                realTimeInfo.TotalFilesSize,
+                realTimeInfo.NbFilesLeftToDo,
+                realTimeInfo.Progression,
+                realTimeInfo.SaveDate
+            };
+            AddJsonLogObject(LogRealTimePath, jsonRealTimeInfo);
+        }
+
+        internal void AddJsonLogObject(string FilePath, object LogObject)
+        {
+            List<object> jsonObjectList = new List<object>();
+            if (File.Exists(FilePath))
+            {
+                try
+                {
+                    string json = File.ReadAllText(FilePath);
+                    // Désérialiser en liste d'objets
+                    if (string.IsNullOrEmpty(json))
+                    {
+                        json = "[]";
+                    }
+                    jsonObjectList = JsonSerializer.Deserialize<List<object>>(json) ?? new List<object>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erreur lors du chargement du JSON : {ex.Message}");
+                }
+            }
+            else
+            {
+                //mettre un message pour le fihcier existe pas  
+            }
+            jsonObjectList.Add(LogObject);
+
             try
             {
-                string existingJson = File.ReadAllText(LogRealTimePath);
-
-                // Désérialiser en liste d'objets
-                saveList = JsonSerializer.Deserialize<List<object>>(existingJson) ?? new List<object>();
+                string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(FilePath, updatedJson);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erreur lors du chargement du JSON : {ex.Message}");
+                Console.WriteLine($"Erreur lors de l'écriture du JSON : {ex.Message}");
             }
-        }
-        else
-        {
-            //mettre un message pour le fihcier qui n'existe pas 
-        }
 
-        // Nouvelle sauvegarde à ajouter
-        var jsonData = new
-        {
-            Name = realTimeInfo.Name,
-            SourcePath = realTimeInfo.SourcePath,
-            TargetPath = realTimeInfo.TargetPath,
-            State = realTimeInfo.State,
-            TotalFilesToCopy = realTimeInfo.TotalFilesToCopy,
-            TotalFilesSize = realTimeInfo.TotalFilesSize,
-            NbFilesLeftToDo = realTimeInfo.NbFilesLeftToDo,
-            Progression = realTimeInfo.Progression,
-            SaveDate = realTimeInfo.SaveDate
-        };
-
-        // Ajouter la nouvelle sauvegarde à la liste
-        saveList.Add(jsonData);
-
-        // Réécrire le fichier avec la nouvelle liste
-        try
-        {
-            string updatedJson = JsonSerializer.Serialize(saveList, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(LogRealTimePath, updatedJson);
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Erreur lors de l'écriture du JSON : {ex.Message}");
-        }
-    }
-
 
     // Retrieve the dates of the backup from the file
     internal DateTime GetAllDateDailyFile(string FilePath, DateTime Date) { return new DateTime(); }
