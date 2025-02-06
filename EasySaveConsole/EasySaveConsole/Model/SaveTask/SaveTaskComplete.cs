@@ -34,7 +34,8 @@ namespace EasySaveConsole.Model
                 string FileName = Path.GetFileName(CurrentDirectoryPair.SourcePath);
                 File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
                 StopWatch.Stop();
-                UpdateLogs(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath + FileName);
+                
+                NotifyLogsUpdate(new DirectoryPair(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath + FileName));
             }
             // if the target isn't a directory
             else

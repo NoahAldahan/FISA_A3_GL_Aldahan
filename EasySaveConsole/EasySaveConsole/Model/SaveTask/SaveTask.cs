@@ -21,12 +21,10 @@ namespace EasySaveConsole.Model
         internal DirectoryPair CurrentDirectoryPair { get; set; }
         internal Stopwatch StopWatch { get; set; }
         internal List<ILogObserver> LogObserver { get; set; }
-        internal static string dailyInfoLibelle = "DailyInfo";
-        internal static string RealTimeInfoLibelle = "RealTimeInfo";
 
         // Constructor
         [JsonConstructor]
-        internal SaveTask(DirectoryPair CurrentDirectoryPair) 
+        internal SaveTask(DirectoryPair CurrentDirectoryPair)
         {
             this.CurrentDirectoryPair = CurrentDirectoryPair;
             LogObserver = new List<ILogObserver>();
@@ -37,31 +35,41 @@ namespace EasySaveConsole.Model
         internal abstract void Save();
 
         // Set the task daily information
-        internal void UpdateLogs(string PathFileSource, string PathFileTarget)
+        internal void NotifyLogsCreate(DirectoryPair PathParent)
         {
-            Notify(new Dictionary<string, object>()
-            {
-                { dailyInfoLibelle, GetDailyInfo(PathFileSource, PathFileTarget) },
-                { RealTimeInfoLibelle, GetRealTimeInfo(PathFileSource, PathFileTarget) }
-            });
+            Notify(GetRealTimeInfo(PathParent));
         }
 
-        internal DailyInfo GetDailyInfo(string PathFileSource, string PathFileTarget)
+        // Set the task daily information
+        internal void NotifyLogsUpdate(DirectoryPair PathFile)
+        {
+            Notify(GetDailyInfo(PathFile));
+        }
+
+        internal DailyInfo GetDailyInfo(DirectoryPair PathFile)
         {
             DailyInfo dailyInfo = new DailyInfo();
             dailyInfo.Name = "Name";
             dailyInfo.FileTransferTime = (StopWatch.ElapsedMilliseconds);
-            dailyInfo.FileSource = PathFileSource;
-            dailyInfo.FileTarget = PathFileTarget;
-            FileInfo fileInfo = new FileInfo(PathFileSource);
+            dailyInfo.FileSource = PathFile.SourcePath;
+            dailyInfo.FileTarget = PathFile.TargetPath;
+            FileInfo fileInfo = new FileInfo(PathFile.SourcePath);
             dailyInfo.FileSize = fileInfo.Length;
             dailyInfo.DateTime = DateTime.Now;
             return dailyInfo;
         }
 
-        internal RealTimeInfo GetRealTimeInfo(string PathFileSource, string PathFileTarget)
+        internal RealTimeInfo GetRealTimeInfo(DirectoryPair PathParent)
         {
             RealTimeInfo realTimeInfo = new RealTimeInfo();
+            realTimeInfo.Name = "Name";
+            realTimeInfo.FileTransferTime = (StopWatch.ElapsedMilliseconds);
+            realTimeInfo.FileSource = PathParent.SourcePath;
+            realTimeInfo.FileTarget = PathParent.TargetPath;
+            FileInfo fileInfo = new FileInfo(PathParent.SourcePath);
+            realTimeInfo.TotalSizeToCopy = 0;
+            realTimeInfo.NbFilesLeftToDo = 0;
+            RealTimeInfo.Progression = 0;
             return realTimeInfo;
         }
 
@@ -75,11 +83,12 @@ namespace EasySaveConsole.Model
         {
             LogObserver.Add(observer);
         }
-        internal void Notify(Dictionary<string, object> SaveTaskInfo)
+
+        internal void NotifyUpdate(object Infos)
         {
             foreach (ILogObserver obs in LogObserver)
             {
-                obs.Notify(SaveTaskInfo);
+                obs.Notify(Infos);
             }
         }
     }

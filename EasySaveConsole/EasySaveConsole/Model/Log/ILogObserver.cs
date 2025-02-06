@@ -8,7 +8,8 @@ namespace EasySaveConsole.Model.Log
 {
     internal interface ILogObserver
     {
-        void Notify(Dictionary<string, object> message);
+        void Notify(RealTimeInfo realTimeInfo);
+        void Notify(DailyInfo dailyInfo);
 
     }
 }

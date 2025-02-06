@@ -8,7 +8,11 @@ namespace EasySaveConsole.Model.Log
 {
     internal class LogRealTime : ILogObserver
     {
-        public void Notify(Dictionary<string, object> message)
+        public void Notify(RealTimeInfo RealTime)
+        {
+            Console.WriteLine("LogRealTime do nothing");
+        }
+        public void Notify(DailyInfo DailyInfo)
         {
             Console.WriteLine("LogRealTime do nothing");
         }
