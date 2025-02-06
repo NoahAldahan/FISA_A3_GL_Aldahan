@@ -52,7 +52,7 @@ namespace EasySaveConsole.Model
                 StopWatch.Restart();
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                 StopWatch.Stop();
-                UpdateLogs(file.FullName, targetDirectoryInfo.FullName + file.Name);
+                NotifyLogsUpdate(new DirectoryPair(file.FullName, targetDirectoryInfo.FullName + file.Name));
             }
         }
     }

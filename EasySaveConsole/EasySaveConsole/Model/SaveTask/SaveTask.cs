@@ -37,13 +37,13 @@ namespace EasySaveConsole.Model
         // Set the task daily information
         internal void NotifyLogsCreate(DirectoryPair PathParent)
         {
-            Notify(GetRealTimeInfo(PathParent));
+            NotifyLog(GetRealTimeInfo(PathParent));
         }
 
         // Set the task daily information
         internal void NotifyLogsUpdate(DirectoryPair PathFile)
         {
-            Notify(GetDailyInfo(PathFile));
+            NotifyLog(GetDailyInfo(PathFile));
         }
 
         internal DailyInfo GetDailyInfo(DirectoryPair PathFile)
@@ -63,13 +63,12 @@ namespace EasySaveConsole.Model
         {
             RealTimeInfo realTimeInfo = new RealTimeInfo();
             realTimeInfo.Name = "Name";
-            realTimeInfo.FileTransferTime = (StopWatch.ElapsedMilliseconds);
-            realTimeInfo.FileSource = PathParent.SourcePath;
-            realTimeInfo.FileTarget = PathParent.TargetPath;
+            realTimeInfo.SourcePath = PathParent.SourcePath;
+            realTimeInfo.TargetPath = PathParent.TargetPath;
             FileInfo fileInfo = new FileInfo(PathParent.SourcePath);
-            realTimeInfo.TotalSizeToCopy = 0;
+            realTimeInfo.TotalFilesToCopy = 0;
             realTimeInfo.NbFilesLeftToDo = 0;
-            RealTimeInfo.Progression = 0;
+            realTimeInfo.Progression = 0;
             return realTimeInfo;
         }
 
@@ -84,11 +83,18 @@ namespace EasySaveConsole.Model
             LogObserver.Add(observer);
         }
 
-        internal void NotifyUpdate(object Infos)
+        internal void NotifyLog(object Infos)
         {
             foreach (ILogObserver obs in LogObserver)
             {
-                obs.Notify(Infos);
+                if (Infos is RealTimeInfo realTimeInfo)
+                {
+                    obs.Notify(realTimeInfo);
+                }
+                else if (Infos is DailyInfo fileInfo) 
+                {
+                    obs.Notify(fileInfo);
+                }
             }
         }
     }

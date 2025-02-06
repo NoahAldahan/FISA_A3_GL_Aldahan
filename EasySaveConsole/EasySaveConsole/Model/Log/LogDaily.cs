@@ -14,10 +14,7 @@ namespace EasySaveConsole.Model.Log
         }
         public void Notify(DailyInfo DailyInfo)
         {
-            foreach (var item in message)
-            {
-                Console.WriteLine(item.ToString());
-            }
+          Console.WriteLine(DailyInfo.ToString());
         }
 
     }

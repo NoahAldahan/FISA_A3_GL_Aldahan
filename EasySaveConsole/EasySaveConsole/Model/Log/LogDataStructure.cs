@@ -9,8 +9,8 @@ namespace EasySaveConsole.Model.Log
     public struct RealTimeInfo
     {
         public string Name { get; set; }
-        public string SourceFilePath { get; set; }
-        public string TargetFilePath { get; set; }
+        public string SourcePath { get; set; }
+        public string TargetPath { get; set; }
         public string State { get; set; }  // "END" ou autre état de transfert
         public int TotalFilesToCopy { get; set; }
         public long TotalFilesSize { get; set; }
@@ -20,8 +20,8 @@ namespace EasySaveConsole.Model.Log
         public RealTimeInfo(string name, string sourceFilePath, string targetFilePath, string state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, int progression)
         {
             Name = name;
-            SourceFilePath = sourceFilePath;
-            TargetFilePath = targetFilePath;
+            SourcePath = sourceFilePath;
+            TargetPath = targetFilePath;
             State = state;
             TotalFilesToCopy = totalFilesToCopy;
             TotalFilesSize = totalFilesSize;
