@@ -18,7 +18,7 @@ namespace EasySaveConsole.Model
         // Start a complete save task
         internal override void Save()
         {
-            SetRealTimeInfo(CurrentDirectoryPair);
+            SetRealTimeInfo(CurrentDirectoryPair, ERealTimeState.ACTIVE);
             NotifyLogsCreate();
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -62,7 +62,7 @@ namespace EasySaveConsole.Model
         }
 
         // !!!! Méthode à modifier pour le incrémentiel (vérification des files à copier effectivement et en faire une liste)
-        internal override Tuple<int, int> GetTotalFilesToCopy(string path)
+        internal override Tuple<int, int> GetTotalFilesInfosToCopy(string path)
         {
             int totalFiles = 0;
             int totalFilesSize = 0;
@@ -87,7 +87,7 @@ namespace EasySaveConsole.Model
                 // Récupérer les sous-dossiers et appeler récursivement la fonction
                 foreach (string directory in Directory.GetDirectories(path))
                 {
-                    var (subFiles, subSize) = GetTotalFilesToCopy(directory);
+                    var (subFiles, subSize) = GetTotalFilesInfosToCopy(directory);
                     totalFiles += subFiles;
                     totalFilesSize += subSize;
                 }
@@ -100,7 +100,7 @@ namespace EasySaveConsole.Model
             return Tuple.Create(totalFiles, totalFilesSize);
         }
 
-        internal override void SetRealTimeInfo(DirectoryPair DirectoryPair)
+        internal override void SetRealTimeInfo(DirectoryPair DirectoryPair, ERealTimeState state)
         {
             //notify new Save
             (this.RealTimeInfo.TotalFilesToCopy, this.RealTimeInfo.TotalFilesSize) = GetTotalFilesToCopy(DirectoryPair.SourcePath);
@@ -111,6 +111,7 @@ namespace EasySaveConsole.Model
             FileInfo fileInfo = new FileInfo(DirectoryPair.SourcePath);
             RealTimeInfo.NbFilesLeftToDo = RealTimeInfo.TotalFilesToCopy;
             RealTimeInfo.Progression = 0;
+            RealTimeInfo.State = state.GetValue();
         }
     }
 }

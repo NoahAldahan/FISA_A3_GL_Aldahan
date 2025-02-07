@@ -40,7 +40,7 @@ namespace EasySaveConsole.Model
         // Start the task
         internal abstract void Save();
 
-        internal abstract void SetRealTimeInfo(DirectoryPair PathParent);
+        internal abstract void SetRealTimeInfo(DirectoryPair PathParent, ERealTimeState state);
 
         // Get the directory pair
         internal DirectoryPair GetDirectoryPair()
@@ -48,7 +48,7 @@ namespace EasySaveConsole.Model
             return CurrentDirectoryPair;
         }
 
-        internal abstract Tuple<int, int> GetTotalFilesToCopy(string path);
+        internal abstract Tuple<int, int> GetTotalFilesInfosToCopy(string path);
 
         internal void SetDailyInfo(DirectoryPair PathFile)
         {
@@ -64,7 +64,12 @@ namespace EasySaveConsole.Model
         internal void UpdateRealTimeProgress()
         {
             RealTimeInfo.NbFilesLeftToDo -= 1;
-            RealTimeInfo.Progression += (int)((1.0 / RealTimeInfo.TotalFilesToCopy) * 100);
+            RealTimeInfo.Progression += ((1.0 / RealTimeInfo.TotalFilesToCopy) * 100);
+            if (RealTimeInfo.NbFilesLeftToDo == 0)
+            {
+                RealTimeInfo.Progression = Convert.ToInt32(RealTimeInfo.Progression);
+                RealTimeInfo.State = ERealTimeState.END.GetValue();
+            }
         }
 
         internal void AddObserver(LogObserver observer)

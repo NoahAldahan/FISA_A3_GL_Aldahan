@@ -6,6 +6,33 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Model.Log
 {
+
+    public enum ERealTimeState
+    {
+        ACTIVE = 0,
+        END = 1,
+        ERROR = 2,
+    }
+
+    public static class ERealTimeStateExstensions
+    {
+        private static readonly Dictionary<ERealTimeState, string> MessageStrings = new Dictionary<ERealTimeState, string> {
+            { ERealTimeState.ACTIVE, "ACTIVE" },
+            { ERealTimeState.END, "END" },
+            {ERealTimeState.ERROR , "Error" },
+        };
+
+        internal static string GetValue(this ERealTimeState message)
+        {
+            if (MessageStrings.TryGetValue(message, out var value))
+            {
+                return value;
+            }
+            throw new ArgumentException($"No string value defined for message: {message}");
+        }
+    }
+
+
     public struct RealTimeInfo
     {
         public string Name { get; set; }
@@ -15,7 +42,7 @@ namespace EasySaveConsole.Model.Log
         public int TotalFilesToCopy { get; set; }
         public long TotalFilesSize { get; set; }
         public int NbFilesLeftToDo { get; set; }
-        public int Progression { get; set; } // En pourcentage
+        public double Progression { get; set; } // En pourcentage
         public DateTime SaveDate { get; set; }
 
         public RealTimeInfo(string name, string sourceFilePath, string targetFilePath, string state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, int progression, DateTime saveDate)

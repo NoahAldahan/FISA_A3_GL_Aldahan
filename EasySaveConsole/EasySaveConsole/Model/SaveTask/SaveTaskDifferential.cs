@@ -64,20 +64,8 @@ namespace EasySaveConsole.Model
                 }
             }
         }
-        internal override void SetRealTimeInfo(DirectoryPair PathParent)
-        {
-            //RealTimeInfo realTimeInfo = new RealTimeInfo();
-            //realTimeInfo.Name = "Name";
-            //realTimeInfo.SaveDate = DateTime.Now;
-            //realTimeInfo.SourcePath = PathParent.SourcePath;
-            //realTimeInfo.TargetPath = PathParent.TargetPath;
-            //FileInfo fileInfo = new FileInfo(PathParent.SourcePath);
-            //realTimeInfo.TotalFilesToCopy = GetTotalFilesToCopy(PathParent.SourcePath);
-            //realTimeInfo.NbFilesLeftToDo = 0;
-            //realTimeInfo.Progression = 0;
-            //return realTimeInfo;
-        }
-        internal override Tuple<int, int> GetTotalFilesToCopy(string path)
+        internal override void SetRealTimeInfo(DirectoryPair PathParent, ERealTimeState state){}
+        internal override Tuple<int, int> GetTotalFilesInfosToCopy(string path)
         {
             return Tuple.Create(-1, -1);
         }
