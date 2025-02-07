@@ -557,6 +557,14 @@
     "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
     "FileSize": 25,
     "FileTransferTime": 0,
-    "DateTime": "2025-02-07T15:39:15.6305746+01:00"
+    "DateTime": "2025-02-07T15:39:15.6305746\u002B01:00"
+  },
+  {
+    "Name": "Name",
+    "FileSource": "C:\\Users\\Travail\\Desktop\\Source\\test.txt",
+    "FileTarget": "C:\\Users\\Travail\\Desktop\\Target\\test.txt",
+    "FileSize": 0,
+    "FileTransferTime": 2,
+    "DateTime": "2025-02-07T16:57:30.6892918+01:00"
   }
 ]

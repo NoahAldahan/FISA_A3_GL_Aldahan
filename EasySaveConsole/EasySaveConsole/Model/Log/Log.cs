@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Model.Log
 {
-    internal abstract class LogObserver
+    internal abstract class Log
     {
         protected readonly JsonLogManager jsonLogManager;
 
         // Injection du JsonLogManager dans le constructeur
-        protected LogObserver(JsonLogManager jsonLogManager)
+        protected Log(JsonLogManager jsonLogManager)
         {
             this.jsonLogManager = jsonLogManager;
         }
-
-        internal abstract void CreateNotify(RealTimeInfo realTimeInfo);
-        internal abstract void UdpateNotify(DailyInfo dailyInfo, RealTimeInfo realTime);
     }
 
 }

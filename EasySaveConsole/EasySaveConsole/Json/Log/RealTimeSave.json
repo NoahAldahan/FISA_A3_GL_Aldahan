@@ -1,14 +1,14 @@
 [
   {
     "Name": "Name",
-    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "SourcePath": "C:\\Users\\Travail\\Desktop\\Source",
+    "TargetPath": "C:\\Users\\Travail\\Desktop\\Target",
     "State": "END",
-    "TotalFilesToCopy": 7,
-    "TotalFilesSize": 74770299,
+    "TotalFilesToCopy": 1,
+    "TotalFilesSize": 0,
     "NbFilesLeftToDo": 0,
     "Progression": 100,
-    "SaveDate": "2025-02-07T15:39:15.2453098+01:00"
+    "SaveDate": "2025-02-07T16:57:30.3666758+01:00"
   },
   {
     "Name": "Name",
@@ -53,5 +53,27 @@
     "NbFilesLeftToDo": 7,
     "Progression": 0,
     "SaveDate": "2025-02-07T15:39:15.2453098+01:00"
+  },
+  {
+    "Name": "Name",
+    "SourcePath": "C:\\Users\\Travail\\Source",
+    "TargetPath": "C:\\Users\\Travail\\Target",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 3057,
+    "TotalFilesSize": 309695947,
+    "NbFilesLeftToDo": 3057,
+    "Progression": 0,
+    "SaveDate": "2025-02-07T16:56:27.9138126+01:00"
+  },
+  {
+    "Name": "Name",
+    "SourcePath": "C:\\Users\\Travail\\Desktop\\Source",
+    "TargetPath": "C:\\Users\\Travail\\Desktop\\Target",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 1,
+    "TotalFilesSize": 0,
+    "NbFilesLeftToDo": 1,
+    "Progression": 0,
+    "SaveDate": "2025-02-07T16:57:30.3666758+01:00"
   }
 ]

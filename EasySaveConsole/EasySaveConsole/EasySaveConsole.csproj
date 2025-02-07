@@ -224,7 +224,7 @@
     <Compile Include="Controller\SaveTaskController.cs" />
     <None Include="Json\Log\RealTimeSave.json" />
     <Compile Include="Model\DirectoryPair.cs" />
-    <Compile Include="Model\Log\LogObserver.cs" />
+    <Compile Include="Model\Log\Log.cs" />
     <Compile Include="Model\Log\LogDaily.cs" />
     <Compile Include="Model\Log\LogDataStructure.cs" />
     <Compile Include="Model\Log\LogRealTime.cs" />

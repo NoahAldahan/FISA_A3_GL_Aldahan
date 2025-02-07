@@ -11,7 +11,7 @@ namespace EasySaveConsole.Model
     internal class SaveTaskDifferential : SaveTask
     {
         // Constructor
-        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair) : base(CurrentDirectoryPair)
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime) : base(CurrentDirectoryPair, logDaily, logRealTime)
         {
         }
 
@@ -63,11 +63,6 @@ namespace EasySaveConsole.Model
                     }
                 }
             }
-        }
-        internal override void SetRealTimeInfo(DirectoryPair PathParent, ERealTimeState state){}
-        internal override Tuple<int, int> GetTotalFilesInfosToCopy(string path)
-        {
-            return Tuple.Create(-1, -1);
         }
     }
 }
