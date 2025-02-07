@@ -39,6 +39,7 @@ namespace EasySaveConsole.Model
                 //notify save of a new file
                 SetDailyInfo(CurrentDirectoryPair);
                 NotifyLogsUpdate();
+                Console.Write("");
             }
             // if the target isn't a directory
             else
@@ -58,6 +59,7 @@ namespace EasySaveConsole.Model
                 //notify save of a new file
                 SetDailyInfo(new DirectoryPair(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name));
                 NotifyLogsUpdate();
+                Console.Write("");
             }
         }
 
@@ -104,7 +106,7 @@ namespace EasySaveConsole.Model
         {
             //notify new Save
             (this.RealTimeInfo.TotalFilesToCopy, this.RealTimeInfo.TotalFilesSize) = GetTotalFilesToCopy(DirectoryPair.SourcePath);
-            this.RealTimeInfo.Name = "Name";
+            this.RealTimeInfo.Name = "Name1";
             RealTimeInfo.SaveDate = DateTime.Now;
             RealTimeInfo.SourcePath = DirectoryPair.SourcePath;
             RealTimeInfo.TargetPath = DirectoryPair.TargetPath;

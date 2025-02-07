@@ -1,68 +1,24 @@
 [
   {
-    "Name": "Name",
-    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "Name": "Name1",
+    "SourcePath": "C:\\Users\\jeanv\\Desktop\\Source",
+    "TargetPath": "C:\\Users\\jeanv\\Desktop\\Target",
     "State": null,
-    "TotalFilesToCopy": 7,
-    "TotalFilesSize": 74770299,
-    "NbFilesLeftToDo": 7,
-    "Progression": 0,
-    "SaveDate": "2025-02-06T23:20:14.0559719\u002B01:00"
+    "TotalFilesToCopy": 4,
+    "TotalFilesSize": 0,
+    "NbFilesLeftToDo": 2,
+    "Progression": 50,
+    "SaveDate": "2025-02-07T10:31:04.4314324+01:00"
   },
   {
-    "Name": "Name",
-    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "Name": "Name1",
+    "SourcePath": "C:\\Users\\jeanv\\Desktop\\Source",
+    "TargetPath": "C:\\Users\\jeanv\\Desktop\\Target",
     "State": null,
-    "TotalFilesToCopy": 7,
-    "TotalFilesSize": 74770299,
-    "NbFilesLeftToDo": 7,
+    "TotalFilesToCopy": 4,
+    "TotalFilesSize": 0,
+    "NbFilesLeftToDo": 4,
     "Progression": 0,
-    "SaveDate": "2025-02-06T23:21:53.7401577\u002B01:00"
-  },
-  {
-    "Name": "Name",
-    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
-    "State": null,
-    "TotalFilesToCopy": 7,
-    "TotalFilesSize": 74770299,
-    "NbFilesLeftToDo": 7,
-    "Progression": 0,
-    "SaveDate": "2025-02-06T23:22:06.8309996\u002B01:00"
-  },
-  {
-    "Name": "Name",
-    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
-    "State": null,
-    "TotalFilesToCopy": 7,
-    "TotalFilesSize": 74770299,
-    "NbFilesLeftToDo": 7,
-    "Progression": 0,
-    "SaveDate": "2025-02-06T23:22:23.5790479\u002B01:00"
-  },
-  {
-    "Name": "Name",
-    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
-    "State": null,
-    "TotalFilesToCopy": 7,
-    "TotalFilesSize": 74770299,
-    "NbFilesLeftToDo": 7,
-    "Progression": 0,
-    "SaveDate": "2025-02-06T23:23:30.6173569\u002B01:00"
-  },
-  {
-    "Name": "Name",
-    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
-    "State": null,
-    "TotalFilesToCopy": 7,
-    "TotalFilesSize": 74770299,
-    "NbFilesLeftToDo": 7,
-    "Progression": 0,
-    "SaveDate": "2025-02-06T23:24:32.8508155+01:00"
+    "SaveDate": "2025-02-07T10:31:04.4314324+01:00"
   }
 ]

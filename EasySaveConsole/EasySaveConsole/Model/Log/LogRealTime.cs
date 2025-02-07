@@ -18,7 +18,8 @@ namespace EasySaveConsole.Model.Log
         }
         internal override void UdpateNotify(DailyInfo DailyInfo, RealTimeInfo RealTimeInfo)
         {
-            Console.WriteLine("LogRealTime do nothing");
+            jsonLogManager.UpdateRealTimeProgression(RealTimeInfo);
+            Console.WriteLine(RealTimeInfo.ToString());
         }
     }
 }
