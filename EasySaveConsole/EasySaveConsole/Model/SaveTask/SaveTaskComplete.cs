@@ -18,6 +18,8 @@ namespace EasySaveConsole.Model
         // Start a complete save task
         internal override void Save()
         {
+            SetRealTimeInfo(CurrentDirectoryPair);
+            NotifyLogsCreate();
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
             // if both paths are directories
@@ -34,8 +36,9 @@ namespace EasySaveConsole.Model
                 string FileName = Path.GetFileName(CurrentDirectoryPair.SourcePath);
                 File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
                 StopWatch.Stop();
-                
-                NotifyLogsUpdate(new DirectoryPair(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath + FileName));
+                //notify save of a new file
+                SetDailyInfo(CurrentDirectoryPair);
+                NotifyLogsUpdate();
             }
             // if the target isn't a directory
             else
@@ -52,8 +55,62 @@ namespace EasySaveConsole.Model
                 StopWatch.Restart();
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                 StopWatch.Stop();
-                NotifyLogsUpdate(new DirectoryPair(file.FullName, targetDirectoryInfo.FullName + file.Name));
+                //notify save of a new file
+                SetDailyInfo(new DirectoryPair(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name));
+                NotifyLogsUpdate();
             }
+        }
+
+        // !!!! Méthode à modifier pour le incrémentiel (vérification des files à copier effectivement et en faire une liste)
+        internal override Tuple<int, int> GetTotalFilesToCopy(string path)
+        {
+            int totalFiles = 0;
+            int totalFilesSize = 0;
+
+            try
+            {
+                // Vérifier si le dossier existe
+                if (!Directory.Exists(path))
+                {
+                    Console.WriteLine("Le chemin spécifié n'existe pas.");
+                    return Tuple.Create(0, 0); // Renvoie un tuple avec 0 fichiers et 0 taille
+                }
+
+                // Récupérer les fichiers dans le dossier courant et leur taille totale
+                string[] files = Directory.GetFiles(path);
+                totalFiles += files.Length;
+                foreach (var file in files)
+                {
+                    totalFilesSize += (int)new FileInfo(file).Length; // Taille du fichier en octets
+                }
+
+                // Récupérer les sous-dossiers et appeler récursivement la fonction
+                foreach (string directory in Directory.GetDirectories(path))
+                {
+                    var (subFiles, subSize) = GetTotalFilesToCopy(directory);
+                    totalFiles += subFiles;
+                    totalFilesSize += subSize;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors du comptage des fichiers : {ex.Message}");
+                return Tuple.Create(-1, -1); // Indiquer une erreur
+            }
+            return Tuple.Create(totalFiles, totalFilesSize);
+        }
+
+        internal override void SetRealTimeInfo(DirectoryPair DirectoryPair)
+        {
+            //notify new Save
+            (this.RealTimeInfo.TotalFilesToCopy, this.RealTimeInfo.TotalFilesSize) = GetTotalFilesToCopy(DirectoryPair.SourcePath);
+            this.RealTimeInfo.Name = "Name";
+            RealTimeInfo.SaveDate = DateTime.Now;
+            RealTimeInfo.SourcePath = DirectoryPair.SourcePath;
+            RealTimeInfo.TargetPath = DirectoryPair.TargetPath;
+            FileInfo fileInfo = new FileInfo(DirectoryPair.SourcePath);
+            RealTimeInfo.NbFilesLeftToDo = RealTimeInfo.TotalFilesToCopy;
+            RealTimeInfo.Progression = 0;
         }
     }
 }

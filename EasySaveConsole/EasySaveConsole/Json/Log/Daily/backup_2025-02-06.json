@@ -1,0 +1,58 @@
+[
+  {
+    "Name": "Name",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 1,
+    "DateTime": "2025-02-06T23:24:35.3478286\u002B01:00"
+  },
+  {
+    "Name": "Name",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "DateTime": "2025-02-06T23:24:40.4210019\u002B01:00"
+  },
+  {
+    "Name": "Name",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 93,
+    "DateTime": "2025-02-06T23:24:43.4722282\u002B01:00"
+  },
+  {
+    "Name": "Name",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "DateTime": "2025-02-06T23:24:43.4742225\u002B01:00"
+  },
+  {
+    "Name": "Name",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 21,
+    "DateTime": "2025-02-06T23:24:43.5090699\u002B01:00"
+  },
+  {
+    "Name": "Name",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "DateTime": "2025-02-06T23:24:43.5110686\u002B01:00"
+  },
+  {
+    "Name": "Name",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "DateTime": "2025-02-06T23:24:43.5231005+01:00"
+  }
+]

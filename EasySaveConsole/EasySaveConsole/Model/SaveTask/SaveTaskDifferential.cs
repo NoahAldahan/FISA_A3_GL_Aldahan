@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasySaveConsole.Model.Log;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -62,6 +63,23 @@ namespace EasySaveConsole.Model
                     }
                 }
             }
+        }
+        internal override void SetRealTimeInfo(DirectoryPair PathParent)
+        {
+            //RealTimeInfo realTimeInfo = new RealTimeInfo();
+            //realTimeInfo.Name = "Name";
+            //realTimeInfo.SaveDate = DateTime.Now;
+            //realTimeInfo.SourcePath = PathParent.SourcePath;
+            //realTimeInfo.TargetPath = PathParent.TargetPath;
+            //FileInfo fileInfo = new FileInfo(PathParent.SourcePath);
+            //realTimeInfo.TotalFilesToCopy = GetTotalFilesToCopy(PathParent.SourcePath);
+            //realTimeInfo.NbFilesLeftToDo = 0;
+            //realTimeInfo.Progression = 0;
+            //return realTimeInfo;
+        }
+        internal override Tuple<int, int> GetTotalFilesToCopy(string path)
+        {
+            return Tuple.Create(-1, -1);
         }
     }
 }
