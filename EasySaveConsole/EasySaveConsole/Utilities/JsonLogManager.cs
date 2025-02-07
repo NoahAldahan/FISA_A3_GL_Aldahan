@@ -1,4 +1,5 @@
 ﻿using EasySaveConsole.Model.Log;
+using Sprache;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,43 @@ namespace EasySaveConsole.Utilities
 
             LogRealTimePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
             Environment.GetEnvironmentVariable("LogPathRealTime"));
+        }
+
+        internal void UpdateRealTimeProgression(RealTimeInfo realTimeInfo)
+        {
+            List<RealTimeInfo> jsonObjectList = new List<RealTimeInfo>();
+            if (File.Exists(LogRealTimePath))
+            {
+                try
+                {
+                    string json = File.ReadAllText(LogRealTimePath);
+                    // Désérialiser en liste d'objets
+                    jsonObjectList = JsonSerializer.Deserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erreur lors du chargement du JSON : {ex.Message}");
+                }
+            }
+            else
+            {
+                //mettre un message pour le fihcier existe pas  
+            }
+            int index = jsonObjectList.FindIndex(rt => rt.Name == realTimeInfo.Name);
+            if (index != -1)
+            {
+                jsonObjectList[index] = realTimeInfo;
+            }
+
+            try
+            {
+                string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(LogRealTimePath, updatedJson);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de l'écriture du JSON : {ex.Message}");
+            }
         }
 
         internal string GetFileDailyName(DateTime Date)

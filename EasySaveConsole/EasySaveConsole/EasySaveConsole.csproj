@@ -227,7 +227,6 @@
     <Compile Include="Model\Log\LogObserver.cs" />
     <Compile Include="Model\Log\LogDaily.cs" />
     <Compile Include="Model\Log\LogDataStructure.cs" />
-    <Compile Include="Model\Log\LogManager.cs" />
     <Compile Include="Model\Log\LogRealTime.cs" />
     <Compile Include="Model\SaveTask\SaveTask.cs" />
     <Compile Include="Model\SaveTask\SaveTaskComplete.cs" />
