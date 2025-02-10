@@ -8,12 +8,13 @@ namespace Log
 {
     public abstract class Log
     {
-        public readonly JsonLogManager jsonLogManager;
+        protected string LogRealTimePath;
+        protected string LogDailyPath;
 
-        // Injection du JsonLogManager dans le constructeur
-        public Log(JsonLogManager jsonLogManager)
+        public Log(string LogDailyPath, string LogRealTimePath)
         {
-            this.jsonLogManager = jsonLogManager;
+            this.LogDailyPath = LogDailyPath;
+            this.LogRealTimePath = LogRealTimePath;
         }
     }
 

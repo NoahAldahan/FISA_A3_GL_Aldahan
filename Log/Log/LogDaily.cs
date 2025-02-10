@@ -15,13 +15,14 @@ namespace Log
 
         public Stopwatch stopWatch { get; set; }
 
-        public LogDaily(JsonLogManager jsonLogManager) : base(jsonLogManager){
+        public LogDaily(string LogDailyPath, string LogRealTimePath) : base(LogDailyPath, LogRealTimePath)
+        {
             dailyInfo = new DailyInfo();
             stopWatch = new Stopwatch();
         }
         public void CreateDailyFile()
         {
-            jsonLogManager.CreateDailyJsonFile(DateTime.Now);
+            JsonLogManager.CreateDailyJsonFile(DateTime.Now, LogDailyPath);
         }
 
         public void AddDailyInfo(string SourcePath, string TargetPath)
@@ -33,7 +34,7 @@ namespace Log
             FileInfo fileInfo = new FileInfo(SourcePath);
             dailyInfo.FileSize = fileInfo.Length;
             dailyInfo.DateTime = DateTime.Now;
-            jsonLogManager.AddSaveToDailyFile(dailyInfo);
+            JsonLogManager.AddSaveToDailyFile(dailyInfo, LogDailyPath);
             Console.WriteLine(dailyInfo.ToString());
         }
     }
