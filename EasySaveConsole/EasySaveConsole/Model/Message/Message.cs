@@ -9,54 +9,64 @@ namespace EasySaveConsole.Model
 {
         public enum EMessage
         {
-            ErrorTranslate,
+            //Based Cli Message
             MenuMessage,
-            LanguagesListMessage,
             StopMessage,
-            StartSaveTaskMessage,
+            ErrorUserEntryStrMessage,
+            ErrorUserEntryOptionMessage,
+            PressKeyToContinue,
+            //Language
+            LanguagesListMessage,
             LanguageChangeSuccessMessage,
-            CreateSaveTaskMessage,
             DefaultLanguageInitSuccessMessage,
             DefaultLanguageInitErrorMessage,
             DefaultLanguageChangedSuccessMessage,
             DefaultLanguageChangedErrorMessage,
             AskLanguageMessage,
-            ErrorUserEntryStrMessage,
-            ErrorUserEntryOptionMessage,
-            MenuSaveTaskMessage,
             MenuLanguageMessage,
-            PressKeyToContinue,
+            //SaveTask
+            StartSaveTaskMessage,
+            CreateSaveTaskMessage,
+            MenuSaveTaskMessage,
             AskSaveTaskNameMessage,
             AskSaveTaskTargetFolderMessage,
             AskSaveTaskSourceFolderMessage,
-            AskSaveTaskType
+            AskSaveTaskType,
+            ErrorSaveTaskPathMessage,
+            ErrorSaveTaskTypeMessage,
+            SaveTaskAddSuccessMessage
 
     }
 
         public static class MessageExtensions
         {
             private static readonly Dictionary<EMessage, string> MessageStrings = new Dictionary<EMessage, string> {
+            //Based Cli Message
             { EMessage.MenuMessage, "MenuMessage" },
-            { EMessage.ErrorTranslate, "ErrorTranslate" },
             { EMessage.StopMessage, "StopMessage" },
+            { EMessage.PressKeyToContinue, "PressKeyToContinue" },
+            { EMessage.ErrorUserEntryStrMessage, "ErrorUserEntryStrMessage" },
+            { EMessage.ErrorUserEntryOptionMessage, "ErrorUserEntryOptionMessage" },
+            //Language
             { EMessage.LanguagesListMessage, "LanguagesListMessage" },
-            { EMessage.StartSaveTaskMessage, "StartSaveTaskMessage" },
             { EMessage.LanguageChangeSuccessMessage, "LanguageChangeSuccessMessage" },
-            { EMessage.CreateSaveTaskMessage, "CreateSaveTaskMessage" },
             { EMessage.DefaultLanguageInitSuccessMessage, "DefaultLanguageInitSuccessMessage" },
             { EMessage.DefaultLanguageInitErrorMessage, "DefaultLanguageInitErrorMessage" },
             { EMessage.DefaultLanguageChangedSuccessMessage, "DefaultLanguageChangedSuccessMessage" },
             { EMessage.DefaultLanguageChangedErrorMessage, "DefaultLanguageChangedErrorMessage" },
             { EMessage.AskLanguageMessage, "AskLanguageMessage" },
-            { EMessage.ErrorUserEntryStrMessage, "ErrorUserEntryStrMessage" },
-            { EMessage.ErrorUserEntryOptionMessage, "ErrorUserEntryOptionMessage" },
-            { EMessage.MenuSaveTaskMessage, "MenuSaveTaskMessage" },
             { EMessage.MenuLanguageMessage, "MenuLanguageMessage" },
-            { EMessage.PressKeyToContinue, "PressKeyToContinue" },
+            //SaveTask
+            { EMessage.StartSaveTaskMessage, "StartSaveTaskMessage" },
+            { EMessage.CreateSaveTaskMessage, "CreateSaveTaskMessage" },
+            { EMessage.MenuSaveTaskMessage, "MenuSaveTaskMessage" },
             { EMessage.AskSaveTaskNameMessage, "AskSaveTaskNameMessage" },
             { EMessage.AskSaveTaskTargetFolderMessage, "AskSaveTaskTargetFolderMessage" },
             { EMessage.AskSaveTaskSourceFolderMessage, "AskSaveTaskSourceFolderMessage" },
-            { EMessage.AskSaveTaskType, "AskSaveTaskType" }
+            { EMessage.AskSaveTaskType, "AskSaveTaskType" },
+            { EMessage.ErrorSaveTaskPathMessage, "ErrorSaveTaskPathMessage" },
+            { EMessage.ErrorSaveTaskTypeMessage, "ErrorSaveTaskTypeMessage" },
+            { EMessage.SaveTaskAddSuccessMessage, "SaveTaskAddSuccessMessage" }
             };
 
             internal static string GetValue(this EMessage message)

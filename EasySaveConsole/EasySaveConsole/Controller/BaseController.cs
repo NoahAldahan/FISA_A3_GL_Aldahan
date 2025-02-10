@@ -37,6 +37,12 @@ namespace EasySaveConsole.Controller
             return view.ShowQuestion(translatedMessage);
         }
 
+        protected void ShowMessagePause(EMessage msg)
+        {
+            ShowMessage(msg);
+            ShowQuestion(EMessage.PressKeyToContinue);
+        }
+
         internal void StartCli()
         {
             int action = initCondition;

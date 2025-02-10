@@ -236,6 +236,7 @@
     <Compile Include="Model\Message\Message.cs" />
     <Compile Include="Model\Message\Language.cs" />
     <Compile Include="Utilities\JsonLogManager.cs" />
+    <Compile Include="Utilities\Utilities.cs" />
     <Compile Include="View\BaseView.cs" />
     <Compile Include="View\CliView.cs" />
     <Compile Include="Program.cs" />

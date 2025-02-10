@@ -34,13 +34,12 @@ namespace EasySaveConsole.Controller
             dictActions.Add((int)ECliLanguageAction.Quit, () => { ShowMessage(EMessage.StopMessage); });
         }
 
-        internal async void SetDefaultLanguage()
+        internal void SetDefaultLanguage()
         {
             ShowMessage(EMessage.LanguagesListMessage);
             string strLanguage = ShowQuestion(EMessage.AskLanguageMessage);
             EMessage msg = langaguesManager.SetDefaultLanguage(strLanguage);
-            ShowMessage(msg);
-            ShowQuestion(EMessage.PressKeyToContinue);
+            ShowMessagePause(msg);
         }
     }
 }

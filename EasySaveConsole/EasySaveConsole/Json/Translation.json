@@ -1,27 +1,32 @@
 {
   "FR": {
+
     "MenuMessage": "Options : \n 1. Afficher le menu langage \n 2. Afficher le menu de sauvegarde \n 3. Quitter l'application",
     "StopMessage": "Arrêt du programme en cours...",
-    "StartSaveTaskMessage": "Démarrage de la tâche de sauvegarde...",
+    "ErrorUserEntryStrMessage": "Erreur : Valeur d'entrée invalide",
+    "ErrorUserEntryOptionMessage": "Erreur : Apprend à compter !!!",
+    "PressKeyToContinue": "Appuyez sur une touche pour continuer...",
+
     "LanguageChangeSuccessMessage": "Le langage par défaut a été changé avec succès.",
     "LanguageChangeErrorMessage": "Erreur : le langage par défaut n'a pas pu être changé.",
+    "MenuLanguageMessage": "Options : \n 1. Changer la langue \n 2. Quitter le menu langue",
     "DefaultLanguageInitSuccessMessage": "Le langage par défaut a été initialisé avec succès.",
     "DefaultLanguageInitErrorMessage": "Erreur : impossible d'initialiser le langage par défaut.",
-    "CreateSaveTaskMessage": "Création d'une nouvelle tâche de sauvegarde.",
     "DefaultLanguageChangedSuccessMessage": "Le langage par défaut a été modifié avec succès.",
     "DefaultLanguageChangedErrorMessage": "Erreur : impossible de modifier le langage par défaut.",
     "LanguagesListMessage": "Langages disponibles : \n EN (Anglais) \n FR (Français) \n ES (Espagnol) \n DE (Allemand) \n IT (Italien) \n PT (Portugais) \n NL (Néerlandais)",
     "AskLanguageMessage": "Entrez votre choix de langage : ",
-    "ErrorUserEntryStrMessage": "Erreur: Valeur d'entrée invalide",
-    "ErrorUserEntryOptionMessage": "Erreur : Apprend à compter !!!",
-    "MenuSaveTaskMessage": "Options : \n 0. Afficher toutes les tâches de sauvegarde \n 1. Démarrer une ou plusieurs tâches de sauvegarde \n 2. Créer une tâche de sauvegarde \n 3. Modifier une tâche de sauvegarde existante \n 4. Supprimer une tâche de sauvegarde \n 5. Aide (Afficher les options 0-6) \n 6. Quitter le menu des tâches de sauvegarde",
-    "MenuLanguageMessage": "Options : \n 1. Changer la langue \n 2. Quitter le menu langue",
-    "PressKeyToContinue": "Appuyez sur une touche pour continuer...",
+
     "AskSaveTaskNameMessage": "Entrer le nom de la sauvegarde : ",
-    "AskSaveTaskTargetFolderMessage":  "Entrer le chemin de fichier de destination pour la sauvegarde",
-    "AskSaveTaskSourceFolderMessage": "Entrer le chemin de fichier source pour la sauvegarde",
-    "AskSaveTaskType": "1. Sauvegarde complète \n 2. Sauvegarde différentielle"
-    
+    "AskSaveTaskTargetFolderMessage": "Entrer le chemin de fichier de destination pour la sauvegarde : ",
+    "AskSaveTaskSourceFolderMessage": "Entrer le chemin de fichier source pour la sauvegarde : ",
+    "AskSaveTaskType": " 1. Sauvegarde complète \n 2. Sauvegarde différentielle \n ",
+    "CreateSaveTaskMessage": " Création d'une nouvelle tâche de sauvegarde. ",
+    "MenuSaveTaskMessage": "Options : \n 0. Afficher toutes les tâches de sauvegarde \n 1. Démarrer une ou plusieurs tâches de sauvegarde \n 2. Créer une tâche de sauvegarde \n 3. Modifier une tâche de sauvegarde existante \n 4. Supprimer une tâche de sauvegarde \n 5. Aide (Afficher les options 0-6) \n 6. Quitter le menu des tâches de sauvegarde",
+    "StartSaveTaskMessage": "Démarrage de la tâche de sauvegarde...",
+    "SaveTaskAddSuccessMessage":  "La tâche de sauvegarde a été ajoutée avec succès",
+    "ErrorSaveTaskPathMessage": "Erreur : Veuillez recommencer, le chemin de fichier saisie est incorrect",
+    "ErrorSaveTaskTypeMessage": "Erreur : Veuillez recommencer, le type de sauvegarde saisie est incorrect"
   },
   "EN": {
     "MenuMessage": "Options : \n 1. Display the language menu \n 2. Display the save menu \n 3. Quit the application",
