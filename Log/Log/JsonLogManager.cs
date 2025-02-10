@@ -164,5 +164,35 @@ namespace Log
 
         // Retrieve all backups from a path in the form (PATH - DATE)
         internal Dictionary<string, DateTime> GetAllSaveRealTimeFile(string FilePath) { throw new NotImplementedException(); }
+
+        public DateTime GetLastSaveDate(string FilePath)
+        {
+            DirectoryInfo d = new DirectoryInfo(FilePath);
+            try
+            {
+                foreach (var file in d.GetFiles("*.json").OrderByDescending(f => f.CreationTime))
+                {
+                    string jsonContent = File.ReadAllText(file.Name);
+                    List<DailyInfo> entities = JsonSerializer.Deserialize<List<DailyInfo>>(jsonContent);
+                    DailyInfo foundEntity = entities.Find(e => e.FileSource == FilePath);
+                    if (foundEntity.DateTime != null)
+                    {
+                        return foundEntity.DateTime;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                return DateTime.MinValue;
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
+                return DateTime.MinValue;
+            }
+        }
     }
+
 }
