@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasySaveConsole.Model.Log;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace EasySaveConsole.Model
     internal class SaveTaskDifferential : SaveTask
     {
         // Constructor
-        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair) : base(CurrentDirectoryPair)
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime) : base(CurrentDirectoryPair, logDaily, logRealTime)
         {
         }
 
@@ -62,16 +63,6 @@ namespace EasySaveConsole.Model
                     }
                 }
             }
-        }
-
-        // Get the task information
-        internal override List<string> GetInfo() 
-        {
-            List<string> infos = new List<string>();
-            infos.Add("Differential save task");
-            infos.Add("Source path : " + CurrentDirectoryPair.SourcePath);
-            infos.Add("Target path : " + CurrentDirectoryPair.TargetPath);
-            return infos;
         }
     }
 }

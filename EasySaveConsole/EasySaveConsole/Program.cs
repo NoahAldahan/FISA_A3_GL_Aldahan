@@ -9,6 +9,7 @@ using System.IO;
 using EasySaveConsole.Utilities;
 using EasySaveConsole.Controller;
 using EasySaveConsole.View;
+using EasySaveConsole.Model.Log;
 
 
 namespace EasySaveConsole
@@ -33,8 +34,14 @@ namespace EasySaveConsole
             LanguageController languageController = new LanguageController(messagesManager, languageView, languageManager);
             SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);
             CliController cliController = new CliController(messagesManager, cliView, saveTaskController, languageController);
-            // Démarrage du CLI
-            cliController.StartCli();
+            //cliController.StartCli();
+            DirectoryPair directoryPair = new DirectoryPair("C:\\Users\\matte\\OneDrive\\Bureau\\src", "C:\\Users\\matte\\OneDrive\\Bureau\\target");
+            JsonLogManager jsonLogManager = new JsonLogManager();
+            SaveTask saveTask = new SaveTaskComplete(directoryPair, new LogDaily(jsonLogManager), new LogRealTime(jsonLogManager));
+            //Console.WriteLine(saveTask.GetTotalFilesToCopy("C:\\Users\\matte\\OneDrive\\Bureau\\target"));
+            saveTask.Save();
+            //JsonLogManager jsonLogManager = new JsonLogManager();
+            //jsonLogManager.CreateDailyJsonFile(DateTime.Now);
         }
     }
 }
