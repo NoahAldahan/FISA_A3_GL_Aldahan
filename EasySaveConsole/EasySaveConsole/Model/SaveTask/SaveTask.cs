@@ -7,8 +7,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json.Serialization;
+using Log;
 using System.Threading.Tasks;
-using EasySaveConsole.Model.Log;
 
 namespace EasySaveConsole.Model
 {

@@ -1,6 +1,4 @@
-﻿using EasySaveConsole.Model.Log;
-using Sprache;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,23 +7,26 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace EasySaveConsole.Utilities
+namespace Log
 {
-    internal class JsonLogManager
+    public class JsonLogManager
     {
         private string LogDailyPath;
         private string LogRealTimePath;
 
-        internal JsonLogManager()
+        public JsonLogManager()
         {
-            LogDailyPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
-            Environment.GetEnvironmentVariable("LogPathDaily"));
-
-            LogRealTimePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
-            Environment.GetEnvironmentVariable("LogPathRealTime"));
+        }
+        public void SetLogDailyPath(string DailyPath)
+        {
+            LogDailyPath = DailyPath;
         }
 
-        internal void UpdateRealTimeProgression(RealTimeInfo realTimeInfo)
+        public void SetLogRealTimePath(string RealTimePath)
+        {
+            LogRealTimePath = RealTimePath;
+        }
+        public void UpdateRealTimeProgression(RealTimeInfo realTimeInfo)
         {
             List<RealTimeInfo> jsonObjectList = new List<RealTimeInfo>();
             if (File.Exists(LogRealTimePath))
@@ -62,13 +63,13 @@ namespace EasySaveConsole.Utilities
             }
         }
 
-        internal string GetFileDailyName(DateTime Date)
+        public string GetFileDailyName(DateTime Date)
         {
             return $"{LogDailyPath}backup_{Date:yyyy-MM-dd}.json";
         }
 
         // Create the daily backup file
-        internal void CreateDailyJsonFile(DateTime Date)
+        public void CreateDailyJsonFile(DateTime Date)
         {
             // Nom du fichier JSON basé sur la date
             string fileName = GetFileDailyName(Date);
@@ -86,7 +87,7 @@ namespace EasySaveConsole.Utilities
         }
 
         // Add a backup to the daily file
-        internal void AddSaveToDailyFile(DailyInfo DailyInfo)
+        public void AddSaveToDailyFile(DailyInfo DailyInfo)
         {
             string dailyInfoPath = GetFileDailyName(DailyInfo.DateTime);
             var jsonDailyInfo = new
@@ -101,7 +102,7 @@ namespace EasySaveConsole.Utilities
             AddJsonLogObject(dailyInfoPath, jsonDailyInfo);
         }
 
-        internal void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo)
+        public void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo)
         {
 
             // Nouvelle sauvegarde à ajouter
@@ -120,7 +121,7 @@ namespace EasySaveConsole.Utilities
             AddJsonLogObject(LogRealTimePath, jsonRealTimeInfo);
         }
 
-        internal void AddJsonLogObject(string FilePath, object LogObject)
+        public void AddJsonLogObject(string FilePath, object LogObject)
         {
             List<object> jsonObjectList = new List<object>();
             if (File.Exists(FilePath))
@@ -158,8 +159,8 @@ namespace EasySaveConsole.Utilities
 
         }
 
-    // Retrieve the dates of the backup from the file
-    internal DateTime GetAllDateDailyFile(string FilePath, DateTime Date) { return new DateTime(); }
+        // Retrieve the dates of the backup from the file
+        public DateTime GetAllDateDailyFile(string FilePath, DateTime Date) { return new DateTime(); }
 
         // Retrieve all backups from a path in the form (PATH - DATE)
         internal Dictionary<string, DateTime> GetAllSaveRealTimeFile(string FilePath) { throw new NotImplementedException(); }

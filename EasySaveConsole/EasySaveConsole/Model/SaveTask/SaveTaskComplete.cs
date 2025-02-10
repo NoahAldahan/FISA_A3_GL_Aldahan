@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
-using EasySaveConsole.Model.Log;
+using Log;
 using System.Runtime.CompilerServices;
 
 namespace EasySaveConsole.Model
@@ -18,7 +18,7 @@ namespace EasySaveConsole.Model
         // Start a complete save task
         internal override void Save()
         {
-            logRealTime.CreateRealTimeInfo(CurrentDirectoryPair, ERealTimeState.ACTIVE);
+            logRealTime.CreateRealTimeInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE);
             logDaily.CreateDailyFile();
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -37,7 +37,7 @@ namespace EasySaveConsole.Model
                 File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                logDaily.AddDailyInfo(CurrentDirectoryPair);
+                logDaily.AddDailyInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
                 logRealTime.UpdateRealTimeProgress();
             }
             // if the target isn't a directory
@@ -56,7 +56,7 @@ namespace EasySaveConsole.Model
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                logDaily.AddDailyInfo(new DirectoryPair(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name));
+                logDaily.AddDailyInfo(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
                 logRealTime.UpdateRealTimeProgress();
             }
         }

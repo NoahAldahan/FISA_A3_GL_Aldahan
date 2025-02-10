@@ -1,5 +1,4 @@
-﻿using EasySaveConsole.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,31 +6,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasySaveConsole.Model.Log
+namespace Log
 {
-    internal class LogDaily : Log
+    public class LogDaily : Log
     {
-        DailyInfo dailyInfo;
+        public DailyInfo dailyInfo;
 
 
-        internal Stopwatch stopWatch { get; set; }
+        public Stopwatch stopWatch { get; set; }
 
-        internal LogDaily(JsonLogManager jsonLogManager) : base(jsonLogManager){
+        public LogDaily(JsonLogManager jsonLogManager) : base(jsonLogManager){
             dailyInfo = new DailyInfo();
             stopWatch = new Stopwatch();
         }
-        internal void CreateDailyFile()
+        public void CreateDailyFile()
         {
             jsonLogManager.CreateDailyJsonFile(DateTime.Now);
         }
 
-        internal void AddDailyInfo(DirectoryPair PathFile)
+        public void AddDailyInfo(string SourcePath, string TargetPath)
         {
             dailyInfo.Name = "Name";
             dailyInfo.FileTransferTime = (stopWatch.ElapsedMilliseconds);
-            dailyInfo.FileSource = PathFile.SourcePath;
-            dailyInfo.FileTarget = PathFile.TargetPath;
-            FileInfo fileInfo = new FileInfo(PathFile.SourcePath);
+            dailyInfo.FileSource = SourcePath;
+            dailyInfo.FileTarget = TargetPath;
+            FileInfo fileInfo = new FileInfo(SourcePath);
             dailyInfo.FileSize = fileInfo.Length;
             dailyInfo.DateTime = DateTime.Now;
             jsonLogManager.AddSaveToDailyFile(dailyInfo);

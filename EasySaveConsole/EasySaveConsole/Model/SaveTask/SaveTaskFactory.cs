@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using EasySaveConsole.Model.Log;
+using Log;
 using EasySaveConsole.Utilities;
 
 namespace EasySaveConsole.Model

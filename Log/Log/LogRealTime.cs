@@ -1,38 +1,37 @@
-﻿using EasySaveConsole.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasySaveConsole.Model.Log
+namespace Log
 {
-    internal class LogRealTime : Log
+    public class LogRealTime : Log
     {
 
-        RealTimeInfo realTimeInfo;
+        public RealTimeInfo realTimeInfo;
 
-        internal LogRealTime(JsonLogManager jsonLogManager) : base(jsonLogManager) { }
+        public LogRealTime(JsonLogManager jsonLogManager) : base(jsonLogManager) { }
         //Create new SaveTask in json file
 
 
-        internal void CreateRealTimeInfo(DirectoryPair DirectoryPair, ERealTimeState state)
+        public void CreateRealTimeInfo(string SourcePath, string TargetPath, ERealTimeState state)
         {
             //notify new Save
-            (realTimeInfo.TotalFilesToCopy, this.realTimeInfo.TotalFilesSize) = GetTotalFilesInfosToCopy(DirectoryPair.SourcePath);
+            (realTimeInfo.TotalFilesToCopy, this.realTimeInfo.TotalFilesSize) = GetTotalFilesInfosToCopy(SourcePath);
             this.realTimeInfo.Name = "Name";
             realTimeInfo.SaveDate = DateTime.Now;
-            realTimeInfo.SourcePath = DirectoryPair.SourcePath;
-            realTimeInfo.TargetPath = DirectoryPair.TargetPath;
-            FileInfo fileInfo = new FileInfo(DirectoryPair.SourcePath);
+            realTimeInfo.SourcePath = SourcePath;
+            realTimeInfo.TargetPath = TargetPath;
+            FileInfo fileInfo = new FileInfo(SourcePath);
             realTimeInfo.NbFilesLeftToDo = realTimeInfo.TotalFilesToCopy;
             realTimeInfo.State = state.GetValue();
             Console.WriteLine(realTimeInfo.ToString());
             jsonLogManager.AddSaveToRealTimeFile(realTimeInfo);
         }
 
-        internal Tuple<int, int> GetTotalFilesInfosToCopy(string path)
+        public Tuple<int, int> GetTotalFilesInfosToCopy(string path)
         {
             int totalFiles = 0;
             int totalFilesSize = 0;
@@ -70,7 +69,7 @@ namespace EasySaveConsole.Model.Log
             return Tuple.Create(totalFiles, totalFilesSize);
         }
 
-        internal void UpdateRealTimeProgress()
+        public void UpdateRealTimeProgress()
         {
             realTimeInfo.NbFilesLeftToDo -= 1;
             realTimeInfo.Progression += ((1.0 / realTimeInfo.TotalFilesToCopy) * 100);

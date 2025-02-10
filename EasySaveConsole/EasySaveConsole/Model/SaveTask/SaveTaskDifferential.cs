@@ -1,4 +1,4 @@
-﻿using EasySaveConsole.Model.Log;
+﻿using Log;
 using System;
 using System.Collections.Generic;
 using System.IO;
