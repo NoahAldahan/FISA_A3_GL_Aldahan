@@ -109,4 +109,4 @@ _For a step by step explanation, please refer to the [user guide](Documentation/
 * [Romain](https://github.com/Romain68)
 * [Jean](https://github.com/Yamigiri1)
 * [Mattéo](https://github.com/Mattbalaise)
-* [Noah](https://github.com/NoahAldahan)
+* [Maxime Noah](https://github.com/NoahAldahan)
