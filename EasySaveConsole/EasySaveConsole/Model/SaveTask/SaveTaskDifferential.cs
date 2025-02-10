@@ -11,9 +11,7 @@ namespace EasySaveConsole.Model
     internal class SaveTaskDifferential : SaveTask
     {
         // Constructor
-        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime) : base(CurrentDirectoryPair, logDaily, logRealTime)
-        {
-        }
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime) : base(CurrentDirectoryPair, logDaily, logRealTime){}
 
         // Wrapper for the recursive function
         internal override void Save()

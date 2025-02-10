@@ -62,7 +62,7 @@ namespace EasySaveConsole.Utilities
             }
         }
         public EMessage SetDefaultLanguage(string languageValue, string languageKey)
-        {
+        { 
             try
             {
                 string jsonContent = File.ReadAllText(AppSettingsPath);
@@ -76,6 +76,6 @@ namespace EasySaveConsole.Utilities
             {
                 return EMessage.DefaultLanguageChangedErrorMessage;
             }
-        }
+        } 
     }
 }
