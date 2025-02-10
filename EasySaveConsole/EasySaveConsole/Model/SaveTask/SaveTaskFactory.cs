@@ -19,17 +19,17 @@ namespace EasySaveConsole.Model
         internal SaveTask CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath)
         {
             SaveTask saveTask;
-            JsonLogManager logManager= new JsonLogManager();
-            LogRealTime logRealTime = new LogRealTime(logManager);
-            LogDaily logDaily = new LogDaily(logManager);
+            JsonLogManager jsonLogManager = new JsonLogManager();
+            LogRealTime logRealTime = new LogRealTime(jsonLogManager);
+            LogDaily logDaily = new LogDaily(jsonLogManager);
 
             switch (saveTaskTypes)
             {
                 case ESaveTaskTypes.Differential:
-                    saveTask = new SaveTaskDifferential(new DirectoryPair(sourcePath, targetPath),new LogDaily(logManager), new LogRealTime(logManager));
+                    saveTask = new SaveTaskDifferential(new DirectoryPair(sourcePath, targetPath),new LogDaily(jsonLogManager), new LogRealTime(jsonLogManager));
                     return saveTask;
                 case ESaveTaskTypes.Complete:
-                    saveTask = new SaveTaskComplete(new DirectoryPair(sourcePath, targetPath), new LogDaily(logManager), new LogRealTime(logManager));
+                    saveTask = new SaveTaskComplete(new DirectoryPair(sourcePath, targetPath), new LogDaily(jsonLogManager), new LogRealTime(jsonLogManager));
                     return saveTask;
                 default:
                     throw new ArgumentException("Invalid save task type");
