@@ -16,7 +16,12 @@
     "ErrorUserEntryOptionMessage": "Erreur : Apprend à compter !!!",
     "MenuSaveTaskMessage": "Options : \n 0. Afficher toutes les tâches de sauvegarde \n 1. Démarrer une ou plusieurs tâches de sauvegarde \n 2. Créer une tâche de sauvegarde \n 3. Modifier une tâche de sauvegarde existante \n 4. Supprimer une tâche de sauvegarde \n 5. Aide (Afficher les options 0-6) \n 6. Quitter le menu des tâches de sauvegarde",
     "MenuLanguageMessage": "Options : \n 1. Changer la langue \n 2. Quitter le menu langue",
-    "PressKeyToContinue": "Appuyez sur une touche pour continuer..."
+    "PressKeyToContinue": "Appuyez sur une touche pour continuer...",
+    "AskSaveTaskNameMessage": "Entrer le nom de la sauvegarde : ",
+    "AskSaveTaskTargetFolderMessage":  "Entrer le chemin de fichier de destination pour la sauvegarde",
+    "AskSaveTaskSourceFolderMessage": "Entrer le chemin de fichier source pour la sauvegarde",
+    "AskSaveTaskType": "1. Sauvegarde complète \n 2. Sauvegarde différentielle"
+    
   },
   "EN": {
     "MenuMessage": "Options : \n 1. Display the language menu \n 2. Display the save menu \n 3. Quit the application",

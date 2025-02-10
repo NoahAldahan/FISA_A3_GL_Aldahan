@@ -33,13 +33,13 @@ namespace EasySaveConsole.Model
         }
 
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
-        internal void AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
+        internal void AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
             if (SaveTasks.Count >= MaxSaveTasks)
             {
                 throw new Exception("Maximum number of save tasks reached");
             }
-            SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath));
+            SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
         }
 
         // Remove a save task at index
@@ -75,9 +75,9 @@ namespace EasySaveConsole.Model
         }
 
         // Modify the save task type
-        internal void ModifySaveTaskType(int index, ESaveTaskTypes newSaveTaskType)
+        internal void ModifySaveTaskType(int index, ESaveTaskTypes newSaveTaskType, string saveTaskName)
         {
-            SaveTask newSaveTask = SaveTaskFactory.CreateSave(newSaveTaskType, SaveTasks[index].CurrentDirectoryPair.SourcePath, SaveTasks[index].CurrentDirectoryPair.TargetPath);
+            SaveTask newSaveTask = SaveTaskFactory.CreateSave(newSaveTaskType, SaveTasks[index].CurrentDirectoryPair.SourcePath, SaveTasks[index].CurrentDirectoryPair.TargetPath, saveTaskName);
             SaveTasks.RemoveAt(index);
             SaveTasks.Insert(index, newSaveTask);
         }

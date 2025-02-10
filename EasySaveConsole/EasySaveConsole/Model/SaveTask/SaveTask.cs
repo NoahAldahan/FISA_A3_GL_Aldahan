@@ -23,18 +23,20 @@ namespace EasySaveConsole.Model
 
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
+        internal string name;
 
 
 
 
         // Constructor
         [JsonConstructor]
-        internal SaveTask(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime)
+        internal SaveTask(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName)
         {
             this.CurrentDirectoryPair = CurrentDirectoryPair;
             LogObserver = new List<Log.Log>();
             this.logDaily = logDaily;
             this.logRealTime = logRealTime;
+            this.name = saveTaskName;
         }
 
         // Start the task

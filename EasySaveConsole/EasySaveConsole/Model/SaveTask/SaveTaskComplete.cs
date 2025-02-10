@@ -13,7 +13,7 @@ namespace EasySaveConsole.Model
     internal class SaveTaskComplete : SaveTask
     {
         // Constructor
-        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime) : base(CurrentDirectoryPair, logDaily, logRealTime){}
+        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName){}
 
         // Start a complete save task
         internal override void Save()

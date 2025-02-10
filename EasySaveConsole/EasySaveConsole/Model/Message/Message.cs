@@ -25,8 +25,13 @@ namespace EasySaveConsole.Model
             ErrorUserEntryOptionMessage,
             MenuSaveTaskMessage,
             MenuLanguageMessage,
-            PressKeyToContinue
-        }
+            PressKeyToContinue,
+            AskSaveTaskNameMessage,
+            AskSaveTaskTargetFolderMessage,
+            AskSaveTaskSourceFolderMessage,
+            AskSaveTaskType
+
+    }
 
         public static class MessageExtensions
         {
@@ -47,7 +52,11 @@ namespace EasySaveConsole.Model
             { EMessage.ErrorUserEntryOptionMessage, "ErrorUserEntryOptionMessage" },
             { EMessage.MenuSaveTaskMessage, "MenuSaveTaskMessage" },
             { EMessage.MenuLanguageMessage, "MenuLanguageMessage" },
-            { EMessage.PressKeyToContinue, "PressKeyToContinue" }
+            { EMessage.PressKeyToContinue, "PressKeyToContinue" },
+            { EMessage.AskSaveTaskNameMessage, "AskSaveTaskNameMessage" },
+            { EMessage.AskSaveTaskTargetFolderMessage, "AskSaveTaskTargetFolderMessage" },
+            { EMessage.AskSaveTaskSourceFolderMessage, "AskSaveTaskSourceFolderMessage" },
+            { EMessage.AskSaveTaskType, "AskSaveTaskType" }
             };
 
             internal static string GetValue(this EMessage message)

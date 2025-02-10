@@ -34,12 +34,12 @@ namespace EasySaveConsole
             LanguageController languageController = new LanguageController(messagesManager, languageView, languageManager);
             SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);
             CliController cliController = new CliController(messagesManager, cliView, saveTaskController, languageController);
-            //cliController.StartCli();
-            DirectoryPair directoryPair = new DirectoryPair("C:\\Users\\matte\\OneDrive\\Bureau\\src", "C:\\Users\\matte\\OneDrive\\Bureau\\target");
-            JsonLogManager jsonLogManager = new JsonLogManager();
-            SaveTask saveTask = new SaveTaskComplete(directoryPair, new LogDaily(jsonLogManager), new LogRealTime(jsonLogManager));
+            cliController.StartCli();
+            //DirectoryPair directoryPair = new DirectoryPair("C:\\Users\\matte\\OneDrive\\Bureau\\src", "C:\\Users\\matte\\OneDrive\\Bureau\\target");
+            //JsonLogManager jsonLogManager = new JsonLogManager();
+            //SaveTask saveTask = new SaveTaskComplete(directoryPair, new LogDaily(jsonLogManager), new LogRealTime(jsonLogManager));
             //Console.WriteLine(saveTask.GetTotalFilesToCopy("C:\\Users\\matte\\OneDrive\\Bureau\\target"));
-            saveTask.Save();
+            //saveTask.Save();
             //JsonLogManager jsonLogManager = new JsonLogManager();
             //jsonLogManager.CreateDailyJsonFile(DateTime.Now);
         }
