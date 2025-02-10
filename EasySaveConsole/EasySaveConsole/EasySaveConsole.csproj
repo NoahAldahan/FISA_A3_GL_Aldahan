@@ -216,6 +216,9 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Log">
+      <HintPath>..\CustomPackages\Log\Log.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\BaseController.cs" />
@@ -224,10 +227,6 @@
     <Compile Include="Controller\SaveTaskController.cs" />
     <None Include="Json\Log\RealTimeSave.json" />
     <Compile Include="Model\DirectoryPair.cs" />
-    <Compile Include="Model\Log\Log.cs" />
-    <Compile Include="Model\Log\LogDaily.cs" />
-    <Compile Include="Model\Log\LogDataStructure.cs" />
-    <Compile Include="Model\Log\LogRealTime.cs" />
     <Compile Include="Model\SaveTask\SaveTask.cs" />
     <Compile Include="Model\SaveTask\SaveTaskComplete.cs" />
     <Compile Include="Model\SaveTask\SaveTaskDifferential.cs" />
@@ -235,7 +234,6 @@
     <Compile Include="Model\SaveTask\SaveTaskManager.cs" />
     <Compile Include="Model\Message\Message.cs" />
     <Compile Include="Model\Message\Language.cs" />
-    <Compile Include="Utilities\JsonLogManager.cs" />
     <Compile Include="View\BaseView.cs" />
     <Compile Include="View\CliView.cs" />
     <Compile Include="Program.cs" />

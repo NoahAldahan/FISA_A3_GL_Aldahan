@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Log;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -102,28 +103,28 @@ namespace EasySaveConsole.Model
             Console.WriteLine(json);
         }
 
-        // Loads all save tasks config from a json file for persistence
-        //internal void DeserializeSaveTasks()
-        //{
-        //    //TEMP : we're reading from the json, but should use JSON manager
-        //    string json = "";
-        //    if(json == "")
-        //    {
-        //        return;
-        //    }
-        //    SaveTasks = JsonSerializer.Deserialize<List<SaveTask>>(json);
+        //Loads all save tasks config from a json file for persistence
+        internal void DeserializeSaveTasks()
+        {
+            //TEMP : we're reading from the json, but should use JSON manager
+            string json = "";
+            if (json == "")
+            {
+                return;
+            }
+            SaveTasks = JsonSerializer.Deserialize<List<SaveTask>>(json);
 
-        //    //TEMP : writing to console for debugging purposes
-        //    List<string> info = new List<string>();
-        //    foreach (SaveTask saveTask in SaveTasks)
-        //    {
-        //        info.Clear();
-        //        info = new List<string>(saveTask.GetInfo());
-        //        foreach (string line in info)
-        //        {
-        //            Console.WriteLine(line);
-        //        }
-        //    }
-        //}
+            //TEMP : writing to console for debugging purposes
+            //List<string> info = new List<string>();
+            //foreach (SaveTask saveTask in SaveTasks)
+            //{
+            //    info.Clear();
+            //    info = new List<string>(saveTask.GetInfo());
+            //    foreach (string line in info)
+            //    {
+            //        Console.WriteLine(line);
+            //    }
+            //}
+        }
     }
 }

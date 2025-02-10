@@ -7,8 +7,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json.Serialization;
+using Log;
 using System.Threading.Tasks;
-using EasySaveConsole.Model.Log;
 
 namespace EasySaveConsole.Model
 {
@@ -20,7 +20,6 @@ namespace EasySaveConsole.Model
         [JsonInclude]
         internal DirectoryPair CurrentDirectoryPair { get; set; }
         internal List<Log.Log> LogObserver { get; set; }
-
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
 
