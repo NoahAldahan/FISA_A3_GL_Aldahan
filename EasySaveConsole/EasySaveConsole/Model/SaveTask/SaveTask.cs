@@ -21,7 +21,7 @@ namespace EasySaveConsole.Model
         internal DirectoryPair CurrentDirectoryPair { get; set; }
         internal List<Log.Log> LogObserver { get; set; }
 
-        internal LogRealTime logRealTime;
+        internal LogReal logRealTime;
         internal LogDaily logDaily;
 
 
