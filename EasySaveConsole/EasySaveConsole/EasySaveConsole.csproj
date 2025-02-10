@@ -217,7 +217,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Log">
-      <HintPath>..\CustomPackages\Log.dll</HintPath>
+      <HintPath>..\CustomPackages\Log\Log.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
