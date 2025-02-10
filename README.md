@@ -93,7 +93,7 @@ Here are the options you might find in the CLI application :
 ![Main menu](Documentation/img/MainMenu.png)
 ![Save menu](Documentation/img/SaveMenu.png)
 
-_For a step by step explanation, please refer to the [user guide](Documentation/UserGuide.pdf)_
+_For a step by step explanation, please refer to the [user guide](Documentation/UserGuide.pdf), ([guide utilisateur](Documentation/GuideUtilisateur.pdf))_
 
 
 <!-- ROADMAP -->
@@ -110,5 +110,3 @@ _For a step by step explanation, please refer to the [user guide](Documentation/
 * [Jean](https://github.com/Yamigiri1)
 * [Mattéo](https://github.com/Mattbalaise)
 * [Noah](https://github.com/NoahAldahan)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
