@@ -35,9 +35,7 @@ namespace EasySaveConsole
             SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);
             //idée faire un controller factory pour ne pas passer trop de dépendance à cliController
             CliController cliController = new CliController(messagesManager, cliView, saveTaskController, languageController);
-            cliController.StartCli();
-            //C:\\Users\\Travail\\Desktop\\Source
-            //C:\\Users\\Travail\\Desktop\\Target
+            //cliController.StartCli();
             DirectoryPair directoryPair = new DirectoryPair("C:\\Users\\matte\\OneDrive\\Bureau\\src", "C:\\Users\\matte\\OneDrive\\Bureau\\target");
             JsonLogManager jsonLogManager = new JsonLogManager();
             SaveTask saveTask = new SaveTaskComplete(directoryPair, new LogDaily(jsonLogManager), new LogRealTime(jsonLogManager));
