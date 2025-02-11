@@ -161,13 +161,13 @@ namespace Log
                         continue;
                     }
                 }
-                return DateTime.MinValue;
+                return DateTime.MaxValue;
                 
             }
             catch(Exception ex)
             {
                 Console.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
-                return DateTime.MinValue;
+                return DateTime.MaxValue;
             }
         }
     }
