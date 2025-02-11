@@ -6,12 +6,14 @@ package "Model" {
         ~ CreateSave(saveTaskTypes: ESaveTaskTypes, sourcePath: string, targetPath: string): SaveTask
     }
 
-    abstract class SaveTask {
+    abstract class SaveTask <<abstract>> {
         ~ DirectoryPair CurrentDirectoryPair
         ~ SaveTask(DirectoryPair CurrentDirectoryPair)
         ~ DirectoryPair GetDirectoryPair()
         ~ abstract void Save()
         ~ abstract List<string> GetInfo()
+        ~ void SetLogRealTime(LogRealTime logRealTime)
+        ~ void SetLogDaily(LogDaily logDaily)
     }
 
     class SaveTaskDifferential {
@@ -34,7 +36,7 @@ package "Model" {
         ~ DirectoryPair(SourcePath: string, TargetPath: string)
     }
 
-    enum ESaveTaskTypes {
+    enum ESaveTaskTypes <<enum>> {
         Differential
         Complete
     }
@@ -51,10 +53,9 @@ package "Model" {
         ~ ExecuteSaveTask(index: int): void
         ~ ExecuteAllSaveTasks(): void
         ~ SerializeSaveTasks(): void
-        ~ DeserializeSaveTasks(): void
     }
 
-    enum ELanguage {
+    enum ELanguage <<enum>> {
         EN (English)
         FR (Français)
         ES (Español)
@@ -65,7 +66,7 @@ package "Model" {
         RU (Русский)
         JA (日本語)
         ZH (中文)
-        Unknown
+    
     }
 
     class LanguageExtensions {
@@ -86,7 +87,7 @@ package "Model" {
         ~ ELanguage GetLanguageInstance(string language)
     }
 
-    enum EMessage {
+    enum EMessage <<enum>> {
         ErrorTranslate
         InitMessage
         LanguagesMessage
@@ -116,36 +117,39 @@ package "Model" {
         + string GetMessageTranslate(EMessage message)
     }
 
-    interface IObserver {}
 
-    class Log {
-        +message: String
-        +writeLog(message: String)
-    }
 
     class JsonManager {
-        +readJson(file: String): Object
-        +writeJson(file: String, data: Object)
+    - string TranslationPath
+    - string AppSettingsPath
+    - string SerializationPath
+    + string LogPathDaily
+    + string LogPathRealTime
+    + GetMessage(msg: string, language: ELanguage): string
+    + GetSettings(settings: string): string
+    + SetDefaultLanguage(languageValue: string, languageKey: string): EMessage
+    + SerializeSaveTasks(SaveTasks: List<SaveTask>): void
+    + DeserializeSaveTasks(): List<SaveTask>
     }
 
+    class Utilities {
+    + IsValidPath(path: string): bool
+    }
+
+
     /' Relations '/
-    SaveTaskFactory *--> SaveTask : "create"
-    SaveTask *--> DirectoryPair : "create"
-    SaveTask <|--- SaveTaskDifferential : "inherits"
-    SaveTask <|--- SaveTaskComplete : "inherits"
-    ELanguage <-- LanguageExtensions
-    EMessage <-- MessageExtensions
-    MessageManager o--> JsonManager
-    ESaveTaskTypes <-- SaveTaskFactory
-    SaveTaskDifferential --|> IObserver
-    SaveTaskComplete --|> IObserver
-    LanguageManager --> LanguageExtensions
-    MessageManager --> MessageExtensions
-    SaveTaskManager --> SaveTask 
-    SaveTaskFactory --> DirectoryPair
-    Log o--> JsonManager
-    Log <-- SaveTask : "use"
-    MessageManager o--> LanguageManager
+    SaveTaskFactory --> SaveTask : "<<creates>>"
+    SaveTask *--> DirectoryPair : "<<instanciates>>"
+    SaveTask <|--- SaveTaskDifferential : "<<inherits>>"
+    SaveTask <|--- SaveTaskComplete : "<<inherits>>"
+    ELanguage <-- LanguageExtensions : "<<uses>>"
+    EMessage <-- MessageExtensions : "<<uses>>"
+    ESaveTaskTypes <-- SaveTaskFactory : "<<uses>>"
+    LanguageManager --> LanguageExtensions : "<<uses>>"
+    MessageManager --> MessageExtensions : "<<uses>>"
+    SaveTaskManager o--> SaveTask : "<<contains>>"
+    SaveTaskFactory --> DirectoryPair : "<<creates>>"
+    MessageManager o--> LanguageManager : "<<contains>>"
 }
 
 package "Controller" {
@@ -171,7 +175,7 @@ package "Controller" {
         ~ void StartCli()
     }
 
-    abstract class BaseController {
+    abstract class BaseController <<abstract>> {
         # MessageManager messageManager
         # BaseView view
         # BaseController(MessageManager messageManager, BaseView view)
@@ -185,7 +189,7 @@ package "Controller" {
         ~ Message SetDefaultLangage(string strLangage)
     }
 
-    enum ECliAction {
+    enum ECliAction <<enum>> {
         Stop = 0
         Init = 1
         ChangeDefaultLanguage = 2
@@ -193,7 +197,7 @@ package "Controller" {
         SaveMenu = 4
     }
 
-    enum ECliSaveTaskAction {
+    enum ECliSaveTaskAction <<enum>> {
         Init = 0
         StartTasks = 1
         CreateTask = 2
@@ -204,27 +208,28 @@ package "Controller" {
     }
 
     /' Relations '/
-    SaveTaskController o--> SaveTaskManager : "manage"
-    SaveTaskManager *--> SaveTaskFactory : "manage"
-    Log <-- LogController : "manages"
-    CliController o--> LogController
-    CliController o--> SaveTaskController
-    CliController --> ECliAction
-    SaveTaskController --> ECliSaveTaskAction
-    SaveTaskController ---|> BaseController
-    LogController ---|> BaseController
-    CliController ---|> BaseController
-    LanguageController ---|> BaseController
-    BaseController o--> MessageManager
-    CliController o--> LanguageController
-    LanguageController o--> LanguageManager
-    LanguageManager o--> JsonManager
+    SaveTaskController o--> SaveTaskManager : "<<contains>>"
+    SaveTaskManager *--> SaveTaskFactory : "<<instanciates>>"
+    Log <-- LogController : "<<uses>>"
+    CliController o--> LogController : "<<contains>>"
+    CliController o--> SaveTaskController : "<<contains>>"
+    CliController --> ECliAction : "<<uses>>"
+    SaveTaskController --> ECliSaveTaskAction : "<<uses>>"
+    SaveTaskController ---|> BaseController : "<<inherits>>"
+    LogController ---|> BaseController : "<<inherits>>"
+    CliController ---|> BaseController : "<<inherits>>"
+    LanguageController ---|> BaseController : "<<inherits>>"
+    BaseController o--> MessageManager : "<<contains>>"
+    CliController o--> LanguageController : "<<contains>>"
+    LanguageController o--> LanguageManager : "<<contains>>"
+    LanguageManager o--> JsonManager : "<<contains>>"
+    SaveTaskController --> Utilities : "<<uses>>"
 }
 
 package "View" {
     class CliView {}
 
-    abstract class BaseView {
+    abstract class BaseView <<abstract>> {
         + void ShowMessage(string message)
         + string GetUserInput(string input)
         + int GetOptionUserInput()
@@ -237,15 +242,106 @@ package "View" {
     class LogView {}
 
     /' Relations '/
-    CliController o--u--> CliView
-    SaveTaskController o---> SaveTaskView
-    LanguageController o---> LanguageView
-    CliView --|> BaseView
-    SaveTaskView --|> BaseView
-    LanguageView --|> BaseView
-    LogView --|> BaseView
-    BaseController o--> BaseView
-    LogController o--> LogView
+    CliController o--u--> CliView : "<<contains>>"
+    SaveTaskController o---> SaveTaskView : "<<contains>>"
+    LanguageController o---> LanguageView : "<<contains>>"
+    CliView --|> BaseView : "<<inherits>>"
+    SaveTaskView --|> BaseView : "<<inherits>>"
+    LanguageView --|> BaseView : "<<inherits>>"
+    LogView --|> BaseView : "<<inherits>>"
+    BaseController o--> BaseView : "<<contains>>"
+    LogController o--> LogView : "<<contains>>"
+}
+
+package "LogDll" {
+    class LogDaily {
+        + dailyInfo: DailyInfo
+        + stopWatch: Stopwatch
+        + LogDaily(LogDailyPath: string, LogRealTimePath: string)
+        + CreateDailyFile(): void
+        + AddDailyInfo(SourcePath: string, TargetPath: string): void
+    }
+
+
+    class JsonLogManager {
+        + UpdateRealTimeProgression(realTimeInfo: RealTimeInfo, LogRealTimePath: string): void
+        + GetFileDailyName(Date: DateTime, LogDailyPath: string): string
+        + CreateDailyJsonFile(Date: DateTime, LogDailyPath: string): void
+        + AddSaveToDailyFile(DailyInfo: DailyInfo, LogDailyPath: string): void
+        + AddSaveToRealTimeFile(realTimeInfo: RealTimeInfo, LogRealTimePath: string): void
+        + AddJsonLogObject(FilePath: string, LogObject: object): void
+        + GetLastSaveDate(LogDailyPath: string, FilePath: string): DateTime
+    }
+
+    enum ERealTimeState <<enum>> {
+        ACTIVE
+        END
+        ERROR
+    }
+
+    class ERealTimeStateExstensions {
+        - static Dictionary<ERealTimeState, string> MessageStrings
+        + static string GetValue(ERealTimeState message)
+    }
+
+    struct RealTimeInfo {
+    + string Name
+    + string SourcePath
+    + string TargetPath
+    + string State
+    + int TotalFilesToCopy
+    + long TotalFilesSize
+    + int NbFilesLeftToDo
+    + double Progression
+    + DateTime SaveDate
+    + RealTimeInfo(string name, string sourceFilePath, string targetFilePath, string state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, int progression, DateTime saveDate)
+    + string ToString()
+}
+
+    struct DailyInfo {
+    - Name: string
+    - FileSource: string
+    - FileTarget: string
+    - FileSize: long
+    - FileTransferTime: double
+    - DateTime: DateTime
+    + ToString(): string
+    + DailyInfo(name: string, fileSource: string, fileTarget: string, fileSize: long, fileTransferTime: double, time: DateTime)
+    }
+
+    class LogRealTime {
+    + realTimeInfo: RealTimeInfo
+    + LogRealTime(LogDailyPath: string, LogRealTimePath: string)
+    + CreateRealTimeInfo(SourcePath: string, TargetPath: string, state: ERealTimeState)
+    + GetTotalFilesInfosToCopy(path: string): Tuple<int, int>
+    + UpdateRealTimeProgress(): void
+    }
+
+    abstract class Log <<abstract>> {
+        # LogRealTimePath: string
+        # LogDailyPath: string
+        # Log(LogDailyPath: string, LogRealTimePath: string)
+    }
+
+    LogDaily  --> JsonLogManager : "<<uses>>"
+    LogRealTime --> JsonLogManager : "<<uses>>"
+    LogDaily ..|> Log : "<<implements>>"
+    LogRealTime ..|> Log : "<<implements>>"
+    LogRealTime --> ERealTimeState : "<<uses>>"
+    ERealTimeStateExstensions --> ERealTimeState : "<<uses>>"
+    LogRealTime --> ERealTimeStateExstensions : "<<uses>>"
+    JsonLogManager --> RealTimeInfo : "<<uses>>"
+    LogRealTime --> RealTimeInfo : "<<uses>>"
+    JsonLogManager --> DailyInfo : "<<uses>>"
+    LogDaily --> DailyInfo : "<<uses>>"
+    SaveTaskDifferential --> JsonLogManager : "<<uses>>"
+    SaveTaskFactory --> LogDaily : "<<instanciates>>"
+    SaveTaskFactory --> LogRealTime : "<<instanciates>>"
+    LogDaily <--o SaveTask : "<<contains>>"
+    LogRealTime <--o SaveTask : "<<contains>>"
+
 }
 
 @enduml
+
+
