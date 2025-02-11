@@ -30,6 +30,11 @@ namespace EasySaveConsole.Controller
             string translatedMessage = messagesManager.GetMessageTranslate(msg);
             view.ShowMessage(translatedMessage);
         }
+        protected void ShowMessage(string msg)
+        {
+            view.ShowMessage(msg);
+        }
+
 
         protected string ShowQuestion(EMessage msg)
         {

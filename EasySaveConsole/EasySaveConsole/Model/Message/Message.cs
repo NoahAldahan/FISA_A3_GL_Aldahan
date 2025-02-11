@@ -26,6 +26,7 @@ namespace EasySaveConsole.Model
             MenuLanguageMessage,
             //SaveTask
             StartSaveTaskMessage,
+            ShowSaveTaskRegisterMessage,
             CreateSaveTaskMessage,
             MenuSaveTaskMessage,
             AskSaveTaskNameMessage,
@@ -66,7 +67,8 @@ namespace EasySaveConsole.Model
             { EMessage.AskSaveTaskType, "AskSaveTaskType" },
             { EMessage.ErrorSaveTaskPathMessage, "ErrorSaveTaskPathMessage" },
             { EMessage.ErrorSaveTaskTypeMessage, "ErrorSaveTaskTypeMessage" },
-            { EMessage.SaveTaskAddSuccessMessage, "SaveTaskAddSuccessMessage" }
+            { EMessage.SaveTaskAddSuccessMessage, "SaveTaskAddSuccessMessage" },
+            { EMessage.ShowSaveTaskRegisterMessage, "ShowSaveTaskRegisterMessage" }
             };
 
             internal static string GetValue(this EMessage message)

@@ -1,5 +1,6 @@
 ﻿using EasySaveConsole.Model;
 using EasySaveConsole.View;
+using System.Collections.Generic;
 using EasySaveConsole.Utilities;
 using System;
 using System.Text.RegularExpressions;
@@ -9,12 +10,13 @@ namespace EasySaveConsole.Controller
     enum ECliSaveTaskAction
     {
         InitMenu = 0,
-        StartTasks = 1,
-        CreateTask = 2,
-        ModifyTask = 3,
-        DeleteTask = 4,
-        Help = 5,
-        Quit = 6
+        ShowTasks = 1,
+        StartTasks = 2,
+        CreateTask = 3,
+        ModifyTask = 4,
+        DeleteTask = 5,
+        Help = 6,
+        Quit = 7
     }
     internal class SaveTaskController : BaseController
     {
@@ -32,6 +34,7 @@ namespace EasySaveConsole.Controller
             dictActions.Add((int)ECliSaveTaskAction.Quit, () => { ShowMessage(EMessage.StopMessage); });
             dictActions.Add((int)ECliSaveTaskAction.CreateTask, () => CreateSaveTask());
             dictActions.Add((int)ECliSaveTaskAction.StartTasks, () => StartSaveTasks());
+            dictActions.Add((int)ECliSaveTaskAction.ShowTasks, () => WrapperShowAllSaveTask());
         }
 
         internal void CreateSaveTask() 
@@ -61,34 +64,70 @@ namespace EasySaveConsole.Controller
 
         internal void StartSaveTasks()
         {
+            ShowAllSaveTask();
             string saveTaskSave = ShowQuestion(EMessage.AskSaveTaskNameMessage);
             string patternRange = @"^\d+-\d+$";
             string patternList = @"^\d+(;\d+)*$";
             string patternSingle = @"^\d+$";
             if (Regex.IsMatch(saveTaskSave, patternRange))
-            {
-                string[] rangeParts = saveTaskSave.Split('-');
-                int start = int.Parse(rangeParts[0]);
-                int end = int.Parse(rangeParts[1]);
-                Console.WriteLine($"Plage détectée: {start} à {end}");
-                ShowQuestion(EMessage.PressKeyToContinue);
-            }
-            else if(Regex.IsMatch(saveTaskSave, patternList))
-            {
-                string[] values = saveTaskSave.Split(';');
-                Console.WriteLine($"Liste de sauvegardes détectée: {string.Join(", ", values)}");
-                ShowQuestion(EMessage.PressKeyToContinue);
-            }
-            else if(Regex.IsMatch(saveTaskSave, patternSingle)) // Valeur unique ex: 1
-            {
-                Console.WriteLine($"Sauvegarde unique détectée: {saveTaskSave}");
-                ShowQuestion(EMessage.PressKeyToContinue);
-            }
+                HandleSaveTaskRange(saveTaskSave);
+            else if (Regex.IsMatch(saveTaskSave, patternList))
+                HandleSaveTaskList(saveTaskSave);
+            else if (Regex.IsMatch(saveTaskSave, patternSingle)) // Valeur unique ex: 1
+                HandleSaveTask(saveTaskSave);
             else
-            {
-                Console.WriteLine("error");
                 ShowQuestion(EMessage.PressKeyToContinue);
+        }
+
+        internal void HandleSaveTaskRange(string SaveTaskSave)
+        {
+            string[] rangeParts = SaveTaskSave.Split('-');
+            int start = int.Parse(rangeParts[0]);
+            int end = int.Parse(rangeParts[1]);
+            saveTaskManager.ExecuteSaveTaskRange(start, end);
+
+        }
+
+        internal void HandleSaveTaskList(string SavetsaveTaskSave)
+        {
+            string[] valuesStr = SavetsaveTaskSave.Split(';');
+            List<int> indexs = new List<int>();
+            try
+            {
+                foreach (string val in valuesStr)
+                {
+                    indexs.Add(int.Parse(val));
+                }
             }
+            catch
+            {
+                Console.WriteLine("Votre entrée n'est pas du int");
+            }
+            Console.WriteLine($"Liste de sauvegardes détectée: {string.Join(", ", valuesStr)}");
+            saveTaskManager.ExecuteSaveTaskList(indexs);
+            ShowQuestion(EMessage.PressKeyToContinue);
+        }
+
+        internal void HandleSaveTask(string SaveTaskSave)
+        {
+            Console.WriteLine($"Sauvegarde unique détectée: {SaveTaskSave}");
+            saveTaskManager.ExecuteSaveTask(int.Parse(SaveTaskSave));
+            ShowQuestion(EMessage.PressKeyToContinue);
+        }
+        internal void ShowAllSaveTask()
+        {
+            List<SaveTask> saveTasks = saveTaskManager.GetAllSaveTask();
+            ShowMessage(EMessage.ShowSaveTaskRegisterMessage);
+            int id = 0;
+            foreach(SaveTask saveTask in saveTasks)
+            {
+                ShowMessage($" {id} : {saveTask.name}");
+            }
+        }
+        internal void WrapperShowAllSaveTask()
+        {
+            ShowAllSaveTask();
+            ShowQuestion(EMessage.PressKeyToContinue);
         }
     }
 }

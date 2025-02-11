@@ -65,6 +65,38 @@ namespace EasySaveConsole.Model
             SaveTasks[index].Save();
         }
 
+        internal void ExecuteSaveTaskRange(int start, int stop)
+        {
+            if (start < 0 || stop >= SaveTasks.Count || start > stop)
+            {
+                throw new ArgumentOutOfRangeException(nameof(start), "Invalid start or stop index.");
+            }
+
+            for (int i = start; i <= stop; i++)
+            {
+                SaveTasks[i].Save();
+            }
+        }
+
+        internal void ExecuteSaveTaskList(List<int> indexs)
+        {
+            if (indexs == null || indexs.Count == 0)
+            {
+                throw new ArgumentException("The index list cannot be null or empty.", nameof(indexs));
+            }
+
+            foreach (int index in indexs)
+            {
+                if (index < 0 || index >= SaveTasks.Count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(indexs), $"Index {index} is out of range.");
+                }
+
+                SaveTasks[index].Save();
+            }
+        }
+
+
         // Starts all save tasks
         internal void ExecuteAllSaveTasks()
         {
@@ -72,6 +104,11 @@ namespace EasySaveConsole.Model
             {
                 saveTask.Save();
             }
+        }
+
+        internal List<SaveTask> GetAllSaveTask()
+        {
+            return SaveTasks; 
         }
 
         // Modify the save task type
