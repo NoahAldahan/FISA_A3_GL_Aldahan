@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using EasySaveConsole.Utilities;
 using System;
 using System.Text.RegularExpressions;
+using System.Diagnostics.Eventing.Reader;
 
 namespace EasySaveConsole.Controller
 {
@@ -11,10 +12,10 @@ namespace EasySaveConsole.Controller
     {
         InitMenu = 0,
         ShowTasks = 1,
-        StartTasks = 2,
-        CreateTask = 3,
-        ModifyTask = 4,
-        DeleteTask = 5,
+        StartSaveTasks = 2,
+        CreateSaveTask = 3,
+        ModifySaveTasks = 4,
+        DeleteSaveTasks = 5,
         Help = 6,
         Quit = 7
     }
@@ -32,10 +33,30 @@ namespace EasySaveConsole.Controller
         {
             dictActions.Add((int)ECliSaveTaskAction.InitMenu, () => { ShowMessage(EMessage.MenuSaveTaskMessage); });
             dictActions.Add((int)ECliSaveTaskAction.Quit, () => { ShowMessage(EMessage.StopMessage); });
-            dictActions.Add((int)ECliSaveTaskAction.CreateTask, () => CreateSaveTask());
-            dictActions.Add((int)ECliSaveTaskAction.StartTasks, () => StartSaveTasks());
+            dictActions.Add((int)ECliSaveTaskAction.CreateSaveTask, () => CreateSaveTask());
+            dictActions.Add((int)ECliSaveTaskAction.StartSaveTasks, () => StartSaveTasks());
+            dictActions.Add((int)ECliSaveTaskAction.DeleteSaveTasks, () => DeleteSaveTask());
+            dictActions.Add((int)ECliSaveTaskAction.ModifySaveTasks, () => ModifySaveTasks());
             dictActions.Add((int)ECliSaveTaskAction.ShowTasks, () => WrapperShowAllSaveTask());
         }
+
+        internal void WrapperShowAllSaveTask()
+        {
+            ShowAllSaveTask();
+            ShowQuestion(EMessage.PressKeyToContinue);
+        }
+
+        internal void ShowAllSaveTask()
+        {
+            List<SaveTask> saveTasks = saveTaskManager.GetAllSaveTask();
+            ShowMessage(EMessage.ShowSaveTaskRegisterMessage);
+            int id = 0;
+            foreach (SaveTask saveTask in saveTasks)
+            {
+                ShowMessage($" {id} : {saveTask.name}");
+                id++;
+            }
+        }   
 
         internal void CreateSaveTask() 
         {
@@ -65,70 +86,97 @@ namespace EasySaveConsole.Controller
         internal void StartSaveTasks()
         {
             ShowAllSaveTask();
-            string saveTaskSave = ShowQuestion(EMessage.AskSaveTaskNameMessage);
+            string userInput = ShowQuestion(EMessage.AskSaveTaskNameMessage);
+            ProcessSaveTaskSelection(userInput, ECliSaveTaskAction.StartSaveTasks);
+        }
+
+        internal void ModifySaveTasks()
+        {
+            ShowAllSaveTask();
+            string userInput = ShowQuestion(EMessage.AskSaveTaskNameMessage);
+            ProcessSaveTaskSelection(userInput, ECliSaveTaskAction.ModifySaveTasks);
+        }
+
+        internal void DeleteSaveTask()
+        {
+            ShowAllSaveTask();
+            string userInput = ShowQuestion(EMessage.AskSaveTaskNameMessage);
+            ProcessSaveTaskSelection(userInput, ECliSaveTaskAction.DeleteSaveTasks);
+        }
+
+        internal void ProcessSaveTaskSelection(string userInputSaveTask, ECliSaveTaskAction cliSaveTaskAction)
+        {
             string patternRange = @"^\d+-\d+$";
             string patternList = @"^\d+(;\d+)*$";
             string patternSingle = @"^\d+$";
-            if (Regex.IsMatch(saveTaskSave, patternRange))
-                HandleSaveTaskRange(saveTaskSave);
-            else if (Regex.IsMatch(saveTaskSave, patternList))
-                HandleSaveTaskList(saveTaskSave);
-            else if (Regex.IsMatch(saveTaskSave, patternSingle)) // Valeur unique ex: 1
-                HandleSaveTask(saveTaskSave);
+            if (Regex.IsMatch(userInputSaveTask, patternRange))
+                ParseSaveTaskRange(userInputSaveTask, cliSaveTaskAction);
+            else if (Regex.IsMatch(userInputSaveTask, patternList) || Regex.IsMatch(userInputSaveTask, patternSingle))
+                ParseSaveTaskList(userInputSaveTask, cliSaveTaskAction);
             else
-                ShowQuestion(EMessage.PressKeyToContinue);
+                ShowQuestion(EMessage.ErrorUserEntryStrMessage);
         }
 
-        internal void HandleSaveTaskRange(string SaveTaskSave)
+        internal void ParseSaveTaskRange(string userInputSaveTask, ECliSaveTaskAction cliSaveTaskAction)
         {
-            string[] rangeParts = SaveTaskSave.Split('-');
+            string[] rangeParts = userInputSaveTask.Split('-');
             int start = int.Parse(rangeParts[0]);
             int end = int.Parse(rangeParts[1]);
-            saveTaskManager.ExecuteSaveTaskRange(start, end);
-
+            List<int> indexs = new List<int>();
+            if(start > end)
+            {
+                ShowMessagePause(EMessage.ErrorStartEndIndexSaveTaskMessage);
+                return;
+            }
+            else if(saveTaskManager.IsValidSaveTaskId(start) && saveTaskManager.IsValidSaveTaskId(end))
+            {
+                ShowMessagePause(EMessage.ErrorSaveTaskNotFoundMessage);
+                return;
+            }
+            for (int i = start; i <= end; i++)
+            {
+                indexs.Add(i);
+            }
+            HandleSaveTask(indexs, cliSaveTaskAction);
+            ShowQuestion(EMessage.PressKeyToContinue);
         }
 
-        internal void HandleSaveTaskList(string SavetsaveTaskSave)
+        internal void ParseSaveTaskList(string SaveTask, ECliSaveTaskAction cliSaveTaskAction)
         {
-            string[] valuesStr = SavetsaveTaskSave.Split(';');
+            string[] valuesStr = SaveTask.Split(';');
+            int index;
             List<int> indexs = new List<int>();
             try
             {
                 foreach (string val in valuesStr)
                 {
+                    index = int.Parse(val);
+                    if (!saveTaskManager.IsValidSaveTaskId(index))
+                    {
+                        ShowMessagePause(EMessage.ErrorSaveTaskNotFoundMessage);
+                        return;
+                    }
                     indexs.Add(int.Parse(val));
                 }
             }
             catch
             {
-                Console.WriteLine("Votre entrée n'est pas du int");
+                ShowMessagePause(EMessage.ErrorMessage);
             }
-            Console.WriteLine($"Liste de sauvegardes détectée: {string.Join(", ", valuesStr)}");
-            saveTaskManager.ExecuteSaveTaskList(indexs);
-            ShowQuestion(EMessage.PressKeyToContinue);
+            HandleSaveTask(indexs, cliSaveTaskAction);
         }
-
-        internal void HandleSaveTask(string SaveTaskSave)
+        internal void HandleSaveTask(List<int> indexs, ECliSaveTaskAction cliSaveTaskAction)
         {
-            Console.WriteLine($"Sauvegarde unique détectée: {SaveTaskSave}");
-            saveTaskManager.ExecuteSaveTask(int.Parse(SaveTaskSave));
-            ShowQuestion(EMessage.PressKeyToContinue);
-        }
-        internal void ShowAllSaveTask()
-        {
-            List<SaveTask> saveTasks = saveTaskManager.GetAllSaveTask();
-            ShowMessage(EMessage.ShowSaveTaskRegisterMessage);
-            int id = 0;
-            foreach(SaveTask saveTask in saveTasks)
+            switch (cliSaveTaskAction)
             {
-                ShowMessage($" {id} : {saveTask.name}");
-                id++;
+                case ECliSaveTaskAction.StartSaveTasks:
+                    EMessage msg = saveTaskManager.ExecuteSaveTaskList(indexs);
+                    ShowMessagePause(msg);
+                    break;
+                //case ECliSaveTaskAction.:
+                //    saveTaskManager.ExecuteSaveTaskList(indexs);
+                //    break;
             }
-        }
-        internal void WrapperShowAllSaveTask()
-        {
-            ShowAllSaveTask();
-            ShowQuestion(EMessage.PressKeyToContinue);
         }
     }
 }

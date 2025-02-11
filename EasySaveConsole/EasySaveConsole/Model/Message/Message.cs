@@ -15,6 +15,7 @@ namespace EasySaveConsole.Model
             ErrorUserEntryStrMessage,
             ErrorUserEntryOptionMessage,
             PressKeyToContinue,
+            ErrorMessage,
             //Language
             LanguagesListMessage,
             LanguageChangeSuccessMessage,
@@ -35,7 +36,16 @@ namespace EasySaveConsole.Model
             AskSaveTaskType,
             ErrorSaveTaskPathMessage,
             ErrorSaveTaskTypeMessage,
-            SaveTaskAddSuccessMessage
+            SaveTaskAddSuccessMessage,
+            ErrorSaveTaskNotFoundMessage,
+            SuccessStartSaveTaskMessage,
+            SuccessModifySaveTaskMessage,
+            SuccessSuppressSaveTaskMessage,
+            ErrorModifySaveTaskMessage,
+            ErrorSuppressSaveTaskMessage,
+            ErrorStartEndIndexSaveTaskMessage,
+            ErrorStartSaveTaskMessage,
+            ErrorEmptyUserInputSaveTaskMessage
 
     }
 
@@ -43,6 +53,7 @@ namespace EasySaveConsole.Model
         {
             private static readonly Dictionary<EMessage, string> MessageStrings = new Dictionary<EMessage, string> {
             //Based Cli Message
+            { EMessage.ErrorMessage, "ErrorMessage" },
             { EMessage.MenuMessage, "MenuMessage" },
             { EMessage.StopMessage, "StopMessage" },
             { EMessage.PressKeyToContinue, "PressKeyToContinue" },
@@ -68,7 +79,16 @@ namespace EasySaveConsole.Model
             { EMessage.ErrorSaveTaskPathMessage, "ErrorSaveTaskPathMessage" },
             { EMessage.ErrorSaveTaskTypeMessage, "ErrorSaveTaskTypeMessage" },
             { EMessage.SaveTaskAddSuccessMessage, "SaveTaskAddSuccessMessage" },
-            { EMessage.ShowSaveTaskRegisterMessage, "ShowSaveTaskRegisterMessage" }
+            { EMessage.ShowSaveTaskRegisterMessage, "ShowSaveTaskRegisterMessage" },
+            { EMessage.ErrorSaveTaskNotFoundMessage, "ErrorSaveTaskNotFoundMessage" },
+            { EMessage.SuccessStartSaveTaskMessage, "SuccessStartSaveTaskMessage" },
+            { EMessage.SuccessModifySaveTaskMessage, "SuccessModifySaveTaskMessage" },
+            { EMessage.SuccessSuppressSaveTaskMessage, "SuccessSuppressSaveTaskMessage" },
+            { EMessage.ErrorModifySaveTaskMessage, "ErrorModifySaveTaskMessage" },
+            { EMessage.ErrorSuppressSaveTaskMessage, "ErrorSuppressSaveTaskMessage" },
+            { EMessage.ErrorStartEndIndexSaveTaskMessage, "ErrorStartEndIndexSaveTaskMessage" },
+            { EMessage.ErrorStartSaveTaskMessage, "ErrorStartSaveTaskMessage" },
+            { EMessage.ErrorEmptyUserInputSaveTaskMessage, "ErrorEmptyUserInputSaveTaskMessage" },
             };
 
             internal static string GetValue(this EMessage message)

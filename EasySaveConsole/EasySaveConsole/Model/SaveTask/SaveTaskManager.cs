@@ -65,39 +65,25 @@ namespace EasySaveConsole.Model
         {
             SaveTasks[index].Save();
         }
-
-        internal void ExecuteSaveTaskRange(int start, int stop)
+        internal EMessage ExecuteSaveTaskList(List<int> indexs)
         {
-            if (start < 0 || stop >= SaveTasks.Count || start > stop)
-            {
-                throw new ArgumentOutOfRangeException(nameof(start), "Invalid start or stop index.");
-            }
-
-            for (int i = start; i <= stop; i++)
-            {
-                SaveTasks[i].Save();
-            }
-        }
-
-        internal void ExecuteSaveTaskList(List<int> indexs)
-        {
-            if (indexs == null || indexs.Count == 0)
-            {
-                throw new ArgumentException("The index list cannot be null or empty.", nameof(indexs));
-            }
-
-            foreach (int index in indexs)
-            {
-                if (index < 0 || index >= SaveTasks.Count)
+                foreach (int index in indexs)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(indexs), $"Index {index} is out of range.");
+                    try
+                    {
+                        if (SaveTasks[index].Save())
+                        {
+                            return EMessage.SuccessStartSaveTaskMessage;
+                        }
+                        return EMessage.ErrorStartSaveTaskMessage;
+                    }
+                    catch
+                    {
+                        return EMessage.ErrorStartSaveTaskMessage;
+                    }
                 }
-
-                SaveTasks[index].Save();
-            }
+            return EMessage.ErrorEmptyUserInputSaveTaskMessage;
         }
-
-
         // Starts all save tasks
         internal void ExecuteAllSaveTasks()
         {
@@ -110,6 +96,11 @@ namespace EasySaveConsole.Model
         internal List<SaveTask> GetAllSaveTask()
         {
             return SaveTasks; 
+        }
+
+        internal bool IsValidSaveTaskId(int id)
+        {
+            return id >= 0 && id < SaveTasks.Count;
         }
 
         // Modify the save task type
