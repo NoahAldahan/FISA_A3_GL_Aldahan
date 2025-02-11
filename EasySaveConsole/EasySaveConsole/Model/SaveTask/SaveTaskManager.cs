@@ -12,7 +12,6 @@ namespace EasySaveConsole.Model
 {
 	internal class SaveTaskManager
 	{
-        JsonManager jsonManager;
         // All the current save tasks
         internal List<SaveTask> SaveTasks { get; set; }
         // The save task factory to create new save tasks
@@ -27,12 +26,11 @@ namespace EasySaveConsole.Model
         }
 
         // Constructor
-        internal SaveTaskManager(JsonManager jsonManager)
+        internal SaveTaskManager()
         {
             SaveTaskFactory = new SaveTaskFactory();
-            this.jsonManager = jsonManager;
             // Load the save tasks that are saved from previous session
-            SaveTasks = new List<SaveTask>(this.jsonManager.DeserializeSaveTasks());
+            SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
         }
 
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
@@ -138,7 +136,7 @@ namespace EasySaveConsole.Model
         // Saves all save tasks config to a json file for persistence
         public void SerializeSaveTasks()
         {
-            jsonManager.SerializeSaveTasks(SaveTasks);
+            JsonManager.SerializeSaveTasks(SaveTasks);
         }
     }
 }

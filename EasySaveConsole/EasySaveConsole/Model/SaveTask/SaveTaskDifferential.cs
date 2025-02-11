@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EasySaveConsole.Model
@@ -11,7 +12,10 @@ namespace EasySaveConsole.Model
     internal class SaveTaskDifferential : SaveTask
     {
         // Constructor
-        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string SaveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, SaveTaskName){}
+        [JsonConstructor]
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, string name) : base(CurrentDirectoryPair, name) { }
+        
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string SaveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, SaveTaskName) { }
 
         // Wrapper for the recursive function
         internal override bool Save()

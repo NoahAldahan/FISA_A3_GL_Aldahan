@@ -5,9 +5,11 @@ namespace EasySaveConsole.Model
     internal class DirectoryPair
     {
         // The source directory or file
+        [JsonInclude]
         internal string SourcePath { get; set; }
 
         // The target directory, TargetPath needs to be a directory
+        [JsonInclude]
         internal string TargetPath { get; set; }
 
         //Constructor

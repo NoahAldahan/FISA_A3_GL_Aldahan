@@ -83,15 +83,13 @@ namespace EasySaveConsole.Model
         internal class MessageManager
         {
             LanguageManager languageManager;
-            JsonManager jsonManager;
-            public MessageManager(LanguageManager languageManager, JsonManager jsonManager)
+            public MessageManager(LanguageManager languageManager)
             {
                 this.languageManager = languageManager;
-                this.jsonManager = jsonManager;
             }
             public string GetMessageTranslate(EMessage message)
             {   
-                return jsonManager.GetMessage(message.GetValue(), languageManager.defaultLanguage);
+                return JsonManager.GetMessage(message.GetValue(), languageManager.defaultLanguage);
             }
         }
 }

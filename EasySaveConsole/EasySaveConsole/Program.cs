@@ -22,16 +22,14 @@ namespace EasySaveConsole
         {
             // Charger les variables d'environnement depuis le fichier .env
             Env.Load(@".env");
-            //create utilities
-            JsonManager jsonManager = new JsonManager();
             //création des vues 
             CliView cliView = new CliView();
             SaveTaskView saveTaskView = new SaveTaskView();
             LanguageView languageView = new LanguageView();
             //Création des modèles 
             LanguageManager languageManager = new LanguageManager();
-            MessageManager messagesManager = new MessageManager(languageManager, jsonManager);
-            SaveTaskManager saveTaskManager = new SaveTaskManager(jsonManager);
+            MessageManager messagesManager = new MessageManager(languageManager);
+            SaveTaskManager saveTaskManager = new SaveTaskManager();
             // création des controllers
             LanguageController languageController = new LanguageController(messagesManager, languageView, languageManager);
             SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);

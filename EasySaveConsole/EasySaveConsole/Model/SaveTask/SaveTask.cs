@@ -21,21 +21,34 @@ namespace EasySaveConsole.Model
         internal DirectoryPair CurrentDirectoryPair { get; set; }
 
         protected bool IsSaveSuccessful;
-        internal List<Log.Log> LogObserver { get; set; }
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
+
+        [JsonInclude]
         internal string name;
 
+        internal void SetLogRealTime(LogRealTime logRealTime)
+        {
+            this.logRealTime = logRealTime;
+        }
 
-
+        internal void SetLogDaily(LogDaily logDaily)
+        {
+            this.logDaily = logDaily;
+        }
 
 
         // Constructor
         [JsonConstructor]
+        internal SaveTask(DirectoryPair CurrentDirectoryPair, string name)
+        {
+            this.CurrentDirectoryPair = CurrentDirectoryPair;
+            this.name = name;
+        }
+
         internal SaveTask(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName)
         {
             this.CurrentDirectoryPair = CurrentDirectoryPair;
-            LogObserver = new List<Log.Log>();
             this.logDaily = logDaily;
             this.logRealTime = logRealTime;
             this.name = saveTaskName;

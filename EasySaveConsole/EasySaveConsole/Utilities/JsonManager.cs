@@ -8,30 +8,28 @@ using System.IO;
 using DotNetEnv;
 using EasySaveConsole.Model;
 using System.Text.Json.Nodes;
+using Log;
 
 namespace EasySaveConsole.Utilities
 {
-    internal class JsonManager
+    internal static class JsonManager
     {
-        private string TranslationPath;
-
-        private string AppSettingsPath;
-
-        private string SerializationPath;
-
-        public JsonManager() 
-        {
-            AppSettingsPath = Path.Combine(Directory.GetCurrentDirectory(),"..","..",
-            Environment.GetEnvironmentVariable("AppSettingsPath"));
-
-            TranslationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static private string TranslationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
             Environment.GetEnvironmentVariable("TranslationPath"));
 
-            SerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
-            Environment.GetEnvironmentVariable("SerializationPath"));
-        }
+        static private string AppSettingsPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("AppSettingsPath"));
 
-        public string GetMessage(string msg, ELanguage language)
+        static private string SerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("SerializationPath"));
+
+        static public string LogPathDaily = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("LogPathDaily"));
+
+        static public string LogPathRealTime = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("LogPathRealTime"));
+
+        static public string GetMessage(string msg, ELanguage language)
          {
             try
             {
@@ -48,8 +46,7 @@ namespace EasySaveConsole.Utilities
                 return default;
             }
          }
-
-        public string GetSettings(string settings)
+        static public string GetSettings(string settings)
         {
             try
             {
@@ -66,7 +63,7 @@ namespace EasySaveConsole.Utilities
                 return "";
             }
         }
-        public EMessage SetDefaultLanguage(string languageValue, string languageKey)
+        static public EMessage SetDefaultLanguage(string languageValue, string languageKey)
         { 
             try
             {
@@ -84,7 +81,7 @@ namespace EasySaveConsole.Utilities
         }
 
         // Saves all save tasks config to a json file for persistence
-        public void SerializeSaveTasks(List<SaveTask> SaveTasks)
+        static public void SerializeSaveTasks(List<SaveTask> SaveTasks)
         {
             try
             {
@@ -98,7 +95,7 @@ namespace EasySaveConsole.Utilities
         }
 
         //Loads all save tasks config from a json file for persistence
-        public List<SaveTask> DeserializeSaveTasks()
+        static public List<SaveTask> DeserializeSaveTasks()
         {
             string jsonContent = "";
             List<SaveTask> SaveTasks = new List<SaveTask>();
@@ -110,6 +107,12 @@ namespace EasySaveConsole.Utilities
                     return new List<SaveTask>();
                 }
                 SaveTasks = JsonSerializer.Deserialize<List<SaveTask>>(jsonContent);
+
+                foreach (SaveTask saveTask in SaveTasks)
+                {
+                    saveTask.SetLogDaily(new LogDaily(LogPathDaily, LogPathRealTime));
+                    saveTask.SetLogRealTime(new LogRealTime(LogPathDaily, LogPathRealTime));
+                }
             }
             catch (Exception ex)
             {

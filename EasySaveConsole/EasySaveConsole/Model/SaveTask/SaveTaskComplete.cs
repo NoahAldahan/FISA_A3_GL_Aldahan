@@ -7,13 +7,18 @@ using System.IO;
 using System.Diagnostics;
 using Log;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace EasySaveConsole.Model
 {
     internal class SaveTaskComplete : SaveTask
     {
         // Constructor
-        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName){}
+
+        [JsonConstructor]
+        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, string name) : base(CurrentDirectoryPair, name) { }
+
+        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName) { }
 
         // Start a complete save task
         internal override bool Save()

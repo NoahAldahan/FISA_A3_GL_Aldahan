@@ -81,17 +81,15 @@ namespace EasySaveConsole.Utilities
     {
         internal ELanguage defaultLanguage;
         private static string languageLibelle;
-        private JsonManager jsonManager;
         internal LanguageManager()
         {
             languageLibelle = "language";
-            jsonManager = new JsonManager();
             InitDefaultLanguage();
         }
 
         internal EMessage InitDefaultLanguage()
         {
-            ELanguage defaultLanguage = LanguageExtension.ToLanguage(jsonManager.GetSettings(languageLibelle));
+            ELanguage defaultLanguage = LanguageExtension.ToLanguage(JsonManager.GetSettings(languageLibelle));
 
             if (defaultLanguage == ELanguage.Unknown)
             {
@@ -112,7 +110,7 @@ namespace EasySaveConsole.Utilities
             EMessage msg;
             if (IsValideLanguage(languageValue))
             {
-                msg = jsonManager.SetDefaultLanguage(languageValue, languageLibelle);
+                msg = JsonManager.SetDefaultLanguage(languageValue, languageLibelle);
                 defaultLanguage = LanguageExtension.GetLanguageInstance(languageValue);
             }
             else
