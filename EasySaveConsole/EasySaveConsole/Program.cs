@@ -29,7 +29,7 @@ namespace EasySaveConsole
             //Création des modèles 
             LanguageManager languageManager = new LanguageManager();
             MessageManager messagesManager = new MessageManager(languageManager, jsonManager);
-            SaveTaskManager saveTaskManager = new SaveTaskManager();
+            SaveTaskManager saveTaskManager = new SaveTaskManager(jsonManager);
             // création des controllers
             LanguageController languageController = new LanguageController(messagesManager, languageView, languageManager);
             SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);

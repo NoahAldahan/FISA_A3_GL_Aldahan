@@ -20,7 +20,7 @@ namespace EasySaveConsole.Controller
     }
     internal class SaveTaskController : BaseController
     {
-        SaveTaskManager saveTaskManager;
+        internal SaveTaskManager saveTaskManager;
         internal SaveTaskController(MessageManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager) : base(messagesManager, view) 
         {
             this.saveTaskManager = saveTaskManager;

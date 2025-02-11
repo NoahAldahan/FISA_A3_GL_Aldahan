@@ -17,13 +17,18 @@ namespace EasySaveConsole.Utilities
 
         private string AppSettingsPath;
 
+        private string SerializationPath;
+
         public JsonManager() 
         {
             AppSettingsPath = Path.Combine(Directory.GetCurrentDirectory(),"..","..",
             Environment.GetEnvironmentVariable("AppSettingsPath"));
 
-            TranslationPath = Path.Combine(Directory.GetCurrentDirectory(),"..","..",
+            TranslationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
             Environment.GetEnvironmentVariable("TranslationPath"));
+
+            SerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("SerializationPath"));
         }
 
         public string GetMessage(string msg, ELanguage language)
@@ -76,6 +81,42 @@ namespace EasySaveConsole.Utilities
             {
                 return EMessage.DefaultLanguageChangedErrorMessage;
             }
-        } 
+        }
+
+        // Saves all save tasks config to a json file for persistence
+        public void SerializeSaveTasks(List<SaveTask> SaveTasks)
+        {
+            try
+            {
+                string jsonContent = JsonSerializer.Serialize(SaveTasks);
+                File.WriteAllText(SerializationPath, jsonContent);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error serializing Save tasks to JSON file: {ex.Message}");
+            }
+        }
+
+        //Loads all save tasks config from a json file for persistence
+        public List<SaveTask> DeserializeSaveTasks()
+        {
+            string jsonContent = "";
+            List<SaveTask> SaveTasks = new List<SaveTask>();
+            try
+            {
+                jsonContent = File.ReadAllText(SerializationPath);
+                if (jsonContent == "")
+                {
+                    return new List<SaveTask>();
+                }
+                SaveTasks = JsonSerializer.Deserialize<List<SaveTask>>(jsonContent);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading JSON file: {ex.Message}");
+                return new List<SaveTask>();
+            }
+            return SaveTasks;
+        }
     }
 }
