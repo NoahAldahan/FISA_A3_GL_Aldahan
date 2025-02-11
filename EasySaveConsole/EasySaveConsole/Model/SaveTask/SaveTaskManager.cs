@@ -113,18 +113,6 @@ namespace EasySaveConsole.Model
                 return;
             }
             SaveTasks = JsonSerializer.Deserialize<List<SaveTask>>(json);
-
-            //TEMP : writing to console for debugging purposes
-            //List<string> info = new List<string>();
-            //foreach (SaveTask saveTask in SaveTasks)
-            //{
-            //    info.Clear();
-            //    info = new List<string>(saveTask.GetInfo());
-            //    foreach (string line in info)
-            //    {
-            //        Console.WriteLine(line);
-            //    }
-            //}
         }
     }
 }

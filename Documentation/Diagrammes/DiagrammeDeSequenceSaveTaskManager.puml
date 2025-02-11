@@ -1,0 +1,75 @@
+@startuml
+actor User
+participant "SaveTaskManager" as STM
+participant "SaveTaskFactory" as STF
+participant "SaveTaskComplete" as STC
+participant "FileSystem" as FS
+participant "JSONSerializer" as JS
+participant "JSONManager" as JM
+participant "LogDaily" as LD
+participant "LogRealtime" as LR
+
+activate JM
+activate LD
+activate LR
+User -> STM: Create SaveTaskManager Instance
+activate STM
+STM -> STF: Create SaveTaskFactory Instance
+activate STF
+STM -> JM: ReadFromFile(SerializationFile)
+JM --> STM: Return Serialization string
+STM -> JS: DeserializeSaveTasks(SerializationString)
+activate JS
+JS --> STM: Return Save Tasks
+deactivate JS
+User -> STM: AddSaveTask(SaveTaskType, sourcePath, targetPath)
+STM -> STM: Check MaxSaveTasks
+STM -> STF: CreateSave(SaveTaskType, sourcePath, targetPath)
+STF -> STC: Create SaveTask instance
+activate STC
+STC --> STF: Return SaveTask instance
+STF --> STM: Return SaveTask instance
+STM -> STM: Add SaveTask to SaveTasks
+User -> STM : ExecuteSaveTask(index)
+STM -> STC : Save()
+STC -> FS : GetAttributes(SourcePath)
+activate FS
+FS --> STC : Return file attributes
+deactivate FS
+STC -> FS : GetAttributes(TargetPath)
+activate FS
+FS --> STC : Return file attributes
+deactivate FS
+
+alt Both are directories
+    STC -> STC : CopyFilesRecursivelyForTwoFolders()
+    STC -> FS : CopyFilesRecursivelyForTwoFolders()
+    STC -> LD : AddDailyInfo(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name)
+    STC -> LR : UpdateRealTimeProgress()
+    activate FS
+    deactivate FS
+else Source is file, target is directory
+    STC -> FS : Copy(File, TargetPath)
+    STC -> LD : AddDailyInfo(SourcePath, TargetPath)
+    STC -> LR : UpdateRealTimeProgress()
+    activate FS
+    deactivate FS
+else Target is not directory
+    STC -> STM : Throw Exception("Target isn't a directory")
+deactivate FS
+end
+
+User -> STM : SerializeSaveTasks()
+STM -> JM : SerializeSaveTasks()
+JM --> STM : Return Serialization string
+STM -> FS : WriteToFile(SerializationString, SerializationFile)
+activate FS
+
+deactivate FS
+deactivate STC
+deactivate STM
+deactivate JS
+deactivate JM
+deactivate LD
+deactivate LR
+@enduml

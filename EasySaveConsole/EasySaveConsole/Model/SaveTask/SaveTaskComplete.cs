@@ -60,8 +60,5 @@ namespace EasySaveConsole.Model
                 logRealTime.UpdateRealTimeProgress();
             }
         }
-
-        // !!!! Méthode à modifier pour le incrémentiel (vérification des files à copier effectivement et en faire une liste)
-
     }
 }
