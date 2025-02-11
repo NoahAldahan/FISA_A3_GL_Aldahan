@@ -12,7 +12,8 @@ namespace Log
 
         public RealTimeInfo realTimeInfo;
 
-        public LogRealTime(JsonLogManager jsonLogManager) : base(jsonLogManager) { }
+        public LogRealTime(string LogDailyPath, string LogRealTimePath) : base(LogDailyPath, LogRealTimePath) 
+        { }
         //Create new SaveTask in json file
 
 
@@ -28,7 +29,7 @@ namespace Log
             realTimeInfo.NbFilesLeftToDo = realTimeInfo.TotalFilesToCopy;
             realTimeInfo.State = state.GetValue();
             Console.WriteLine(realTimeInfo.ToString());
-            jsonLogManager.AddSaveToRealTimeFile(realTimeInfo);
+            JsonLogManager.AddSaveToRealTimeFile(realTimeInfo, LogRealTimePath);
         }
 
         public Tuple<int, int> GetTotalFilesInfosToCopy(string path)
@@ -78,7 +79,7 @@ namespace Log
                 realTimeInfo.Progression = Convert.ToInt32(realTimeInfo.Progression);
                 realTimeInfo.State = ERealTimeState.END.GetValue();
             }
-            jsonLogManager.UpdateRealTimeProgression(realTimeInfo);
+            JsonLogManager.UpdateRealTimeProgression(realTimeInfo, LogRealTimePath);
             Console.WriteLine(realTimeInfo.ToString());
         }
     }

@@ -7,24 +7,9 @@ using System.Text.Json;
 
 namespace Log
 {
-    public class JsonLogManager
+    internal static class JsonLogManager
     {
-        private string LogDailyPath;
-        private string LogRealTimePath;
-
-        public JsonLogManager()
-        {
-        }
-        public void SetLogDailyPath(string DailyPath)
-        {
-            LogDailyPath = DailyPath;
-        }
-
-        public void SetLogRealTimePath(string RealTimePath)
-        {
-            LogRealTimePath = RealTimePath;
-        }
-        public void UpdateRealTimeProgression(RealTimeInfo realTimeInfo)
+        internal static void UpdateRealTimeProgression(RealTimeInfo realTimeInfo, string LogRealTimePath)
         {
             List<RealTimeInfo> jsonObjectList = new List<RealTimeInfo>();
             if (File.Exists(LogRealTimePath))
@@ -61,16 +46,16 @@ namespace Log
             }
         }
 
-        public string GetFileDailyName(DateTime Date)
-        {
-            return $"{LogDailyPath}backup_{Date:yyyy-MM-dd}.json";
+        internal static string GetFileDailyName(DateTime Date, string LogDailyPath)
+        { 
+            return $"{LogDailyPath}backup_{Date:yyyy-MM-dd}.json"; 
         }
 
         // Create the daily backup file
-        public void CreateDailyJsonFile(DateTime Date)
+        internal static void CreateDailyJsonFile(DateTime Date, string LogDailyPath)
         {
             // Nom du fichier JSON basé sur la date
-            string fileName = GetFileDailyName(Date);
+            string fileName = GetFileDailyName(Date, LogDailyPath);
             try
             {
                 if (!File.Exists(fileName))
@@ -85,9 +70,9 @@ namespace Log
         }
 
         // Add a backup to the daily file
-        public void AddSaveToDailyFile(DailyInfo DailyInfo)
+        internal static void AddSaveToDailyFile(DailyInfo DailyInfo, string LogDailyPath)
         {
-            string dailyInfoPath = GetFileDailyName(DailyInfo.DateTime);
+            string dailyInfoPath = GetFileDailyName(DailyInfo.DateTime, LogDailyPath);
             var jsonDailyInfo = new
             {
                 DailyInfo.Name,
@@ -100,7 +85,7 @@ namespace Log
             AddJsonLogObject(dailyInfoPath, jsonDailyInfo);
         }
 
-        public void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo)
+        internal static void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo, string LogRealTimePath)
         {
 
             // Nouvelle sauvegarde à ajouter
@@ -119,7 +104,7 @@ namespace Log
             AddJsonLogObject(LogRealTimePath, jsonRealTimeInfo);
         }
 
-        public void AddJsonLogObject(string FilePath, object LogObject)
+        internal static void AddJsonLogObject(string FilePath, object LogObject)
         {
             List<object> jsonObjectList = new List<object>();
             if (File.Exists(FilePath))
@@ -157,18 +142,12 @@ namespace Log
 
         }
 
-        // Retrieve the dates of the backup from the file
-        public DateTime GetAllDateDailyFile(string FilePath, DateTime Date) { return new DateTime(); }
-
-        // Retrieve all backups from a path in the form (PATH - DATE)
-        internal Dictionary<string, DateTime> GetAllSaveRealTimeFile(string FilePath) { throw new NotImplementedException(); }
-
-        public DateTime GetLastSaveDate(string FilePath)
+        internal static DateTime GetLastSaveDate(string LogDailyPath, string FilePath)
         {
-            DirectoryInfo d = new DirectoryInfo(FilePath);
+            DirectoryInfo LogDailyDirectory = new DirectoryInfo(LogDailyPath);
             try
             {
-                foreach (var file in d.GetFiles("*.json").OrderByDescending(f => f.CreationTime))
+                foreach (var file in LogDailyDirectory.GetFiles("*.json").OrderByDescending(f => f.CreationTime))
                 {
                     string jsonContent = File.ReadAllText(file.Name);
                     List<DailyInfo> entities = JsonSerializer.Deserialize<List<DailyInfo>>(jsonContent);
