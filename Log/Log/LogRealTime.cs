@@ -13,7 +13,7 @@ namespace Log
         public RealTimeInfo realTimeInfo;
 
         public LogRealTime(string LogDailyPath, string LogRealTimePath) : base(LogDailyPath, LogRealTimePath) 
-        { }
+        {}
         //Create new SaveTask in json file
 
 

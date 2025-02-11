@@ -11,13 +11,10 @@ namespace Log
     public class LogDaily : Log
     {
         public DailyInfo dailyInfo;
-
-
         public Stopwatch stopWatch { get; set; }
 
         public LogDaily(string LogDailyPath, string LogRealTimePath) : base(LogDailyPath, LogRealTimePath)
         {
-            dailyInfo = new DailyInfo();
             stopWatch = new Stopwatch();
         }
         public void CreateDailyFile()
