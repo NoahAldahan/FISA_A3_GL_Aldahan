@@ -26,9 +26,15 @@ namespace EasySaveConsole.Controller
         override protected void InitDictAction()
         {
             dictActions.Add((int)ECliAction.InitMenu, () => { ShowMessage(EMessage.MenuMessage); });
-            dictActions.Add((int)ECliAction.Stop, () => { ShowMessage(EMessage.StopMessage); });
+            dictActions.Add((int)ECliAction.Stop, () => { ExitCli(); });
             dictActions.Add((int)ECliAction.LanguageMenu, () => { languageController.StartCli(); });
             dictActions.Add((int)ECliAction.SaveMenu, () => { saveTaskController.StartCli(); });
+        }
+
+        private void ExitCli()
+        {
+            ShowMessage(EMessage.StopMessage);
+            saveTaskController.saveTaskManager.SerializeSaveTasks();
         }
     }
 }

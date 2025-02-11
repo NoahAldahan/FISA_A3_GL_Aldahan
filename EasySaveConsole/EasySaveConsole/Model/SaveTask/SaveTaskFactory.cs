@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using EasySaveConsole.Model.Log;
+using Log;
 using EasySaveConsole.Utilities;
+using System.IO;
 
 namespace EasySaveConsole.Model
 {
@@ -13,28 +14,40 @@ namespace EasySaveConsole.Model
     }
     internal class SaveTaskFactory
 	{
+        private LogRealTime logRealTime;
+        private LogDaily logDaily;
+        private string LogPathDaily;
+        private string LogPathRealTime;
+
+        internal SaveTaskFactory()
+        {
+            LogPathDaily = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("LogPathDaily"));
+
+            LogPathRealTime = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("LogPathRealTime"));
+
+            logRealTime = new LogRealTime(LogPathDaily, LogPathRealTime);
+            logDaily = new LogDaily(LogPathDaily, LogPathRealTime);
+        }
 
 
         // Create a new save task of type saveTaskTypes with sourcePath and targetPath
         internal SaveTask CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath, string saveTaskName)
         {
             SaveTask saveTask;
-            JsonLogManager logManager= new JsonLogManager();
-            LogRealTime logRealTime = new LogRealTime(logManager);
-            LogDaily logDaily = new LogDaily(logManager);
 
             switch (saveTaskTypes)
             {
                 case ESaveTaskTypes.Differential:
-                    saveTask = new SaveTaskDifferential(new DirectoryPair(sourcePath, targetPath),new LogDaily(logManager), new LogRealTime(logManager), saveTaskName);
+                    saveTask = new SaveTaskDifferential(new DirectoryPair(sourcePath, targetPath), logDaily, logRealTime, saveTaskName);
                     return saveTask;
                 case ESaveTaskTypes.Complete:
-                    saveTask = new SaveTaskComplete(new DirectoryPair(sourcePath, targetPath), new LogDaily(logManager), new LogRealTime(logManager), saveTaskName);
+                    saveTask = new SaveTaskComplete(new DirectoryPair(sourcePath, targetPath), logDaily, logRealTime, saveTaskName);
                     return saveTask;
                 default:
                     throw new ArgumentException("Invalid save task type");
             }
-            
         }
 
 	}

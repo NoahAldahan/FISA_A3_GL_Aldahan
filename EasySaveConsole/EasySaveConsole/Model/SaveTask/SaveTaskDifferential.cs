@@ -1,4 +1,4 @@
-﻿using EasySaveConsole.Model.Log;
+﻿using Log;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,14 +11,22 @@ namespace EasySaveConsole.Model
     internal class SaveTaskDifferential : SaveTask
     {
         // Constructor
-        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName)
-        {
-        }
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string SaveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, SaveTaskName){}
 
         // Wrapper for the recursive function
-        internal override void Save()
+        internal override bool Save()
         {
-            SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+            // TODO : This way of checking isn't very clean, in future versions :
+            // specify to the user every files that couldn't be saved
+            IsSaveSuccessful = true;
+            try
+            {
+                SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+            }
+            catch (Exception ex) {
+                IsSaveSuccessful = false;
+            }
+            return IsSaveSuccessful;
         }
 
         // Recursive function to save the updated files and directories since the last save
@@ -35,7 +43,7 @@ namespace EasySaveConsole.Model
                 // We use targetFileInfo.FullName instead of TargetPath because we need the full path of the file
                 // (with the name of the file appended) that is going to be created or updated
                 // TEMP : replace targetFileInfo.LastWriteTime with value saved from logs
-                if (!File.Exists(targetFileInfo.FullName) || sourceFileInfo.LastWriteTime > targetFileInfo.LastWriteTime)
+                if (!File.Exists(targetFileInfo.FullName) || sourceFileInfo.LastWriteTime > JsonLogManager.GetLastSaveDate(this.logDaily.LogDailyPath, sourceFileInfo.FullName))
                 {
                     File.Copy(SourcePath, targetFileInfo.FullName, true);
                 }

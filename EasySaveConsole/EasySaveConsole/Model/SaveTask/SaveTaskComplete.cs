@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
-using EasySaveConsole.Model.Log;
+using Log;
 using System.Runtime.CompilerServices;
 
 namespace EasySaveConsole.Model
@@ -16,9 +16,25 @@ namespace EasySaveConsole.Model
         internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName){}
 
         // Start a complete save task
-        internal override void Save()
+        internal override bool Save()
         {
-            logRealTime.CreateRealTimeInfo(CurrentDirectoryPair, ERealTimeState.ACTIVE);
+            // TODO : This way of checking isn't very clean, in future versions :
+            // specify to the user every files that couldn't be saved
+            IsSaveSuccessful = true;
+            try
+            {
+                SaveComplete();
+            }
+            catch (Exception ex)
+            {
+                IsSaveSuccessful = false;
+            }
+            return IsSaveSuccessful;
+        }
+
+        private void SaveComplete()
+        {
+            logRealTime.CreateRealTimeInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE);
             logDaily.CreateDailyFile();
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -37,7 +53,7 @@ namespace EasySaveConsole.Model
                 File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                logDaily.AddDailyInfo(CurrentDirectoryPair);
+                logDaily.AddDailyInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
                 logRealTime.UpdateRealTimeProgress();
             }
             // if the target isn't a directory
@@ -56,12 +72,9 @@ namespace EasySaveConsole.Model
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                logDaily.AddDailyInfo(new DirectoryPair(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name));
+                logDaily.AddDailyInfo(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
                 logRealTime.UpdateRealTimeProgress();
             }
         }
-
-        // !!!! Méthode à modifier pour le incrémentiel (vérification des files à copier effectivement et en faire une liste)
-
     }
 }

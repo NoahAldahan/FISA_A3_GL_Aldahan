@@ -19,8 +19,6 @@ namespace EasySaveConsole.Controller
             this.messagesManager = messagesManager;
             this.view = view;
             dictActions = new Dictionary<int, Action>();
-            initCondition = -1;
-            stopCondition = -2;
         }
 
         protected abstract void InitDictAction();

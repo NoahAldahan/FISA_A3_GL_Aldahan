@@ -7,8 +7,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json.Serialization;
+using Log;
 using System.Threading.Tasks;
-using EasySaveConsole.Model.Log;
 
 namespace EasySaveConsole.Model
 {
@@ -19,11 +19,13 @@ namespace EasySaveConsole.Model
         // The directory name storing the target and source directories
         [JsonInclude]
         internal DirectoryPair CurrentDirectoryPair { get; set; }
-        internal List<Log.Log> LogObserver { get; set; }
 
+        protected bool IsSaveSuccessful;
+        internal List<Log.Log> LogObserver { get; set; }
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
         internal string name;
+
 
 
 
@@ -39,14 +41,14 @@ namespace EasySaveConsole.Model
             this.name = saveTaskName;
         }
 
-        // Start the task
-        internal abstract void Save();
-
-
         // Get the directory pair
         internal DirectoryPair GetDirectoryPair()
         {
             return CurrentDirectoryPair;
         }
+
+        // Start the task
+        // Returns true if the task was successful (all files were saved), false otherwise
+        internal abstract bool Save();
     }
 }

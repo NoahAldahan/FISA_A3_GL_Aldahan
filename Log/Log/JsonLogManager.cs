@@ -1,31 +1,15 @@
-﻿using EasySaveConsole.Model.Log;
-using Sprache;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace EasySaveConsole.Utilities
+namespace Log
 {
     internal class JsonLogManager
     {
-        private string LogDailyPath;
-        private string LogRealTimePath;
-
-        internal JsonLogManager()
-        {
-            LogDailyPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
-            Environment.GetEnvironmentVariable("LogPathDaily"));
-
-            LogRealTimePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
-            Environment.GetEnvironmentVariable("LogPathRealTime"));
-        }
-
-        internal void UpdateRealTimeProgression(RealTimeInfo realTimeInfo)
+        internal static void UpdateRealTimeProgression(RealTimeInfo realTimeInfo, string LogRealTimePath)
         {
             List<RealTimeInfo> jsonObjectList = new List<RealTimeInfo>();
             if (File.Exists(LogRealTimePath))
@@ -62,16 +46,16 @@ namespace EasySaveConsole.Utilities
             }
         }
 
-        internal string GetFileDailyName(DateTime Date)
-        {
-            return $"{LogDailyPath}backup_{Date:yyyy-MM-dd}.json";
+        internal static string GetFileDailyName(DateTime Date, string LogDailyPath)
+        { 
+            return $"{LogDailyPath}backup_{Date:yyyy-MM-dd}.json"; 
         }
 
         // Create the daily backup file
-        internal void CreateDailyJsonFile(DateTime Date)
+        internal static void CreateDailyJsonFile(DateTime Date, string LogDailyPath)
         {
             // Nom du fichier JSON basé sur la date
-            string fileName = GetFileDailyName(Date);
+            string fileName = GetFileDailyName(Date, LogDailyPath);
             try
             {
                 if (!File.Exists(fileName))
@@ -86,9 +70,9 @@ namespace EasySaveConsole.Utilities
         }
 
         // Add a backup to the daily file
-        internal void AddSaveToDailyFile(DailyInfo DailyInfo)
+        internal static void AddSaveToDailyFile(DailyInfo DailyInfo, string LogDailyPath)
         {
-            string dailyInfoPath = GetFileDailyName(DailyInfo.DateTime);
+            string dailyInfoPath = GetFileDailyName(DailyInfo.DateTime, LogDailyPath);
             var jsonDailyInfo = new
             {
                 DailyInfo.Name,
@@ -101,7 +85,7 @@ namespace EasySaveConsole.Utilities
             AddJsonLogObject(dailyInfoPath, jsonDailyInfo);
         }
 
-        internal void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo)
+        internal static void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo, string LogRealTimePath)
         {
 
             // Nouvelle sauvegarde à ajouter
@@ -120,7 +104,7 @@ namespace EasySaveConsole.Utilities
             AddJsonLogObject(LogRealTimePath, jsonRealTimeInfo);
         }
 
-        internal void AddJsonLogObject(string FilePath, object LogObject)
+        internal static void AddJsonLogObject(string FilePath, object LogObject)
         {
             List<object> jsonObjectList = new List<object>();
             if (File.Exists(FilePath))
@@ -158,10 +142,34 @@ namespace EasySaveConsole.Utilities
 
         }
 
-    // Retrieve the dates of the backup from the file
-    internal DateTime GetAllDateDailyFile(string FilePath, DateTime Date) { return new DateTime(); }
-
-        // Retrieve all backups from a path in the form (PATH - DATE)
-        internal Dictionary<string, DateTime> GetAllSaveRealTimeFile(string FilePath) { throw new NotImplementedException(); }
+        internal static DateTime GetLastSaveDate(string LogDailyPath, string FilePath)
+        {
+            DirectoryInfo LogDailyDirectory = new DirectoryInfo(LogDailyPath);
+            try
+            {
+                foreach (var file in LogDailyDirectory.GetFiles("*.json").OrderByDescending(f => f.CreationTime))
+                {
+                    string jsonContent = File.ReadAllText(file.FullName);
+                    List<DailyInfo> entities = JsonSerializer.Deserialize<List<DailyInfo>>(jsonContent);
+                    DailyInfo foundEntity = entities.Find(e => e.FileSource == FilePath);
+                    if (foundEntity.DateTime != null)
+                    {
+                        return foundEntity.DateTime;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                return DateTime.MinValue;
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
+                return DateTime.MinValue;
+            }
+        }
     }
+
 }

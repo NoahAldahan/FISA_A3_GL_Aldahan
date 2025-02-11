@@ -9,13 +9,15 @@ using System.IO;
 using EasySaveConsole.Utilities;
 using EasySaveConsole.Controller;
 using EasySaveConsole.View;
-using EasySaveConsole.Model.Log;
+using Log;
+using System.Text.Json;
 
 
 namespace EasySaveConsole
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
             // Charger les variables d'environnement depuis le fichier .env
@@ -29,7 +31,7 @@ namespace EasySaveConsole
             //Création des modèles 
             LanguageManager languageManager = new LanguageManager();
             MessageManager messagesManager = new MessageManager(languageManager, jsonManager);
-            SaveTaskManager saveTaskManager = new SaveTaskManager();
+            SaveTaskManager saveTaskManager = new SaveTaskManager(jsonManager);
             // création des controllers
             LanguageController languageController = new LanguageController(messagesManager, languageView, languageManager);
             SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);
