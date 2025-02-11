@@ -122,6 +122,7 @@ namespace EasySaveConsole.Controller
             foreach(SaveTask saveTask in saveTasks)
             {
                 ShowMessage($" {id} : {saveTask.name}");
+                id++;
             }
         }
         internal void WrapperShowAllSaveTask()
