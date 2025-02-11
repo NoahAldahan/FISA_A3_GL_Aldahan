@@ -23,10 +23,8 @@ namespace EasySaveConsole.Model
 
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
-
-
-
-
+ 
+         
         // Constructor
         [JsonConstructor]
         internal SaveTask(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime)

@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace Log
 {
-    internal static class JsonLogManager
+    internal class JsonLogManager
     {
         internal static void UpdateRealTimeProgression(RealTimeInfo realTimeInfo, string LogRealTimePath)
         {
@@ -149,7 +149,7 @@ namespace Log
             {
                 foreach (var file in LogDailyDirectory.GetFiles("*.json").OrderByDescending(f => f.CreationTime))
                 {
-                    string jsonContent = File.ReadAllText(file.Name);
+                    string jsonContent = File.ReadAllText(file.FullName);
                     List<DailyInfo> entities = JsonSerializer.Deserialize<List<DailyInfo>>(jsonContent);
                     DailyInfo foundEntity = entities.Find(e => e.FileSource == FilePath);
                     if (foundEntity.DateTime != null)

@@ -10,12 +10,14 @@ using EasySaveConsole.Utilities;
 using EasySaveConsole.Controller;
 using EasySaveConsole.View;
 using Log;
+using System.Text.Json;
 
 
 namespace EasySaveConsole
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
             // Charger les variables d'environnement depuis le fichier .env
@@ -40,9 +42,11 @@ namespace EasySaveConsole
             //C:\\Users\\Travail\\Desktop\\Target
             DirectoryPair directoryPair = new DirectoryPair("C:\\Users\\matte\\OneDrive\\Bureau\\src", "C:\\Users\\matte\\OneDrive\\Bureau\\target");
             JsonLogManager jsonLogManager = new JsonLogManager();
-            SaveTask saveTask = new SaveTaskComplete(directoryPair, new LogDaily(jsonLogManager), new LogRealTime(jsonLogManager));
+    
+
+            // SaveTask saveTask = new SaveTaskComplete(directoryPair, new LogDaily(jsonLogManager), new LogRealTime(jsonLogManager));
             //Console.WriteLine(saveTask.GetTotalFilesToCopy("C:\\Users\\matte\\OneDrive\\Bureau\\target"));
-            saveTask.Save();
+            // saveTask.Save();
             //JsonLogManager jsonLogManager = new JsonLogManager();
             //jsonLogManager.CreateDailyJsonFile(DateTime.Now);
         }
