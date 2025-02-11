@@ -17,6 +17,8 @@ namespace EasySaveConsole.Model
         [JsonInclude]
         internal DirectoryPair CurrentDirectoryPair { get; set; }
 
+        protected bool IsSaveSuccessful;
+
         // Constructor
         [JsonConstructor]
         internal SaveTask(DirectoryPair CurrentDirectoryPair) 
@@ -31,7 +33,8 @@ namespace EasySaveConsole.Model
         }
 
         // Start the task
-        internal abstract void Save();
+        // Returns true if the task was successful (all files were saved), false otherwise
+        internal abstract bool Save();
 
         // Get the task information
         internal abstract List<string> GetInfo();
