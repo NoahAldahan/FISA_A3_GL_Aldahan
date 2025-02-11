@@ -14,9 +14,19 @@ namespace EasySaveConsole.Model
         internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime) : base(CurrentDirectoryPair, logDaily, logRealTime){}
 
         // Wrapper for the recursive function
-        internal override void Save()
+        internal override bool Save()
         {
-            SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+            // TODO : This way of checking isn't very clean, in future versions :
+            // specify to the user every files that couldn't be saved
+            IsSaveSuccessful = true;
+            try
+            {
+                SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+            }
+            catch (Exception ex) {
+                IsSaveSuccessful = false;
+            }
+            return IsSaveSuccessful;
         }
 
         // Recursive function to save the updated files and directories since the last save

@@ -16,7 +16,23 @@ namespace EasySaveConsole.Model
         internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime) : base(CurrentDirectoryPair, logDaily, logRealTime){}
 
         // Start a complete save task
-        internal override void Save()
+        internal override bool Save()
+        {
+            // TODO : This way of checking isn't very clean, in future versions :
+            // specify to the user every files that couldn't be saved
+            IsSaveSuccessful = true;
+            try
+            {
+                SaveComplete();
+            }
+            catch (Exception ex)
+            {
+                IsSaveSuccessful = false;
+            }
+            return IsSaveSuccessful;
+        }
+
+        private void SaveComplete()
         {
             logRealTime.CreateRealTimeInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE);
             logDaily.CreateDailyFile();

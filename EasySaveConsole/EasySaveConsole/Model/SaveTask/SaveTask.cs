@@ -19,6 +19,8 @@ namespace EasySaveConsole.Model
         // The directory name storing the target and source directories
         [JsonInclude]
         internal DirectoryPair CurrentDirectoryPair { get; set; }
+
+        protected bool IsSaveSuccessful;
         internal List<Log.Log> LogObserver { get; set; }
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
@@ -36,14 +38,17 @@ namespace EasySaveConsole.Model
             this.logRealTime = logRealTime;
         }
 
-        // Start the task
-        internal abstract void Save();
-
-
         // Get the directory pair
         internal DirectoryPair GetDirectoryPair()
         {
             return CurrentDirectoryPair;
         }
+
+        // Start the task
+        // Returns true if the task was successful (all files were saved), false otherwise
+        internal abstract bool Save();
+
+        // Get the task information
+        internal abstract List<string> GetInfo();
     }
 }
