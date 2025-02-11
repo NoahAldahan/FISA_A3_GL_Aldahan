@@ -10,12 +10,14 @@ using EasySaveConsole.Utilities;
 using EasySaveConsole.Controller;
 using EasySaveConsole.View;
 using Log;
+using System.Text.Json;
 
 
 namespace EasySaveConsole
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
             // Charger les variables d'environnement depuis le fichier .env

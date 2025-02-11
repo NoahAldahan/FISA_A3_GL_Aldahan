@@ -8,8 +8,8 @@ namespace Log
 {
     public abstract class Log
     {
-        protected string LogRealTimePath;
-        protected string LogDailyPath;
+        public string LogRealTimePath;
+        public string LogDailyPath;
 
         public Log(string LogDailyPath, string LogRealTimePath)
         {

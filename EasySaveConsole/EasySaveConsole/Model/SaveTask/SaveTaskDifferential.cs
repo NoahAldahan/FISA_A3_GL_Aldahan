@@ -43,7 +43,7 @@ namespace EasySaveConsole.Model
                 // We use targetFileInfo.FullName instead of TargetPath because we need the full path of the file
                 // (with the name of the file appended) that is going to be created or updated
                 // TEMP : replace targetFileInfo.LastWriteTime with value saved from logs
-                if (!File.Exists(targetFileInfo.FullName) || sourceFileInfo.LastWriteTime > targetFileInfo.LastWriteTime)
+                if (!File.Exists(targetFileInfo.FullName) || sourceFileInfo.LastWriteTime > JsonLogManager.GetLastSaveDate(this.logDaily.LogDailyPath, sourceFileInfo.FullName))
                 {
                     File.Copy(SourcePath, targetFileInfo.FullName, true);
                 }
