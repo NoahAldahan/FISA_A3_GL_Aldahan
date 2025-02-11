@@ -25,9 +25,6 @@ namespace EasySaveConsole.Model
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
 
-
-
-
         // Constructor
         [JsonConstructor]
         internal SaveTask(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime)
@@ -47,8 +44,5 @@ namespace EasySaveConsole.Model
         // Start the task
         // Returns true if the task was successful (all files were saved), false otherwise
         internal abstract bool Save();
-
-        // Get the task information
-        internal abstract List<string> GetInfo();
     }
 }
