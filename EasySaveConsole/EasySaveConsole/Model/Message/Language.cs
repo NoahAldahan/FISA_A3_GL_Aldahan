@@ -16,8 +16,6 @@ namespace EasySaveConsole.Utilities
         ES, // Español
         DE, // Deutsch
         IT, // Italiano
-        PT, // Português
-        NL, // Nederlands
         Unknown // Langue inconnue
     }
 
@@ -30,8 +28,6 @@ namespace EasySaveConsole.Utilities
                 { ELanguage.ES, "ES" },
                 { ELanguage.DE, "DE" },
                 { ELanguage.IT, "IT" },
-                { ELanguage.PT, "PT" },
-                { ELanguage.NL, "NL" },
                 { ELanguage.Unknown, "Unknown" }
             };
         internal static string GetValue(this ELanguage language)
