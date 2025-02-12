@@ -1,5 +1,6 @@
 {
   "FR": {
+    "ErrorStartScreenLoading": "Erreur : Le menu de démarrage ne peut pas s'afficher",
 
     "MenuMessage": "Options : \n\n 1. Afficher le menu langage \n 2. Afficher le menu de sauvegarde \n 3. Quitter l'application \n",
     "StopMessage": "Arrêt du programme en cours...",
@@ -25,11 +26,13 @@
     "CreateSaveTaskMessage": "\nCréation d'une nouvelle tâche de sauvegarde. ",
     "MenuSaveTaskMessage": "Options : \n\n 1. Afficher toutes les tâches de sauvegarde \n 2. Démarrer une ou plusieurs tâches de sauvegarde \n 3. Créer une tâche de sauvegarde \n 4. Modifier une tâche de sauvegarde existante \n 5. Supprimer une tâche de sauvegarde \n 6. Aide (Afficher les options 0-6) \n 7. Quitter le menu des tâches de sauvegarde \n",
     "StartSaveTaskMessage": "\nDémarrage de la tâche de sauvegarde...",
-    "SaveTaskAddSuccessMessage":  "\nLa tâche de sauvegarde a été ajoutée avec succès",
+    "SaveTaskAddSuccessMessage": "\nLa tâche de sauvegarde a été ajoutée avec succès",
     "ErrorSaveTaskPathMessage": "\nErreur : Veuillez recommencer, le chemin de fichier saisie est incorrect",
     "ErrorSaveTaskTypeMessage": "\nErreur : Veuillez recommencer, le type de sauvegarde saisie est incorrect"
   },
   "EN": {
+    "ErrorStartScreenLoading": "Error : The start screen can't be displayed.'",
+
     "MenuMessage": "Options : \n 1. Display the language menu \n 2. Display the save menu \n 3. Quit the application",
     "StopMessage": "Shutting down the program...",
     "StartSaveTaskMessage": "Starting the save task...",
