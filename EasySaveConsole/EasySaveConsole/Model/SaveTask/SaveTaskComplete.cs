@@ -39,7 +39,7 @@ namespace EasySaveConsole.Model
 
         private void SaveComplete()
         {
-            logRealTime.CreateRealTimeInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE);
+            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
             logDaily.CreateDailyFile();
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -58,7 +58,7 @@ namespace EasySaveConsole.Model
                 File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                logDaily.AddDailyInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+                logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
                 logRealTime.UpdateRealTimeProgress();
             }
             // if the target isn't a directory
@@ -70,14 +70,15 @@ namespace EasySaveConsole.Model
         private void CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo)
         {
             foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
-                CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name));
+            CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name));
             foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
             {
                 logDaily.stopWatch.Restart();
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                logDaily.AddDailyInfo(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
+                Console.WriteLine(file.FullName);
+                logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
                 logRealTime.UpdateRealTimeProgress();
             }
         }
