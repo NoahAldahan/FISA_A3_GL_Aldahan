@@ -35,6 +35,17 @@ namespace EasySaveConsole.Model
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
         }
 
+        internal bool IsSaveTaskNameExist(string name)
+        {
+            foreach (var task in SaveTasks)
+            {
+                if (task.name.Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         internal string GetSaveTaskName(int index)
         {
             return SaveTasks[index].name;

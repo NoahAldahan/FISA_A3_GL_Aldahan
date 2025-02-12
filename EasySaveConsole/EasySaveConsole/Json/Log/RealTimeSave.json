@@ -8,7 +8,7 @@
     "TotalFilesSize": 55303,
     "NbFilesLeftToDo": 0,
     "Progression": 100,
-    "SaveDate": "2025-02-12T16:37:54.8834952+01:00"
+    "SaveDate": "2025-02-12T16:37:54.8834952\u002B01:00"
   },
   {
     "Name": "testcomplete",
@@ -19,7 +19,7 @@
     "TotalFilesSize": 55303,
     "NbFilesLeftToDo": 6,
     "Progression": 0,
-    "SaveDate": "2025-02-12T16:37:54.8834952+01:00"
+    "SaveDate": "2025-02-12T16:37:54.8834952\u002B01:00"
   },
   {
     "Name": "romain",
@@ -30,6 +30,39 @@
     "TotalFilesSize": 39238,
     "NbFilesLeftToDo": 0,
     "Progression": 100,
-    "SaveDate": "2025-02-12T16:39:48.2169239+01:00"
+    "SaveDate": "2025-02-12T16:39:48.2169239\u002B01:00"
+  },
+  {
+    "Name": "test",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\CESI\\A3\\GenieLogiciel\\ProjetGenieLogiciel",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\CESI\\A3\\GenieLogiciel\\ProjetGenieLogiciel",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 4161,
+    "TotalFilesSize": 330292761,
+    "NbFilesLeftToDo": 4161,
+    "Progression": 0,
+    "SaveDate": "2025-02-12T17:55:21.118877\u002B01:00"
+  },
+  {
+    "Name": "test",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\CESI\\A3\\GenieLogiciel\\ProjetGenieLogiciel",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\CESI\\A3\\GenieLogiciel\\ProjetGenieLogiciel",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 4161,
+    "TotalFilesSize": 330294141,
+    "NbFilesLeftToDo": 4161,
+    "Progression": 0,
+    "SaveDate": "2025-02-12T17:55:28.7573492\u002B01:00"
+  },
+  {
+    "Name": "test",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\CESI\\A3\\GenieLogiciel\\ProjetGenieLogiciel",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\CESI\\A3\\GenieLogiciel\\ProjetGenieLogiciel",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 4161,
+    "TotalFilesSize": 330294834,
+    "NbFilesLeftToDo": 4161,
+    "Progression": 0,
+    "SaveDate": "2025-02-12T17:55:33.2014634+01:00"
   }
 ]

@@ -151,6 +151,11 @@ namespace EasySaveConsole.Controller
         {
             ShowAllSaveTask();
             string saveTaskName = ShowQuestion(messagesManager.GetMessageTranslate(EMessage.AskSaveTaskNameMessage));
+            if (saveTaskManager.IsSaveTaskNameExist(saveTaskName))
+            {
+                ShowMessagePause(EMessage.ErrorSaveTaskNameDuplicateMessage);
+                return;
+            }
             string saveTaskSource = ShowQuestion(EMessage.AskSaveTaskSourceFolderMessage);
             if (!Utilities.Utilities.IsValidPath(saveTaskSource))
             {
