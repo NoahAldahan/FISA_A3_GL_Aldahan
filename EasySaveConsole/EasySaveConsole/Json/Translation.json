@@ -5,7 +5,7 @@
     "StopMessage": "Arrêt du programme en cours...",
     "ErrorUserEntryStrMessage": "Erreur : Valeur d'entrée invalide",
     "ErrorUserEntryOptionMessage": "Erreur : Apprend à compter !!!",
-    "PressKeyToContinue": "Appuyez sur une touche pour continuer...",
+    "PressKeyToContinue": "Appuyez sur entrée pour continuer...",
 
     "LanguageChangeSuccessMessage": "\nLe langage par défaut a été changé avec succès.",
     "LanguageChangeErrorMessage": "\nErreur : le langage par défaut n'a pas pu être changé.",
@@ -21,7 +21,7 @@
     "AskSaveTaskTargetFolderMessage": "\nEntrer le chemin de fichier de destination pour la sauvegarde : ",
     "AskSaveTaskSourceFolderMessage": "\nEntrer le chemin de fichier source pour la sauvegarde : ",
     "ShowSaveTaskRegisterMessage": "\nListe des taches de sauvegarde enregistrées : ",
-    "AskSaveTaskType": "\n1. Sauvegarde complète \n2. Sauvegarde différentielle \n\n",
+    "AskSaveTaskType": "\n1. Sauvegarde différentielle \n2. Sauvegarde complète \n\n",
     "CreateSaveTaskMessage": "\nCréation d'une nouvelle tâche de sauvegarde. ",
     "MenuSaveTaskMessage": "Options : \n\n 1. Afficher toutes les tâches de sauvegarde \n 2. Démarrer une ou plusieurs tâches de sauvegarde \n 3. Créer une tâche de sauvegarde \n 4. Modifier une tâche de sauvegarde existante \n 5. Supprimer une tâche de sauvegarde \n 6. Aide (Afficher les options 0-6) \n 7. Quitter le menu des tâches de sauvegarde \n",
     "StartSaveTaskMessage": "\nDémarrage de la tâche de sauvegarde...",
