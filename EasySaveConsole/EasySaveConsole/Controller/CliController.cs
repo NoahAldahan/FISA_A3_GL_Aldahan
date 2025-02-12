@@ -1,5 +1,6 @@
 ﻿using EasySaveConsole.Model;
 using EasySaveConsole.View;
+using System;
 
 namespace EasySaveConsole.Controller
 {
@@ -29,6 +30,18 @@ namespace EasySaveConsole.Controller
             dictActions.Add((int)ECliAction.Stop, () => { ExitCli(); });
             dictActions.Add((int)ECliAction.LanguageMenu, () => { languageController.StartCli(); });
             dictActions.Add((int)ECliAction.SaveMenu, () => { saveTaskController.StartCli(); });
+        }
+
+        internal void showStart()
+        {
+            try
+            {
+                ((CliView)view).ShowStartScreen();
+            }
+            catch (System.Exception e)
+            {
+                ShowMessage(EMessage.ErrorStartScreenLoading);
+            }
         }
 
         private void ExitCli()

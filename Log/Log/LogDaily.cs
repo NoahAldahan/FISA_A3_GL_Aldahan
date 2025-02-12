@@ -22,12 +22,12 @@ namespace Log
             JsonLogManager.CreateDailyJsonFile(DateTime.Now, LogDailyPath);
         }
 
-        public void AddDailyInfo(string SourcePath, string TargetPath)
+        public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath)
         {
-            dailyInfo.Name = "Name";
+            dailyInfo.Name = saveTaskName;
             dailyInfo.FileTransferTime = (stopWatch.ElapsedMilliseconds);
             dailyInfo.FileSource = SourcePath;
-            dailyInfo.FileTarget = TargetPath;
+            dailyInfo.FileTarget = TargetPath; 
             FileInfo fileInfo = new FileInfo(SourcePath);
             dailyInfo.FileSize = fileInfo.Length;
             dailyInfo.DateTime = DateTime.Now;

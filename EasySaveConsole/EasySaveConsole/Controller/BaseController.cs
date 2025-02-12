@@ -60,7 +60,7 @@ namespace EasySaveConsole.Controller
         internal void StartCli()
         {
             int action = initCondition;
-            while(action != stopCondition)
+            while (action != stopCondition)
             {
                 try
                 {

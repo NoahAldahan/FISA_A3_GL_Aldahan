@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Log
 {
+
     public abstract class Log
     {
         public string LogRealTimePath;
