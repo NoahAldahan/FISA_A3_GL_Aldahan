@@ -10,6 +10,7 @@ namespace EasySaveConsole.Model
         public enum EMessage
         {
             //Based Cli Message
+            ErrorStartScreenLoading,
             MenuMessage,
             StopMessage,
             ErrorUserEntryStrMessage,
@@ -43,6 +44,7 @@ namespace EasySaveConsole.Model
         {
             private static readonly Dictionary<EMessage, string> MessageStrings = new Dictionary<EMessage, string> {
             //Based Cli Message
+            { EMessage.ErrorStartScreenLoading, "ErrorStartScreenLoading" },
             { EMessage.MenuMessage, "MenuMessage" },
             { EMessage.StopMessage, "StopMessage" },
             { EMessage.PressKeyToContinue, "PressKeyToContinue" },
