@@ -9,15 +9,19 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Model
 {
+    // Class representing a differential save task, inheriting from SaveTask.
     internal class SaveTaskDifferential : SaveTask
     {
-        // Constructor
+        // Constructor for initializing the task with only a directory pair and name.
         [JsonConstructor]
-        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, string name) : base(CurrentDirectoryPair, name) { }
-        
-        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string SaveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, SaveTaskName) { }
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, string name)
+            : base(CurrentDirectoryPair, name) { }
 
-        // Wrapper for the recursive function
+        // Constructor for initializing the task with directory pair, logs, and name.
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string SaveTaskName)
+            : base(CurrentDirectoryPair, logDaily, logRealTime, SaveTaskName) { }
+
+        // Starts a differential save task.
         internal override bool Save()
         {
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
@@ -29,18 +33,20 @@ namespace EasySaveConsole.Model
             { 
                 SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
             }
-            catch (Exception ex) {
-                IsSaveSuccessful = false;
+            catch (Exception ex)
+            {
+                IsSaveSuccessful = false; // Marks the backup as unsuccessful if an error occurs.
             }
             return IsSaveSuccessful;
         }
 
-        // Recursive function to save the updated files and directories since the last save
+        // Recursively saves only the updated files and directories since the last save.
         private void SaveDifferentialRecursive(string SourcePath, string TargetPath)
         {
+            // Retrieve the file attributes to determine if the source is a file or directory.
             FileAttributes sourceAttr = File.GetAttributes(SourcePath);
 
-            // If it is a file
+            // Case 1: The source is a file
             if (!sourceAttr.HasFlag(FileAttributes.Directory))
             {
                 FileInfo sourceFileInfo = new FileInfo(SourcePath);
@@ -57,19 +63,20 @@ namespace EasySaveConsole.Model
                     logRealTime.UpdateRealTimeProgress();
                 }
             }
-            // If it is a directory
+            // Case 2: The source is a directory
             else
             {
                 DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(SourcePath);
                 DirectoryInfo targetDirectoryInfo = new DirectoryInfo(TargetPath);
-                // If the directory is empty and the target directory doesn't exist
+
+                // If the source directory is empty and the target directory does not exist, create the target directory.
                 if (sourceDirectoryInfo.GetDirectories().Length == 0 && !targetDirectoryInfo.Exists)
                 {
                     targetDirectoryInfo.Create();
                 }
                 else
                 {
-                    // Save every file and directory in the source directory
+                    // Iterate through all subdirectories and process them recursively.
                     foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
                     {
                         SaveDifferentialRecursive(dir.FullName, Path.Combine(targetDirectoryInfo.FullName, dir.Name));
@@ -92,3 +99,4 @@ namespace EasySaveConsole.Model
         }
     }
 }
+
