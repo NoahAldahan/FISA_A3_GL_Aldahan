@@ -69,12 +69,21 @@ namespace EasySaveConsole.Model
                     {
                         SaveDifferentialRecursive(dir.FullName, Path.Combine(targetDirectoryInfo.FullName, dir.Name));
                     }
-                    foreach(FileInfo file in sourceDirectoryInfo.GetFiles())
+                    foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
                     {
                         SaveDifferentialRecursive(file.FullName, targetDirectoryInfo.FullName);
                     }
                 }
             }
+        }
+
+        internal override string GetStrSaveTaskType()
+        {
+            return "Differential";
+        }
+        internal override ESaveTaskTypes GetSaveTaskType()
+        {
+            return ESaveTaskTypes.Differential;
         }
     }
 }

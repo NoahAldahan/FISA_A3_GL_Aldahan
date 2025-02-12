@@ -1,5 +1,7 @@
-﻿using EasySaveConsole.Utilities;
+﻿using EasySaveConsole.Controller;
+using EasySaveConsole.Utilities;
 using Log;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,6 +35,30 @@ namespace EasySaveConsole.Model
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
         }
 
+        internal string GetSaveTaskName(int index)
+        {
+            return SaveTasks[index].name;
+        }
+
+        internal string GetSaveTaskSourcePath(int index)
+        {
+            return SaveTasks[index].CurrentDirectoryPair.SourcePath;
+        }
+
+        internal string GetSaveTaskTargetPath(int index)
+        {
+            return SaveTasks[index].CurrentDirectoryPair.TargetPath;
+        }
+
+        internal string GetSaveTaskStrType(int index)
+        {
+            return SaveTasks[index].GetStrSaveTaskType();
+        }
+
+        internal ESaveTaskTypes GetSaveTaskType(int index)
+        {
+            return SaveTasks[index].GetSaveTaskType();
+        }
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
         internal void AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
@@ -44,9 +70,17 @@ namespace EasySaveConsole.Model
         }
 
         // Remove a save task at index
-        internal void RemoveSaveTask(int index)
+        internal EMessage RemoveSaveTask(int index)
         {
-            SaveTasks.RemoveAt(index);
+            try
+            {
+                SaveTasks.RemoveAt(index);
+                return EMessage.SuccessSuppressSaveTaskMessage;
+            }
+            catch (Exception ex) 
+            {
+                return EMessage.ErrorSuppressSaveTaskMessage;
+            }
         }
 
         // Remove a save task of type SaveTaskType with sourcePath and targetPath (stops after the first deletion)
@@ -61,28 +95,20 @@ namespace EasySaveConsole.Model
         }
 
         // Starts the save task at index
-        internal void ExecuteSaveTask(int index)
+        internal EMessage ExecuteSaveTask(int index)
         {
-            SaveTasks[index].Save();
-        }
-        internal EMessage ExecuteSaveTaskList(List<int> indexs)
-        {
-                foreach (int index in indexs)
+            try
+            {
+                if (SaveTasks[index].Save())
                 {
-                    try
-                    {
-                        if (SaveTasks[index].Save())
-                        {
-                            return EMessage.SuccessStartSaveTaskMessage;
-                        }
-                        return EMessage.ErrorStartSaveTaskMessage;
-                    }
-                    catch
-                    {
-                        return EMessage.ErrorStartSaveTaskMessage;
-                    }
+                    return EMessage.SuccessStartSaveTaskMessage;
                 }
-            return EMessage.ErrorEmptyUserInputSaveTaskMessage;
+                return EMessage.ErrorStartSaveTaskMessage;
+            }
+            catch (Exception ex) 
+            {
+                return EMessage.ErrorStartSaveTaskMessage;
+            }
         }
         // Starts all save tasks
         internal void ExecuteAllSaveTasks()
@@ -121,6 +147,25 @@ namespace EasySaveConsole.Model
         internal void ModifySaveTaskTargetPath(int index, string newTargetPath)
         {
             SaveTasks[index].CurrentDirectoryPair.TargetPath = newTargetPath;
+        }
+
+        internal void ModifySaveTask(int index, ESaveTaskTypes saveTaskType, string saveTaskSourcePath, string  saveTaskTargetPath, string saveTaskName)
+        {
+            if (saveTaskType != SaveTasks[index].GetSaveTaskType())
+            {
+                // Supprimer l'ancienne tâche
+                SaveTasks.RemoveAt(index);
+                // Créer une nouvelle tâche avec les nouveaux paramètres
+                SaveTask newSaveTask = SaveTaskFactory.CreateSave(saveTaskType, saveTaskSourcePath, saveTaskTargetPath, saveTaskName);
+                // Ajouter la nouvelle tâche à la liste
+                SaveTasks.Insert(index, newSaveTask);
+            }
+            else
+            {
+                SaveTasks[index].CurrentDirectoryPair.SourcePath = saveTaskSourcePath;
+                SaveTasks[index].CurrentDirectoryPair.TargetPath = saveTaskTargetPath;
+                SaveTasks[index].name = saveTaskName;
+            }
         }
 
 

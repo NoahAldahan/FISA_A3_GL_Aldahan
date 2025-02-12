@@ -33,6 +33,11 @@ namespace EasySaveConsole.Controller
             view.ShowMessage(msg);
         }
 
+        protected string ShowQuestion(string msg)
+        {
+            return view.ShowQuestion(msg);
+        }
+
 
         protected string ShowQuestion(EMessage msg)
         {
@@ -41,6 +46,12 @@ namespace EasySaveConsole.Controller
         }
 
         protected void ShowMessagePause(EMessage msg)
+        {
+            ShowMessage(msg);
+            ShowQuestion(EMessage.PressKeyToContinue);
+        }
+
+        protected void ShowMessagePause(string msg)
         {
             ShowMessage(msg);
             ShowQuestion(EMessage.PressKeyToContinue);

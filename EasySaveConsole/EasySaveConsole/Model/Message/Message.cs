@@ -45,8 +45,18 @@ namespace EasySaveConsole.Model
             ErrorSuppressSaveTaskMessage,
             ErrorStartEndIndexSaveTaskMessage,
             ErrorStartSaveTaskMessage,
-            ErrorEmptyUserInputSaveTaskMessage
-
+            ErrorEmptyUserInputSaveTaskMessage,
+            AskSaveTaskIdMessage,
+            ShowLetEmptyRowForDefault,
+            AskSaveTaskModifyNameMessage,
+            AskSaveTaskModifyTargetFolderMessage,
+            AskSaveTaskModifySourceFolderMessage,
+            AskSaveTaskModifyType,
+            ShowSaveTaskDetailsMessage,
+            ShowSaveTaskNameMessage,
+            ShowSaveTaskSourcePathMessage,
+            ShowSaveTaskTargetPathMessage,
+            ShowSaveTaskTypeMessage
     }
 
         public static class MessageExtensions
@@ -89,6 +99,17 @@ namespace EasySaveConsole.Model
             { EMessage.ErrorStartEndIndexSaveTaskMessage, "ErrorStartEndIndexSaveTaskMessage" },
             { EMessage.ErrorStartSaveTaskMessage, "ErrorStartSaveTaskMessage" },
             { EMessage.ErrorEmptyUserInputSaveTaskMessage, "ErrorEmptyUserInputSaveTaskMessage" },
+            { EMessage.AskSaveTaskIdMessage, "AskSaveTaskIdMessage" },
+            { EMessage.ShowLetEmptyRowForDefault, "ShowLetEmptyRowForDefault" },
+            { EMessage.AskSaveTaskModifyNameMessage, "AskSaveTaskModifyNameMessage" },
+            { EMessage.AskSaveTaskModifyTargetFolderMessage, "AskSaveTaskModifyTargetFolderMessage" },
+            { EMessage.AskSaveTaskModifySourceFolderMessage, "AskSaveTaskModifySourceFolderMessage" },
+            { EMessage.AskSaveTaskModifyType, "AskSaveTaskModifyType" },
+            { EMessage.ShowSaveTaskDetailsMessage, "ShowSaveTaskDetailsMessage" },
+            { EMessage.ShowSaveTaskNameMessage, "ShowSaveTaskNameMessage" },
+            { EMessage.ShowSaveTaskSourcePathMessage, "ShowSaveTaskSourcePathMessage" },
+            { EMessage.ShowSaveTaskTargetPathMessage, "ShowSaveTaskTargetPathMessage" },
+            { EMessage.ShowSaveTaskTypeMessage, "ShowSaveTaskTypeMessage" },
             };
 
             internal static string GetValue(this EMessage message)
@@ -107,7 +128,7 @@ namespace EasySaveConsole.Model
             {
                 this.languageManager = languageManager;
             }
-            public string GetMessageTranslate(EMessage message)
+            public string GetMessageTranslate(EMessage message) 
             {   
                 return JsonManager.GetMessage(message.GetValue(), languageManager.defaultLanguage);
             }

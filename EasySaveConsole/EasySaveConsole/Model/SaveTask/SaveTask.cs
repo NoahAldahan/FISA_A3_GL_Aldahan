@@ -60,6 +60,8 @@ namespace EasySaveConsole.Model
             return CurrentDirectoryPair;
         }
 
+        internal abstract string GetStrSaveTaskType();
+        internal abstract ESaveTaskTypes GetSaveTaskType();
         // Start the task
         // Returns true if the task was successful (all files were saved), false otherwise
         internal abstract bool Save();

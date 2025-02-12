@@ -81,5 +81,14 @@ namespace EasySaveConsole.Model
                 logRealTime.UpdateRealTimeProgress();
             }
         }
+
+        internal override string GetStrSaveTaskType()
+        {
+            return "Complete";
+        }
+        internal override ESaveTaskTypes GetSaveTaskType()
+        {
+            return ESaveTaskTypes.Complete;
+        }
     }
 }
