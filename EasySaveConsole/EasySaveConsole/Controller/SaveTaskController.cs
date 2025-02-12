@@ -60,6 +60,8 @@ namespace EasySaveConsole.Controller
             }
             saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
             ShowMessagePause(EMessage.SaveTaskAddSuccessMessage);
+
+            saveTaskManager.SerializeSaveTasks();
         }
 
         internal void StartSaveTasks()
