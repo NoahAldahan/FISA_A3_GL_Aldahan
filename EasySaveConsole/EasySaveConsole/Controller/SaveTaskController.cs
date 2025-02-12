@@ -80,6 +80,8 @@ namespace EasySaveConsole.Controller
             saveTaskManager.SerializeSaveTasks();
         }
 
+        // TODO, TOFIX : currently, when several save tasks need to be deleted, the logic doesn't hold up
+        // The deletion of the save tasks is not done correctly, the indexes are not updated
         internal void DeleteSaveTask()
         {
             ShowAllSaveTask();

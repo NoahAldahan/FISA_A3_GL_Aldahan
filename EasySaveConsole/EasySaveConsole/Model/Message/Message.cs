@@ -67,7 +67,6 @@ namespace EasySaveConsole.Model
         // Dictionary mapping EMessage enum values to their string representations
         private static readonly Dictionary<EMessage, string> MessageStrings = new Dictionary<EMessage, string>
         {
-            private static readonly Dictionary<EMessage, string> MessageStrings = new Dictionary<EMessage, string> {
             //Based Cli Message
             { EMessage.ErrorMessage, "ErrorMessage" },
             { EMessage.ErrorStartScreenLoading, "ErrorStartScreenLoading" },

@@ -73,12 +73,6 @@ namespace EasySaveConsole.Controller
             ShowQuestion(EMessage.PressKeyToContinue);
         }
 
-        protected void ShowMessagePause(string msg)
-        {
-            ShowMessage(msg);
-            ShowQuestion(EMessage.PressKeyToContinue);
-        }
-
         // Main method to start the command-line interface (CLI)
         internal void StartCli()
         {
