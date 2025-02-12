@@ -179,6 +179,7 @@ namespace EasySaveConsole.Controller
                 ShowMessagePause(EMessage.ErrorSaveTaskPathMessage); // Show an error message if the source path is invalid
                 return;
             }
+            }
             string saveTaskTarget = ShowQuestion(EMessage.AskSaveTaskTargetFolderMessage);
             if (!Utilities.Utilities.IsValidPath(saveTaskTarget))
             {
@@ -186,6 +187,7 @@ namespace EasySaveConsole.Controller
                 return;
             }
             int saveTaskType = int.Parse(ShowQuestion(EMessage.AskSaveTaskType));
+            if (!Enum.IsDefined(typeof(ESaveTaskTypes), saveTaskType))
             if (!Enum.IsDefined(typeof(ESaveTaskTypes), saveTaskType))
             {
                 ShowMessagePause(EMessage.ErrorSaveTaskTypeMessage); // Show an error message if the save task type is invalid
