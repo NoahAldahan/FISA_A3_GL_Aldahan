@@ -12,33 +12,39 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Model
 {
+    // Specifies that the class can be serialized as a derived type in JSON format.
     [JsonDerivedType(typeof(SaveTaskComplete), "SaveTaskComplete")]
     [JsonDerivedType(typeof(SaveTaskDifferential), "SaveTaskDifferential")]
     internal abstract class SaveTask
     {
-        // The directory name storing the target and source directories
+        // Stores the source and target directory pair for the backup task.
         [JsonInclude]
         internal DirectoryPair CurrentDirectoryPair { get; set; }
 
+        // Boolean flag to track whether the save operation was successful.
         protected bool IsSaveSuccessful;
+
+        // Logs for real-time and daily backup operations.
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
 
+        // Name of the backup task.
         [JsonInclude]
         internal string name;
 
+        // Setter for the real-time logging instance.
         internal void SetLogRealTime(LogRealTime logRealTime)
         {
             this.logRealTime = logRealTime;
         }
 
+        // Setter for the daily logging instance.
         internal void SetLogDaily(LogDaily logDaily)
         {
             this.logDaily = logDaily;
         }
 
-
-        // Constructor
+        // Constructor for the SaveTask class with a directory pair and task name.
         [JsonConstructor]
         internal SaveTask(DirectoryPair CurrentDirectoryPair, string name)
         {
@@ -46,6 +52,7 @@ namespace EasySaveConsole.Model
             this.name = name;
         }
 
+        // Overloaded constructor with additional parameters for logging instances.
         internal SaveTask(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName)
         {
             this.CurrentDirectoryPair = CurrentDirectoryPair;
@@ -54,14 +61,15 @@ namespace EasySaveConsole.Model
             this.name = saveTaskName;
         }
 
-        // Get the directory pair
+        // Returns the directory pair associated with the backup task.
         internal DirectoryPair GetDirectoryPair()
         {
             return CurrentDirectoryPair;
         }
 
-        // Start the task
-        // Returns true if the task was successful (all files were saved), false otherwise
+        // Abstract method to be implemented by derived classes to execute the save operation.
+        // Returns true if the backup operation was successful, false otherwise.
         internal abstract bool Save();
     }
 }
+

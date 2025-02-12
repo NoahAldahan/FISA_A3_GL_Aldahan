@@ -11,75 +11,94 @@ using System.Text.Json.Serialization;
 
 namespace EasySaveConsole.Model
 {
+    // Class representing a complete save task, inheriting from SaveTask.
     internal class SaveTaskComplete : SaveTask
     {
-        // Constructor
-
+        // Constructor with a directory pair and task name.
         [JsonConstructor]
-        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, string name) : base(CurrentDirectoryPair, name) { }
+        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, string name)
+            : base(CurrentDirectoryPair, name) { }
 
-        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName) : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName) { }
+        // Constructor with directory pair and log instances.
+        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName)
+            : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName) { }
 
-        // Start a complete save task
+        // Overrides the abstract Save method to perform a complete backup.
         internal override bool Save()
         {
-            // TODO : This way of checking isn't very clean, in future versions :
-            // specify to the user every files that couldn't be saved
+            // TODO: Improve error handling to provide users with a list of files that couldn't be saved.
             IsSaveSuccessful = true;
             try
             {
-                SaveComplete();
+                SaveComplete(); // Perform the complete save process.
             }
             catch (Exception ex)
             {
-                IsSaveSuccessful = false;
+                IsSaveSuccessful = false; // Mark the save as unsuccessful if an error occurs.
             }
             return IsSaveSuccessful;
         }
 
+        // Performs the complete backup by copying files from source to target.
         private void SaveComplete()
         {
+            // Log the start of the save process in real-time and daily logs.
             logRealTime.CreateRealTimeInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE);
             logDaily.CreateDailyFile();
+
+            // Get file attributes to determine if the source and target are directories or files.
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
             FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
-            // if both paths are directories
+
+            // Case 1: Both source and target are directories
             if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
             {
                 DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.SourcePath);
                 DirectoryInfo targetDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.TargetPath);
                 CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo);
             }
-            // if the source path is a single file and the target a directory
+            // Case 2: Source is a file, target is a directory
             else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
             {
-                logDaily.stopWatch.Restart();
+                logDaily.stopWatch.Restart(); // Start timing the copy operation.
                 string FileName = Path.GetFileName(CurrentDirectoryPair.SourcePath);
+
+                // Copy the file from source to target directory.
                 File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
-                logDaily.stopWatch.Stop();
-                //notify save of a new file
+
+                logDaily.stopWatch.Stop(); // Stop timing.
+
+                // Log the saved file in daily and real-time logs.
                 logDaily.AddDailyInfo(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
                 logRealTime.UpdateRealTimeProgress();
             }
-            // if the target isn't a directory
+            // Case 3: The target path is not a directory (invalid case)
             else
                 throw new Exception("The target path isn't a directory.");
         }
 
-        // Copies files recursively from a source directory to a target directory
+        // Recursively copies all files and subdirectories from the source to the target directory.
         private void CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo)
         {
+            // Iterate through all directories in the source and create them in the target.
             foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
                 CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name));
+
+            // Iterate through all files in the source directory and copy them to the target.
             foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
             {
-                logDaily.stopWatch.Restart();
+                logDaily.stopWatch.Restart(); // Start timing the file copy.
+
+                // Copy file to the corresponding target directory.
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
-                logDaily.stopWatch.Stop();
-                //notify save of a new file
+
+                logDaily.stopWatch.Stop(); // Stop timing.
+
+                // Log the saved file in daily and real-time logs.
                 logDaily.AddDailyInfo(file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
                 logRealTime.UpdateRealTimeProgress();
             }
         }
     }
 }
+

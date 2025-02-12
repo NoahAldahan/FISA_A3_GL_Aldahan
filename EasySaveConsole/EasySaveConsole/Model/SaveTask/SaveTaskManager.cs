@@ -10,30 +10,33 @@ using System.Text.Json;
 
 namespace EasySaveConsole.Model
 {
-	internal class SaveTaskManager
-	{
-        // All the current save tasks
+    // Manages the collection of save tasks, their execution, and persistence.
+    internal class SaveTaskManager
+    {
+        // List of all active save tasks.
         internal List<SaveTask> SaveTasks { get; set; }
-        // The save task factory to create new save tasks
+
+        // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
-        // The maximum number of save tasks that can be created at once
+
+        // Maximum number of save tasks that can be created simultaneously.
         private static int MaxSaveTasks = 5;
 
-        // Getter for the save tasks
+        // Returns a copy of the current list of save tasks to avoid unintended modifications.
         internal List<SaveTask> GetSaveTasksClone()
         {
             return new List<SaveTask>(SaveTasks);
         }
 
-        // Constructor
+        // Constructor: Initializes the save task manager and loads previously saved tasks from JSON.
         internal SaveTaskManager()
         {
             SaveTaskFactory = new SaveTaskFactory();
-            // Load the save tasks that are saved from previous session
+            // Load the saved tasks from the previous session.
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
         }
 
-        // Add a new save task of type SaveTaskType with sourcePath and targetPath
+        // Adds a new save task of the specified type, ensuring the maximum limit is not exceeded.
         internal void AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
             if (SaveTasks.Count >= MaxSaveTasks)
@@ -43,29 +46,34 @@ namespace EasySaveConsole.Model
             SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
         }
 
-        // Remove a save task at index
+        // Removes a save task at the specified index.
         internal void RemoveSaveTask(int index)
         {
             SaveTasks.RemoveAt(index);
         }
 
-        // Remove a save task of type SaveTaskType with sourcePath and targetPath (stops after the first deletion)
+        // Removes a save task that matches the given source and target paths (removes the first match).
         internal void RemoveSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
         {
-            if (SaveTasks.Count() == 0)
+            if (SaveTasks.Count == 0)
                 return;
 
-            SaveTask MatchingSaveTask = SaveTasks.FirstOrDefault(saveTask => (saveTask.CurrentDirectoryPair.SourcePath == sourcePath && saveTask.CurrentDirectoryPair.TargetPath == targetPath));
+            // Find the first save task matching the given source and target paths.
+            SaveTask MatchingSaveTask = SaveTasks.FirstOrDefault(saveTask =>
+                saveTask.CurrentDirectoryPair.SourcePath == sourcePath &&
+                saveTask.CurrentDirectoryPair.TargetPath == targetPath);
+
             if (MatchingSaveTask != null)
                 SaveTasks.Remove(MatchingSaveTask);
         }
 
-        // Starts the save task at index
+        // Executes the save task at the specified index.
         internal void ExecuteSaveTask(int index)
         {
             SaveTasks[index].Save();
         }
 
+        // Executes a range of save tasks from `start` to `stop` indices (inclusive).
         internal void ExecuteSaveTaskRange(int start, int stop)
         {
             if (start < 0 || stop >= SaveTasks.Count || start > stop)
@@ -79,6 +87,7 @@ namespace EasySaveConsole.Model
             }
         }
 
+        // Executes a list of specific save tasks based on their indices.
         internal void ExecuteSaveTaskList(List<int> indexs)
         {
             if (indexs == null || indexs.Count == 0)
@@ -97,8 +106,7 @@ namespace EasySaveConsole.Model
             }
         }
 
-
-        // Starts all save tasks
+        // Executes all save tasks in the list.
         internal void ExecuteAllSaveTasks()
         {
             foreach (SaveTask saveTask in SaveTasks)
@@ -107,33 +115,40 @@ namespace EasySaveConsole.Model
             }
         }
 
+        // Returns all save tasks.
         internal List<SaveTask> GetAllSaveTask()
         {
-            return SaveTasks; 
+            return SaveTasks;
         }
 
-        // Modify the save task type
+        // Modifies the type of an existing save task and replaces it with a new one.
         internal void ModifySaveTaskType(int index, ESaveTaskTypes newSaveTaskType, string saveTaskName)
         {
-            SaveTask newSaveTask = SaveTaskFactory.CreateSave(newSaveTaskType, SaveTasks[index].CurrentDirectoryPair.SourcePath, SaveTasks[index].CurrentDirectoryPair.TargetPath, saveTaskName);
+            SaveTask newSaveTask = SaveTaskFactory.CreateSave(
+                newSaveTaskType,
+                SaveTasks[index].CurrentDirectoryPair.SourcePath,
+                SaveTasks[index].CurrentDirectoryPair.TargetPath,
+                saveTaskName
+            );
+
+            // Replace the old save task with the new one.
             SaveTasks.RemoveAt(index);
             SaveTasks.Insert(index, newSaveTask);
         }
 
-        // Modify the save task source path
+        // Modifies the source path of a save task at the specified index.
         internal void ModifySaveTaskSourcePath(int index, string newSourcePath)
         {
             SaveTasks[index].CurrentDirectoryPair.SourcePath = newSourcePath;
         }
 
-        // Modify the save task target path
+        // Modifies the target path of a save task at the specified index.
         internal void ModifySaveTaskTargetPath(int index, string newTargetPath)
         {
             SaveTasks[index].CurrentDirectoryPair.TargetPath = newTargetPath;
         }
 
-
-        // Saves all save tasks config to a json file for persistence
+        // Saves all save tasks to a JSON file to ensure persistence across sessions.
         public void SerializeSaveTasks()
         {
             JsonManager.SerializeSaveTasks(SaveTasks);
