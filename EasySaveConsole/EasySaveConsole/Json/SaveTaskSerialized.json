@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-[{"$type":"SaveTaskDifferential","CurrentDirectoryPair":{"SourcePath":"C:\\Users\\matte\\OneDrive\\Bureau\\src","TargetPath":"C:\\Users\\matte\\OneDrive\\Bureau\\target"},"name":"test"}]
-=======
-[{"$type":"SaveTaskDifferential","CurrentDirectoryPair":{"SourcePath":null,"TargetPath":null},"name":null}]
->>>>>>> 1b0ef7c3bcff12a9ed463fdb16f35bf2726cb62e
+[{"$type":"SaveTaskDifferential","CurrentDirectoryPair":{"SourcePath":"C:\\Users\\matte\\OneDrive\\Bureau\\CESI\\A3\\GenieLogiciel\\ProjetGenieLogiciel","TargetPath":"C:\\Users\\matte\\OneDrive\\Bureau\\CESI\\A3\\GenieLogiciel\\ProjetGenieLogiciel"},"name":"test"}]
