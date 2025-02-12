@@ -66,6 +66,9 @@ namespace EasySaveConsole.Controller
             ShowAllSaveTask();
             string userInput = ShowQuestion(EMessage.AskSaveTaskIdMessage);
             ProcessSaveTaskSelection(userInput, ECliSaveTaskAction.ModifySaveTasks);
+
+            // We serialize the save tasks to save the modifications
+            saveTaskManager.SerializeSaveTasks();
         }
 
         internal void DeleteSaveTask()
@@ -73,6 +76,9 @@ namespace EasySaveConsole.Controller
             ShowAllSaveTask();
             string userInput = ShowQuestion(EMessage.AskSaveTaskIdMessage);
             ProcessSaveTaskSelection(userInput, ECliSaveTaskAction.DeleteSaveTasks);
+
+            // We serialize the save tasks to save the modifications
+            saveTaskManager.SerializeSaveTasks();
         }
 
         internal void SaveTaskDetails()
@@ -144,7 +150,7 @@ namespace EasySaveConsole.Controller
             {
                 return EMessage.ErrorSaveTaskTypeMessage;
             }
-            saveTaskManager.ModifySaveTask(index, (ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
+
             return EMessage.SuccessModifySaveTaskMessage;
         }
         internal void CreateSaveTask()
