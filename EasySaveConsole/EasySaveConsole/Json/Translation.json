@@ -31,6 +31,7 @@
         "ShowLetEmptyRowForDefault": "\nLaisser la ligne vide pour ne pas modifier la tâche de sauvegarde",
         "MenuSaveTaskMessage": "Options : \n\n 1. Afficher toutes les tâches de sauvegarde \n 2. Démarrer une ou plusieurs tâches de sauvegarde \n 3. Créer une tâche de sauvegarde \n 4. Modifier une tâche de sauvegarde existante \n 5. Supprimer une tâche de sauvegarde \n 6. Quitter le menu des tâches de sauvegarde \n",
         "StartSaveTaskMessage": "\nDémarrage de la tâche de sauvegarde...",
+        "SuccessCreateSaveTaskMessage":  "\nLa tâche de sauvegarde a été créer avec succès",
         "SuccessStartSaveTaskMessage": "\nLa tâche de sauvegarde a été réalisée avec succès : ",
         "SuccessModifySaveTaskMessage": "\nLa tâche de sauvegarde a été modifiée avec succès : ",
         "SuccessSuppressSaveTaskMessage": "\nLa tâche de sauvegarde a été supprimée avec succès : ",
@@ -48,9 +49,9 @@
         "ShowSaveTaskSourcePathMessage": "\nChemin de fichier source : ",
         "ShowSaveTaskTargetPathMessage": "\nChemin de fichier destination : ",
         "ShowSaveTaskTypeMessage": "\nType : ",
-        "ErrorSaveTaskNameDuplicateMessage": "\nError : Un nom de tâche de sauvegarde ne peut pas être dupliqué"
+        "ErrorSaveTaskNameDuplicateMessage": "\nErreur : Un nom de tâche de sauvegarde ne peut pas être dupliqué",
+        "ErrorMaxSaveTaskReachMessage": "\nError : Le nombre maximum de 5 sauvegardes est déjà atteint"
     },
-
   "EN": {
     "ErrorMessage": "An error has occurred",
     "MenuMessage": "Options: \n\n 1. Show language menu \n 2. Show save menu \n 3. Quit the application \n",

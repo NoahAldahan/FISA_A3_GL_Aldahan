@@ -192,8 +192,8 @@ namespace EasySaveConsole.Controller
                 ShowMessagePause(EMessage.ErrorSaveTaskTypeMessage); // Show an error message if the save task type is invalid
                 return;
             }
-            saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
-            ShowMessagePause(EMessage.SaveTaskAddSuccessMessage);
+            EMessage msg = saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
+            ShowMessagePause(msg);
 
             saveTaskManager.SerializeSaveTasks();
         }

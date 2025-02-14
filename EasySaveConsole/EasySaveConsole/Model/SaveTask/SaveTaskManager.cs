@@ -74,13 +74,14 @@ namespace EasySaveConsole.Model
             return SaveTasks[index].GetSaveTaskType();
         }
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
-        internal void AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
+        internal EMessage AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
             if (SaveTasks.Count >= MaxSaveTasks)
             {
-                throw new Exception("Maximum number of save tasks reached");
+                return EMessage.ErrorMaxSaveTaskReachMessage;
             }
             SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
+            return EMessage.SuccessCreateSaveTaskMessage;
         }
 
         // Remove a save task at index
