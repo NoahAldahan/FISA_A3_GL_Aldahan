@@ -17,7 +17,6 @@ namespace Log
         {}
         //Create new SaveTask in json file
 
-
         public void CreateRealTimeInfo(string saveTaskName, string SourcePath, string TargetPath, ERealTimeState state, int saveTaskType)
         {
             //notify new Save

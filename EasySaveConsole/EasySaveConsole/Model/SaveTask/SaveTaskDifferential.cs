@@ -24,8 +24,9 @@ namespace EasySaveConsole.Model
         // Starts a differential save task.
         internal override bool Save()
         {
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
             logDaily.CreateDailyFile();
+            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
+
             // TODO : This way of checking isn't very clean, in future versions :
             // specify to the user every files that couldn't be saved
             IsSaveSuccessful = true;

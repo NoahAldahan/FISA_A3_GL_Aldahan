@@ -46,6 +46,16 @@ namespace Log
             }
         }
 
+        // Create a desired repertory if it does not exist
+        internal static void CreateRepertories(string path)
+        {
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+        }
         internal static string GetFileDailyName(DateTime Date, string LogDailyPath)
         { 
             return $"{LogDailyPath}backup_{Date:yyyy-MM-dd}.json"; 
@@ -56,6 +66,24 @@ namespace Log
         {
             // Nom du fichier JSON basé sur la date
             string fileName = GetFileDailyName(Date, LogDailyPath);
+            try
+            {
+                if (!File.Exists(fileName))
+                {
+                    File.Create(fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error creating JSON file: {ex.Message}");
+            }
+        }
+
+        // Create the real time json log file
+        internal static void CreateRealTimeJsonFile(string LogRealTimePath)
+        {
+            // Nom du fichier JSON basé sur la date
+            string fileName = LogRealTimePath;
             try
             {
                 if (!File.Exists(fileName))
