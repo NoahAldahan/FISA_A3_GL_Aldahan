@@ -3,8 +3,9 @@ using System;
 using System.Globalization;
 using System.Threading;
 
-namespace EasySaveConsole.View   
+namespace EasySaveConsole.View
 {
+    // Class representing a command-line interface (CLI) view, inheriting from BaseView
     public class CliView : BaseView
     {
         private string TitleScreenString =
@@ -40,3 +41,4 @@ namespace EasySaveConsole.View
         }
     }
 }
+

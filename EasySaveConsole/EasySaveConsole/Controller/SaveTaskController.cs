@@ -10,35 +10,44 @@ using System.ComponentModel.Design;
 
 namespace EasySaveConsole.Controller
 {
+    // Enum defining the possible CLI save task actions
     enum ECliSaveTaskAction
     {
         InitMenu = 0,
-        ShowSaveTasks = 1,
-        StartSaveTasks = 2,
-        CreateSaveTask = 3,
-        ModifySaveTasks = 4,
-        DeleteSaveTasks = 5,
-        Quit = 6,
+        ShowSaveTasks = 1,   // Action to initialize the save task menu
+        StartSaveTasks = 2,  // Action to display all save tasks
+        CreateSaveTask = 3,  // Action to start save tasks
+        ModifySaveTasks = 4, // Action to create a new save task
+        DeleteSaveTasks = 5, // Action to modify an existing save task
+        Quit = 6,            // Action to quit the save task menu
     }
+
+    // Controller class for managing save tasks in the CLI
     internal class SaveTaskController : BaseController
     {
+        // Manager for handling save tasks
         internal SaveTaskManager saveTaskManager;
-        internal SaveTaskController(MessageManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager) : base(messagesManager, view) 
+
+        // Constructor for the SaveTaskController class
+        internal SaveTaskController(MessageManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager)
+            : base(messagesManager, view)
         {
             this.saveTaskManager = saveTaskManager;
-            stopCondition = (int)ECliSaveTaskAction.Quit;
-            initCondition = (int)ECliAction.InitMenu;
-            InitDictAction();
+            stopCondition = (int)ECliSaveTaskAction.Quit; // Set the stop condition to the Quit action
+            initCondition = (int)ECliSaveTaskAction.InitMenu; // Set the initial condition to the InitMenu action
+            InitDictAction(); // Initialize the dictionary of actions
         }
-        override protected void InitDictAction()
+
+        // Override the base method to initialize the dictionary of actions
+        protected override void InitDictAction()
         {
-            dictActions.Add((int)ECliSaveTaskAction.InitMenu, () => { ShowMessage(EMessage.MenuSaveTaskMessage); });
-            dictActions.Add((int)ECliSaveTaskAction.Quit, () => { ShowMessage(EMessage.StopMessage); });
-            dictActions.Add((int)ECliSaveTaskAction.CreateSaveTask, () => CreateSaveTask());
-            dictActions.Add((int)ECliSaveTaskAction.StartSaveTasks, () => StartSaveTasks());
-            dictActions.Add((int)ECliSaveTaskAction.DeleteSaveTasks, () => DeleteSaveTask());
-            dictActions.Add((int)ECliSaveTaskAction.ModifySaveTasks, () => ModifySaveTasks());
-            dictActions.Add((int)ECliSaveTaskAction.ShowSaveTasks, () => SaveTaskDetails());
+            dictActions.Add((int)ECliSaveTaskAction.InitMenu, () => { ShowMessage(EMessage.MenuSaveTaskMessage); }); // Add action to show the save task menu
+            dictActions.Add((int)ECliSaveTaskAction.Quit, () => { ShowMessage(EMessage.StopMessage); }); // Add action to quit the save task menu
+            dictActions.Add((int)ECliSaveTaskAction.CreateSaveTask, () => CreateSaveTask()); // Add action to create a new save task
+            dictActions.Add((int)ECliSaveTaskAction.StartSaveTasks, () => StartSaveTasks()); // Add action to start save tasks
+            dictActions.Add((int)ECliSaveTaskAction.DeleteSaveTasks, () => DeleteSaveTask()); // Add action to delete a save tasks
+            dictActions.Add((int)ECliSaveTaskAction.ModifySaveTasks, () => ModifySaveTasks()); // Add action to modify a save tasks
+            dictActions.Add((int)ECliSaveTaskAction.ShowSaveTasks, () => SaveTaskDetails()); // Add action to display all save tasks
         }
 
         
@@ -66,13 +75,21 @@ namespace EasySaveConsole.Controller
             ShowAllSaveTask();
             string userInput = ShowQuestion(EMessage.AskSaveTaskIdMessage);
             ProcessSaveTaskSelection(userInput, ECliSaveTaskAction.ModifySaveTasks);
+
+            // We serialize the save tasks to save the modifications
+            saveTaskManager.SerializeSaveTasks();
         }
 
+        // TODO, TOFIX : currently, when several save tasks need to be deleted, the logic doesn't hold up
+        // The deletion of the save tasks is not done correctly, the indexes are not updated
         internal void DeleteSaveTask()
         {
             ShowAllSaveTask();
             string userInput = ShowQuestion(EMessage.AskSaveTaskIdMessage);
             ProcessSaveTaskSelection(userInput, ECliSaveTaskAction.DeleteSaveTasks);
+
+            // We serialize the save tasks to save the modifications
+            saveTaskManager.SerializeSaveTasks();
         }
 
         internal void SaveTaskDetails()
@@ -144,34 +161,35 @@ namespace EasySaveConsole.Controller
             {
                 return EMessage.ErrorSaveTaskTypeMessage;
             }
-            saveTaskManager.ModifySaveTask(index, (ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
+
             return EMessage.SuccessModifySaveTaskMessage;
         }
         internal void CreateSaveTask()
         {
             ShowAllSaveTask();
-            string saveTaskName = ShowQuestion(messagesManager.GetMessageTranslate(EMessage.AskSaveTaskNameMessage));
+            string saveTaskName = ShowQuestion(messagesManager.GetMessageTranslate(EMessage.AskSaveTaskNameMessage)); // Ask the user for the save task name
             if (saveTaskManager.IsSaveTaskNameExist(saveTaskName))
             {
                 ShowMessagePause(EMessage.ErrorSaveTaskNameDuplicateMessage);
                 return;
             }
-            string saveTaskSource = ShowQuestion(EMessage.AskSaveTaskSourceFolderMessage);
+            string saveTaskSource = ShowQuestion(EMessage.AskSaveTaskSourceFolderMessage); // Ask the user for the save task source path
             if (!Utilities.Utilities.IsValidPath(saveTaskSource))
             {
-                ShowMessagePause(EMessage.ErrorSaveTaskPathMessage);
+                ShowMessagePause(EMessage.ErrorSaveTaskPathMessage); // Show an error message if the source path is invalid
                 return;
             }
+            
             string saveTaskTarget = ShowQuestion(EMessage.AskSaveTaskTargetFolderMessage);
             if (!Utilities.Utilities.IsValidPath(saveTaskTarget))
             {
-                ShowMessagePause(EMessage.ErrorSaveTaskPathMessage);
+                ShowMessagePause(EMessage.ErrorSaveTaskPathMessage); // Show an error message if the target path is invalid
                 return;
             }
             int saveTaskType = int.Parse(ShowQuestion(EMessage.AskSaveTaskType));
             if (!Enum.IsDefined(typeof(ESaveTaskTypes), saveTaskType))
             {
-                ShowMessagePause(EMessage.ErrorSaveTaskTypeMessage);
+                ShowMessagePause(EMessage.ErrorSaveTaskTypeMessage); // Show an error message if the save task type is invalid
                 return;
             }
             saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);

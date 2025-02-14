@@ -10,36 +10,46 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Controller
 {
+    // Enum defining the possible CLI language actions
     enum ECliLanguageAction
     {
-        InitMenu = 0,
-        ChangeLanguage = 1,
-        Quit = 2
+        InitMenu = 0,    // Action to initialize the language menu
+        ChangeLanguage = 1, // Action to change the language
+        Quit = 2         // Action to quit the language menu
     }
+
+    // Controller class for managing language settings in the CLI
     internal class LanguageController : BaseController
     {
+        // Manager for handling language settings
         LanguageManager langaguesManager;
-        internal LanguageController(MessageManager messageManager, LanguageView view, LanguageManager langaguesManager) : base(messageManager, view) 
+
+        // Constructor for the LanguageController class
+        internal LanguageController(MessageManager messageManager, LanguageView view, LanguageManager langaguesManager)
+            : base(messageManager, view)
         {
             this.langaguesManager = langaguesManager;
-            initCondition = (int)ECliLanguageAction.InitMenu;
-            stopCondition = (int)ECliLanguageAction.Quit;
-            InitDictAction();   
+            initCondition = (int)ECliLanguageAction.InitMenu; // Set the initial condition to the InitMenu action
+            stopCondition = (int)ECliLanguageAction.Quit; // Set the stop condition to the Quit action
+            InitDictAction(); // Initialize the dictionary of actions
         }
 
-        override protected void InitDictAction()
+        // Override the base method to initialize the dictionary of actions
+        protected override void InitDictAction()
         {
-            dictActions.Add((int)ECliLanguageAction.InitMenu, () => { ShowMessage(EMessage.MenuLanguageMessage); });
-            dictActions.Add((int)ECliLanguageAction.ChangeLanguage, () => { SetDefaultLanguage(); });
-            dictActions.Add((int)ECliLanguageAction.Quit, () => { ShowMessage(EMessage.StopMessage); });
+            dictActions.Add((int)ECliLanguageAction.InitMenu, () => { ShowMessage(EMessage.MenuLanguageMessage); }); // Add action to show the language menu
+            dictActions.Add((int)ECliLanguageAction.ChangeLanguage, () => { SetDefaultLanguage(); }); // Add action to change the language
+            dictActions.Add((int)ECliLanguageAction.Quit, () => { ShowMessage(EMessage.StopMessage); }); // Add action to quit the language menu
         }
 
+        // Method to set the default language
         internal void SetDefaultLanguage()
         {
-            ShowMessage(EMessage.LanguagesListMessage);
-            string strLanguage = ShowQuestion(EMessage.AskLanguageMessage);
-            EMessage msg = langaguesManager.SetDefaultLanguage(strLanguage);
-            ShowMessagePause(msg);
+            ShowMessage(EMessage.LanguagesListMessage); // Show the list of available languages
+            string strLanguage = ShowQuestion(EMessage.AskLanguageMessage); // Ask the user to select a language
+            EMessage msg = langaguesManager.SetDefaultLanguage(strLanguage); // Set the selected language as the default
+            ShowMessagePause(msg); // Show a message and wait for user confirmation
         }
     }
 }
+

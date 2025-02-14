@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.Utilities
 {
+    // Utility class containing helper methods for file path validation.
     public class Utilities
     {
         public static bool IsValidPath(string path)
         {
+            // Check if the path is null, empty, or consists only of whitespace.
             if (string.IsNullOrWhiteSpace(path))
             {
                 return false;
@@ -18,13 +20,14 @@ namespace EasySaveConsole.Utilities
 
             try
             {
-                // Vérifie si le chemin est valide et bien formé
+                // Check if the path is correctly formatted and is an absolute path.
                 bool isRooted = Path.IsPathRooted(path);
                 return isRooted;
             }
             catch
             {
-                return false; // Si une exception est levée, le chemin est invalide
+                // If an exception occurs, return false (invalid path).
+                return false;
             }
         }
     }

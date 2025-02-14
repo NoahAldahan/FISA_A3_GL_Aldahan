@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace EasySaveConsole.View
 {
+    // Class for managing language-related console interactions, inheriting from BaseView
     internal class LanguageView : BaseView
     {
     }
 }
+

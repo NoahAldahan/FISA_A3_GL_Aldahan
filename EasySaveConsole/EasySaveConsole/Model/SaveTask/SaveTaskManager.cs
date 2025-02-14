@@ -12,26 +12,29 @@ using System.Text.Json;
 
 namespace EasySaveConsole.Model
 {
-	internal class SaveTaskManager
-	{
-        // All the current save tasks
+    // Manages the collection of save tasks, their execution, and persistence.
+    internal class SaveTaskManager
+    {
+        // List of all active save tasks.
         internal List<SaveTask> SaveTasks { get; set; }
-        // The save task factory to create new save tasks
+
+        // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
-        // The maximum number of save tasks that can be created at once
+
+        // Maximum number of save tasks that can be created simultaneously.
         private static int MaxSaveTasks = 5;
 
-        // Getter for the save tasks
+        // Returns a copy of the current list of save tasks to avoid unintended modifications.
         internal List<SaveTask> GetSaveTasksClone()
         {
             return new List<SaveTask>(SaveTasks);
         }
 
-        // Constructor
+        // Constructor: Initializes the save task manager and loads previously saved tasks from JSON.
         internal SaveTaskManager()
         {
             SaveTaskFactory = new SaveTaskFactory();
-            // Load the save tasks that are saved from previous session
+            // Load the saved tasks from the previous session.
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
         }
 
@@ -94,13 +97,17 @@ namespace EasySaveConsole.Model
             }
         }
 
-        // Remove a save task of type SaveTaskType with sourcePath and targetPath (stops after the first deletion)
+        // Removes a save task that matches the given source and target paths (removes the first match).
         internal void RemoveSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
         {
-            if (SaveTasks.Count() == 0)
+            if (SaveTasks.Count == 0)
                 return;
 
-            SaveTask MatchingSaveTask = SaveTasks.FirstOrDefault(saveTask => (saveTask.CurrentDirectoryPair.SourcePath == sourcePath && saveTask.CurrentDirectoryPair.TargetPath == targetPath));
+            // Find the first save task matching the given source and target paths.
+            SaveTask MatchingSaveTask = SaveTasks.FirstOrDefault(saveTask =>
+                saveTask.CurrentDirectoryPair.SourcePath == sourcePath &&
+                saveTask.CurrentDirectoryPair.TargetPath == targetPath);
+
             if (MatchingSaveTask != null)
                 SaveTasks.Remove(MatchingSaveTask);
         }
@@ -130,9 +137,10 @@ namespace EasySaveConsole.Model
             }
         }
 
+        // Returns all save tasks.
         internal List<SaveTask> GetAllSaveTask()
         {
-            return SaveTasks; 
+            return SaveTasks;
         }
 
         internal bool IsValidSaveTaskId(int id)
@@ -143,18 +151,25 @@ namespace EasySaveConsole.Model
         // Modify the save task type
         internal void ModifySaveTaskType(int index, ESaveTaskTypes newSaveTaskType, string saveTaskName)
         {
-            SaveTask newSaveTask = SaveTaskFactory.CreateSave(newSaveTaskType, SaveTasks[index].CurrentDirectoryPair.SourcePath, SaveTasks[index].CurrentDirectoryPair.TargetPath, saveTaskName);
+            SaveTask newSaveTask = SaveTaskFactory.CreateSave(
+                newSaveTaskType,
+                SaveTasks[index].CurrentDirectoryPair.SourcePath,
+                SaveTasks[index].CurrentDirectoryPair.TargetPath,
+                saveTaskName
+            );
+
+            // Replace the old save task with the new one.
             SaveTasks.RemoveAt(index);
             SaveTasks.Insert(index, newSaveTask);
         }
 
-        // Modify the save task source path
+        // Modifies the source path of a save task at the specified index.
         internal void ModifySaveTaskSourcePath(int index, string newSourcePath)
         {
             SaveTasks[index].CurrentDirectoryPair.SourcePath = newSourcePath;
         }
 
-        // Modify the save task target path
+        // Modifies the target path of a save task at the specified index.
         internal void ModifySaveTaskTargetPath(int index, string newTargetPath)
         {
             SaveTasks[index].CurrentDirectoryPair.TargetPath = newTargetPath;

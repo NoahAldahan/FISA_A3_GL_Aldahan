@@ -61,9 +61,12 @@ namespace EasySaveConsole.Model
             ErrorSaveTaskNameDuplicateMessage
     }
 
-        public static class MessageExtensions
+    // Static class providing utility methods for message management
+    public static class MessageExtensions
+    {
+        // Dictionary mapping EMessage enum values to their string representations
+        private static readonly Dictionary<EMessage, string> MessageStrings = new Dictionary<EMessage, string>
         {
-            private static readonly Dictionary<EMessage, string> MessageStrings = new Dictionary<EMessage, string> {
             //Based Cli Message
             { EMessage.ErrorMessage, "ErrorMessage" },
             { EMessage.ErrorStartScreenLoading, "ErrorStartScreenLoading" },
@@ -72,7 +75,8 @@ namespace EasySaveConsole.Model
             { EMessage.PressKeyToContinue, "PressKeyToContinue" },
             { EMessage.ErrorUserEntryStrMessage, "ErrorUserEntryStrMessage" },
             { EMessage.ErrorUserEntryOptionMessage, "ErrorUserEntryOptionMessage" },
-            //Language
+
+            // Language-related Messages
             { EMessage.LanguagesListMessage, "LanguagesListMessage" },
             { EMessage.LanguageChangeSuccessMessage, "LanguageChangeSuccessMessage" },
             { EMessage.DefaultLanguageInitSuccessMessage, "DefaultLanguageInitSuccessMessage" },
@@ -81,7 +85,8 @@ namespace EasySaveConsole.Model
             { EMessage.DefaultLanguageChangedErrorMessage, "DefaultLanguageChangedErrorMessage" },
             { EMessage.AskLanguageMessage, "AskLanguageMessage" },
             { EMessage.MenuLanguageMessage, "MenuLanguageMessage" },
-            //SaveTask
+
+            // Save Task-related Messages
             { EMessage.StartSaveTaskMessage, "StartSaveTaskMessage" },
             { EMessage.CreateSaveTaskMessage, "CreateSaveTaskMessage" },
             { EMessage.MenuSaveTaskMessage, "MenuSaveTaskMessage" },
