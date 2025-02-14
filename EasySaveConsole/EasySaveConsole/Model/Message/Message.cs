@@ -58,7 +58,9 @@ namespace EasySaveConsole.Model
             ShowSaveTaskSourcePathMessage,
             ShowSaveTaskTargetPathMessage,
             ShowSaveTaskTypeMessage,
-            ErrorSaveTaskNameDuplicateMessage
+            ErrorSaveTaskNameDuplicateMessage,
+            ErrorMaxSaveTaskReachMessage,
+            SuccessCreateSaveTaskMessage
     }
 
     // Static class providing utility methods for message management
@@ -119,7 +121,9 @@ namespace EasySaveConsole.Model
             { EMessage.ShowSaveTaskTargetPathMessage, "ShowSaveTaskTargetPathMessage" },
             { EMessage.ShowSaveTaskTypeMessage, "ShowSaveTaskTypeMessage" },
             { EMessage.ErrorSaveTaskNameDuplicateMessage, "ErrorSaveTaskNameDuplicateMessage" },
-            };
+            { EMessage.ErrorMaxSaveTaskReachMessage, "ErrorMaxSaveTaskReachMessage" },
+            { EMessage.SuccessCreateSaveTaskMessage, "SuccessCreateSaveTaskMessage" },
+        };
 
             internal static string GetValue(this EMessage message)
             {
