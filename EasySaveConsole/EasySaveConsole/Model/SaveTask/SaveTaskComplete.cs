@@ -24,79 +24,117 @@ namespace EasySaveConsole.Model
             : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName) { }
 
         // Overrides the abstract Save method to perform a complete backup.
+        // Returns true if all files were saved successfully, false otherwise.
+        // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal override bool Save()
         {
-            // TODO: Improve error handling to provide users with a list of files that couldn't be saved.
-            IsSaveSuccessful = true;
+            UnsavedPaths.Clear(); // Clear the list of unsaved paths.
+            UnsavedPaths = SaveComplete(); // Perform the complete save process.
             try
             {
-                SaveComplete(); // Perform the complete save process.
+                FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
+                if (!targetAttr.HasFlag(FileAttributes.Directory))
+                {
+                    UnsavedPaths.Add(CurrentDirectoryPair.SourcePath);
+                    return false;
+                }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                IsSaveSuccessful = false; // Mark the save as unsuccessful if an error occurs.
+                UnsavedPaths.Add(CurrentDirectoryPair.SourcePath);
+                return false;
             }
-            return IsSaveSuccessful;
+
+            UnsavedPaths = SaveComplete();
+
+            return (UnsavedPaths.Count() == 0);
         }
 
         // Performs the complete backup by copying files from source to target.
-        private void SaveComplete()
+        private List<string> SaveComplete()
         {
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
             logDaily.CreateDailyFile();
 
-            // Get file attributes to determine if the source and target are directories or files.
-            FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
-            FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
-
-            // Case 1: Both source and target are directories
-            if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
+            try
             {
-                DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.SourcePath);
-                DirectoryInfo targetDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.TargetPath);
-                CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo);
-            }
-            // Case 2: Source is a file, target is a directory
-            else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
-            {
-                logDaily.stopWatch.Restart(); // Start timing the copy operation.
-                string FileName = Path.GetFileName(CurrentDirectoryPair.SourcePath);
+                // Get file attributes to determine if the source and target are directories or files.
+                FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
+                FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
 
-                // Copy the file from source to target directory.
-                File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
-                logDaily.stopWatch.Stop();
-                //notify save of a new file
-                logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
-                logRealTime.UpdateRealTimeProgress();
+                // Case 1: Both source and target are directories
+                if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
+                {
+                    DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.SourcePath);
+                    DirectoryInfo targetDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.TargetPath);
+                    CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo);
+                }
+                // Case 2: Source is a file, target is a directory
+                else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
+                {
+                    logDaily.stopWatch.Restart(); // Start timing the copy operation.
+                    string FileName = Path.GetFileName(CurrentDirectoryPair.SourcePath);
+
+                    try
+                    {
+                        // Copy the file from source to target directory.
+                        File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
+                    }
+                    catch (Exception e)
+                    {
+                        UnsavedPaths.Add(CurrentDirectoryPair.SourcePath);
+                    }
+                    logDaily.stopWatch.Stop();
+                    //notify save of a new file
+                    logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+                    logRealTime.UpdateRealTimeProgress();
+                }
             }
-            // Case 3: The target path is not a directory (invalid case)
-            else
-                throw new Exception("The target path isn't a directory.");
+            catch (Exception e)
+            {
+                UnsavedPaths.Add(CurrentDirectoryPair.SourcePath);
+            }
+            return UnsavedPaths;
         }
 
         // Recursively copies all files and subdirectories from the source to the target directory.
-        private void CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo)
+        private List<string> CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo)
         {
-            // Iterate through all directories in the source and create them in the target.
-            foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
-            CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name));
-            foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
+            try
             {
-                logDaily.stopWatch.Restart(); // Start timing the file copy.
+                // Iterate through all directories in the source and create them in the target.
+                foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
+                    CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name));
+                foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
+                {
+                    try
+                    {
+                        logDaily.stopWatch.Restart(); // Start timing the file copy.
 
-                // Copy file to the corresponding target directory.
-                file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
-                logDaily.stopWatch.Stop();
-                //notify save of a new file
-                Console.WriteLine(file.FullName);
-                logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
-                logRealTime.UpdateRealTimeProgress();
+                        // Copy file to the corresponding target directory.
+                        file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
+                        logDaily.stopWatch.Stop();
+                        //notify save of a new file
+                        Console.WriteLine(file.FullName);
+                        logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
+                        logRealTime.UpdateRealTimeProgress();
+                    }
+                    catch (Exception e)
+                    {
+                        UnsavedPaths.Add(Path.Combine(sourceDirectoryInfo.FullName, file.Name));
+                    }
+                }
             }
+            catch (Exception e)
+            {
+                UnsavedPaths.Add(sourceDirectoryInfo.FullName);
+            }
+            return UnsavedPaths;
         }
 
-        internal override string GetStrSaveTaskType()
+        internal override EMessage GetMessageSaveTaskType()
         {
-            return "Complete";
+            return EMessage.SaveTaskTypeCompleteName;
         }
         internal override ESaveTaskTypes GetSaveTaskType()
         {

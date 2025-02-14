@@ -46,6 +46,7 @@ namespace EasySaveConsole.Model
             ErrorSuppressSaveTaskMessage,
             ErrorStartEndIndexSaveTaskMessage,
             ErrorStartSaveTaskMessage,
+            ErrorStartSaveTaskPathListMessage,
             ErrorEmptyUserInputSaveTaskMessage,
             AskSaveTaskIdMessage,
             ShowLetEmptyRowForDefault,
@@ -58,7 +59,9 @@ namespace EasySaveConsole.Model
             ShowSaveTaskSourcePathMessage,
             ShowSaveTaskTargetPathMessage,
             ShowSaveTaskTypeMessage,
-            ErrorSaveTaskNameDuplicateMessage
+            ErrorSaveTaskNameDuplicateMessage,
+            SaveTaskTypeDifferentialName,
+            SaveTaskTypeCompleteName
     }
 
     // Static class providing utility methods for message management
@@ -106,6 +109,7 @@ namespace EasySaveConsole.Model
             { EMessage.ErrorSuppressSaveTaskMessage, "ErrorSuppressSaveTaskMessage" },
             { EMessage.ErrorStartEndIndexSaveTaskMessage, "ErrorStartEndIndexSaveTaskMessage" },
             { EMessage.ErrorStartSaveTaskMessage, "ErrorStartSaveTaskMessage" },
+            { EMessage.ErrorStartSaveTaskPathListMessage, "ErrorStartSaveTaskPathListMessage" },
             { EMessage.ErrorEmptyUserInputSaveTaskMessage, "ErrorEmptyUserInputSaveTaskMessage" },
             { EMessage.AskSaveTaskIdMessage, "AskSaveTaskIdMessage" },
             { EMessage.ShowLetEmptyRowForDefault, "ShowLetEmptyRowForDefault" },
@@ -119,6 +123,8 @@ namespace EasySaveConsole.Model
             { EMessage.ShowSaveTaskTargetPathMessage, "ShowSaveTaskTargetPathMessage" },
             { EMessage.ShowSaveTaskTypeMessage, "ShowSaveTaskTypeMessage" },
             { EMessage.ErrorSaveTaskNameDuplicateMessage, "ErrorSaveTaskNameDuplicateMessage" },
+            { EMessage.SaveTaskTypeDifferentialName, "SaveTaskTypeDifferentialName" },
+            { EMessage.SaveTaskTypeCompleteName, "SaveTaskTypeCompleteName" },
             };
 
             internal static string GetValue(this EMessage message)
