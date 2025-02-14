@@ -89,7 +89,6 @@ namespace EasySaveConsole.Model
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                Console.WriteLine(file.FullName);
                 logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
                 logRealTime.UpdateRealTimeProgress();
             }

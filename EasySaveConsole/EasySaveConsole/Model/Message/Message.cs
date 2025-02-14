@@ -26,6 +26,7 @@ namespace EasySaveConsole.Model
             DefaultLanguageChangedErrorMessage,
             AskLanguageMessage,
             MenuLanguageMessage,
+            ErrorGetSettingsJson,
             //SaveTask
             StartSaveTaskMessage,
             ShowSaveTaskRegisterMessage,
@@ -87,6 +88,7 @@ namespace EasySaveConsole.Model
             { EMessage.DefaultLanguageChangedErrorMessage, "DefaultLanguageChangedErrorMessage" },
             { EMessage.AskLanguageMessage, "AskLanguageMessage" },
             { EMessage.MenuLanguageMessage, "MenuLanguageMessage" },
+            { EMessage.ErrorGetSettingsJson, "ErrorGetSettingsJson" },
 
             // Save Task-related Messages
             { EMessage.StartSaveTaskMessage, "StartSaveTaskMessage" },
@@ -142,7 +144,12 @@ namespace EasySaveConsole.Model
                 this.languageManager = languageManager;
             }
             public string GetMessageTranslate(EMessage message) 
-            {   
+            {
+                if(JsonManager.GetMessage(message.GetValue(), languageManager.defaultLanguage) == "")
+                {
+                    Console.WriteLine("Error : Can't get the translated message.");
+                    return "";
+                }
                 return JsonManager.GetMessage(message.GetValue(), languageManager.defaultLanguage);
             }
         }
