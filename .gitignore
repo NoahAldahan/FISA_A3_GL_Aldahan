@@ -6,7 +6,9 @@
 #
 # or wget:
 # wget --no-check-certificate http://gist.githubusercontent.com/kmorcinek/2710267/raw/.gitignore
-Json/Log/*
+*/backup*.json
+*/RealTimeSave.json
+*/SaveTaskSerialized.json
 # User-specific files
 *.suo
 *.user

@@ -244,6 +244,7 @@ namespace EasySaveConsole.Controller
         }
         internal void HandleSaveTasks(List<int> indexs, ECliSaveTaskAction cliSaveTaskAction)
         {
+            indexs.Sort((a, b) => b.CompareTo(a));
             foreach (int index in indexs)
             {
                 try
