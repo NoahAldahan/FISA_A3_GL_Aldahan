@@ -26,10 +26,12 @@ namespace EasySaveConsole
             CliView cliView = new CliView();
             SaveTaskView saveTaskView = new SaveTaskView();
             LanguageView languageView = new LanguageView();
+            MessageExtensions messageExtensions = new MessageExtensions();
+            LanguageExtension languageExtensions = new LanguageExtension();
 
             // Create instances of models
-            LanguageManager languageManager = new LanguageManager();
-            MessageManager messagesManager = new MessageManager(languageManager);
+            LanguageManager languageManager = new LanguageManager(languageExtensions);
+            MessageManager messagesManager = new MessageManager(languageManager, messageExtensions);
             SaveTaskManager saveTaskManager = new SaveTaskManager();
 
             // Create instances of controllers

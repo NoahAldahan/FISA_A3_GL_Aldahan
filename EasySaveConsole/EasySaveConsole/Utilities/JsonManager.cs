@@ -32,7 +32,7 @@ namespace EasySaveConsole.Utilities
             Environment.GetEnvironmentVariable("LogPathRealTime"));
 
         // Retrieves a translated message from the Translation JSON file based on the specified language.
-        static public string GetMessage(string msg, ELanguage language)
+        static public string GetMessage(string msg, string language)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace EasySaveConsole.Utilities
                 JsonElement root = doc.RootElement;
 
                 // Retrieve the requested message for the given language
-                string value = root.GetProperty(language.GetValue()).GetProperty(msg).GetString();
+                string value = root.GetProperty(language).GetProperty(msg).GetString();
                 return value;
             }
             catch (Exception ex)
