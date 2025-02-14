@@ -19,8 +19,10 @@ namespace Log
         }
         public void CreateDailyFile()
         {
+            JsonLogManager.CreateRepertories(LogDailyPath);
             JsonLogManager.CreateDailyJsonFile(DateTime.Now, LogDailyPath);
         }
+
 
         public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath)
         {
