@@ -42,8 +42,9 @@ namespace EasySaveConsole.Model
         // Performs the complete backup by copying files from source to target.
         private void SaveComplete()
         {
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
             logDaily.CreateDailyFile();
+            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
+
 
             // Get file attributes to determine if the source and target are directories or files.
             FileAttributes sourceAttr = File.GetAttributes(CurrentDirectoryPair.SourcePath);
