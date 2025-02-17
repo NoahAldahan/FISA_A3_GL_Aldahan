@@ -87,7 +87,8 @@ namespace EasySaveConsole.Model
                     }
                     logDaily.stopWatch.Stop();
                     //notify save of a new file
-                    logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+
+                    logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, 0);
                     logRealTime.UpdateRealTimeProgress();
                 }
             }
@@ -116,7 +117,7 @@ namespace EasySaveConsole.Model
                         file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                         logDaily.stopWatch.Stop();
                         //notify save of a new file
-                        logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
+                        logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name, 0);
                         logRealTime.UpdateRealTimeProgress();
                     }
                     catch (Exception e)

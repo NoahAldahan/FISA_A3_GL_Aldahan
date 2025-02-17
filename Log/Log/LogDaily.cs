@@ -24,7 +24,7 @@ namespace Log
         }
 
 
-        public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath)
+        public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath, long encryptionTime)
         {
             dailyInfo.Name = saveTaskName;
             dailyInfo.FileTransferTime = (stopWatch.ElapsedMilliseconds);
@@ -33,6 +33,7 @@ namespace Log
             FileInfo fileInfo = new FileInfo(SourcePath);
             dailyInfo.FileSize = fileInfo.Length;
             dailyInfo.DateTime = DateTime.Now;
+            dailyInfo.EncryptionTimeMs = encryptionTime; // Ajout du temps de cryptage
             JsonLogManager.AddSaveToDailyFile(dailyInfo, LogDailyPath);
         }
     }
