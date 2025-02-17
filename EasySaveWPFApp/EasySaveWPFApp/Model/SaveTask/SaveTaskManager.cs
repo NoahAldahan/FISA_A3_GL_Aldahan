@@ -137,7 +137,7 @@ namespace EasySaveWPFApp.Model
             try
             {
                 CurrentUnsavedPaths.Clear();
-                if (SaveTasks[index].Save())
+                if (SaveTasks[index].Save(EncryptingExtensions))
                 {
                     return true;
                 }

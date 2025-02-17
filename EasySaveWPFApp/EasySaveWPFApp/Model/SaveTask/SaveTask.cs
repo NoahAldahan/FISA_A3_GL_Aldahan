@@ -83,12 +83,12 @@ namespace EasySaveWPFApp.Model
         // Start the task
         // Returns true if the task was successful (all files were saved), false otherwise
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
-        internal abstract bool Save();
+        internal abstract bool Save(List<string> EncryptingExtensions);
 
         // Method that will be called when a single file is copied (called by recursive and non-recursives)
         // It also handles log calls when a file is copied
         // Can throw unauthorized access exception
-        internal void CopySingleFile(string sourcePath, string targetPath)
+        internal void CopySingleFile(string sourcePath, string targetPath, List<string> EncryptingExtensions)
         {
             logDaily.stopWatch.Restart(); // Start timing the copy operation.
             File.Copy(sourcePath, targetPath, true);// Copy the file from source to target directory.
@@ -96,7 +96,11 @@ namespace EasySaveWPFApp.Model
             //notify save of a new file
             logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
             logRealTime.UpdateRealTimeProgress();
-            CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath);
+
+            // Encrypt the file if it has an extension that requires encryption.
+            if (EncryptingExtensions.Contains(Path.GetExtension(targetPath)))
+                // TEMP: replace "key" with a real key (not a metal one though)
+                CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, "key"); 
         }
     }
 }

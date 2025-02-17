@@ -26,7 +26,7 @@ namespace EasySaveWPFApp.Model
         // Overrides the abstract Save method to perform a complete backup.
         // Returns true if all files were saved successfully, false otherwise.
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
-        internal override bool Save()
+        internal override bool Save(List<string> EncryptingExtensions)
         {
             UnsavedPaths.Clear(); // Clear the list of unsaved paths.
             UnsavedPaths = SaveComplete(); // Perform the complete save process.
@@ -51,7 +51,7 @@ namespace EasySaveWPFApp.Model
         }
 
         // Performs the complete backup by copying files from source to target.
-        private List<string> SaveComplete()
+        private List<string> SaveComplete(List<string> EncryptingExtensions)
         {
             logDaily.CreateDailyFile();
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
@@ -68,7 +68,7 @@ namespace EasySaveWPFApp.Model
                 {
                     DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.SourcePath);
                     DirectoryInfo targetDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.TargetPath);
-                    CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo);
+                    CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo, EncryptingExtensions);
                 }
                 // Case 2: Source is a file, target is a directory
                 else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
@@ -77,7 +77,7 @@ namespace EasySaveWPFApp.Model
 
                     try
                     {
-                        CopySingleFile(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName));
+                        CopySingleFile(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), EncryptingExtensions);
                     }
                     catch (Exception e)
                     {
@@ -93,18 +93,18 @@ namespace EasySaveWPFApp.Model
         }
 
         // Recursively copies all files and subdirectories from the source to the target directory.
-        private List<string> CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo)
+        private List<string> CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo, List<string> EncryptingExtensions)
         {
             try
             {
                 // Iterate through all directories in the source and create them in the target.
                 foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
-                    CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name));
+                    CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name), EncryptingExtensions);
                 foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
                 {
                     try
                     {
-                        CopySingleFile(file.FullName, Path.Combine(targetDirectoryInfo.FullName, file.Name));
+                        CopySingleFile(file.FullName, Path.Combine(targetDirectoryInfo.FullName, file.Name), EncryptingExtensions);
                     }
                     catch (Exception e)
                     {
