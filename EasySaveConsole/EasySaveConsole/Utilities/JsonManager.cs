@@ -33,7 +33,7 @@ namespace EasySaveConsole.Utilities
             Environment.GetEnvironmentVariable("LogPathRealTime"));
 
         // Retrieves a translated message from the Translation JSON file based on the specified language.
-        static public string GetMessage(string msg, ELanguage language)
+        static public string GetMessage(string msg, string language)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace EasySaveConsole.Utilities
                 JsonElement root = doc.RootElement;
 
                 // Retrieve the requested message for the given language
-                string value = root.GetProperty(language.GetValue()).GetProperty(msg).GetString();
+                string value = root.GetProperty(language).GetProperty(msg).GetString();
                 return value;
             }
             catch (Exception ex)
@@ -73,7 +73,7 @@ namespace EasySaveConsole.Utilities
         }
 
         // Updates the default language setting in the AppSettings JSON file.
-        static public EMessage SetDefaultLanguage(string languageValue, string languageKey)
+        static public bool SetSettings(string value, string key)
         {
             try
             {
@@ -82,16 +82,16 @@ namespace EasySaveConsole.Utilities
                 JsonNode jsonNode = JsonNode.Parse(jsonContent);
 
                 // Modify the language setting
-                jsonNode[languageKey] = languageValue;
+                jsonNode[key] = value;
 
                 // Write the modified JSON back to the file
                 File.WriteAllText(AppSettingsPath, jsonNode.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
 
-                return EMessage.DefaultLanguageChangedSuccessMessage;
+                return true;
             }
             catch (Exception ex)
             {
-                return EMessage.DefaultLanguageChangedErrorMessage; // Return an error message enum in case of failure
+                return false; // Return an error message enum in case of failure
             }
         }
 

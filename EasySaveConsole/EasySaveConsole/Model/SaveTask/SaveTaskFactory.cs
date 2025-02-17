@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Log;
 using EasySaveConsole.Utilities;
 using System.IO;
+using EasySaveConsole.Model.Log;
 
 namespace EasySaveConsole.Model
 {
@@ -21,7 +22,7 @@ namespace EasySaveConsole.Model
         private LogDaily logDaily;
 
         // Creates a new save task of the specified type with the given source and target paths.
-        internal SaveTask CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath, string saveTaskName)
+        internal SaveTask CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath, string saveTaskName, LogManager logManager)
         {
             SaveTask saveTask;
 
@@ -34,11 +35,16 @@ namespace EasySaveConsole.Model
                         new DirectoryPair(sourcePath, targetPath),
                         new LogDaily(JsonManager.LogPathDaily, JsonManager.LogPathRealTime),
                         new LogRealTime(JsonManager.LogPathDaily, JsonManager.LogPathRealTime),
-                        saveTaskName);
+                        saveTaskName,
+                        logManager);
                     return saveTask;
 
                 case ESaveTaskTypes.Complete:
-                    saveTask = new SaveTaskComplete(new DirectoryPair(sourcePath, targetPath), new LogDaily(JsonManager.LogPathDaily, JsonManager.LogPathRealTime), new LogRealTime(JsonManager.LogPathDaily, JsonManager.LogPathRealTime), saveTaskName);
+                    saveTask = new SaveTaskComplete(new DirectoryPair(sourcePath, targetPath),
+                        new LogDaily(JsonManager.LogPathDaily, JsonManager.LogPathRealTime), 
+                        new LogRealTime(JsonManager.LogPathDaily, JsonManager.LogPathRealTime), 
+                        saveTaskName, 
+                        logManager);
                     return saveTask;
 
                 default:

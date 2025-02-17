@@ -10,7 +10,7 @@ namespace EasySaveConsole.Controller
         InitMenu = 0,    // Action to initialize the main menu
         LanguageMenu = 1, // Action to display the language menu
         SaveMenu = 2,     // Action to display the save menu
-        Stop = 3          // Action to stop the CLI
+        Stop = 3        // Action to stop the CLI
     }
 
     // Controller class for managing the command-line interface (CLI)
@@ -21,6 +21,8 @@ namespace EasySaveConsole.Controller
 
         // Controller for managing language settings
         private LanguageController languageController;
+
+        private LogController logController;
 
         // Constructor for the CLI controller
         internal CliController(MessageManager messagesManager, CliView view, SaveTaskController saveTaskController, LanguageController languageController)
