@@ -98,6 +98,11 @@ namespace EasySaveConsole.Utilities
         // Method to initialize the default language from the configuration
         internal EMessage InitDefaultLanguage()
         {
+            if(JsonManager.GetSettings(languageLibelle) == "")
+            {
+                return EMessage.ErrorGetSettingsJson; 
+            }
+
             ELanguage defaultLanguage = LanguageExtension.ToLanguage(JsonManager.GetSettings(languageLibelle));
 
             if (defaultLanguage == ELanguage.Unknown)

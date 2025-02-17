@@ -34,7 +34,6 @@ namespace Log
             dailyInfo.FileSize = fileInfo.Length;
             dailyInfo.DateTime = DateTime.Now;
             JsonLogManager.AddSaveToDailyFile(dailyInfo, LogDailyPath);
-            Console.WriteLine(dailyInfo.ToString());
         }
     }
 }

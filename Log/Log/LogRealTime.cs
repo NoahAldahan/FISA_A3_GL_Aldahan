@@ -28,7 +28,6 @@ namespace Log
             FileInfo fileInfo = new FileInfo(SourcePath);
             realTimeInfo.NbFilesLeftToDo = realTimeInfo.TotalFilesToCopy;
             realTimeInfo.State = state.GetValue();
-            Console.WriteLine(realTimeInfo.ToString());
             JsonLogManager.AddSaveToRealTimeFile(realTimeInfo, LogRealTimePath);
         }
 
@@ -97,7 +96,6 @@ namespace Log
                 realTimeInfo.State = ERealTimeState.END.GetValue();
             }
             JsonLogManager.UpdateRealTimeProgression(realTimeInfo, LogRealTimePath);
-            Console.WriteLine(realTimeInfo.ToString());
         }
     }
 }
