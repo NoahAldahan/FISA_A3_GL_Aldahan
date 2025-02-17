@@ -89,11 +89,7 @@ namespace EasySaveConsole.Model
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
         internal EMessage AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
-            if (SaveTasks.Count >= MaxSaveTasks)
-            {
-                return EMessage.ErrorMaxSaveTaskReachMessage;
-            }
-            SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
+            SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName, logManager));
             return EMessage.SuccessCreateSaveTaskMessage;
         }
 

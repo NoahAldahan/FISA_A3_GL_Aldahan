@@ -224,22 +224,20 @@ namespace EasySaveConsole.Controller
             int start = int.Parse(rangeParts[0]);
             int end = int.Parse(rangeParts[1]);
             List<int> indexs = new List<int>();
-            if(start > end)
-            {
-                ShowMessagePause(EMessage.ErrorStartEndIndexSaveTaskMessage);
-                return;
-            }
-            else if(saveTaskManager.IsValidSaveTaskId(start) && saveTaskManager.IsValidSaveTaskId(end))
+            if (!saveTaskManager.IsValidSaveTaskId(start) && saveTaskManager.IsValidSaveTaskId(end))
             {
                 ShowMessagePause(EMessage.ErrorSaveTaskNotFoundMessage);
                 return;
+            }
+            else if(start > end)
+            {
+                ShowMessagePause(EMessage.ErrorStartEndIndexSaveTaskMessage);
             }
             for (int i = start; i <= end; i++)
             {
                 indexs.Add(i);
             }
             HandleSaveTasks(indexs, cliSaveTaskAction);
-            ShowQuestion(EMessage.PressKeyToContinue);
         }
 
         internal void ParseSaveTaskList(string SaveTask, ECliSaveTaskAction cliSaveTaskAction)
@@ -268,7 +266,10 @@ namespace EasySaveConsole.Controller
         }
         internal void HandleSaveTasks(List<int> indexs, ECliSaveTaskAction cliSaveTaskAction)
         {
-            indexs.Sort((a, b) => b.CompareTo(a));
+            if(cliSaveTaskAction == ECliSaveTaskAction.DeleteSaveTasks)
+            {
+                indexs.Sort((a, b) => b.CompareTo(a));
+            }
             foreach (int index in indexs)
             {
                 try
