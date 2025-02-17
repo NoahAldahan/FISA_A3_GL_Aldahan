@@ -225,7 +225,7 @@
     <Compile Include="Controller\CliController.cs" />
     <Compile Include="Controller\LanguageController.cs" />
     <Compile Include="Controller\SaveTaskController.cs" />
-    <None Include="Json\Log\RealTimeSave.json" />
+    <None Include="Files\Log\RealTimeSave.json" />
     <Compile Include="Model\DirectoryPair.cs" />
     <Compile Include="Model\SaveTask\SaveTask.cs" />
     <Compile Include="Model\SaveTask\SaveTaskComplete.cs" />
@@ -245,10 +245,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Json\AppSettings.json">
+    <None Include="Files\AppSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Json\Translation.json">
+    <None Include="Files\Translation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -257,7 +257,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Json\Log\Daily\" />
+    <Folder Include="Files\Log\Daily\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

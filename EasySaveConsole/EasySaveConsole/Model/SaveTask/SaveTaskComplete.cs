@@ -42,8 +42,8 @@ namespace EasySaveConsole.Model
         // Performs the complete backup by copying files from source to target.
         private void SaveComplete()
         {
-            logDaily.CreateDailyFile();
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
+            logDaily.CreateDailyFile(1);
+            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete,1);
 
 
             // Get file attributes to determine if the source and target are directories or files.
@@ -67,8 +67,8 @@ namespace EasySaveConsole.Model
                 File.Copy(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
-                logRealTime.UpdateRealTimeProgress();
+                logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath,1);
+                logRealTime.UpdateRealTimeProgress(1);
             }
             // Case 3: The target path is not a directory (invalid case)
             else
@@ -89,8 +89,8 @@ namespace EasySaveConsole.Model
                 file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                 logDaily.stopWatch.Stop();
                 //notify save of a new file
-                logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
-                logRealTime.UpdateRealTimeProgress();
+                logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name,1);
+                logRealTime.UpdateRealTimeProgress(1);
             }
         }
 
