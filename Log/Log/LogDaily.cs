@@ -19,8 +19,10 @@ namespace Log
         }
         public void CreateDailyFile()
         {
+            JsonLogManager.CreateRepertories(LogDailyPath);
             JsonLogManager.CreateDailyJsonFile(DateTime.Now, LogDailyPath);
         }
+
 
         public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath)
         {
@@ -32,7 +34,6 @@ namespace Log
             dailyInfo.FileSize = fileInfo.Length;
             dailyInfo.DateTime = DateTime.Now;
             JsonLogManager.AddSaveToDailyFile(dailyInfo, LogDailyPath);
-            Console.WriteLine(dailyInfo.ToString());
         }
     }
 }

@@ -28,6 +28,13 @@ namespace EasySaveConsole.Model
         // Maximum number of save tasks that can be created simultaneously.
         private static int MaxSaveTasks = 5;
 
+        private List<string> CurrentUnsavedPaths;
+
+        internal List<string> GetCurrentUnsavedPaths()
+        {
+            return new List<string>(CurrentUnsavedPaths);
+        }
+
         // Returns a copy of the current list of save tasks to avoid unintended modifications.
         internal List<SaveTask> GetSaveTasksClone()
         {
@@ -41,6 +48,7 @@ namespace EasySaveConsole.Model
             this.logManager = logManager;
             // Load the saved tasks from the previous session.
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
+            CurrentUnsavedPaths = new List<string>();
         }
 
         internal bool IsSaveTaskNameExist(string name)
@@ -69,9 +77,9 @@ namespace EasySaveConsole.Model
             return SaveTasks[index].CurrentDirectoryPair.TargetPath;
         }
 
-        internal string GetSaveTaskStrType(int index)
+        internal EMessage GetSaveTaskTypeMessage(int index)
         {
-            return SaveTasks[index].GetStrSaveTaskType();
+            return SaveTasks[index].GetMessageSaveTaskType();
         }
 
         internal ESaveTaskTypes GetSaveTaskType(int index)
@@ -79,13 +87,14 @@ namespace EasySaveConsole.Model
             return SaveTasks[index].GetSaveTaskType();
         }
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
-        internal void AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
+        internal EMessage AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
             if (SaveTasks.Count >= MaxSaveTasks)
             {
-                throw new Exception("Maximum number of save tasks reached");
+                return EMessage.ErrorMaxSaveTaskReachMessage;
             }
-            SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName, logManager));
+            SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
+            return EMessage.SuccessCreateSaveTaskMessage;
         }
 
         // Remove a save task at index
@@ -118,27 +127,21 @@ namespace EasySaveConsole.Model
         }
 
         // Starts the save task at index
-        internal EMessage ExecuteSaveTask(int index)
+        internal bool ExecuteSaveTask(int index)
         {
             try
             {
+                CurrentUnsavedPaths.Clear();
                 if (SaveTasks[index].Save())
                 {
-                    return EMessage.SuccessStartSaveTaskMessage;
+                    return true;
                 }
-                return EMessage.ErrorStartSaveTaskMessage;
+                CurrentUnsavedPaths = SaveTasks[index].GetUnsavedPaths();
+                return false;
             }
             catch (Exception ex) 
             {
-                return EMessage.ErrorStartSaveTaskMessage;
-            }
-        }
-        // Starts all save tasks
-        internal void ExecuteAllSaveTasks()
-        {
-            foreach (SaveTask saveTask in SaveTasks)
-            {
-                saveTask.Save();
+                return false;
             }
         }
 

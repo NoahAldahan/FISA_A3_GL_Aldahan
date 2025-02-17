@@ -58,6 +58,8 @@ namespace Log
             Progression = progression;
         }
 
+
+        // Method used to debug logs in the CLI
         public override string ToString()
         {
             Console.WriteLine(" ============ NEW SAVE ============= ");
