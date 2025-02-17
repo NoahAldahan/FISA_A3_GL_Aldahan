@@ -12,11 +12,12 @@ namespace Log
         internal static void UpdateRealTimeProgression(RealTimeInfo realTimeInfo, string LogRealTimePath)
         {
             List<RealTimeInfo> jsonObjectList = new List<RealTimeInfo>();
-            if (File.Exists(LogRealTimePath))
+            string fileName = GetFileRealTimeName(LogRealTimePath);
+            if (File.Exists(fileName))
             {
                 try
                 {
-                    string json = File.ReadAllText(LogRealTimePath);
+                    string json = File.ReadAllText(fileName);
                     // Désérialiser en liste d'objets
                     jsonObjectList = JsonSerializer.Deserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
                 }
@@ -38,7 +39,7 @@ namespace Log
             try
             {
                 string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(LogRealTimePath, updatedJson);
+                File.WriteAllText(fileName, updatedJson);
             }
             catch (Exception ex)
             {
@@ -59,6 +60,11 @@ namespace Log
         internal static string GetFileDailyName(DateTime Date, string LogDailyPath)
         { 
             return $"{LogDailyPath}backup_{Date:yyyy-MM-dd}.json"; 
+        }
+
+        internal static string GetFileRealTimeName(string  LogRealTimePath)
+        {
+            return $"{LogRealTimePath}RealTimeSave.json";
         }
 
         // Create the daily backup file
@@ -83,7 +89,7 @@ namespace Log
         internal static void CreateRealTimeJsonFile(string LogRealTimePath)
         {
             // Nom du fichier JSON basé sur la date
-            string fileName = LogRealTimePath;
+            string fileName = GetFileRealTimeName(LogRealTimePath);
             try
             {
                 if (!File.Exists(fileName))
@@ -129,7 +135,7 @@ namespace Log
                 realTimeInfo.Progression,
                 realTimeInfo.SaveDate
             };
-            AddJsonLogObject(LogRealTimePath, jsonRealTimeInfo);
+            AddJsonLogObject(GetFileRealTimeName(LogRealTimePath), jsonRealTimeInfo);
         }
 
         internal static void AddJsonLogObject(string FilePath, object LogObject)
@@ -170,7 +176,7 @@ namespace Log
 
         }
 
-        internal static DateTime GetLastSaveDate(string LogDailyPath, string FilePath)
+        internal static DateTime GetLastSaveDateFromJson(string LogDailyPath, string FilePath)
         {
             DirectoryInfo LogDailyDirectory = new DirectoryInfo(LogDailyPath);
             try

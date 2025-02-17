@@ -42,28 +42,31 @@ namespace EasySaveConsole.Model
                 // Retrieve the file attributes to determine if the source is a file or directory.
                 FileAttributes sourceAttr = File.GetAttributes(SourcePath);
 
-                // Case 1: The source is a file
-                if (!sourceAttr.HasFlag(FileAttributes.Directory))
+            // Case 1: The source is a file
+            if (!sourceAttr.HasFlag(FileAttributes.Directory))
+            {
+                FileInfo sourceFileInfo = new FileInfo(SourcePath);
+                FileInfo targetFileInfo = new FileInfo(Path.Combine(TargetPath, sourceFileInfo.Name));
+                // If the file doesn't exist or the source file is more recent than the target file
+                // We use targetFileInfo.FullName instead of TargetPath because we need the full path of the file
+                // (with the name of the file appended) that is going to be created or updated
+                DateTime lastSaveDateJson = JsonLogManager.GetLastSaveDateFromJson(logDaily.LogDailyPath, sourceFileInfo.FullName);
+                DateTime lastSaveDateXml = XmlLogManager.GetLastSaveDateFromXml(logDaily.LogDailyPath, sourceFileInfo.FullName);
+                DateTime lastSaveDate = lastSaveDateJson > lastSaveDateXml ? lastSaveDateJson : lastSaveDateXml;
+                if (!File.Exists(targetFileInfo.FullName) || sourceFileInfo.LastWriteTime > lastSaveDate)
                 {
-                    FileInfo sourceFileInfo = new FileInfo(SourcePath);
-                    FileInfo targetFileInfo = new FileInfo(Path.Combine(TargetPath, sourceFileInfo.Name));
-                    // If the file doesn't exist or the source file is more recent than the target file
-                    // We use targetFileInfo.FullName instead of TargetPath because we need the full path of the file
-                    // (with the name of the file appended) that is going to be created or updated
-                    if (!File.Exists(targetFileInfo.FullName) || sourceFileInfo.LastWriteTime > JsonLogManager.GetLastSaveDate(this.logDaily.LogDailyPath, sourceFileInfo.FullName))
-                    {
-                        logDaily.stopWatch.Restart();
-                        File.Copy(SourcePath, targetFileInfo.FullName, true);
-                        logDaily.stopWatch.Stop();
-                        logDaily.AddDailyInfo(name, SourcePath, targetFileInfo.FullName);
-                        logRealTime.UpdateRealTimeProgress();
-                    }
+                    logDaily.stopWatch.Restart();
+                    File.Copy(SourcePath, targetFileInfo.FullName, true);
+                    logDaily.stopWatch.Stop();
+                    logDaily.AddDailyInfo(name, SourcePath, targetFileInfo.FullName,1);
+                    logRealTime.UpdateRealTimeProgress(1);
                 }
-                // Case 2: The source is a directory
-                else
-                {
-                    DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(SourcePath);
-                    DirectoryInfo targetDirectoryInfo = new DirectoryInfo(TargetPath);
+            }
+            // Case 2: The source is a directory
+            else
+            {
+                DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(SourcePath);
+                DirectoryInfo targetDirectoryInfo = new DirectoryInfo(TargetPath);
 
                     // If the source directory is empty and the target directory does not exist, create the target directory.
                     if (sourceDirectoryInfo.GetDirectories().Length == 0 && !targetDirectoryInfo.Exists)
