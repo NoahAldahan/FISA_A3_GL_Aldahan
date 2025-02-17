@@ -11,6 +11,7 @@ using EasySaveConsole.Controller;
 using EasySaveConsole.View;
 using Log;
 using System.Text.Json;
+using EasySaveConsole.Model.Log;
 
 namespace EasySaveConsole
 {
@@ -26,17 +27,22 @@ namespace EasySaveConsole
             CliView cliView = new CliView();
             SaveTaskView saveTaskView = new SaveTaskView();
             LanguageView languageView = new LanguageView();
+            LogView logView = new LogView();
+            //Create Extension Instance
             MessageExtensions messageExtensions = new MessageExtensions();
             LanguageExtension languageExtensions = new LanguageExtension();
+            LogSaveTaskTypeExtension logSaveTaskTypeExtension = new LogSaveTaskTypeExtension();
 
             // Create instances of models
             LanguageManager languageManager = new LanguageManager(languageExtensions);
             MessageManager messagesManager = new MessageManager(languageManager, messageExtensions);
-            SaveTaskManager saveTaskManager = new SaveTaskManager();
+            LogManager logManager = new LogManager(logSaveTaskTypeExtension);
+            SaveTaskManager saveTaskManager = new SaveTaskManager(logManager);
 
             // Create instances of controllers
             LanguageController languageController = new LanguageController(messagesManager, languageView, languageManager);
-            SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager);
+            LogController logController = new LogController(messagesManager, logView, logManager);
+            SaveTaskController saveTaskController = new SaveTaskController(messagesManager, saveTaskView, saveTaskManager, logController);
             CliController cliController = new CliController(messagesManager, cliView, saveTaskController, languageController);
             // Show the start screen
             cliController.showStart();

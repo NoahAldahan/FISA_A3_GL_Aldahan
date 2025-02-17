@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Log;
 using System.Threading.Tasks;
+using EasySaveConsole.Model.Log;
 
 namespace EasySaveConsole.Model
 {
@@ -23,6 +24,8 @@ namespace EasySaveConsole.Model
 
         // Boolean flag to track whether the save operation was successful.
         protected bool IsSaveSuccessful;
+
+        internal LogManager logManager { get; set; }
 
         // Logs for real-time and daily backup operations.
         internal LogRealTime logRealTime;
@@ -53,12 +56,13 @@ namespace EasySaveConsole.Model
         }
 
         // Overloaded constructor with additional parameters for logging instances.
-        internal SaveTask(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName)
+        internal SaveTask(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName, LogManager logManager)
         {
             this.CurrentDirectoryPair = CurrentDirectoryPair;
             this.logDaily = logDaily;
             this.logRealTime = logRealTime;
             this.name = saveTaskName;
+            this.logManager = logManager;
         }
 
         // Returns the directory pair associated with the backup task.

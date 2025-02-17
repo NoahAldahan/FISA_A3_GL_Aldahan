@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Log;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using EasySaveConsole.Model.Log;
 
 namespace EasySaveConsole.Model
 {
@@ -20,8 +21,8 @@ namespace EasySaveConsole.Model
             : base(CurrentDirectoryPair, name) { }
 
         // Constructor with directory pair and log instances.
-        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName)
-            : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName) { }
+        internal SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName, LogManager logManager)
+            : base(CurrentDirectoryPair, logDaily, logRealTime, saveTaskName, logManager) { }
 
         // Overrides the abstract Save method to perform a complete backup.
         internal override bool Save()

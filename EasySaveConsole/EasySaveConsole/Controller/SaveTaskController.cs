@@ -19,7 +19,8 @@ namespace EasySaveConsole.Controller
         CreateSaveTask = 3,  // Action to start save tasks
         ModifySaveTasks = 4, // Action to create a new save task
         DeleteSaveTasks = 5, // Action to modify an existing save task
-        Quit = 6,            // Action to quit the save task menu
+        StartLogSaveTaskType = 6,
+        Quit = 7,            // Action to quit the save task menu
     }
 
     // Controller class for managing save tasks in the CLI
@@ -28,13 +29,16 @@ namespace EasySaveConsole.Controller
         // Manager for handling save tasks
         internal SaveTaskManager saveTaskManager;
 
+        internal LogController logController;
+
         // Constructor for the SaveTaskController class
-        internal SaveTaskController(MessageManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager)
+        internal SaveTaskController(MessageManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager, LogController logController)
             : base(messagesManager, view)
         {
             this.saveTaskManager = saveTaskManager;
             stopCondition = (int)ECliSaveTaskAction.Quit; // Set the stop condition to the Quit action
             initCondition = (int)ECliSaveTaskAction.InitMenu; // Set the initial condition to the InitMenu action
+            this.logController = logController;
             InitDictAction(); // Initialize the dictionary of actions
         }
 
@@ -48,6 +52,7 @@ namespace EasySaveConsole.Controller
             dictActions.Add((int)ECliSaveTaskAction.DeleteSaveTasks, () => DeleteSaveTask()); // Add action to delete a save tasks
             dictActions.Add((int)ECliSaveTaskAction.ModifySaveTasks, () => ModifySaveTasks()); // Add action to modify a save tasks
             dictActions.Add((int)ECliSaveTaskAction.ShowSaveTasks, () => SaveTaskDetails()); // Add action to display all save tasks
+            dictActions.Add((int)ECliSaveTaskAction.StartLogSaveTaskType, () => logController.StartCli()); // Add action to display all save tasks
         }
 
         

@@ -1,4 +1,5 @@
 ﻿using EasySaveConsole.Controller;
+using EasySaveConsole.Model.Log;
 using EasySaveConsole.Utilities;
 using Log;
 using Microsoft.SqlServer.Server;
@@ -7,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Text.Json;
 
@@ -21,6 +23,8 @@ namespace EasySaveConsole.Model
         // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
 
+        internal LogManager logManager { get; set; }
+
         // Maximum number of save tasks that can be created simultaneously.
         private static int MaxSaveTasks = 5;
 
@@ -31,9 +35,10 @@ namespace EasySaveConsole.Model
         }
 
         // Constructor: Initializes the save task manager and loads previously saved tasks from JSON.
-        internal SaveTaskManager()
+        internal SaveTaskManager(LogManager logManager)
         {
             SaveTaskFactory = new SaveTaskFactory();
+            this.logManager = logManager;
             // Load the saved tasks from the previous session.
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
         }
@@ -80,7 +85,7 @@ namespace EasySaveConsole.Model
             {
                 throw new Exception("Maximum number of save tasks reached");
             }
-            SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
+            SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName, logManager));
         }
 
         // Remove a save task at index
@@ -155,7 +160,8 @@ namespace EasySaveConsole.Model
                 newSaveTaskType,
                 SaveTasks[index].CurrentDirectoryPair.SourcePath,
                 SaveTasks[index].CurrentDirectoryPair.TargetPath,
-                saveTaskName
+                saveTaskName,
+                this.logManager
             );
 
             // Replace the old save task with the new one.
@@ -182,7 +188,7 @@ namespace EasySaveConsole.Model
                 // Supprimer l'ancienne tâche
                 SaveTasks.RemoveAt(index);
                 // Créer une nouvelle tâche avec les nouveaux paramètres
-                SaveTask newSaveTask = SaveTaskFactory.CreateSave(saveTaskType, saveTaskSourcePath, saveTaskTargetPath, saveTaskName);
+                SaveTask newSaveTask = SaveTaskFactory.CreateSave(saveTaskType, saveTaskSourcePath, saveTaskTargetPath, saveTaskName, this.logManager);
                 // Ajouter la nouvelle tâche à la liste
                 SaveTasks.Insert(index, newSaveTask);
             }

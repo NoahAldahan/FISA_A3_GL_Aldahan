@@ -74,7 +74,7 @@ namespace EasySaveConsole.Utilities
         }
 
         // Updates the default language setting in the AppSettings JSON file.
-        static public EMessage SetDefaultLanguage(string languageValue, string languageKey)
+        static public bool SetSettings(string value, string key)
         {
             try
             {
@@ -83,16 +83,16 @@ namespace EasySaveConsole.Utilities
                 JsonNode jsonNode = JsonNode.Parse(jsonContent);
 
                 // Modify the language setting
-                jsonNode[languageKey] = languageValue;
+                jsonNode[key] = value;
 
                 // Write the modified JSON back to the file
                 File.WriteAllText(AppSettingsPath, jsonNode.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
 
-                return EMessage.DefaultLanguageChangedSuccessMessage;
+                return true;
             }
             catch (Exception ex)
             {
-                return EMessage.DefaultLanguageChangedErrorMessage; // Return an error message enum in case of failure
+                return false; // Return an error message enum in case of failure
             }
         }
 

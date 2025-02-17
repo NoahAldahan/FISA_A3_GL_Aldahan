@@ -1,4 +1,5 @@
-﻿using Log;
+﻿using EasySaveConsole.Model.Log;
+using Log;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,8 +19,8 @@ namespace EasySaveConsole.Model
             : base(CurrentDirectoryPair, name) { }
 
         // Constructor for initializing the task with directory pair, logs, and name.
-        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string SaveTaskName)
-            : base(CurrentDirectoryPair, logDaily, logRealTime, SaveTaskName) { }
+        internal SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string SaveTaskName, LogManager logManager)
+            : base(CurrentDirectoryPair, logDaily, logRealTime, SaveTaskName, logManager) { }
 
         // Starts a differential save task.
         internal override bool Save()

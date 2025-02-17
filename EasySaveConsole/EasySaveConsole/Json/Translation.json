@@ -17,6 +17,18 @@
     "LanguagesListMessage": "\nLangages disponibles : \n EN (Anglais) \n FR (Français) \n ES (Espagnol) \n DE (Allemand) \n IT (Italien) \n PT (Portugais) \n NL (Néerlandais)",
     "AskLanguageMessage": "\nEntrez votre choix de langage : ",
 
+    "LogSaveTaskTypeChangeSuccessMessage": "\nLe type de sauvegarde a été enregistré avec succès.",
+    "LogSaveTaskTypeChangeErrorMessage": "\nErreur : le type de sauvegarde n'a pas pu être enregistré.",
+    "MenuLogSaveTaskTypeMessage": "Options : \n\n 1. Changer le type de log \n 2. Quitter le menu type de log \n",
+    "DefaultLogTaskTypeInitSuccessMessage": "\nLe type de sauvegarde par défaut a été initialisé avec succès.",
+    "DefaultLogTaskTypeInitErrorMessage": "\nErreur : impossible d'initialiser le type de sauvegarde par défaut.",
+    "DefaultLogTaskTypeChangedSuccessMessage": "\nLe type de sauvegarde par défaut a été modifié avec succès.",
+    "DefaultLogTaskTypeChangedErrorMessage": "\nErreur : impossible de modifier le type de sauvegarde par défaut.",
+    "LogSaveTaskTypeListMessage": "\nTypes de sauvegarde disponibles : \n XML (XML) \n JSON (JSON) ",
+    "AskLogTaskTypeMessage": "\nEntrez votre choix de type de sauvegarde : ",
+
+
+
     "AskSaveTaskNameMessage": "\nEntrez le nom de la tâche sauvegarde : ",
     "AskSaveTaskIdMessage": "\nEntrez l'ID de la tâche de sauvegarde : ",
     "AskSaveTaskTargetFolderMessage": "\nEntrez le chemin de fichier de destination pour la sauvegarde : ",
@@ -29,7 +41,7 @@
     "ShowSaveTaskRegisterMessage": "\nListe des taches de sauvegarde enregistrées : ",
     "CreateSaveTaskMessage": "\nCréation d'une nouvelle tâche de sauvegarde. ",
     "ShowLetEmptyRowForDefault": "\nLaisser la ligne vide pour ne pas modifier la tâche de sauvegarde",
-    "MenuSaveTaskMessage": "Options : \n\n 1. Afficher toutes les tâches de sauvegarde \n 2. Démarrer une ou plusieurs tâches de sauvegarde \n 3. Créer une tâche de sauvegarde \n 4. Modifier une tâche de sauvegarde existante \n 5. Supprimer une tâche de sauvegarde \n 6. Quitter le menu des tâches de sauvegarde \n",
+    "MenuSaveTaskMessage": "Options : \n\n 1. Afficher toutes les tâches de sauvegarde \n 2. Démarrer une ou plusieurs tâches de sauvegarde \n 3. Créer une tâche de sauvegarde \n 4. Modifier une tâche de sauvegarde existante \n 5. Supprimer une tâche de sauvegarde \n 6. Changer le type de log \n 7. Quitter le menu des tâches de sauvegarde \n",
     "StartSaveTaskMessage": "\nDémarrage de la tâche de sauvegarde...",
     "SuccessStartSaveTaskMessage": "\nLa tâche de sauvegarde a été réalisée avec succès : ",
     "SuccessModifySaveTaskMessage": "\nLa tâche de sauvegarde a été modifiée avec succès : ",
