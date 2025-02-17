@@ -10,12 +10,14 @@ using EasySaveWPFApp.Model;
 using System.Text.Json.Nodes;
 using Log;
 using EasySaveWPFApp.Controller;
+using System.Collections.ObjectModel;
 
 namespace EasySaveWPFApp.Utilities
 {
     // Utility class for handling JSON operations such as loading settings, messages, and save tasks.
     internal static class JsonManager
     {
+        static private string test = Environment.GetEnvironmentVariable("TranslationPath");
         // Paths to various JSON configuration files, loaded from environment variables.
         static private string TranslationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
             Environment.GetEnvironmentVariable("TranslationPath"));
@@ -96,7 +98,7 @@ namespace EasySaveWPFApp.Utilities
         }
 
         // Saves all save tasks to a JSON file for persistence.
-        static public void SerializeSaveTasks(List<SaveTask> SaveTasks)
+        static public void SerializeSaveTasks(ObservableCollection<SaveTask> SaveTasks)
         {
             try
             {

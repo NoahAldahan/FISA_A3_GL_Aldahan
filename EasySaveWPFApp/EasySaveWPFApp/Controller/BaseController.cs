@@ -7,10 +7,10 @@ using System.Runtime.CompilerServices;
 namespace EasySaveWPFApp.Controller
 {
     // Abstract base class for controllers
-    internal abstract class BaseController
+    public abstract class BaseController
     {
         // Message manager for translating and displaying messages
-        protected MessageManager messagesManager;
+        internal MessageManager messagesManager;
 
         // View associated with the controller
         protected BaseView view;
@@ -25,7 +25,7 @@ namespace EasySaveWPFApp.Controller
         protected int stopCondition;
 
         // Constructor for the base controller class
-        protected BaseController(MessageManager messagesManager, BaseView view)
+        internal BaseController(MessageManager messagesManager, BaseView view)
         {
             this.messagesManager = messagesManager;
             this.view = view;

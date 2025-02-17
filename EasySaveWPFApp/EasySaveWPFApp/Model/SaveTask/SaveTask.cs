@@ -9,13 +9,14 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Log;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace EasySaveWPFApp.Model
 {
     // Specifies that the class can be serialized as a derived type in JSON format.
     [JsonDerivedType(typeof(SaveTaskComplete), "SaveTaskComplete")]
     [JsonDerivedType(typeof(SaveTaskDifferential), "SaveTaskDifferential")]
-    internal abstract class SaveTask
+    internal abstract class SaveTask : INotifyPropertyChanged
     {
         // Stores the source and target directory pair for the backup task.
         [JsonInclude]
@@ -33,6 +34,29 @@ namespace EasySaveWPFApp.Model
         // Name of the backup task.
         [JsonInclude]
         internal string name;
+
+        public string Name
+        {
+            get => name;
+            set { name = value; OnPropertyChanged(nameof(name)); }
+        }
+
+        public string Source
+        {
+            get => CurrentDirectoryPair.SourcePath;
+            set { CurrentDirectoryPair.SourcePath = value; OnPropertyChanged(nameof(CurrentDirectoryPair.SourcePath)); }
+        }
+
+        public string Destination
+        {
+            get => CurrentDirectoryPair.TargetPath;
+            set { CurrentDirectoryPair.TargetPath = value; OnPropertyChanged(nameof(CurrentDirectoryPair.TargetPath)); }
+        }
+
+        public ESaveTaskTypes SaveTaskType
+        {
+            get => GetSaveTaskType();
+        }
 
         // Setter for the real-time logging instance.
         internal void SetLogRealTime(LogRealTime logRealTime)
@@ -84,6 +108,10 @@ namespace EasySaveWPFApp.Model
         // Returns true if the task was successful (all files were saved), false otherwise
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal abstract bool Save();
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
 

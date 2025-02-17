@@ -8,6 +8,8 @@ using System.Diagnostics.Eventing.Reader;
 using System.Collections;
 using System.ComponentModel.Design;
 using System.Reflection;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace EasySaveWPFApp.Controller
 {
@@ -27,7 +29,10 @@ namespace EasySaveWPFApp.Controller
     internal class SaveTaskController : BaseController
     {
         // Manager for handling save tasks
-        internal SaveTaskManager saveTaskManager;
+        public SaveTaskManager saveTaskManager { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
 
         // Constructor for the SaveTaskController class
         internal SaveTaskController(MessageManager messagesManager, SaveTaskView view, SaveTaskManager saveTaskManager)
@@ -55,7 +60,7 @@ namespace EasySaveWPFApp.Controller
 
         internal void ShowAllSaveTask()
         {
-            List<SaveTask> saveTasks = saveTaskManager.GetAllSaveTask();
+            ObservableCollection<SaveTask> saveTasks = saveTaskManager.GetAllSaveTask();
             ShowMessage(EMessage.ShowSaveTaskRegisterMessage);
             int id = 0;
             foreach (SaveTask saveTask in saveTasks)

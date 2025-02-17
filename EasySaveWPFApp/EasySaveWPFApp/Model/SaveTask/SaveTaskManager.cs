@@ -5,6 +5,8 @@ using Microsoft.SqlServer.Server;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
@@ -13,11 +15,16 @@ using System.Text.Json;
 namespace EasySaveWPFApp.Model
 {
     // Manages the collection of save tasks, their execution, and persistence.
-    internal class SaveTaskManager
+    internal class SaveTaskManager : INotifyPropertyChanged
     {
         // List of all active save tasks.
-        internal List<SaveTask> SaveTasks { get; set; }
+        public ObservableCollection<SaveTask> SaveTasks { get; set; }
 
+        public ObservableCollection<SaveTask> SaveTaskList
+        {
+            get => SaveTasks;
+            set { SaveTasks = value; OnPropertyChanged(nameof(SaveTasks)); }
+        }
         // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
 
@@ -42,7 +49,7 @@ namespace EasySaveWPFApp.Model
         {
             SaveTaskFactory = new SaveTaskFactory();
             // Load the saved tasks from the previous session.
-            SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
+            SaveTasks = new ObservableCollection<SaveTask>(JsonManager.DeserializeSaveTasks());
             CurrentUnsavedPaths = new List<string>();
         }
 
@@ -141,7 +148,7 @@ namespace EasySaveWPFApp.Model
         }
 
         // Returns all save tasks.
-        internal List<SaveTask> GetAllSaveTask()
+        internal ObservableCollection<SaveTask> GetAllSaveTask()
         {
             return SaveTasks;
         }
@@ -203,5 +210,9 @@ namespace EasySaveWPFApp.Model
         {
             JsonManager.SerializeSaveTasks(SaveTasks);
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
