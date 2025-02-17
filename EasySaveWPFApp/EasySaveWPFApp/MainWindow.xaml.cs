@@ -20,5 +20,30 @@ namespace EasySaveWPFApp
         {
             InitializeComponent();
         }
+
+        private void AddRow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void StartSelected_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ModifySelected_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteSelected_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog(); // Ouvre la fenêtre et bloque l'autre jusqu'à fermeture
+        }
     }
 }

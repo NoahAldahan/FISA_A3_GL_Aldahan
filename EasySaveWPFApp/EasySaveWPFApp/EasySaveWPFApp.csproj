@@ -14,12 +14,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="CryptoSoftLibrary">
       <HintPath>..\CustomPackages\CryptoSoft\CryptoSoftLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Log">
       <HintPath>..\CustomPackages\Log\Log.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

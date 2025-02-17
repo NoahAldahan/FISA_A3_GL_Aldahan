@@ -8,5 +8,38 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
+        <!-- Titre -->
+        <TextBlock Text="EasySave" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="16"/>
+
+        <!-- Bouton des paramètres -->
+        <Button Content="Settings" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="40" Margin="0,10,10,0" Click="SettingsButton_Click"/>
+
+        <!-- Tableau -->
+        <DataGrid Name="BackupTable" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,50,10,50" Height="250">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Source" Binding="{Binding Source}" Width="*"/>
+                <DataGridTextColumn Header="Destination" Binding="{Binding Destination}" Width="*"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
+                <DataGridTemplateColumn Header="Sélectionner">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsSelected}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Bouton Ajouter -->
+        <Button Content="+" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Click="AddRow_Click"/>
+
+        <!-- Boutons Démarrer, Modifier, Supprimer -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Button Content="Démarrer la sélection" Width="200" Height="40" Margin="5" Click="StartSelected_Click"/>
+            <Button Content="Modifier" Width="100" Height="40" Margin="5" Click="ModifySelected_Click"/>
+            <Button Content="Supprimer" Width="100" Height="40" Margin="5" Click="DeleteSelected_Click"/>
+        </StackPanel>
+
     </Grid>
 </Window>
