@@ -32,6 +32,9 @@ namespace EasySaveWPFApp.Utilities
         static public string LogPathRealTime = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
             Environment.GetEnvironmentVariable("LogPathRealTime"));
 
+        static public string EncryptionKey = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("EncryptionKey"));
+
         // Retrieves a translated message from the Translation JSON file based on the specified language.
         static public string GetMessage(string msg, ELanguage language)
         {

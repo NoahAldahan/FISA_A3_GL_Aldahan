@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Log;
 using System.Threading.Tasks;
+using EasySaveWPFApp.Utilities;
 
 namespace EasySaveWPFApp.Model
 {
@@ -99,8 +100,7 @@ namespace EasySaveWPFApp.Model
 
             // Encrypt the file if it has an extension that requires encryption.
             if (EncryptingExtensions.Contains(Path.GetExtension(targetPath)))
-                // TEMP: replace "key" with a real key (not a metal one though)
-                CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, "key"); 
+                CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, JsonManager.EncryptionKey); 
         }
     }
 }
