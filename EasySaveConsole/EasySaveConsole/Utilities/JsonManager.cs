@@ -61,7 +61,6 @@ namespace EasySaveConsole.Utilities
                 string jsonContent = File.ReadAllText(AppSettingsPath);
                 JsonDocument doc = JsonDocument.Parse(jsonContent);
                 JsonElement root = doc.RootElement;
-
                 // Retrieve the requested setting
                 string value = root.GetProperty(settings).GetString();
                 return value;
