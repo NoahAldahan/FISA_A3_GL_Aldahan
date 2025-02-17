@@ -98,6 +98,11 @@ namespace EasySaveConsole.Utilities
         // Method to initialize the default language from the configuration
         internal EMessage InitDefaultLanguage()
         {
+            if(JsonManager.GetSettings(languageLibelle) == "")
+            {
+                return EMessage.ErrorGetSettingsJson; 
+            }
+
             ELanguage defaultLanguage = LanguageExtension.ToLanguage(JsonManager.GetSettings(languageLibelle));
 
             if (defaultLanguage == ELanguage.Unknown)
@@ -110,7 +115,7 @@ namespace EasySaveConsole.Utilities
         }
 
         // Method to check if a given language string is valid
-        internal static bool IsValideLanguage(string language)
+        internal static bool IsValidLanguage(string language)
         {
             return LanguageExtension.GetAllStrLanguage().Contains(language);
         }
@@ -119,7 +124,7 @@ namespace EasySaveConsole.Utilities
         internal EMessage SetDefaultLanguage(string languageValue)
         {
             EMessage msg;
-            if (IsValideLanguage(languageValue))
+            if (IsValidLanguage(languageValue))
             {
                 msg = JsonManager.SetDefaultLanguage(languageValue, languageLibelle);
                 defaultLanguage = LanguageExtension.GetLanguageInstance(languageValue);

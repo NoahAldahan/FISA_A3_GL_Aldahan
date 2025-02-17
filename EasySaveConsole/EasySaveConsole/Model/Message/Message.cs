@@ -26,6 +26,7 @@ namespace EasySaveConsole.Model
             DefaultLanguageChangedErrorMessage,
             AskLanguageMessage,
             MenuLanguageMessage,
+            ErrorGetSettingsJson,
             //SaveTask
             StartSaveTaskMessage,
             ShowSaveTaskRegisterMessage,
@@ -46,6 +47,7 @@ namespace EasySaveConsole.Model
             ErrorSuppressSaveTaskMessage,
             ErrorStartEndIndexSaveTaskMessage,
             ErrorStartSaveTaskMessage,
+            ErrorStartSaveTaskPathListMessage,
             ErrorEmptyUserInputSaveTaskMessage,
             AskSaveTaskIdMessage,
             ShowLetEmptyRowForDefault,
@@ -60,7 +62,9 @@ namespace EasySaveConsole.Model
             ShowSaveTaskTypeMessage,
             ErrorSaveTaskNameDuplicateMessage,
             ErrorMaxSaveTaskReachMessage,
-            SuccessCreateSaveTaskMessage
+            SuccessCreateSaveTaskMessage,
+            SaveTaskTypeDifferentialName,
+            SaveTaskTypeCompleteName
     }
 
     // Static class providing utility methods for message management
@@ -87,6 +91,7 @@ namespace EasySaveConsole.Model
             { EMessage.DefaultLanguageChangedErrorMessage, "DefaultLanguageChangedErrorMessage" },
             { EMessage.AskLanguageMessage, "AskLanguageMessage" },
             { EMessage.MenuLanguageMessage, "MenuLanguageMessage" },
+            { EMessage.ErrorGetSettingsJson, "ErrorGetSettingsJson" },
 
             // Save Task-related Messages
             { EMessage.StartSaveTaskMessage, "StartSaveTaskMessage" },
@@ -108,6 +113,7 @@ namespace EasySaveConsole.Model
             { EMessage.ErrorSuppressSaveTaskMessage, "ErrorSuppressSaveTaskMessage" },
             { EMessage.ErrorStartEndIndexSaveTaskMessage, "ErrorStartEndIndexSaveTaskMessage" },
             { EMessage.ErrorStartSaveTaskMessage, "ErrorStartSaveTaskMessage" },
+            { EMessage.ErrorStartSaveTaskPathListMessage, "ErrorStartSaveTaskPathListMessage" },
             { EMessage.ErrorEmptyUserInputSaveTaskMessage, "ErrorEmptyUserInputSaveTaskMessage" },
             { EMessage.AskSaveTaskIdMessage, "AskSaveTaskIdMessage" },
             { EMessage.ShowLetEmptyRowForDefault, "ShowLetEmptyRowForDefault" },
@@ -123,6 +129,8 @@ namespace EasySaveConsole.Model
             { EMessage.ErrorSaveTaskNameDuplicateMessage, "ErrorSaveTaskNameDuplicateMessage" },
             { EMessage.ErrorMaxSaveTaskReachMessage, "ErrorMaxSaveTaskReachMessage" },
             { EMessage.SuccessCreateSaveTaskMessage, "SuccessCreateSaveTaskMessage" },
+            { EMessage.SaveTaskTypeDifferentialName, "SaveTaskTypeDifferentialName" },
+            { EMessage.SaveTaskTypeCompleteName, "SaveTaskTypeCompleteName" },
         };
 
             internal static string GetValue(this EMessage message)
@@ -142,7 +150,12 @@ namespace EasySaveConsole.Model
                 this.languageManager = languageManager;
             }
             public string GetMessageTranslate(EMessage message) 
-            {   
+            {
+                if(JsonManager.GetMessage(message.GetValue(), languageManager.defaultLanguage) == "")
+                {
+                    Console.WriteLine("Error : Can't get the translated message.");
+                    return "";
+                }
                 return JsonManager.GetMessage(message.GetValue(), languageManager.defaultLanguage);
             }
         }

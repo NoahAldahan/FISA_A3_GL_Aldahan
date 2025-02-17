@@ -9,6 +9,7 @@ using DotNetEnv;
 using EasySaveConsole.Model;
 using System.Text.Json.Nodes;
 using Log;
+using EasySaveConsole.Controller;
 
 namespace EasySaveConsole.Utilities
 {
@@ -46,8 +47,7 @@ namespace EasySaveConsole.Utilities
                 return value;
             }
             catch (Exception ex)
-            {
-                Console.WriteLine($"Error reading JSON file: {ex.Message}");
+            { 
                 return default; // Returns null by default if an error occurs
             }
         }
@@ -68,7 +68,6 @@ namespace EasySaveConsole.Utilities
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error reading JSON file: {ex.Message}");
                 return ""; // Returns an empty string in case of an error
             }
         }
@@ -104,6 +103,7 @@ namespace EasySaveConsole.Utilities
                 // Serialize the list of save tasks to a JSON format
                 string jsonContent = JsonSerializer.Serialize(SaveTasks);
                 File.WriteAllText(SerializationPath, jsonContent);
+
             }
             catch (Exception ex)
             {
