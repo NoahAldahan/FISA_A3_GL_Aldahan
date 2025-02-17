@@ -1,4 +1,4 @@
-namespace EasySaveWeb.Models
+namespace EasySaveWeb.Model
 {
     public class ErrorViewModel
     {

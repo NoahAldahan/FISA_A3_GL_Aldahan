@@ -2,7 +2,7 @@ using System.Diagnostics;
 using EasySaveWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EasySaveWeb.Controllers
+namespace EasySaveWeb.Controller
 {
     public class HomeController : Controller
     {
