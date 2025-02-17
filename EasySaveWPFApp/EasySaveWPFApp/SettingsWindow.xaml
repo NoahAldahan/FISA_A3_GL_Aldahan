@@ -33,8 +33,8 @@
         <!-- Sélection de langue -->
         <TextBlock Text="Langue" Margin="10,210,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <StackPanel Orientation="Horizontal" Margin="10,230,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Button Content="FR" Width="80" Click="Button_Click"/>
-            <Button Content="EN" Width="80" Margin="10,0,0,0" Click="Button_Click_1"/>
+            <Button Content="FR" Width="80" Click="FrenchLanguageButton_Click"/>
+            <Button Content="EN" Width="80" Margin="10,0,0,0" Click="EnglishLanguageButton_Click"/>
         </StackPanel>
 
         <!-- Boutons Cancel & Save -->

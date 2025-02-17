@@ -21,12 +21,12 @@ namespace EasySaveWPFApp
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void FrenchLanguageButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void EnglishLanguageButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -48,6 +48,7 @@ namespace EasySaveWPFApp
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            //TODO : If cancel button is clicked, don't do any changes to settings
             this.Close(); // Ferme la fenêtre des paramètres
         }
 
