@@ -1,0 +1,46 @@
+﻿<Window x:Class="EasySaveWPFApp.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" Height="370" Width="403">
+    <Grid RenderTransformOrigin="0.5,0.532">
+        <TextBlock Text="Settings" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
+
+        <!-- Format Log -->
+        <TextBlock Text="Format Log" Margin="10,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <RadioButton Content="Json" Margin="10,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="JSONRadioButton_Checked" IsChecked="True"/>
+        <RadioButton Content="XML" Margin="100,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="XMLRadioButton_Checked"/>
+
+        <!-- Extensions à crypter -->
+        <TextBlock Text="Extensions à crypter" Margin="10,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Margin="10,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border BorderBrush="Black" BorderThickness="2" Width="50" Height="30" >
+                <TextBlock Text=".txt" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="2" Width="50" Height="30" Margin="5,0,0,0">
+                <TextBlock Text=".xml" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="2" Width="50" Height="30" Margin="5,0,0,0">
+                <TextBlock Text=".json" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+
+        <!-- Ajouter une extension -->
+        <TextBlock Text="Entrez une extension à ajouter à la liste" Margin="10,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Margin="10,172,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="324">
+            <TextBox Width="200" RenderTransformOrigin="0.457,-4.341" Height="28" />
+            <Button Content="Valider" Width="57" Click="ValidateExtensionButton" Height="20" Margin="20,0,0,0"/>
+        </StackPanel>
+        <!-- Sélection de langue -->
+        <TextBlock Text="Langue" Margin="10,210,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Margin="10,230,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Content="FR" Width="80" Click="FrenchLanguageButton_Click"/>
+            <Button Content="EN" Width="80" Margin="10,0,0,0" Click="EnglishLanguageButton_Click"/>
+        </StackPanel>
+
+        <!-- Boutons Cancel & Save -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">
+            <Button Content="Annuler" Width="100" Click="Cancel_Click"/>
+            <Button Content="Sauvegarder" Width="100" Margin="10,0,0,0" Click="Save_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
