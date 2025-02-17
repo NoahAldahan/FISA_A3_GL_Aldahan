@@ -26,6 +26,7 @@ namespace EasySaveConsole.Model
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal override bool Save()
         {
+            logDaily.CreateDailyFile();
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
             logDaily.CreateDailyFile();
             UnsavedPaths.Clear();

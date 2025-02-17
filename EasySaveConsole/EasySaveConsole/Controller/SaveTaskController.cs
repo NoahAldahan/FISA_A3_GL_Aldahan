@@ -193,8 +193,8 @@ namespace EasySaveConsole.Controller
                 ShowMessagePause(EMessage.ErrorSaveTaskTypeMessage); // Show an error message if the save task type is invalid
                 return;
             }
-            saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
-            ShowMessagePause(EMessage.SaveTaskAddSuccessMessage);
+            EMessage msg = saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
+            ShowMessagePause(msg);
 
             saveTaskManager.SerializeSaveTasks();
         }
@@ -263,6 +263,7 @@ namespace EasySaveConsole.Controller
         }
         internal void HandleSaveTasks(List<int> indexs, ECliSaveTaskAction cliSaveTaskAction)
         {
+            indexs.Sort((a, b) => b.CompareTo(a));
             foreach (int index in indexs)
             {
                 try
