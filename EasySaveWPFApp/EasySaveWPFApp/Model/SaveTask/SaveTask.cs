@@ -91,17 +91,26 @@ namespace EasySaveWPFApp.Model
         // Can throw unauthorized access exception
         internal void CopySingleFile(string sourcePath, string targetPath, List<string> EncryptingExtensions)
         {
-            logDaily.stopWatch.Restart(); // Start timing the copy operation.
-            File.Copy(sourcePath, targetPath, true);// Copy the file from source to target directory.
-            logDaily.stopWatch.Stop();
-            //notify save of a new file
-            logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
-            logRealTime.UpdateRealTimeProgress();
+            logDaily.stopWatch.Restart(); // Démarrer le chrono pour la copie
+            File.Copy(sourcePath, targetPath, true); // Copier le fichier
+            logDaily.stopWatch.Stop(); // Arrêter le chrono après la copie
 
-            // Encrypt the file if it has an extension that requires encryption.
+            long encryptionTime = 0; // Par défaut, pas de cryptage
+
+            // Vérifier si le fichier doit être crypté
             if (EncryptingExtensions.Contains(Path.GetExtension(targetPath)))
-                CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, JsonManager.EncryptionKey); 
+            {
+                Stopwatch encryptionStopwatch = Stopwatch.StartNew(); // Démarrer le chrono pour le cryptage
+                CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, JsonManager.EncryptionKey);
+                encryptionStopwatch.Stop(); // Arrêter le chrono après le cryptage
+                encryptionTime = encryptionStopwatch.ElapsedMilliseconds; // Temps de cryptage en ms
+            }
+
+            // Enregistrer dans le log avec le temps de cryptage
+            logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, encryptionTime);
+            logRealTime.UpdateRealTimeProgress();
         }
+
     }
 }
 
