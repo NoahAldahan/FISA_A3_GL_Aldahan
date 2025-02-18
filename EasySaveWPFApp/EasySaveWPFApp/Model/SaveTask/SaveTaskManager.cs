@@ -1,5 +1,4 @@
-﻿using EasySaveWPFApp.Controller;
-using EasySaveWPFApp.Utilities;
+﻿using EasySaveWPFApp.Utilities;
 using Log;
 using Microsoft.SqlServer.Server;
 using System;
@@ -15,16 +14,11 @@ using System.Text.Json;
 namespace EasySaveWPFApp.Model
 {
     // Manages the collection of save tasks, their execution, and persistence.
-    internal class SaveTaskManager : INotifyPropertyChanged
+    public class SaveTaskManager : INotifyPropertyChanged
     {
         // List of all active save tasks.
         public ObservableCollection<SaveTask> SaveTasks { get; set; }
-
-        public ObservableCollection<SaveTask> SaveTaskList
-        {
-            get => SaveTasks;
-            set { SaveTasks = value; OnPropertyChanged(nameof(SaveTasks)); }
-        }
+            
         // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
 
@@ -79,7 +73,7 @@ namespace EasySaveWPFApp.Model
             return SaveTasks[index].CurrentDirectoryPair.TargetPath;
         }
 
-        internal EMessage GetSaveTaskTypeMessage(int index)
+        internal string GetSaveTaskTypeMessage(int index)
         {
             return SaveTasks[index].GetMessageSaveTaskType();
         }
@@ -89,27 +83,23 @@ namespace EasySaveWPFApp.Model
             return SaveTasks[index].GetSaveTaskType();
         }
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
-        internal EMessage AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
+        internal bool AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
-            if (SaveTasks.Count >= MaxSaveTasks)
-            {
-                return EMessage.ErrorMaxSaveTaskReachMessage;
-            }
             SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
-            return EMessage.SuccessCreateSaveTaskMessage;
+            return true;//EMessage.SuccessCreateSaveTaskMessage;
         }
 
         // Remove a save task at index
-        internal EMessage RemoveSaveTask(int index)
+        internal bool RemoveSaveTask(int index)
         {
             try
             {
                 SaveTasks.RemoveAt(index);
-                return EMessage.SuccessSuppressSaveTaskMessage;
+                return true;// EMessage.SuccessSuppressSaveTaskMessage;
             }
             catch (Exception ex) 
             {
-                return EMessage.ErrorSuppressSaveTaskMessage;
+                return false;// EMessage.ErrorSuppressSaveTaskMessage;
             }
         }
 

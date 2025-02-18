@@ -9,7 +9,6 @@ using DotNetEnv;
 using EasySaveWPFApp.Model;
 using System.Text.Json.Nodes;
 using Log;
-using EasySaveWPFApp.Controller;
 using System.Collections.ObjectModel;
 
 namespace EasySaveWPFApp.Utilities
@@ -17,42 +16,22 @@ namespace EasySaveWPFApp.Utilities
     // Utility class for handling JSON operations such as loading settings, messages, and save tasks.
     internal static class JsonManager
     {
-        static private string test = Environment.GetEnvironmentVariable("TranslationPath");
         // Paths to various JSON configuration files, loaded from environment variables.
-        static private string TranslationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static private string TranslationPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
             Environment.GetEnvironmentVariable("TranslationPath"));
-
-        static private string AppSettingsPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+    
+        static private string AppSettingsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName,
             Environment.GetEnvironmentVariable("AppSettingsPath"));
 
-        static private string SerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static private string SerializationPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
             Environment.GetEnvironmentVariable("SerializationPath"));
 
-        static public string LogPathDaily = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static public string LogPathDaily = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
             Environment.GetEnvironmentVariable("LogPathDaily"));
 
-        static public string LogPathRealTime = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static public string LogPathRealTime = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
             Environment.GetEnvironmentVariable("LogPathRealTime"));
 
-        // Retrieves a translated message from the Translation JSON file based on the specified language.
-        static public string GetMessage(string msg, ELanguage language)
-        {
-            try
-            {
-                // Read and parse JSON file
-                string jsonContent = File.ReadAllText(TranslationPath);
-                JsonDocument doc = JsonDocument.Parse(jsonContent);
-                JsonElement root = doc.RootElement;
-
-                // Retrieve the requested message for the given language
-                string value = root.GetProperty(language.GetValue()).GetProperty(msg).GetString();
-                return value;
-            }
-            catch (Exception ex)
-            { 
-                return default; // Returns null by default if an error occurs
-            }
-        }
 
         // Retrieves a setting value from the AppSettings JSON file.
         static public string GetSettings(string settings)
@@ -71,29 +50,6 @@ namespace EasySaveWPFApp.Utilities
             catch (Exception ex)
             {
                 return ""; // Returns an empty string in case of an error
-            }
-        }
-
-        // Updates the default language setting in the AppSettings JSON file.
-        static public EMessage SetDefaultLanguage(string languageValue, string languageKey)
-        {
-            try
-            {
-                // Read and parse JSON file
-                string jsonContent = File.ReadAllText(AppSettingsPath);
-                JsonNode jsonNode = JsonNode.Parse(jsonContent);
-
-                // Modify the language setting
-                jsonNode[languageKey] = languageValue;
-
-                // Write the modified JSON back to the file
-                File.WriteAllText(AppSettingsPath, jsonNode.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
-
-                return EMessage.DefaultLanguageChangedSuccessMessage;
-            }
-            catch (Exception ex)
-            {
-                return EMessage.DefaultLanguageChangedErrorMessage; // Return an error message enum in case of failure
             }
         }
 

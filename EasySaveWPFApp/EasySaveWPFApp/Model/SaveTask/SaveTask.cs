@@ -16,7 +16,7 @@ namespace EasySaveWPFApp.Model
     // Specifies that the class can be serialized as a derived type in JSON format.
     [JsonDerivedType(typeof(SaveTaskComplete), "SaveTaskComplete")]
     [JsonDerivedType(typeof(SaveTaskDifferential), "SaveTaskDifferential")]
-    internal abstract class SaveTask : INotifyPropertyChanged
+    public abstract class SaveTask : INotifyPropertyChanged
     {
         // Stores the source and target directory pair for the backup task.
         [JsonInclude]
@@ -35,25 +35,25 @@ namespace EasySaveWPFApp.Model
         [JsonInclude]
         internal string name;
 
-        public string Name
+        public string BindName
         {
             get => name;
             set { name = value; OnPropertyChanged(nameof(name)); }
         }
-
-        public string Source
+        
+        public string BindSource
         {
             get => CurrentDirectoryPair.SourcePath;
             set { CurrentDirectoryPair.SourcePath = value; OnPropertyChanged(nameof(CurrentDirectoryPair.SourcePath)); }
         }
 
-        public string Destination
+        public string BindDestination
         {
             get => CurrentDirectoryPair.TargetPath;
             set { CurrentDirectoryPair.TargetPath = value; OnPropertyChanged(nameof(CurrentDirectoryPair.TargetPath)); }
         }
 
-        public ESaveTaskTypes SaveTaskType
+        public ESaveTaskTypes BindSaveTaskType
         {
             get => GetSaveTaskType();
         }
@@ -101,7 +101,7 @@ namespace EasySaveWPFApp.Model
             return CurrentDirectoryPair;
         }
 
-        internal abstract EMessage GetMessageSaveTaskType();
+        internal abstract string GetMessageSaveTaskType();
         internal abstract ESaveTaskTypes GetSaveTaskType();
 
         // Start the task

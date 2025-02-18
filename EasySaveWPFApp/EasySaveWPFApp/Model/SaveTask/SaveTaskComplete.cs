@@ -132,9 +132,9 @@ namespace EasySaveWPFApp.Model
             return UnsavedPaths;
         }
 
-        internal override EMessage GetMessageSaveTaskType()
+        internal override string GetMessageSaveTaskType()
         {
-            return EMessage.SaveTaskTypeCompleteName;
+            return "Complète";
         }
         internal override ESaveTaskTypes GetSaveTaskType()
         {

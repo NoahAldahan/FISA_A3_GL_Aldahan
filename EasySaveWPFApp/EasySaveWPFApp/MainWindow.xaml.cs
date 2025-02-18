@@ -9,10 +9,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DotNetEnv;
-using EasySaveWPFApp.Controller;
+using EasySaveWPFApp.ViewModel;
 using EasySaveWPFApp.Model;
 using EasySaveWPFApp.Utilities;
-using EasySaveWPFApp.View;
 
 namespace EasySaveWPFApp
 {
@@ -22,29 +21,27 @@ namespace EasySaveWPFApp
     /// 
     public partial class MainWindow : Window
     {
-        SaveTaskController saveTaskController;
-        MessageManager messageManager;
+        SaveTaskViewModel saveTaskViewModel;
+        SaveTaskWindow saveTaskWindow;
         public MainWindow()
         {
             InitializeComponent();
             Env.Load(@".env");
-            LanguageManager languageManager = new LanguageManager();
-            messageManager = new MessageManager(languageManager);
-            SaveTaskView view = new SaveTaskView();
             SaveTaskManager saveTaskManager = new SaveTaskManager();
-            saveTaskManager.SaveTasks.Add(new SaveTaskComplete(new DirectoryPair("C:", "C:"), "name"));
-            saveTaskController = new SaveTaskController(messageManager, view, saveTaskManager);
-            DataContext = saveTaskController.saveTaskManager;
+            //Controller
+            saveTaskViewModel = new SaveTaskViewModel(saveTaskManager);
+            //DataContext
+            DataContext = saveTaskViewModel;
         }
 
         private void AddRow_Click(object sender, RoutedEventArgs e)
         {
-
+            //Windows
+            saveTaskWindow = new(saveTaskViewModel);
+            saveTaskWindow.ShowDialog();
         }
         private void StartSelected_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        { }
 
         private void ModifySelected_Click(object sender, RoutedEventArgs e)
         {
@@ -52,9 +49,7 @@ namespace EasySaveWPFApp
         }
 
         private void DeleteSelected_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        { }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -63,8 +58,15 @@ namespace EasySaveWPFApp
         }
 
         private void BackupTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { }
 
+        public void BackupTable_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                // Récupérer l'objet modifié
+                SaveTask modifiedTask = e.Row.Item as SaveTask;
+            }
         }
     }
 }

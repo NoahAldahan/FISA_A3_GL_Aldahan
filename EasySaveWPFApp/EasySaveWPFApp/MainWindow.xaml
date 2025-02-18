@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EasySaveWPFApp" xmlns:model="clr-namespace:EasySaveWPFApp.Model" d:DataContext="{d:DesignInstance Type=model:SaveTaskManager}"
+        xmlns:local="clr-namespace:EasySaveWPFApp" xmlns:model="clr-namespace:EasySaveWPFApp.ViewModel" d:DataContext="{d:DesignInstance Type=model:SaveTaskViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -15,12 +15,12 @@
         <Button Content="Settings" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="40" Margin="0,10,10,0" Click="SettingsButton_Click"/>
 
         <!-- Tableau -->
-        <DataGrid ItemsSource="{Binding SaveTasks}" Name="BackupTable" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,50,10,50" Height="250" SelectionChanged="BackupTable_SelectionChanged">
+        <DataGrid ItemsSource="{Binding SaveTasksBind}" Name="BackupTable" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,50,10,50" Height="250" SelectionChanged="BackupTable_SelectionChanged" CellEditEnding="BackupTable_CellEditEnding">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="*"/>
-                <DataGridTextColumn Header="Source" Binding="{Binding Source}" Width="*"/>
-                <DataGridTextColumn Header="Destination" Binding="{Binding Destination}" Width="*"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding SaveTaskType}" Width="*"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding BindName, UpdateSourceTrigger=Explicit}" Width="*"/>
+                <DataGridTextColumn Header="Source" Binding="{Binding BindSource, UpdateSourceTrigger=Explicit}" Width="*"/>
+                <DataGridTextColumn Header="Destination" Binding="{Binding BindDestination, UpdateSourceTrigger=Explicit}" Width="*"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding BindSaveTaskType, UpdateSourceTrigger=Explicit}" Width="*"/>
                 <DataGridTemplateColumn Header="Sélectionner">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
