@@ -10,6 +10,8 @@ using EasySaveConsole.Model;
 using System.Text.Json.Nodes;
 using Log;
 using EasySaveConsole.Controller;
+using System.Runtime.InteropServices;
+using EasySaveConsole.Model.Log;
 
 namespace EasySaveConsole.Utilities
 {
@@ -112,7 +114,7 @@ namespace EasySaveConsole.Utilities
         }
 
         // Loads and deserializes all save tasks from the JSON file.
-        static public List<SaveTask> DeserializeSaveTasks()
+        static public List<SaveTask> DeserializeSaveTasks(LogManager logManager)
         {
             string jsonContent = "";
             List<SaveTask> SaveTasks = new List<SaveTask>();
@@ -136,6 +138,7 @@ namespace EasySaveConsole.Utilities
                 {
                     saveTask.SetLogDaily(new LogDaily(LogPathDaily, LogPathRealTime));
                     saveTask.SetLogRealTime(new LogRealTime(LogPathDaily, LogPathRealTime));
+                    saveTask.SetLogManager(logManager);
                 }
             }
             catch (Exception ex)

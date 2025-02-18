@@ -46,16 +46,14 @@ namespace EasySaveConsole.Model
                 return false;
             }
 
-            UnsavedPaths = SaveComplete();
-
             return (UnsavedPaths.Count() == 0);
         }
 
         // Performs the complete backup by copying files from source to target.
         private List<string> SaveComplete()
         {
-            logDaily.CreateDailyFile(1);
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete,1);
+            logDaily.CreateDailyFile((int)logManager.defaultSaveTaskType);
+            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete,(int)logManager.defaultSaveTaskType);
 
 
             try
@@ -88,8 +86,8 @@ namespace EasySaveConsole.Model
                     }
                     logDaily.stopWatch.Stop();
                     //notify save of a new file
-                    logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
-                    logRealTime.UpdateRealTimeProgress();
+                    logDaily.AddDailyInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, (int)logManager.defaultSaveTaskType);
+                    logRealTime.UpdateRealTimeProgress((int)logManager.defaultSaveTaskType);
                 }
             }
             catch (Exception e)
@@ -117,8 +115,8 @@ namespace EasySaveConsole.Model
                         file.CopyTo(Path.Combine(targetDirectoryInfo.FullName, file.Name), true);
                         logDaily.stopWatch.Stop();
                         //notify save of a new file
-                        logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name);
-                        logRealTime.UpdateRealTimeProgress();
+                        logDaily.AddDailyInfo(name, file.FullName, targetDirectoryInfo.FullName + "\\" + file.Name, (int)logManager.defaultSaveTaskType);
+                        logRealTime.UpdateRealTimeProgress((int)logManager.defaultSaveTaskType);
                     }
                     catch (Exception e)
                     {

@@ -27,6 +27,8 @@ namespace EasySaveConsole.Model
 
         internal LogManager logManager { get; set; }
 
+        internal LogSaveTaskTypeExtension extension { get; set; }
+
         // Logs for real-time and daily backup operations.
         internal LogRealTime logRealTime;
         internal LogDaily logDaily;
@@ -47,6 +49,11 @@ namespace EasySaveConsole.Model
         internal void SetLogDaily(LogDaily logDaily)
         {
             this.logDaily = logDaily;
+        }
+
+        internal void SetLogManager(LogManager logManager)
+        {
+            this.logManager = logManager;
         }
 
         // Setter for the daily logging instance.

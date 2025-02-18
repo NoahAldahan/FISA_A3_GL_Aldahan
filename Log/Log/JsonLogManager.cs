@@ -71,12 +71,11 @@ namespace Log
         internal static void CreateDailyJsonFile(DateTime Date, string LogDailyPath)
         {
             // Nom du fichier JSON basé sur la date
-            string fileName = GetFileDailyName(Date, LogDailyPath);
             try
             {
-                if (!File.Exists(fileName))
+                if (!File.Exists(LogDailyPath))
                 {
-                    File.Create(fileName);
+                    File.Create(LogDailyPath);
                 }
             }
             catch (Exception ex)
@@ -101,79 +100,6 @@ namespace Log
             {
                 Console.WriteLine($"Error creating JSON file: {ex.Message}");
             }
-        }
-
-        // Add a backup to the daily file
-        internal static void AddSaveToDailyFile(DailyInfo DailyInfo, string LogDailyPath)
-        {
-            string dailyInfoPath = GetFileDailyName(DailyInfo.DateTime, LogDailyPath);
-            var jsonDailyInfo = new
-            {
-                DailyInfo.Name,
-                DailyInfo.FileSource,
-                DailyInfo.FileTarget,
-                DailyInfo.FileSize,
-                DailyInfo.FileTransferTime,
-                DailyInfo.DateTime
-            };
-            AddJsonLogObject(dailyInfoPath, jsonDailyInfo);
-        }
-
-        internal static void AddSaveToRealTimeFile(RealTimeInfo realTimeInfo, string LogRealTimePath)
-        {
-
-            // Nouvelle sauvegarde à ajouter
-            var jsonRealTimeInfo = new
-            {
-                realTimeInfo.Name,
-                realTimeInfo.SourcePath,
-                realTimeInfo.TargetPath,
-                realTimeInfo.State,
-                realTimeInfo.TotalFilesToCopy,
-                realTimeInfo.TotalFilesSize,
-                realTimeInfo.NbFilesLeftToDo,
-                realTimeInfo.Progression,
-                realTimeInfo.SaveDate
-            };
-            AddJsonLogObject(GetFileRealTimeName(LogRealTimePath), jsonRealTimeInfo);
-        }
-
-        internal static void AddJsonLogObject(string FilePath, object LogObject)
-        {
-            List<object> jsonObjectList = new List<object>();
-            if (File.Exists(FilePath))
-            {
-                try
-                {
-                    string json = File.ReadAllText(FilePath);
-                    // Désérialiser en liste d'objets
-                    if (string.IsNullOrEmpty(json))
-                    {
-                        json = "[]";
-                    }
-                    jsonObjectList = JsonSerializer.Deserialize<List<object>>(json) ?? new List<object>();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Erreur lors du chargement du JSON : {ex.Message}");
-                }
-            }
-            else
-            {
-                //mettre un message pour le fihcier existe pas  
-            }
-            jsonObjectList.Add(LogObject);
-
-            try
-            {
-                string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(FilePath, updatedJson);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erreur lors de l'écriture du JSON : {ex.Message}");
-            }
-
         }
 
         internal static DateTime GetLastSaveDateFromJson(string LogDailyPath, string FilePath)
@@ -202,6 +128,68 @@ namespace Log
             {
                 Console.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
                 return DateTime.MinValue;
+            }
+        }
+
+        internal static void AddJsonLogObjectRealTime(string FilePath, RealTimeInfo realTimeInfo)
+        {
+            FilePath = GetFileRealTimeName(FilePath);
+            if (File.Exists(FilePath))
+            {
+                try
+                {
+                    string json = File.ReadAllText(FilePath);
+                    // Désérialiser en liste d'objets
+                    if (string.IsNullOrEmpty(json))
+                    {
+                        json = "[]";
+                    }
+                    List<RealTimeInfo> jsonObjectList = JsonSerializer.Deserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
+                    // Remove any existing object with the same Name
+                    jsonObjectList.RemoveAll(rt => rt.Name == realTimeInfo.Name);
+                    jsonObjectList.Add(realTimeInfo);
+                    string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(FilePath, updatedJson);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erreur lors du chargement du JSON : {ex.Message}");
+                }
+            }
+            else
+            {
+                //mettre un message pour le fihcier existe pas  
+            }
+        }
+
+        internal static void AddJsonLogObjectDailyInfo(string FilePath, DailyInfo dailyInfo)
+        {
+            FilePath = GetFileDailyName(DateTime.Now, FilePath);
+            CreateDailyJsonFile(DateTime.Now, FilePath);
+            if (File.Exists(FilePath))
+            {
+                try
+                {
+                    string json = File.ReadAllText(FilePath);
+                    // Désérialiser en liste d'objets
+                    if (string.IsNullOrEmpty(json))
+                    {
+                        json = "[]";
+                    }
+                    List<DailyInfo> jsonObjectList = JsonSerializer.Deserialize<List<DailyInfo>>(json) ?? new List<DailyInfo>();
+                    // Remove any existing object with the same Name
+                    jsonObjectList.Add(dailyInfo);
+                    string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(FilePath, updatedJson);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erreur lors du chargement du JSON : {ex.Message}");
+                }
+            }
+            else
+            {
+                //mettre un message pour le fihcier existe pas  
             }
         }
     }

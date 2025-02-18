@@ -28,9 +28,10 @@ namespace Log
             FileInfo fileInfo = new FileInfo(SourcePath);
             realTimeInfo.NbFilesLeftToDo = realTimeInfo.TotalFilesToCopy;
             realTimeInfo.State = state.GetValue();
+            realTimeInfo.Progression = 0;
             if(logType == 0)
             {
-                JsonLogManager.AddSaveToRealTimeFile(realTimeInfo, LogRealTimePath);
+                JsonLogManager.AddJsonLogObjectRealTime(LogRealTimePath, realTimeInfo);
             }
             else if (logType == 1)
             {
@@ -97,6 +98,7 @@ namespace Log
 
         public void UpdateRealTimeProgress(int logType = 0)
         {
+
             realTimeInfo.NbFilesLeftToDo -= 1;
             realTimeInfo.Progression += ((1.0 / realTimeInfo.TotalFilesToCopy) * 100);
             if (realTimeInfo.NbFilesLeftToDo == 0)
@@ -104,7 +106,7 @@ namespace Log
                 realTimeInfo.Progression = Convert.ToInt32(realTimeInfo.Progression);
                 realTimeInfo.State = ERealTimeState.END.GetValue();
             }
-            if(logType ==0)
+            if(logType == 0)
             {
                 JsonLogManager.UpdateRealTimeProgression(realTimeInfo, LogRealTimePath);
             }

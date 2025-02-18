@@ -108,6 +108,20 @@ namespace Log
                     Console.WriteLine($"Erreur lors du chargement du XML : {ex.Message}");
                 }
             }
+
+            if(LogObject.GetType() == typeof(RealTimeInfo))
+            {
+                var propertyInfo = typeof(T).GetProperty("Name");
+
+                if (propertyInfo != null)
+                {
+                    // Get the value of the Name property of LogObject
+                    var logObjectName = propertyInfo.GetValue(LogObject);
+
+                    // Remove any existing object with the same Name
+                    xmlObjectList.RemoveAll(obj => propertyInfo.GetValue(obj).Equals(logObjectName));
+                }
+            }
             xmlObjectList.Add(LogObject);
             SerializeXml(FilePath, xmlObjectList);
         }

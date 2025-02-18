@@ -47,7 +47,7 @@ namespace EasySaveConsole.Model
             SaveTaskFactory = new SaveTaskFactory();
             this.logManager = logManager;
             // Load the saved tasks from the previous session.
-            SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
+            SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks(logManager));
             CurrentUnsavedPaths = new List<string>();
         }
 

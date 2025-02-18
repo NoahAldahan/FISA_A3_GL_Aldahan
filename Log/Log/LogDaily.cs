@@ -42,7 +42,7 @@ namespace Log
             dailyInfo.DateTime = DateTime.Now;
             if (logType == 0)
             {
-                JsonLogManager.AddSaveToDailyFile(dailyInfo, LogDailyPath);
+                JsonLogManager.AddJsonLogObjectDailyInfo(LogDailyPath, dailyInfo);
             }
             else if (logType == 1)
             {

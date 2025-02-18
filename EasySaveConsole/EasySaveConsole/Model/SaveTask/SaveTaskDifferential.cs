@@ -27,9 +27,8 @@ namespace EasySaveConsole.Model
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal override bool Save()
         {
-            logDaily.CreateDailyFile();
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
-            logDaily.CreateDailyFile();
+            logDaily.CreateDailyFile((int)logManager.defaultSaveTaskType);
+            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential, (int)logManager.defaultSaveTaskType);
             UnsavedPaths.Clear();
             UnsavedPaths = SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
             return (UnsavedPaths.Count() == 0);
@@ -59,8 +58,8 @@ namespace EasySaveConsole.Model
                     logDaily.stopWatch.Restart();
                     File.Copy(SourcePath, targetFileInfo.FullName, true);
                     logDaily.stopWatch.Stop();
-                    logDaily.AddDailyInfo(name, SourcePath, targetFileInfo.FullName,1);
-                    logRealTime.UpdateRealTimeProgress(1);
+                    logDaily.AddDailyInfo(name, SourcePath, targetFileInfo.FullName, (int)logManager.defaultSaveTaskType);
+                    logRealTime.UpdateRealTimeProgress((int)logManager.defaultSaveTaskType);
                 }
             }
             // Case 2: The source is a directory

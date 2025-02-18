@@ -1,58 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfRealTimeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <RealTimeInfo>
-    <Name>Romain</Name>
-    <SourcePath>C:\Users\jeanv\Desktop\Source</SourcePath>
-    <TargetPath>C:\Users\jeanv\Desktop\Target</TargetPath>
-    <State>ACTIVE</State>
-    <TotalFilesToCopy>0</TotalFilesToCopy>
-    <TotalFilesSize>0</TotalFilesSize>
-    <NbFilesLeftToDo>0</NbFilesLeftToDo>
-    <Progression>0</Progression>
-    <SaveDate>2025-02-17T10:36:29.8133754+01:00</SaveDate>
-  </RealTimeInfo>
-  <RealTimeInfo>
-    <Name>Romain</Name>
-    <SourcePath>C:\Users\jeanv\Desktop\Source</SourcePath>
-    <TargetPath>C:\Users\jeanv\Desktop\Target</TargetPath>
-    <State>ACTIVE</State>
-    <TotalFilesToCopy>0</TotalFilesToCopy>
-    <TotalFilesSize>0</TotalFilesSize>
-    <NbFilesLeftToDo>0</NbFilesLeftToDo>
-    <Progression>0</Progression>
-    <SaveDate>2025-02-17T10:53:21.8888901+01:00</SaveDate>
-  </RealTimeInfo>
-  <RealTimeInfo>
-    <Name>romaintest</Name>
-    <SourcePath>C:\Users\Travail\Desktop\Source</SourcePath>
-    <TargetPath>C:\Users\Travail\Desktop\Target</TargetPath>
-    <State>END</State>
-    <TotalFilesToCopy>7</TotalFilesToCopy>
-    <TotalFilesSize>55208</TotalFilesSize>
-    <NbFilesLeftToDo>0</NbFilesLeftToDo>
-    <Progression>100</Progression>
-    <SaveDate>2025-02-17T11:09:41.7524004+01:00</SaveDate>
-  </RealTimeInfo>
-  <RealTimeInfo>
-    <Name>romaintest</Name>
-    <SourcePath>C:\Users\Travail\Desktop\Source</SourcePath>
-    <TargetPath>C:\Users\Travail\Desktop\Target</TargetPath>
-    <State>ACTIVE</State>
-    <TotalFilesToCopy>7</TotalFilesToCopy>
-    <TotalFilesSize>55208</TotalFilesSize>
-    <NbFilesLeftToDo>7</NbFilesLeftToDo>
-    <Progression>0</Progression>
-    <SaveDate>2025-02-17T11:05:33.2535254+01:00</SaveDate>
-  </RealTimeInfo>
-  <RealTimeInfo>
-    <Name>romaintest</Name>
-    <SourcePath>C:\Users\Travail\Desktop\Source</SourcePath>
-    <TargetPath>C:\Users\Travail\Desktop\Target</TargetPath>
-    <State>ACTIVE</State>
-    <TotalFilesToCopy>7</TotalFilesToCopy>
-    <TotalFilesSize>55208</TotalFilesSize>
-    <NbFilesLeftToDo>7</NbFilesLeftToDo>
-    <Progression>0</Progression>
-    <SaveDate>2025-02-17T11:09:41.7524004+01:00</SaveDate>
-  </RealTimeInfo>
-</ArrayOfRealTimeInfo>
+[
+  {
+    "Name": "romaintest",
+    "SourcePath": "C:\\Users\\Travail\\Desktop\\Source",
+    "TargetPath": "C:\\Users\\Travail\\Desktop\\Target",
+    "State": "END",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 55289,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-18T18:12:00.174051+01:00"
+  }
+]

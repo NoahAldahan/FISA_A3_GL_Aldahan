@@ -10,8 +10,8 @@ namespace EasySaveConsole.Model.Log
     // Enum representing supported languages
     internal enum ELogSaveTaskType
     {
-        XML,
         JSON,
+        XML,
         Unknown
     }
     internal class LogSaveTaskTypeExtension : EnumExtension<ELogSaveTaskType>
