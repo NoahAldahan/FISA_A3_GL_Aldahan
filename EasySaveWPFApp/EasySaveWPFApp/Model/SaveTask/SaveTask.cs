@@ -100,10 +100,18 @@ namespace EasySaveWPFApp.Model
             // Vérifier si le fichier doit être crypté
             if (EncryptingExtensions.Contains(Path.GetExtension(targetPath)))
             {
-                Stopwatch encryptionStopwatch = Stopwatch.StartNew(); // Démarrer le chrono pour le cryptage
-                CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, JsonManager.EncryptionKey);
-                encryptionStopwatch.Stop(); // Arrêter le chrono après le cryptage
-                encryptionTime = encryptionStopwatch.ElapsedMilliseconds; // Temps de cryptage en ms
+                try
+                {
+                    Stopwatch encryptionStopwatch = Stopwatch.StartNew(); // Démarrer le chrono pour le cryptage
+                    CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, JsonManager.EncryptionKey);
+                    encryptionStopwatch.Stop(); // Arrêter le chrono après le cryptage
+                    encryptionTime = encryptionStopwatch.ElapsedMilliseconds; // Temps de cryptage en ms
+                }
+                catch (Exception ex)
+                {
+                    encryptionTime = -1; // Code erreur par défaut
+                    Console.WriteLine($"Erreur lors du cryptage du fichier {targetPath} : {ex.Message}");
+                }
             }
 
             // Enregistrer dans le log avec le temps de cryptage
