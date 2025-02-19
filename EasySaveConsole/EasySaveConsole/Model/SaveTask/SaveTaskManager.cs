@@ -21,9 +21,6 @@ namespace EasySaveConsole.Model
         // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
 
-        // Maximum number of save tasks that can be created simultaneously.
-        private static int MaxSaveTasks = 5;
-
         private List<string> CurrentUnsavedPaths;
 
         internal List<string> GetCurrentUnsavedPaths()
@@ -84,10 +81,6 @@ namespace EasySaveConsole.Model
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
         internal EMessage AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
-            if (SaveTasks.Count >= MaxSaveTasks)
-            {
-                return EMessage.ErrorMaxSaveTaskReachMessage;
-            }
             SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
             return EMessage.SuccessCreateSaveTaskMessage;
         }
