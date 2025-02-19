@@ -130,16 +130,22 @@ namespace EasySaveWPFApp.Model
         }
 
         // Starts the save task at index
-        internal bool ExecuteSaveTask(int index)
+        internal bool ExecuteSaveTask(string name)
         {
             try
             {
+                SaveTask? saveTaskCurrent = GetSaveTaskByName(name);
+                if (saveTaskCurrent == null) 
+                {
+                    return false;
+                }
                 CurrentUnsavedPaths.Clear();
-                if (SaveTasks[index].Save())
+                if (saveTaskCurrent.Save())
                 {
                     return true;
                 }
-                CurrentUnsavedPaths = SaveTasks[index].GetUnsavedPaths();
+
+                CurrentUnsavedPaths = saveTaskCurrent.GetUnsavedPaths();
                 return false;
             }
             catch (Exception ex) 

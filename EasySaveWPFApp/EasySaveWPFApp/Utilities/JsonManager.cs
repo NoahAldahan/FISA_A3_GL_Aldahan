@@ -17,10 +17,7 @@ namespace EasySaveWPFApp.Utilities
     internal static class JsonManager
     {
         // Paths to various JSON configuration files, loaded from environment variables.
-        static private string TranslationPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
-            Environment.GetEnvironmentVariable("TranslationPath"));
-    
-        static private string AppSettingsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName,
+        static private string AppSettingsPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
             Environment.GetEnvironmentVariable("AppSettingsPath"));
 
         static private string SerializationPath = Path.Combine(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,

@@ -23,7 +23,7 @@
                 <DataGridComboBoxColumn   Header="Type"
                         SelectedItemBinding="{Binding BindSaveTaskType, Mode=TwoWay}"
                         ItemsSource="{Binding EcliSaveTaskTypesStr}" />
-
+                <DataGridCheckBoxColumn Header="Selection" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
         <!-- SelectedItemBinding="{Binding BindSaveTaskType, UpdateSourceTrigger=Explicit}"-->

@@ -43,7 +43,11 @@ namespace EasySaveWPFApp
         }
         private void StartSelected_Click(object sender, RoutedEventArgs e)
         {
-
+            var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
+            foreach (var row in selectedRows) 
+            {
+                saveTaskViewModel.HandleSaveTaskExecution(row.name);
+            }
         }
 
         private void ModifySelected_Click(object sender, RoutedEventArgs e)
@@ -52,14 +56,19 @@ namespace EasySaveWPFApp
         }
 
         private void DeleteSelected_Click(object sender, RoutedEventArgs e)
-        { }
+        {
+            var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
+            foreach(var row in selectedRows)
+            {
+                saveTaskViewModel.HandleSaveTaskExecution(row.name);
+            }
+        }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             // We open the settings window
             SettingsWindow settingsWindow = new SettingsWindow();
             settingsWindow.Show();
-
         }
 
         private void BackupTable_SelectionChanged(object sender, SelectionChangedEventArgs e)

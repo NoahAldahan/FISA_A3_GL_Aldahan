@@ -91,36 +91,10 @@ namespace EasySaveWPFApp.ViewModel
             saveTaskManager.SerializeSaveTasks();
         }
 
-        internal void HandleSaveTasks(List<int> indexs, ECliSaveTaskAction cliSaveTaskAction)
-        {
-            indexs.Sort((a, b) => b.CompareTo(a));
-            foreach (int index in indexs)
-            {
-                try
-                {
-                    switch (cliSaveTaskAction)
-                    {
-                        case (ECliSaveTaskAction.StartSaveTasks):
-                            HandleSaveTaskExecution(index);
-                            break;
-                        case (ECliSaveTaskAction.DeleteSaveTasks):
-                            saveTaskManager.RemoveSaveTask(index);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                catch
-                {
-                    return; //error saveTask start or delete
-                }
-            }
-            return;
-        }
 
-        internal void HandleSaveTaskExecution(int index)
+        internal void HandleSaveTaskExecution(string name)
         {
-            bool DidEverythingSaveCorrectly = saveTaskManager.ExecuteSaveTask(index);
+            bool DidEverythingSaveCorrectly = saveTaskManager.ExecuteSaveTask(name);
             if (DidEverythingSaveCorrectly)
                 return; //success saveTaskExecution  //ShowMessage(messagesManager.GetMessageTranslate(EMessage.SuccessStartSaveTaskMessage) + saveTaskManager.GetSaveTaskName(index));
             else
