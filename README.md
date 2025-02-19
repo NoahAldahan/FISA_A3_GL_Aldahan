@@ -205,7 +205,7 @@ Search for DotNetEnv and install it
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Here are the options you might find in the CLI application :
+Here are the options you might find in the GUI application :
 ![Main menu](Documentation/img/SettingsMenuGUI.png)
 
 _For a step by step explanation, please refer to the [user guide](Documentation/UserGuide.pdf), ([guide utilisateur](Documentation/GuideUtilisateur.pdf))_
