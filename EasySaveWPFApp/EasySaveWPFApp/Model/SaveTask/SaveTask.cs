@@ -56,6 +56,7 @@ namespace EasySaveWPFApp.Model
         public ESaveTaskTypes BindSaveTaskType
         {
             get => GetSaveTaskType();
+            set {}
         }
 
         // Setter for the real-time logging instance.

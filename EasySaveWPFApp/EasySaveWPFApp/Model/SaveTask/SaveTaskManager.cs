@@ -13,9 +13,47 @@ using System.Text.Json;
 
 namespace EasySaveWPFApp.Model
 {
+    public enum ESaveTaskTypes
+    {
+        Differential = 1, // Represents a differential backup (only modified files).
+        Complete = 2, // Represents a complete backup (copies all files).
+        Unknown = 3
+    }
+    internal static class ESaveTaskTypesExtension
+    {
+        private static readonly Dictionary<ESaveTaskTypes, string> SaveTaskTypesStrings = new Dictionary<ESaveTaskTypes, string>
+            {
+                { ESaveTaskTypes.Differential, "Differential" },
+                { ESaveTaskTypes.Complete, "Complete" },
+                {ESaveTaskTypes.Unknown, "Unknown" }
+            };
+
+        // Method to get a list of all string representations of supported languages
+        internal static List<string> GetAllStrSaveTasksType()
+        {
+            List<string> strSaveTaskTypes = new List<string>();
+            foreach (var type in SaveTaskTypesStrings)
+            {
+                strSaveTaskTypes.Add(type.Value);
+            }
+            return strSaveTaskTypes;
+        }
+        internal static ESaveTaskTypes ToESaveTaskTypes(string ESaveTaskTypesStr)
+        {
+            foreach (var type in SaveTaskTypesStrings)
+            {
+                if(type.Value == ESaveTaskTypesStr)
+                {
+                    return type.Key;
+                }
+            }
+            return ESaveTaskTypes.Unknown;
+        }
+    }
     // Manages the collection of save tasks, their execution, and persistence.
     public class SaveTaskManager : INotifyPropertyChanged
     {
+
         // List of all active save tasks.
         public ObservableCollection<SaveTask> SaveTasks { get; set; }
             
@@ -47,7 +85,7 @@ namespace EasySaveWPFApp.Model
             CurrentUnsavedPaths = new List<string>();
         }
 
-        internal bool IsSaveTaskNameExist(string name)
+        public bool IsSaveTaskNameExist(string name)
         {
             foreach (var task in SaveTasks)
             {
@@ -58,29 +96,17 @@ namespace EasySaveWPFApp.Model
             }
             return false;
         }
-        internal string GetSaveTaskName(int index)
-        {
-            return SaveTasks[index].name;
-        }
 
-        internal string GetSaveTaskSourcePath(int index)
+        internal SaveTask? GetSaveTaskByName(string Name)
         {
-            return SaveTasks[index].CurrentDirectoryPair.SourcePath;
-        }
-
-        internal string GetSaveTaskTargetPath(int index)
-        {
-            return SaveTasks[index].CurrentDirectoryPair.TargetPath;
-        }
-
-        internal string GetSaveTaskTypeMessage(int index)
-        {
-            return SaveTasks[index].GetMessageSaveTaskType();
-        }
-
-        internal ESaveTaskTypes GetSaveTaskType(int index)
-        {
-            return SaveTasks[index].GetSaveTaskType();
+            foreach (var task in SaveTasks) 
+            {
+                if (task.name.Equals(Name)) 
+                {
+                    return task;
+                }
+            }
+            return null;
         }
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
         internal bool AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
@@ -103,21 +129,6 @@ namespace EasySaveWPFApp.Model
             }
         }
 
-        // Removes a save task that matches the given source and target paths (removes the first match).
-        internal void RemoveSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath)
-        {
-            if (SaveTasks.Count == 0)
-                return;
-
-            // Find the first save task matching the given source and target paths.
-            SaveTask MatchingSaveTask = SaveTasks.FirstOrDefault(saveTask =>
-                saveTask.CurrentDirectoryPair.SourcePath == sourcePath &&
-                saveTask.CurrentDirectoryPair.TargetPath == targetPath);
-
-            if (MatchingSaveTask != null)
-                SaveTasks.Remove(MatchingSaveTask);
-        }
-
         // Starts the save task at index
         internal bool ExecuteSaveTask(int index)
         {
@@ -137,62 +148,92 @@ namespace EasySaveWPFApp.Model
             }
         }
 
-        // Returns all save tasks.
-        internal ObservableCollection<SaveTask> GetAllSaveTask()
-        {
-            return SaveTasks;
-        }
-
-        internal bool IsValidSaveTaskId(int id)
-        {
-            return id >= 0 && id < SaveTasks.Count;
-        }
-
         // Modify the save task type
-        internal void ModifySaveTaskType(int index, ESaveTaskTypes newSaveTaskType, string saveTaskName)
+        internal bool ModifySaveTaskType(string name, ESaveTaskTypes newSaveTaskType)
         {
-            SaveTask newSaveTask = SaveTaskFactory.CreateSave(
-                newSaveTaskType,
-                SaveTasks[index].CurrentDirectoryPair.SourcePath,
-                SaveTasks[index].CurrentDirectoryPair.TargetPath,
-                saveTaskName
-            );
+            try
+            {
 
-            // Replace the old save task with the new one.
-            SaveTasks.RemoveAt(index);
-            SaveTasks.Insert(index, newSaveTask);
+                SaveTask? oldSaveTask = GetSaveTaskByName(name);
+                if (oldSaveTask == null)
+                {
+                    return false;//error
+                }
+                SaveTask newSaveTask = SaveTaskFactory.CreateSave(
+                    newSaveTaskType,
+                    oldSaveTask.CurrentDirectoryPair.SourcePath,
+                    oldSaveTask.CurrentDirectoryPair.TargetPath,
+                    name
+                );
+                int index = SaveTasks.IndexOf(oldSaveTask);
+                // Replace the old save task with the new one.
+                SaveTasks.RemoveAt(index);
+                SaveTasks.Insert(index, newSaveTask);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         // Modifies the source path of a save task at the specified index.
-        internal void ModifySaveTaskSourcePath(int index, string newSourcePath)
+        internal bool ModifySaveTaskSourcePath(string name, string newSourcePath)
         {
-            SaveTasks[index].CurrentDirectoryPair.SourcePath = newSourcePath;
+            try
+            {
+                SaveTask? newSaveTask = GetSaveTaskByName(name);
+                if (newSaveTask == null || !Utilities.Utilities.IsValidPath(newSourcePath))
+                {
+                    return false;//error
+                }
+                newSaveTask.CurrentDirectoryPair.SourcePath = newSourcePath;
+                return true;
+            }
+            catch (Exception ex) 
+            {
+                return false;
+            }
         }
 
         // Modifies the target path of a save task at the specified index.
-        internal void ModifySaveTaskTargetPath(int index, string newTargetPath)
+        internal bool ModifySaveTaskTargetPath(string name, string newTargetPath)
         {
-            SaveTasks[index].CurrentDirectoryPair.TargetPath = newTargetPath;
+            try
+            {
+                SaveTask? newSaveTask = GetSaveTaskByName(name);
+                if (newSaveTask == null || !Utilities.Utilities.IsValidPath(newTargetPath))
+                {
+                    return false;//error
+                }
+                newSaveTask.CurrentDirectoryPair.TargetPath = newTargetPath;
+                return true;
+            }
+            catch (Exception ex) 
+            {
+                return false;
+            }
+
         }
 
-        internal void ModifySaveTask(int index, ESaveTaskTypes saveTaskType, string saveTaskSourcePath, string  saveTaskTargetPath, string saveTaskName)
+        // Modifies the target path of a save task at the specified index.
+        internal bool ModifySaveTaskName(string name, string newName)
         {
-            if (saveTaskType != SaveTasks[index].GetSaveTaskType())
+            try
             {
-                // Supprimer l'ancienne tâche
-                SaveTasks.RemoveAt(index);
-                // Créer une nouvelle tâche avec les nouveaux paramètres
-                SaveTask newSaveTask = SaveTaskFactory.CreateSave(saveTaskType, saveTaskSourcePath, saveTaskTargetPath, saveTaskName);
-                // Ajouter la nouvelle tâche à la liste
-                SaveTasks.Insert(index, newSaveTask);
+                SaveTask? newSaveTask = GetSaveTaskByName(name);
+                if (newSaveTask == null)
+                {
+                    return false;//error
+                }
+                newSaveTask.name = newName;
+                return true;
             }
-            else
+            catch (Exception ex) 
             {
-                SaveTasks[index].CurrentDirectoryPair.SourcePath = saveTaskSourcePath;
-                SaveTasks[index].CurrentDirectoryPair.TargetPath = saveTaskTargetPath;
-                SaveTasks[index].name = saveTaskName;
+                return false;
             }
-        }
+        }   
 
 
         // Saves all save tasks config to a json file for persistence

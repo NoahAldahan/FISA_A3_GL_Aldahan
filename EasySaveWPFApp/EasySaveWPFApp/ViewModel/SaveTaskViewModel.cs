@@ -10,11 +10,12 @@ using System.Reflection;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace EasySaveWPFApp.ViewModel
 {
     // Enum defining the possible CLI save task actions
-    enum ECliSaveTaskAction
+    public enum ECliSaveTaskAction
     {
         InitMenu = 0,
         ShowSaveTasks = 1,   // Action to initialize the save task menu
@@ -24,7 +25,6 @@ namespace EasySaveWPFApp.ViewModel
         DeleteSaveTasks = 5, // Action to modify an existing save task
         Quit = 6,            // Action to quit the save task menu
     }
-
     // Controller class for managing save tasks in the CLI
     public class SaveTaskViewModel : INotifyPropertyChanged
     {
@@ -39,44 +39,29 @@ namespace EasySaveWPFApp.ViewModel
         {
             this.saveTaskManager = saveTaskManager;
         }
-
-        public ObservableCollection<SaveTask> SaveTasksBind
+        public ObservableCollection<SaveTask> BindSaveTasks
         {
             get => saveTaskManager.SaveTasks;
             set { saveTaskManager.SaveTasks = value; OnPropertyChanged(nameof(saveTaskManager.SaveTasks)); }
         }
-
-        internal void ModifySaveTask(int index, string saveTaskName, string saveTaskSource, string saveTaskTarget,string saveTaskTypeStr)
+        internal bool ModifySaveTaskSourcePath(string name, string path)
         {
-            if (saveTaskSource == "") 
-            {
-                //saveTaskSource = saveTaskManager.GetSaveTaskSourcePath(index);
-            }
-            if (!Utilities.Utilities.IsValidPath(saveTaskSource))
-            {
-                return;//EMessage.ErrorSaveTaskPathMessage
-            }
-            //SaveTask path target modification
-            if (saveTaskTarget == "")
-            {
-                saveTaskTarget = saveTaskManager.GetSaveTaskTargetPath(index);
-            }
-            if (!Utilities.Utilities.IsValidPath(saveTaskTarget))
-            {
-                return;//EMessage.ErrorSaveTaskPathMessage
-            }
-            //SaveTaskType modification
-            int saveTaskType;
-            if(saveTaskTypeStr == "")
-            {
-                saveTaskType = (int)saveTaskManager.GetSaveTaskType(index);
-            }
-            else if (!Int32.TryParse(saveTaskTypeStr, out saveTaskType) || !Enum.IsDefined(typeof(ESaveTaskTypes), saveTaskType))
-            {
-                return;//EMessage.ErrorSaveTaskTypeMessage
-            }
+            return saveTaskManager.ModifySaveTaskSourcePath(name, path);
+        }
 
-            return;//EMessage.SuccessModifySaveTaskMessage
+        internal bool ModifySaveTaskTargetPath(string name, string path)
+        {
+            return saveTaskManager.ModifySaveTaskTargetPath(name, path);
+        }
+
+        internal bool ModifySaveTaskName(string currentName, string newName)
+        {
+           return saveTaskManager.ModifySaveTaskName(currentName, newName);
+        }
+
+        internal bool ModifySaveTaskType(string name, ESaveTaskTypes type)
+        {
+            return saveTaskManager.ModifySaveTaskType(name, type);
         }
         internal void CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
         {
@@ -101,6 +86,7 @@ namespace EasySaveWPFApp.ViewModel
             saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
             saveTaskManager.SerializeSaveTasks();
         }
+
         internal void HandleSaveTasks(List<int> indexs, ECliSaveTaskAction cliSaveTaskAction)
         {
             indexs.Sort((a, b) => b.CompareTo(a));

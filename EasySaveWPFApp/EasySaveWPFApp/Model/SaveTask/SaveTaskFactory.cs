@@ -6,12 +6,6 @@ using System.IO;
 
 namespace EasySaveWPFApp.Model
 {
-    // Enum representing the types of save tasks available.
-    public enum ESaveTaskTypes
-    {
-        Differential = 1, // Represents a differential backup (only modified files).
-        Complete = 2 // Represents a complete backup (copies all files).
-    }
 
     // Factory class responsible for creating instances of different save tasks.
     internal class SaveTaskFactory
