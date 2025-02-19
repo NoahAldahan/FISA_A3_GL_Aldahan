@@ -124,7 +124,7 @@
     <value>Delete</value>
   </data>
   <data name="MainWindow_ModifySaveTaskButtonText" xml:space="preserve">
-    <value>Modify</value>
+    <value>Switch type</value>
   </data>
   <data name="MainWindow_NameColumnTitle" xml:space="preserve">
     <value> Nom</value>
