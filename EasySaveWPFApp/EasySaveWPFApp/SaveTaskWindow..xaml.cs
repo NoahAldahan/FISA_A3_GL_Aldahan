@@ -31,6 +31,7 @@ namespace EasySaveWPFApp
                 return;
             }
             this.saveTaskViewModel.CreateSaveTask(TaskName.Text, TaskSource.Text, TaskDestination.Text, eSaveTaskTypes);
+            Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -50,6 +51,11 @@ namespace EasySaveWPFApp
         }
 
         private void DifferentialRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TaskDestination_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
 
         }

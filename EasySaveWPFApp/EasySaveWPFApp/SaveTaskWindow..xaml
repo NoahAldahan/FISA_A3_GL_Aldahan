@@ -10,7 +10,7 @@
         <TextBox Name="TaskSource" VerticalAlignment="Top" Margin="20,115,20,0" TextChanged="TaskSource_TextChanged"/>
 
         <TextBlock Text="DESTINATION" VerticalAlignment="Top" Margin="20,155,0,0"/>
-        <TextBox Name="TaskDestination" VerticalAlignment="Top" Margin="20,175,20,0"/>
+        <TextBox Name="TaskDestination" VerticalAlignment="Top" Margin="20,175,20,0" TextChanged="TaskDestination_TextChanged"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="22,224,-2,0">
             <RadioButton Name="DifferentialRadioButton" Content="Différentiel" Margin="0,0,20,0" Checked="DifferentialRadioButton_Checked"/>
