@@ -105,7 +105,7 @@ Si la version 1.0 est jugée satisfaisante, une **version 2.0** avec une interfa
       - description : détails des modifications comme dans un commit sans convention
     - Workflow :
 
-      ![workflow](img/workflow.png)
+      ![workflow](Documentation/img/workflow.png)
 
       Chaque développeur travaille sur sa propre branche. Lorsqu'il effectue un commit pour 
       ajouter une nouvelle fonctionnalité, corriger un bug ou toute autre modification, un merge 
