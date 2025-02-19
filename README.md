@@ -127,7 +127,8 @@ Cherchez DotNetEnv et installez le
 ## Utilisation
 
 Voici quelques images de ce qu'il peut vous attendre dans EasySave 2.0 :
-![Main menu](Documentation/img/SettingsMenuGUI.png)
+![Main window](Documentation/img/MainWindowGUI.png)
+![Settings window](Documentation/img/SettingsMenuGUI.png)
 
 _Pour une explication étape par étape, référez vous au ([guide utilisateur](Documentation/GuideUtilisateur.pdf)), [user guide](Documentation/UserGuide.pdf)_
 
