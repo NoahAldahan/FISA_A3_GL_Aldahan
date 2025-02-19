@@ -14,9 +14,6 @@ namespace EasySaveConsole.Utilities
     {
         EN, // English
         FR, // Français
-        ES, // Español
-        DE, // Deutsch
-        IT, // Italiano
         Unknown // Langue inconnue
     }
 
@@ -27,9 +24,6 @@ namespace EasySaveConsole.Utilities
         {
             enumStrings.Add(ELanguage.EN, "EN");
             enumStrings.Add(ELanguage.FR, "FR");
-            enumStrings.Add(ELanguage.ES, "ES");
-            enumStrings.Add(ELanguage.DE, "DE");
-            enumStrings.Add(ELanguage.IT, "IT");
             enumStrings.Add(ELanguage.Unknown, "Unknown");
         }
         //Method to convert a string representation to an ELanguage enum value
