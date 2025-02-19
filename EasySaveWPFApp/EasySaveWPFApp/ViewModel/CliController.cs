@@ -1,5 +1,6 @@
 ﻿using EasySaveWPFApp.Model;
 using EasySaveWPFApp.View;
+using EasySaveWPFApp.ViewModel;
 using System;
 
 namespace EasySaveWPFApp.Controller

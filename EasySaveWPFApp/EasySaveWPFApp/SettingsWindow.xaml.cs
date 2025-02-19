@@ -1,4 +1,4 @@
-﻿using EasySaveWPFApp.Controller;
+﻿using EasySaveWPFApp.ViewModel;
 using EasySaveWPFApp.Model;
 using System.Configuration;
 using System.Text;
@@ -20,20 +20,20 @@ namespace EasySaveWPFApp
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        SettingsController settingsController ;
+        SettingsViewModel settingsViewModel ;
 
         // Constructor: Initializes the settings window
         public SettingsWindow(SaveTaskManager saveTaskManager)
         {
             InitializeComponent();
 
-            settingsController = new SettingsController(saveTaskManager);
+            settingsViewModel = new SettingsViewModel(saveTaskManager);
 
-            FrenchRadioButton.IsChecked = settingsController.ShouldFrenchRadioButtonBeChecked();
-            EnglishRadioButton.IsChecked = settingsController.ShouldEnglishRadioButtonBeChecked();
+            FrenchRadioButton.IsChecked = settingsViewModel.ShouldFrenchRadioButtonBeChecked();
+            EnglishRadioButton.IsChecked = settingsViewModel.ShouldEnglishRadioButtonBeChecked();
 
-            JSONRadioButton.IsChecked = settingsController.ShouldJSONRadioButtonBeChecked();
-            XMLRadioButton.IsChecked = settingsController.ShouldXMLRadioButtonBeChecked();
+            JSONRadioButton.IsChecked = settingsViewModel.ShouldJSONRadioButtonBeChecked();
+            XMLRadioButton.IsChecked = settingsViewModel.ShouldXMLRadioButtonBeChecked();
 
             RefreshEncryptingExtensionsDisplay();
         }
@@ -41,12 +41,12 @@ namespace EasySaveWPFApp
         // Language radio buttons
         private void FrenchLanguageRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            settingsController.AddLanguageAction(ESettingsActions.SwitchLanguageToFrench);
+            settingsViewModel.AddLanguageAction(ESettingsActions.SwitchLanguageToFrench);
         }
 
         private void EnglishLanguageRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            settingsController.AddLanguageAction(ESettingsActions.SwitchLanguageToEnglish);
+            settingsViewModel.AddLanguageAction(ESettingsActions.SwitchLanguageToEnglish);
         }
 
         // Log options radio buttons
@@ -63,7 +63,7 @@ namespace EasySaveWPFApp
         // Save and cancel buttons
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            settingsController.ExecuteAllUnsavedActions();
+            settingsViewModel.ExecuteAllUnsavedActions();
             this.Close();
         }
 
@@ -78,7 +78,7 @@ namespace EasySaveWPFApp
         {
             string EncryptingExtensionText = EncryptingExtensionTextBox.Text.Trim();
             // TODO : Popup for error message
-            bool wasAdded = settingsController.AddEncryptingExtension(EncryptingExtensionText);
+            bool wasAdded = settingsViewModel.AddEncryptingExtension(EncryptingExtensionText);
             EncryptingExtensionTextBox.Text = "";
             RefreshEncryptingExtensionsDisplay();
         }
@@ -87,7 +87,7 @@ namespace EasySaveWPFApp
         // Dynamically generates extensions display
         private void RefreshEncryptingExtensionsDisplay()
         {
-            List<string> encryptingExtensions = settingsController.GetNewEncryptingExtensions();
+            List<string> encryptingExtensions = settingsViewModel.GetNewEncryptingExtensions();
             EncryptingExtensionsStackPanel.Children.Clear();
             foreach (string extension in encryptingExtensions)
             {
@@ -136,7 +136,7 @@ namespace EasySaveWPFApp
         {
             Button senderButton = (Button)sender;
             string ExtensionTag = (string)senderButton.Tag;
-            settingsController.RemoveEncryptingExtension(ExtensionTag);
+            settingsViewModel.RemoveEncryptingExtension(ExtensionTag);
             RefreshEncryptingExtensionsDisplay();
         }
     }

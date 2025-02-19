@@ -8,9 +8,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 
-namespace EasySaveWPFApp.Controller
+namespace EasySaveWPFApp.ViewModel
 {
-    internal static class LanguageResourceController
+    internal static class LanguageResourceViewModel
     {
         public static void SetLanguage(string cultureCode)
         {

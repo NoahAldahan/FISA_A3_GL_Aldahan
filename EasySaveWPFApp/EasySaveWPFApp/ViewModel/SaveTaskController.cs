@@ -9,7 +9,7 @@ using System.Collections;
 using System.ComponentModel.Design;
 using System.Reflection;
 
-namespace EasySaveWPFApp.Controller
+namespace EasySaveWPFApp.ViewModel
 {
     // Enum defining the possible CLI save task actions
     enum ECliSaveTaskAction

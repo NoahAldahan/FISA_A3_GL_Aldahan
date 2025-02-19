@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EasySaveWPFApp.Controller
+namespace EasySaveWPFApp.ViewModel
 {
     // Enum defining the possible CLI language actions
     enum ECliLanguageAction

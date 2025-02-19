@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace EasySaveWPFApp.Controller
+namespace EasySaveWPFApp.ViewModel
 {
     enum ESettingsActions
     {
@@ -17,7 +17,7 @@ namespace EasySaveWPFApp.Controller
         SwitchSaveTypeToXML,
         EditedExtensions
     }
-    internal class SettingsController
+    internal class SettingsViewModel
     {
         // The list of unsaved actions (the user needs to click save to save them)
         List<ESettingsActions> UnsavedActions = new List<ESettingsActions>();
@@ -26,7 +26,7 @@ namespace EasySaveWPFApp.Controller
         SaveTaskManager saveTaskManager;
 
         // Constructor: Initializes the settings controller
-        internal SettingsController(SaveTaskManager saveTaskManager)
+        internal SettingsViewModel(SaveTaskManager saveTaskManager)
         {
             this.saveTaskManager = saveTaskManager;
             NewEncryptingExtensions = this.saveTaskManager.GetEncryptingExtensions();
@@ -119,7 +119,7 @@ namespace EasySaveWPFApp.Controller
         // Set the language of the application
         public void SetLanguage(string cultureCode)
         {
-            LanguageResourceController.SetLanguage(cultureCode);
+            LanguageResourceViewModel.SetLanguage(cultureCode);
             saveTaskManager.SerializeEncryptingExtensions();
             saveTaskManager.SerializeSaveTasks();
             ReloadMainWindow();
