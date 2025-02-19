@@ -24,18 +24,18 @@ namespace EasySaveWPFApp.Model
         // Starts a differential save task.
         // Returns true if all files were saved successfully, false otherwise.
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
-        internal override bool Save()
+        internal override bool Save(SaveTaskManager saveTaskManager)
         {
             logDaily.CreateDailyFile();
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
             logDaily.CreateDailyFile();
             UnsavedPaths.Clear();
-            UnsavedPaths = SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath);
+            UnsavedPaths = SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, saveTaskManager);
             return (UnsavedPaths.Count() == 0);
         }
 
         // Recursively saves only the updated files and directories since the last save.
-        private List<string> SaveDifferentialRecursive(string SourcePath, string TargetPath)
+        private List<string> SaveDifferentialRecursive(string SourcePath, string TargetPath, SaveTaskManager saveTaskManager)
         {
             try
             {
@@ -52,11 +52,7 @@ namespace EasySaveWPFApp.Model
                     // (with the name of the file appended) that is going to be created or updated
                     if (!File.Exists(targetFileInfo.FullName) || sourceFileInfo.LastWriteTime > JsonLogManager.GetLastSaveDate(this.logDaily.LogDailyPath, sourceFileInfo.FullName))
                     {
-                        logDaily.stopWatch.Restart();
-                        File.Copy(SourcePath, targetFileInfo.FullName, true);
-                        logDaily.stopWatch.Stop();
-                        logDaily.AddDailyInfo(name, SourcePath, targetFileInfo.FullName);
-                        logRealTime.UpdateRealTimeProgress();
+                        CopySingleFile(SourcePath, targetFileInfo.FullName, saveTaskManager);
                     }
                 }
                 // Case 2: The source is a directory
@@ -75,11 +71,11 @@ namespace EasySaveWPFApp.Model
                         // Iterate through all subdirectories and process them recursively.
                         foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
                         {
-                            SaveDifferentialRecursive(dir.FullName, Path.Combine(targetDirectoryInfo.FullName, dir.Name));
+                            SaveDifferentialRecursive(dir.FullName, Path.Combine(targetDirectoryInfo.FullName, dir.Name), saveTaskManager);
                         }
                         foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
                         {
-                            SaveDifferentialRecursive(file.FullName, targetDirectoryInfo.FullName);
+                            SaveDifferentialRecursive(file.FullName, targetDirectoryInfo.FullName, saveTaskManager);
                         }
                     }
                 }

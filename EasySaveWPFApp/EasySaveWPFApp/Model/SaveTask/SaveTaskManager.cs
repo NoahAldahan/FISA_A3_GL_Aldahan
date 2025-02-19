@@ -1,10 +1,12 @@
-﻿using EasySaveWPFApp.Controller;
+﻿using EasySaveConsole.Utilities;
+using EasySaveWPFApp.Controller;
 using EasySaveWPFApp.Utilities;
 using Log;
 using Microsoft.SqlServer.Server;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
@@ -13,7 +15,7 @@ using System.Text.Json;
 namespace EasySaveWPFApp.Model
 {
     // Manages the collection of save tasks, their execution, and persistence.
-    internal class SaveTaskManager
+    public class SaveTaskManager
     {
         // List of all active save tasks.
         internal List<SaveTask> SaveTasks { get; set; }
@@ -21,14 +23,24 @@ namespace EasySaveWPFApp.Model
         // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
 
-        // Maximum number of save tasks that can be created simultaneously.
-        private static int MaxSaveTasks = 5;
-
         private List<string> CurrentUnsavedPaths;
+
+        // The list of encrypting extensions.
+        // If a file has the given extension, it will be encrypted after being saved.
+        // All encrypting extensions start with "." (e.g. ".txt", ".json").
+        private List<string> EncryptingExtensions;
+
+        private readonly ProcessMonitor processMonitor;
+        private bool isSoftwareRunning;
 
         internal List<string> GetCurrentUnsavedPaths()
         {
             return new List<string>(CurrentUnsavedPaths);
+        }
+
+        internal List<string> GetEncryptingExtensions()
+        {
+            return new List<string>(EncryptingExtensions);
         }
 
         // Returns a copy of the current list of save tasks to avoid unintended modifications.
@@ -43,7 +55,16 @@ namespace EasySaveWPFApp.Model
             SaveTaskFactory = new SaveTaskFactory();
             // Load the saved tasks from the previous session.
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
+            EncryptingExtensions = new List<string>(JsonManager.DeserializeEncryptingExtensions());
             CurrentUnsavedPaths = new List<string>();
+            processMonitor = new ProcessMonitor();
+            processMonitor.OnSoftwareStatusChanged += OnSoftwareStatusChanged;
+            isSoftwareRunning = false;
+        }
+        private void OnSoftwareStatusChanged(bool isRunning)
+        {
+            isSoftwareRunning = isRunning;
+            Console.WriteLine($"Logiciel métier en cours d'exécution : {isRunning}");
         }
 
         internal bool IsSaveTaskNameExist(string name)
@@ -84,10 +105,6 @@ namespace EasySaveWPFApp.Model
         // Add a new save task of type SaveTaskType with sourcePath and targetPath
         internal EMessage AddSaveTask(ESaveTaskTypes SaveTaskType, string sourcePath, string targetPath, string saveTaskName)
         {
-            if (SaveTasks.Count >= MaxSaveTasks)
-            {
-                return EMessage.ErrorMaxSaveTaskReachMessage;
-            }
             SaveTasks.Add(SaveTaskFactory.CreateSave(SaveTaskType, sourcePath, targetPath, saveTaskName));
             return EMessage.SuccessCreateSaveTaskMessage;
         }
@@ -126,16 +143,23 @@ namespace EasySaveWPFApp.Model
         {
             try
             {
+                if (isSoftwareRunning)
+                {
+                    Console.WriteLine("Impossible d'exécuter la sauvegarde car le logiciel métier est en cours d'exécution.");
+                    return false;
+                }
+
                 CurrentUnsavedPaths.Clear();
-                if (SaveTasks[index].Save())
+                if (SaveTasks[index].Save(this))
                 {
                     return true;
                 }
                 CurrentUnsavedPaths = SaveTasks[index].GetUnsavedPaths();
                 return false;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
+                Console.WriteLine($"Erreur lors de l'exécution de la tâche : {ex.Message}");
                 return false;
             }
         }
@@ -202,6 +226,25 @@ namespace EasySaveWPFApp.Model
         public void SerializeSaveTasks()
         {
             JsonManager.SerializeSaveTasks(SaveTasks);
+        }
+
+        // Sets the encrypting extensions to the given list.
+        internal void SetEncryptingExtensions(List<string> newEncryptingExtensions)
+        {
+            EncryptingExtensions.Clear();
+            EncryptingExtensions = new List<string>(newEncryptingExtensions);
+        }
+
+        // Serializes the encrypting extensions to a JSON file for persistence.
+        public void SerializeEncryptingExtensions()
+        {
+            JsonManager.SerializeEncryptingExtensions(EncryptingExtensions);
+        }
+
+        // Deserializes the encrypting extensions from a JSON file.
+        public void DeserializeEncryptingExtensions()
+        {
+            EncryptingExtensions = JsonManager.DeserializeEncryptingExtensions();
         }
     }
 }

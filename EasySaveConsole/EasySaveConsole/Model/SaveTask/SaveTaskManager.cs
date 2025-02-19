@@ -25,8 +25,6 @@ namespace EasySaveConsole.Model
 
         internal LogManager logManager { get; set; }
 
-        // Maximum number of save tasks that can be created simultaneously.
-        private static int MaxSaveTasks = 5;
 
         private List<string> CurrentUnsavedPaths;
 

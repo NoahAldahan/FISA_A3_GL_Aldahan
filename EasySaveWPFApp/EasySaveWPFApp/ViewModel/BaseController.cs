@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace EasySaveWPFApp.Controller
+namespace EasySaveWPFApp.ViewModel
 {
     // Abstract base class for controllers
     internal abstract class BaseController
