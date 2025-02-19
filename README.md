@@ -4,6 +4,7 @@
   <a href="https://github.com/NoahAldahan/FISA_A3_GL_Aldahan">
     <img src="Documentation/img/saveIcon.png" alt="EasySave" width="80" height="80">
   </a>
+</div>
 
 <h3 align="center">EasySave</h3>
 
