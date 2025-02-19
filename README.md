@@ -177,7 +177,7 @@ _Pour une explication étape par étape, référez vous au ([guide utilisateur](
 ## Roadmap
 
 - [x] Version 1
-    - [ ] Version 1.1
+- [ ] Version 1.1
 - [ ] Version 2
 - [ ] Version 3
 
