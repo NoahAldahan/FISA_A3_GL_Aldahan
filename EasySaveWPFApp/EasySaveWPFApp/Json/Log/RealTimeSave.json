@@ -1,13 +1,13 @@
 [
   {
-    "Name": "romain",
-    "SourcePath": "C:\\Users\\Travail\\Desktop\\Source",
-    "TargetPath": "C:\\Users\\Travail\\Desktop\\Target",
+    "Name": "testUNO",
+    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source\\",
+    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete",
     "State": "END",
-    "TotalFilesToCopy": 7,
-    "TotalFilesSize": 55208,
+    "TotalFilesToCopy": 4,
+    "TotalFilesSize": 26,
     "NbFilesLeftToDo": 0,
-    "Progression": 100,
-    "SaveDate": "2025-02-14T12:10:52.1386467+01:00"
+    "Progression": 200,
+    "SaveDate": "2025-02-19T22:16:35.5797673+01:00"
   }
 ]
