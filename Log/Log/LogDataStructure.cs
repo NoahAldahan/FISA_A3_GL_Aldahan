@@ -78,6 +78,7 @@ namespace Log
             public long FileSize { get; set; }  // Taille du fichier en octets
             public double FileTransferTime { get; set; }  // Temps de transfert en secondes
             public DateTime DateTime { get; set; }  // Horodatage
+            public long EncryptionTimeMs { get; set; } // // Temps de cryptage en millisecondes
 
         public override string ToString()
         {
@@ -87,7 +88,7 @@ namespace Log
             return base.ToString();
         }
 
-        public DailyInfo(string name, string fileSource, string fileTarget, long fileSize, double fileTransferTime, DateTime time)
+        public DailyInfo(string name, string fileSource, string fileTarget, long fileSize, double fileTransferTime, DateTime time, long encryptionTime)
             {
                 Name = name;
                 FileSource = fileSource;
@@ -95,6 +96,7 @@ namespace Log
                 FileSize = fileSize;
                 FileTransferTime = fileTransferTime;
                 DateTime = time;
+                EncryptionTimeMs = encryptionTime;
             }
 
         }

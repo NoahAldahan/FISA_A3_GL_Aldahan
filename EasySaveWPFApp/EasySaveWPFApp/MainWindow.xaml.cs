@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using EasySaveWPFApp.Model;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,12 +23,13 @@ namespace EasySaveWPFApp
     /// 
     public partial class MainWindow : Window
     {
-        SaveTaskViewModel saveTaskViewModel;
+        public SaveTaskViewModel saveTaskViewModel;
         SaveTaskWindow saveTaskWindow;
+        SaveTaskManager saveTaskManager;
         public MainWindow()
         {
             Env.Load(@".env");
-            SaveTaskManager saveTaskManager = new SaveTaskManager();
+            saveTaskManager = new SaveTaskManager();
             //Controller
             saveTaskViewModel = new SaveTaskViewModel(saveTaskManager);
             //DataContext
@@ -68,11 +70,10 @@ namespace EasySaveWPFApp
             }
         }
 
+        // Launches the settings window.
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            // We open the settings window
-            SettingsWindow settingsWindow = new SettingsWindow();
-            settingsWindow.Show();
+            LaunchSettingsWindow();
         }
 
         private void BackupTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -122,6 +123,19 @@ namespace EasySaveWPFApp
                             break;
                     }
                 }
+            }
+        }
+        // Launches the settings window.
+        public void LaunchSettingsWindow()
+        {
+            SettingsWindow settingsWindow = new SettingsWindow(saveTaskManager);
+            try
+            {
+                settingsWindow.ShowDialog();
+            }
+            catch
+            {
+                settingsWindow.Close();
             }
         }
     }
