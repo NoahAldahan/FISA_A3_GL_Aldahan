@@ -5,18 +5,20 @@ using System.Timers;
 
 namespace EasySaveConsole.Utilities
 {
-    public class BusinessSoftwareObserver
+    public class ProcessMonitor
     {
         private readonly System.Timers.Timer timer;
         private const string businessSoftware = "cmd.exe"; // Logiciel métier fixe
-        private bool isRunning;
+        private bool isSoftwareRunning;
 
-        public event Action<bool> OnBusinessSoftwareStatusChanged;
+        // Événement déclenché lorsque l'état du logiciel change
+        public event Action<bool> OnSoftwareStatusChanged;
 
-        public BusinessSoftwareObserver()
+        public ProcessMonitor()
         {
             timer = new System.Timers.Timer(1000); // Vérification toutes les secondes
             timer.Elapsed += CheckBusinessSoftware;
+            isSoftwareRunning = false;
             timer.AutoReset = true;
             timer.Start();
         }
@@ -25,10 +27,10 @@ namespace EasySaveConsole.Utilities
         {
             bool currentlyRunning = Process.GetProcessesByName("cmd").Any();
 
-            if (currentlyRunning != isRunning)
+            if (currentlyRunning != isSoftwareRunning)
             {
-                isRunning = currentlyRunning;
-                OnBusinessSoftwareStatusChanged?.Invoke(isRunning);
+                isSoftwareRunning = currentlyRunning;
+                OnSoftwareStatusChanged?.Invoke(isSoftwareRunning); // Déclenche l'événement
             }
         }
 
@@ -38,4 +40,3 @@ namespace EasySaveConsole.Utilities
         }
     }
 }
-

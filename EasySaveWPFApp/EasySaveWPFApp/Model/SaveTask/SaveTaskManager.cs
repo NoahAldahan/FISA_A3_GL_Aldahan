@@ -1,10 +1,12 @@
-﻿using EasySaveWPFApp.Controller;
+﻿using EasySaveConsole.Utilities;
+using EasySaveWPFApp.Controller;
 using EasySaveWPFApp.Utilities;
 using Log;
 using Microsoft.SqlServer.Server;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
@@ -27,6 +29,9 @@ namespace EasySaveWPFApp.Model
         // If a file has the given extension, it will be encrypted after being saved.
         // All encrypting extensions start with "." (e.g. ".txt", ".json").
         private List<string> EncryptingExtensions;
+
+        private readonly ProcessMonitor processMonitor;
+        private bool isSoftwareRunning;
 
         internal List<string> GetCurrentUnsavedPaths()
         {
@@ -51,6 +56,14 @@ namespace EasySaveWPFApp.Model
             // Load the saved tasks from the previous session.
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
             CurrentUnsavedPaths = new List<string>();
+            processMonitor = new ProcessMonitor();
+            processMonitor.OnSoftwareStatusChanged += OnSoftwareStatusChanged;
+            isSoftwareRunning = false;
+        }
+        private void OnSoftwareStatusChanged(bool isRunning)
+        {
+            isSoftwareRunning = isRunning;
+            Console.WriteLine($"Logiciel métier en cours d'exécution : {isRunning}");
         }
 
         internal bool IsSaveTaskNameExist(string name)
@@ -129,16 +142,23 @@ namespace EasySaveWPFApp.Model
         {
             try
             {
+                if (isSoftwareRunning)
+                {
+                    Console.WriteLine("Impossible d'exécuter la sauvegarde car le logiciel métier est en cours d'exécution.");
+                    return false;
+                }
+
                 CurrentUnsavedPaths.Clear();
-                if (SaveTasks[index].Save(EncryptingExtensions))
+                if (SaveTasks[index].Save(this))
                 {
                     return true;
                 }
                 CurrentUnsavedPaths = SaveTasks[index].GetUnsavedPaths();
                 return false;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
+                Console.WriteLine($"Erreur lors de l'exécution de la tâche : {ex.Message}");
                 return false;
             }
         }
@@ -218,6 +238,5 @@ namespace EasySaveWPFApp.Model
         {
             EncryptingExtensions.Remove(extension);
         }
-
     }
 }
