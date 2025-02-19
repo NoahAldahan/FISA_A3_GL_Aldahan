@@ -215,8 +215,8 @@ _For a step by step explanation, please refer to the [user guide](Documentation/
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Version 1
-    - [ ] Version 1.1
+- [x] Version 1
+    - [x] Version 1.1
 - [ ] Version 2
 - [ ] Version 3
 
