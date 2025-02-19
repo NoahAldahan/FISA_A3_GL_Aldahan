@@ -5,10 +5,11 @@
     <img src="Documentation/img/saveIcon.png" alt="EasySave" width="80" height="80">
   </a>
 </div>
+
 <h3 align="center">EasySave</h3>
 
-#### **1. Objectif du Logiciel**
-EasySave 1.0 est une application console développée avec .Net Core. Son objectif est de permettre la gestion et l’exécution de travaux de sauvegarde (backup) de manière simple et efficace, tout en garantissant une compatibilité pour des utilisateurs anglophones et francophones.
+#### **1. A propos**
+EasySave 1.1 est une application console développée avec .Net Core. Son objectif est de permettre la gestion et l’exécution de travaux de sauvegarde (backup) de manière simple et efficace, tout en garantissant une compatibilité pour des utilisateurs anglophones et francophones.
 
 ---
 
@@ -43,7 +44,7 @@ EasySave 1.0 est une application console développée avec .Net Core. Son object
 #### **3. Journalisation et Suivi des Sauvegardes**
 
 ##### **3.1 Fichier Log Journalier**
-- Écriture en temps réel des actions réalisées dans un fichier log journalier au format JSON.
+- Écriture en temps réel des actions réalisées dans un fichier log journalier au format JSON ou XML.
 - Contenu minimal pour chaque action :
   - **Horodatage**.
   - **Nom de sauvegarde**.
@@ -51,10 +52,10 @@ EasySave 1.0 est une application console développée avec .Net Core. Son object
   - **Adresse complète** du fichier de destination (format UNC).
   - **Taille du fichier**.
   - **Temps de transfert** en millisecondes (valeur négative si erreur).
-- Le fichier doit permettre une lecture facile via Notepad, avec des retours à la ligne entre les éléments JSON.
+- Le fichier doit permettre une lecture facile via Notepad, avec des retours à la ligne entre les éléments JSON et XML.
 
 ##### **3.2 Fichier d'État en Temps Réel**
-- Enregistrement en temps réel de l’état des travaux dans un fichier unique au format JSON.
+- Enregistrement en temps réel de l’état des travaux dans un fichier unique au format JSON ou XML.
 - Informations minimales enregistrées pour chaque travail :
   - **Nom du travail**.
   - **Horodatage** de la dernière action.
@@ -74,19 +75,19 @@ EasySave 1.0 est une application console développée avec .Net Core. Son object
 
 ##### **4.1 Compatibilité et Configuration**
 - Les emplacements des fichiers (log journalier et état) doivent être compatibles avec les serveurs clients. Les emplacements temporaires comme `c:\temp\` sont proscrits.
-- Format JSON obligatoire pour tous les fichiers (log, état, et configurations éventuelles).
+- Format JSON / XML obligatoire pour tous les fichiers (log, état, et configurations éventuelles).
 
 ##### **4.2 Modularité (facultatif)**
 - Développement de la fonctionnalité de journalisation (log) sous forme de **Dynamic Link Library (DLL)**.
-- La DLL doit rester compatible avec la version 1.0, même lors d’évolutions futures.
+- La DLL doit rester compatible avec la version 1.1, même lors d’évolutions futures.
 
 ##### **4.3 Pagination (facultatif)**
-- Pagination des fichiers JSON pour faciliter la lecture rapide.
+- Pagination des fichiers JSON et XML pour faciliter la lecture rapide.
 
 ---
 
 #### **5. Évolutions Futures**
-Si la version 1.0 est jugée satisfaisante, une **version 2.0** avec une interface graphique (architecture MVVM) sera développée.
+Si la version 1.0 / 1.1 est jugée satisfaisante, une **version 2.0** avec une interface graphique (architecture MVVM) sera développée.
 
 ---
 #### **5. Contraintes**
@@ -128,62 +129,21 @@ Si la version 1.0 est jugée satisfaisante, une **version 2.0** avec une interfa
     - Le camelCase est utilisé pour les noms privés, locaux ou encore les paramètres.
 
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributors">Contributors</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-
-EasySave is a backup software developed as part of a structured project within ProSoft. The project simulates an accelerated development cycle, covering multiple versions of the software. The goal is to design, implement, and document a robust and maintainable backup solution using C# and .NET 8.0, while adhering to best practices in version control, code quality, and user documentation. The software is designed to be distributed to clients, requiring well-structured UI/UX and efficient backup functionality.
-
-
-### Built With
-
-- Visual Studio
-- C# 
-- .NET
-
-
 <!-- GETTING STARTED -->
-## Getting Started
-
+## Installer le projet
 
 ### Installation
 
-To use the application :
+Pour utiliser l'application :
 
-Download the exe of the version you want in the releases and execute it.
+Télecharger l'application .exe of de la version de votre choix dans les releases et lancez-la.
 
-To access and modify source code :
+Pour accéder et modifier le code source :
 - Visual Studio 2022
 ```
-Download and install from this link
+Téléchargez et installez depuis ce lien Visual Studio 2022
 https://visualstudio.microsoft.com/fr/
-When installing Visual Studio, make sure to check :
+Lorsque vous installez Visual Studio, pensez à cocher ces options :
 - Multiplatform development
 - .NET native
 - kit SDK .NET
@@ -192,35 +152,36 @@ When installing Visual Studio, make sure to check :
 
 - System.Text.Json
 ```
-In Visual Studio, open Project, Manage NuGetPackages
-Search for System.Text.JSON and install it
+Dans Visual Studio, ouvrez Project, et cliquez sur Manage NuGetPackages
+Cherchez System.Text.JSON et installez le
 ```
 - DotNetEnv
 ```
-In Visual Studio, open Project, Manage NuGetPackages
-Search for DotNetEnv and install it
+Dans Visual Studio, ouvrez Project, et cliquez sur Manage NuGetPackages
+Cherchez DotNetEnv et installez le
 ```
 
-
 <!-- USAGE EXAMPLES -->
-## Usage
+##  Utilisation
 
-Here are the options you might find in the CLI application :
+Voici quelques images de ce qu'il peut vous attendre dans EasySave 1.1 :
+
 ![Main menu](Documentation/img/MainMenu.png)
+
 ![Save menu](Documentation/img/SaveMenu.png)
 
-_For a step by step explanation, please refer to the [user guide](Documentation/UserGuide.pdf), ([guide utilisateur](Documentation/GuideUtilisateur.pdf))_
+_Pour une explication étape par étape, référez vous au ([guide utilisateur](Documentation/GuideUtilisateur.pdf)), [user guide](Documentation/UserGuide.pdf)_
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
 - [x] Version 1
-    - [x] Version 1.1
+- [x] Version 1.1
 - [ ] Version 2
 - [ ] Version 3
 
-## Contributors
+## Contributeurs
 
 * [Romain](https://github.com/Romain68)
 * [Jean](https://github.com/Yamigiri1)
