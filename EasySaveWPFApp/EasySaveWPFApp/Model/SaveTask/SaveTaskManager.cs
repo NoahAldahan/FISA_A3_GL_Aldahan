@@ -13,7 +13,7 @@ using System.Text.Json;
 namespace EasySaveWPFApp.Model
 {
     // Manages the collection of save tasks, their execution, and persistence.
-    internal class SaveTaskManager
+    public class SaveTaskManager
     {
         // List of all active save tasks.
         internal List<SaveTask> SaveTasks { get; set; }
@@ -53,6 +53,7 @@ namespace EasySaveWPFApp.Model
             SaveTaskFactory = new SaveTaskFactory();
             // Load the saved tasks from the previous session.
             SaveTasks = new List<SaveTask>(JsonManager.DeserializeSaveTasks());
+            EncryptingExtensions = new List<string>(JsonManager.DeserializeEncryptingExtensions());
             CurrentUnsavedPaths = new List<string>();
         }
 
@@ -214,17 +215,23 @@ namespace EasySaveWPFApp.Model
             JsonManager.SerializeSaveTasks(SaveTasks);
         }
 
-        // Adds an extension to the list.
-        public void AddEncryptingExtension(string extension)
+        // Sets the encrypting extensions to the given list.
+        internal void SetEncryptingExtensions(List<string> newEncryptingExtensions)
         {
-            EncryptingExtensions.Add(extension);
+            EncryptingExtensions.Clear();
+            EncryptingExtensions = new List<string>(newEncryptingExtensions);
         }
 
-        // Removes an extension from the list.
-        public void RemoveEncryptingExtension(string extension)
+        // Serializes the encrypting extensions to a JSON file for persistence.
+        public void SerializeEncryptingExtensions()
         {
-            EncryptingExtensions.Remove(extension);
+            JsonManager.SerializeEncryptingExtensions(EncryptingExtensions);
         }
 
+        // Deserializes the encrypting extensions from a JSON file.
+        public void DeserializeEncryptingExtensions()
+        {
+            EncryptingExtensions = JsonManager.DeserializeEncryptingExtensions();
+        }
     }
 }

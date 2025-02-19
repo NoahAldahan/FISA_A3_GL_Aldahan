@@ -29,7 +29,7 @@ namespace EasySaveWPFApp.Model
         internal override bool Save(List<string> EncryptingExtensions)
         {
             UnsavedPaths.Clear(); // Clear the list of unsaved paths.
-            UnsavedPaths = SaveComplete(); // Perform the complete save process.
+            UnsavedPaths = SaveComplete(EncryptingExtensions); // Perform the complete save process.
             try
             {
                 FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -45,7 +45,7 @@ namespace EasySaveWPFApp.Model
                 return false;
             }
 
-            UnsavedPaths = SaveComplete();
+            UnsavedPaths = SaveComplete(EncryptingExtensions);
 
             return (UnsavedPaths.Count() == 0);
         }

@@ -23,8 +23,8 @@ namespace EasySaveWPFApp.Utilities
         static private string AppSettingsPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
             Environment.GetEnvironmentVariable("AppSettingsPath"));
 
-        static private string SerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
-            Environment.GetEnvironmentVariable("SerializationPath"));
+        static private string SaveTaskSerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("SaveTaskSerializationPath"));
 
         static public string LogPathDaily = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
             Environment.GetEnvironmentVariable("LogPathDaily"));
@@ -32,8 +32,11 @@ namespace EasySaveWPFApp.Utilities
         static public string LogPathRealTime = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
             Environment.GetEnvironmentVariable("LogPathRealTime"));
 
-        static public string EncryptionKey = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
-            Environment.GetEnvironmentVariable("EncryptionKey"));
+        // TODO Merge and fix .. for this
+        static public string EncryptingExtensionsSerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+            Environment.GetEnvironmentVariable("EncryptingExtensionsSerializationPath"));
+
+        static public string EncryptionKey = Environment.GetEnvironmentVariable("EncryptionKey");
 
         // Retrieves a translated message from the Translation JSON file based on the specified language.
         static public string GetMessage(string msg, ELanguage language)
@@ -105,7 +108,7 @@ namespace EasySaveWPFApp.Utilities
             {
                 // Serialize the list of save tasks to a JSON format
                 string jsonContent = JsonSerializer.Serialize(SaveTasks);
-                File.WriteAllText(SerializationPath, jsonContent);
+                File.WriteAllText(SaveTaskSerializationPath, jsonContent);
 
             }
             catch (Exception ex)
@@ -123,7 +126,7 @@ namespace EasySaveWPFApp.Utilities
             try
             {
                 // Read JSON file content
-                jsonContent = File.ReadAllText(SerializationPath);
+                jsonContent = File.ReadAllText(SaveTaskSerializationPath);
 
                 // If the file is empty, return an empty list
                 if (jsonContent == "")
@@ -147,6 +150,46 @@ namespace EasySaveWPFApp.Utilities
                 return new List<SaveTask>(); // Return an empty list if an error occurs
             }
             return SaveTasks;
+        }
+        public static void SerializeEncryptingExtensions(List<string> EncryptingExtensions)
+        {
+            try
+            {
+                // Serialize the list of save tasks to a JSON format
+                string jsonContent = JsonSerializer.Serialize(EncryptingExtensions);
+                string path = EncryptingExtensionsSerializationPath;
+                File.WriteAllText(EncryptingExtensionsSerializationPath, jsonContent);
+            }
+            catch (Exception ex)
+            {
+                // TODO : Handle this exception with an error popup
+                //Console.WriteLine($"Error serializing Save tasks to JSON file: {ex.Message}");
+            }
+        }
+        public static List<string> DeserializeEncryptingExtensions()
+        {
+            string jsonContent = "";
+            List<string> EncryptingExtensions = new List<string>();
+
+            try
+            {
+                // Read JSON file content
+                jsonContent = File.ReadAllText(EncryptingExtensionsSerializationPath);
+
+                // If the file is empty, return an empty list
+                if (jsonContent == "")
+                {
+                    return EncryptingExtensions;
+                }
+
+                // Deserialize the JSON into a list of SaveTask objects
+                EncryptingExtensions = JsonSerializer.Deserialize<List<string>>(jsonContent);
+                return EncryptingExtensions;
+            }
+            catch (Exception ex)
+            {
+                return new List<string>(); // Return an empty list if an error occurs
+            }
         }
     }
 }
