@@ -56,8 +56,10 @@ namespace EasySaveWPFApp
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            // We open the settings window
             SettingsWindow settingsWindow = new SettingsWindow();
-            settingsWindow.ShowDialog(); // Ouvre la fenêtre et bloque l'autre jusqu'à fermeture
+            settingsWindow.Show();
+
         }
 
         private void BackupTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
