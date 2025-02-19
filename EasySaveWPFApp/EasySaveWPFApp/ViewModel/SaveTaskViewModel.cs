@@ -50,22 +50,30 @@ namespace EasySaveWPFApp.ViewModel
         }
         internal bool ModifySaveTaskSourcePath(string name, string path)
         {
-            return saveTaskManager.ModifySaveTaskSourcePath(name, path);
+            bool wasSuccessful = saveTaskManager.ModifySaveTaskSourcePath(name, path);
+            saveTaskManager.SerializeSaveTasks();
+            return wasSuccessful;
         }
 
         internal bool ModifySaveTaskTargetPath(string name, string path)
         {
-            return saveTaskManager.ModifySaveTaskTargetPath(name, path);
+            bool wasSuccessful = saveTaskManager.ModifySaveTaskTargetPath(name, path);
+            saveTaskManager.SerializeSaveTasks();
+            return wasSuccessful;
         }
 
         internal bool ModifySaveTaskName(string currentName, string newName)
         {
-           return saveTaskManager.ModifySaveTaskName(currentName, newName);
+            bool wasSuccessful = saveTaskManager.ModifySaveTaskName(currentName, newName);
+            saveTaskManager.SerializeSaveTasks();
+            return wasSuccessful;
         }
 
         internal bool ModifySaveTaskType(string name, ESaveTaskTypes type)
         {
-            return saveTaskManager.ModifySaveTaskType(name, type);
+            bool wasSuccessful = saveTaskManager.ModifySaveTaskType(name, type);
+            saveTaskManager.SerializeSaveTasks();
+            return wasSuccessful;
         }
         internal void CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
         {
@@ -132,13 +140,21 @@ namespace EasySaveWPFApp.ViewModel
                 }
                 ////error saveTaskExecution //ShowMessage(str);
             }
+            saveTaskManager.SerializeSaveTasks();
         }
 
         internal void SwitchSaveTaskType(string name)
         {
             saveTaskManager.SwitchSaveTask(name);
+            saveTaskManager.SerializeSaveTasks();
         }
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        public void OnWindowClosing(object? sender, CancelEventArgs e)
+        {
+            saveTaskManager.SerializeSaveTasks();
+            saveTaskManager.SerializeEncryptingExtensions();
+        }
     }
 }

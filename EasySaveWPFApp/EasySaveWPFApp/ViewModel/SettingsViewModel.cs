@@ -120,8 +120,6 @@ namespace EasySaveWPFApp.ViewModel
         public void SetLanguage(string cultureCode)
         {
             LanguageResourceViewModel.SetLanguage(cultureCode);
-            saveTaskManager.SerializeEncryptingExtensions();
-            saveTaskManager.SerializeSaveTasks();
             ReloadMainWindow();
         }
 

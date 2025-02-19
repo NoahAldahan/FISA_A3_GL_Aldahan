@@ -30,7 +30,7 @@ namespace EasySaveWPFApp.Utilities
             Environment.GetEnvironmentVariable("LogPathRealTime"));
 
         // TODO Merge and fix .. for this
-        static public string EncryptingExtensionsSerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static public string EncryptingExtensionsSerializationPath = Path.Combine(Directory.GetCurrentDirectory(), Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
             Environment.GetEnvironmentVariable("EncryptingExtensionsSerializationPath"));
 
         static public string EncryptionKey = Environment.GetEnvironmentVariable("EncryptionKey");

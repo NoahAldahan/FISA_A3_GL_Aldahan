@@ -30,8 +30,9 @@ namespace EasySaveWPFApp
         {
             Env.Load(@".env");
             saveTaskManager = new SaveTaskManager();
-            //Controller
+            // ViewModel
             saveTaskViewModel = new SaveTaskViewModel(saveTaskManager);
+            Closing += saveTaskViewModel.OnWindowClosing;
             //DataContext
             DataContext = saveTaskViewModel;
             InitializeComponent();
