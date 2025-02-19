@@ -61,7 +61,6 @@ namespace EasySaveWPFApp.Model
             ShowSaveTaskTargetPathMessage,
             ShowSaveTaskTypeMessage,
             ErrorSaveTaskNameDuplicateMessage,
-            ErrorMaxSaveTaskReachMessage,
             SuccessCreateSaveTaskMessage,
             SaveTaskTypeDifferentialName,
             SaveTaskTypeCompleteName
@@ -127,7 +126,6 @@ namespace EasySaveWPFApp.Model
             { EMessage.ShowSaveTaskTargetPathMessage, "ShowSaveTaskTargetPathMessage" },
             { EMessage.ShowSaveTaskTypeMessage, "ShowSaveTaskTypeMessage" },
             { EMessage.ErrorSaveTaskNameDuplicateMessage, "ErrorSaveTaskNameDuplicateMessage" },
-            { EMessage.ErrorMaxSaveTaskReachMessage, "ErrorMaxSaveTaskReachMessage" },
             { EMessage.SuccessCreateSaveTaskMessage, "SuccessCreateSaveTaskMessage" },
             { EMessage.SaveTaskTypeDifferentialName, "SaveTaskTypeDifferentialName" },
             { EMessage.SaveTaskTypeCompleteName, "SaveTaskTypeCompleteName" },

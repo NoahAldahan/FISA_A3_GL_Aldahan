@@ -26,10 +26,10 @@ namespace EasySaveWPFApp.Model
         // Overrides the abstract Save method to perform a complete backup.
         // Returns true if all files were saved successfully, false otherwise.
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
-        internal override bool Save(List<string> EncryptingExtensions)
+        internal override bool Save(SaveTaskManager saveTaskManager)
         {
             UnsavedPaths.Clear(); // Clear the list of unsaved paths.
-            UnsavedPaths = SaveComplete(EncryptingExtensions); // Perform the complete save process.
+            UnsavedPaths = SaveComplete(saveTaskManager); // Perform the complete save process.
             try
             {
                 FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -45,13 +45,11 @@ namespace EasySaveWPFApp.Model
                 return false;
             }
 
-            UnsavedPaths = SaveComplete(EncryptingExtensions);
-
             return (UnsavedPaths.Count() == 0);
         }
 
         // Performs the complete backup by copying files from source to target.
-        private List<string> SaveComplete(List<string> EncryptingExtensions)
+        private List<string> SaveComplete(SaveTaskManager saveTaskManager)
         {
             logDaily.CreateDailyFile();
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
@@ -64,20 +62,20 @@ namespace EasySaveWPFApp.Model
                 FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
 
                 // Case 1: Both source and target are directories
-                if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
+                if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory) && !isSoftwareRunning)
                 {
                     DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.SourcePath);
                     DirectoryInfo targetDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.TargetPath);
-                    CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo, EncryptingExtensions);
+                    CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo, saveTaskManager);
                 }
                 // Case 2: Source is a file, target is a directory
-                else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
+                else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory) && !isSoftwareRunning)
                 {
                     string FileName = Path.GetFileName(CurrentDirectoryPair.SourcePath);
 
                     try
                     {
-                        CopySingleFile(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), EncryptingExtensions);
+                        CopySingleFile(CurrentDirectoryPair.SourcePath, Path.Combine(CurrentDirectoryPair.TargetPath, FileName), saveTaskManager);
                     }
                     catch (Exception e)
                     {
@@ -93,18 +91,28 @@ namespace EasySaveWPFApp.Model
         }
 
         // Recursively copies all files and subdirectories from the source to the target directory.
-        private List<string> CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo, List<string> EncryptingExtensions)
+        private List<string> CopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo, SaveTaskManager saveTaskManager)
         {
             try
             {
                 // Iterate through all directories in the source and create them in the target.
                 foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
-                    CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name), EncryptingExtensions);
+                {
+                    if (isSoftwareRunning)
+                    {
+                        throw new Exception("Error unauthorized  software is running");
+                    }
+                    CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name), saveTaskManager);
+                }
                 foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
                 {
                     try
                     {
-                        CopySingleFile(file.FullName, Path.Combine(targetDirectoryInfo.FullName, file.Name), EncryptingExtensions);
+                        if (isSoftwareRunning)
+                        {
+                            throw new Exception("Error unauthorized  software is running");
+                        }
+                        CopySingleFile(file.FullName, Path.Combine(targetDirectoryInfo.FullName, file.Name), saveTaskManager);
                     }
                     catch (Exception e)
                     {
