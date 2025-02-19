@@ -46,13 +46,17 @@ namespace EasySaveWPFApp
             var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
             foreach (var row in selectedRows) 
             {
-                saveTaskViewModel.HandleSaveTaskExecution(row.name);
+                saveTaskViewModel.ExecuteSaveTask(row.name);
             }
         }
 
         private void ModifySelected_Click(object sender, RoutedEventArgs e)
         {
-
+            var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
+            foreach (var row in selectedRows)
+            {
+                saveTaskViewModel.SwitchSaveTaskType(row.name);
+            }
         }
 
         private void DeleteSelected_Click(object sender, RoutedEventArgs e)
@@ -60,7 +64,7 @@ namespace EasySaveWPFApp
             var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
             foreach(var row in selectedRows)
             {
-                saveTaskViewModel.HandleSaveTaskExecution(row.name);
+                saveTaskViewModel.RemoveSaveTask(row.name);
             }
         }
 

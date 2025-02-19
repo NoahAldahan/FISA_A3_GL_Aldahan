@@ -13,7 +13,7 @@
         <TextBox Name="TaskDestination" VerticalAlignment="Top" Margin="20,175,20,0"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="22,224,-2,0">
-            <RadioButton Name="DifferentialRadioButton" Content="Différentiel" Margin="0,0,20,0"/>
+            <RadioButton Name="DifferentialRadioButton" Content="Différentiel" Margin="0,0,20,0" Checked="DifferentialRadioButton_Checked"/>
             <RadioButton Name="CompleteRadioButton" Content="Complète"/>
         </StackPanel>
 

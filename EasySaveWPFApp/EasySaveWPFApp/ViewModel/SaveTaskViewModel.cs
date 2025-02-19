@@ -92,7 +92,7 @@ namespace EasySaveWPFApp.ViewModel
         }
 
 
-        internal void HandleSaveTaskExecution(string name)
+        internal void ExecuteSaveTask(string name)
         {
             bool DidEverythingSaveCorrectly = saveTaskManager.ExecuteSaveTask(name);
             if (DidEverythingSaveCorrectly)
@@ -111,6 +111,32 @@ namespace EasySaveWPFApp.ViewModel
                 }
                 ////error saveTaskExecution //ShowMessage(str);
             }
+        }
+
+        internal void RemoveSaveTask(string name)
+        {
+            bool DidEverythingSaveCorrectly = saveTaskManager.RemoveSaveTask(name);
+            if (DidEverythingSaveCorrectly)
+                return; //success saveTaskExecution  //ShowMessage(messagesManager.GetMessageTranslate(EMessage.SuccessStartSaveTaskMessage) + saveTaskManager.GetSaveTaskName(index));
+            else
+            {
+                string str = "ErrorStartSaveTaskMessage"; //ErrorStartSaveTaskMessage
+                List<string> UnsavedPaths = saveTaskManager.GetCurrentUnsavedPaths();
+                if (UnsavedPaths != null && UnsavedPaths.Count > 0)
+                {
+                    str += "EMessage.ErrorStartSaveTaskPathListMessage : ";//messagesManager.GetMessageTranslate(EMessage.ErrorStartSaveTaskPathListMessage);
+                    foreach (string path in UnsavedPaths)
+                    {
+                        str += "\n" + path;
+                    }
+                }
+                ////error saveTaskExecution //ShowMessage(str);
+            }
+        }
+
+        internal void SwitchSaveTaskType(string name)
+        {
+            saveTaskManager.SwitchSaveTask(name);
         }
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -48,5 +48,10 @@ namespace EasySaveWPFApp
         {
 
         }
+
+        private void DifferentialRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

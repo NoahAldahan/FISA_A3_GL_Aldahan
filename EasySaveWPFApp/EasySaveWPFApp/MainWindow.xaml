@@ -20,10 +20,10 @@
                 <DataGridTextColumn Header="Nom" Binding="{Binding BindName, UpdateSourceTrigger=Explicit}" Width="*"/>
                 <DataGridTextColumn Header="Source" Binding="{Binding BindSource, UpdateSourceTrigger=Explicit}" Width="*"/>
                 <DataGridTextColumn Header="Destination" Binding="{Binding BindDestination, UpdateSourceTrigger=Explicit}" Width="*"/>
-                <DataGridComboBoxColumn   Header="Type"
+                <!--<DataGridComboBoxColumn   Header="Type"
                         SelectedItemBinding="{Binding BindSaveTaskType, Mode=TwoWay}"
-                        ItemsSource="{Binding EcliSaveTaskTypesStr}" />
-                <DataGridCheckBoxColumn Header="Selection" Width="Auto"/>
+                        ItemsSource="{Binding EcliSaveTaskTypesStr}" /> -->
+                <DataGridTextColumn Header="Type" Binding="{Binding BindSaveTaskType, UpdateSourceTrigger=Explicit}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <!-- SelectedItemBinding="{Binding BindSaveTaskType, UpdateSourceTrigger=Explicit}"-->
@@ -34,7 +34,7 @@
         <!-- Boutons Démarrer, Modifier, Supprimer -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
             <Button Content="Démarrer la sélection" Width="200" Height="40" Margin="5" Click="StartSelected_Click"/>
-            <Button Content="Modifier" Width="100" Height="40" Margin="5" Click="ModifySelected_Click"/>
+            <Button Content="Switch Type" Width="100" Height="40" Margin="5" Click="ModifySelected_Click"/>
             <Button Content="Supprimer" Width="100" Height="40" Margin="5" Click="DeleteSelected_Click"/>
         </StackPanel>
 

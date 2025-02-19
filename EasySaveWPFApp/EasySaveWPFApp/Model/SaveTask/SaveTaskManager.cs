@@ -116,10 +116,16 @@ namespace EasySaveWPFApp.Model
         }
 
         // Remove a save task at index
-        internal bool RemoveSaveTask(int index)
+        internal bool RemoveSaveTask(string name)
         {
             try
             {
+                SaveTask? saveTaskCurrent = GetSaveTaskByName(name);
+                if(saveTaskCurrent == null)
+                {
+                    return false;
+                }
+                int index = SaveTasks.IndexOf(saveTaskCurrent);
                 SaveTasks.RemoveAt(index);
                 return true;// EMessage.SuccessSuppressSaveTaskMessage;
             }
@@ -240,6 +246,26 @@ namespace EasySaveWPFApp.Model
                 return false;
             }
         }   
+
+        internal bool SwitchSaveTask(string name)
+        {
+            SaveTask? currentSaveTask = GetSaveTaskByName(name);
+            if(currentSaveTask == null)
+            {
+                return false;
+            }
+            if (currentSaveTask.BindSaveTaskType == ESaveTaskTypes.Complete)
+            {
+                ModifySaveTaskType(name, ESaveTaskTypes.Differential);
+                return true;
+            }
+            else if (currentSaveTask.BindSaveTaskType == ESaveTaskTypes.Differential) 
+            {
+                ModifySaveTaskType(name, ESaveTaskTypes.Complete);
+                return true;
+            }
+            return false;
+        }
 
 
         // Saves all save tasks config to a json file for persistence
