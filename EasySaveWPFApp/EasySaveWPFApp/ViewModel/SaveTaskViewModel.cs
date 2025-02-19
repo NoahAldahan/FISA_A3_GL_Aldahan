@@ -34,10 +34,14 @@ namespace EasySaveWPFApp.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
 
 
+        public List<String> EcliSaveTaskTypesStr { get; set; }
+
+
         // Constructor for the SaveTaskController class
         internal SaveTaskViewModel(SaveTaskManager saveTaskManager)
         {
             this.saveTaskManager = saveTaskManager;
+            EcliSaveTaskTypesStr = ESaveTaskTypesExtension.GetAllStrSaveTasksType();
         }
         public ObservableCollection<SaveTask> BindSaveTasks
         {
