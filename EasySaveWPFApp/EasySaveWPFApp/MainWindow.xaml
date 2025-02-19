@@ -1,0 +1,43 @@
+﻿<Window x:Class="EasySaveWPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EasySaveWPFApp" xmlns:model="clr-namespace:EasySaveWPFApp.ViewModel" d:DataContext="{d:DesignInstance Type=model:SaveTaskViewModel}"
+        xmlns:p="clr-namespace:EasySaveWPFApp.Resources"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <!-- Titre -->
+        <TextBlock Text="EasySave" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="16"/>
+
+        <!-- Bouton des paramètres -->
+        <Button Content="{x:Static p:Resources.MainWindow_SettingsButtonText}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="40" Margin="0,10,10,0" Click="SettingsButton_Click"/>
+
+        <!-- Tableau -->
+        <DataGrid ItemsSource="{Binding BindSaveTasks}" Name="BackupTable" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,50,10,50" Height="250" SelectionChanged="BackupTable_SelectionChanged" CellEditEnding="BackupTable_CellEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static p:Resources.MainWindow_NameColumnTitle}" Binding="{Binding BindName, UpdateSourceTrigger=Explicit}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.MainWindow_SourceColumnTitle}" Binding="{Binding BindSource, UpdateSourceTrigger=Explicit}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.MainWindow_TargetColumnTitle}" Binding="{Binding BindDestination, UpdateSourceTrigger=Explicit}" Width="*"/>
+                <!--<DataGridComboBoxColumn   Header="Type"
+                        SelectedItemBinding="{Binding BindSaveTaskType, Mode=TwoWay}"
+                        ItemsSource="{Binding EcliSaveTaskTypesStr}" /> -->
+                <DataGridTextColumn Header="{x:Static p:Resources.MainWindow_TypeColumnTitle}" Binding="{Binding BindSaveTaskType, UpdateSourceTrigger=Explicit}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- SelectedItemBinding="{Binding BindSaveTaskType, UpdateSourceTrigger=Explicit}"-->
+
+        <!-- Bouton Ajouter -->
+        <Button Content="{x:Static p:Resources.MainWindow_AddSaveTaskButtonText}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Click="AddRow_Click"/>
+
+        <!-- Boutons Démarrer, Modifier, Supprimer -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Button Content="{x:Static p:Resources.MainWindow_StartSelectionButtonText}" Width="200" Height="40" Margin="5" Click="StartSelected_Click"/>
+            <Button Content="{x:Static p:Resources.MainWindow_ModifySaveTaskButtonText}" Width="100" Height="40" Margin="5" Click="ModifySelected_Click"/>
+            <Button Content="{x:Static p:Resources.MainWindow_DeleteButtonText}" Width="100" Height="40" Margin="5" Click="DeleteSelected_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

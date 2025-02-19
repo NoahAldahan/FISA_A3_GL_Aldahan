@@ -9,6 +9,7 @@ using DotNetEnv;
 using EasySaveConsole.Model;
 using System.Text.Json.Nodes;
 using Log;
+using EasySaveConsole.Controller;
 
 namespace EasySaveConsole.Utilities
 {
@@ -16,19 +17,19 @@ namespace EasySaveConsole.Utilities
     internal static class JsonManager
     {
         // Paths to various JSON configuration files, loaded from environment variables.
-        static private string TranslationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static private string TranslationPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName,
             Environment.GetEnvironmentVariable("TranslationPath"));
 
-        static private string AppSettingsPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static private string AppSettingsPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName,
             Environment.GetEnvironmentVariable("AppSettingsPath"));
 
-        static private string SerializationPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static private string SerializationPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName,
             Environment.GetEnvironmentVariable("SerializationPath"));
 
-        static public string LogPathDaily = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static public string LogPathDaily = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName,
             Environment.GetEnvironmentVariable("LogPathDaily"));
 
-        static public string LogPathRealTime = Path.Combine(Directory.GetCurrentDirectory(), "..", "..",
+        static public string LogPathRealTime = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName,
             Environment.GetEnvironmentVariable("LogPathRealTime"));
 
         // Retrieves a translated message from the Translation JSON file based on the specified language.
@@ -46,8 +47,7 @@ namespace EasySaveConsole.Utilities
                 return value;
             }
             catch (Exception ex)
-            {
-                Console.WriteLine($"Error reading JSON file: {ex.Message}");
+            { 
                 return default; // Returns null by default if an error occurs
             }
         }
@@ -67,7 +67,6 @@ namespace EasySaveConsole.Utilities
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error reading JSON file: {ex.Message}");
                 return ""; // Returns an empty string in case of an error
             }
         }
@@ -103,6 +102,7 @@ namespace EasySaveConsole.Utilities
                 // Serialize the list of save tasks to a JSON format
                 string jsonContent = JsonSerializer.Serialize(SaveTasks);
                 File.WriteAllText(SerializationPath, jsonContent);
+
             }
             catch (Exception ex)
             {

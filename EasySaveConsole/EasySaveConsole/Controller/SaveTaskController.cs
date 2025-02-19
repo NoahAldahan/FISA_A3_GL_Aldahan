@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics.Eventing.Reader;
 using System.Collections;
 using System.ComponentModel.Design;
+using System.Reflection;
 
 namespace EasySaveConsole.Controller
 {
@@ -118,7 +119,7 @@ namespace EasySaveConsole.Controller
                 + saveTaskManager.GetSaveTaskTargetPath(saveTaskId));
 
             ShowMessage(messagesManager.GetMessageTranslate(EMessage.ShowSaveTaskTypeMessage)
-                + saveTaskManager.GetSaveTaskType(saveTaskId));
+                + messagesManager.GetMessageTranslate(saveTaskManager.GetSaveTaskTypeMessage(saveTaskId)));
         }
 
 
@@ -157,7 +158,7 @@ namespace EasySaveConsole.Controller
             //SaveTaskType modification
             int saveTaskType;
             string saveTaskTypeStr = ShowQuestion(messagesManager.GetMessageTranslate(EMessage.AskSaveTaskModifyType) 
-                + $"({saveTaskManager.GetSaveTaskStrType(index)}) : ");
+                + $"({messagesManager.GetMessageTranslate( saveTaskManager.GetSaveTaskTypeMessage(index))}) : ");
             if(saveTaskTypeStr == "")
             {
                 saveTaskType = (int)saveTaskManager.GetSaveTaskType(index);
@@ -197,8 +198,8 @@ namespace EasySaveConsole.Controller
                 ShowMessagePause(EMessage.ErrorSaveTaskTypeMessage); // Show an error message if the save task type is invalid
                 return;
             }
-            saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
-            ShowMessagePause(EMessage.SaveTaskAddSuccessMessage);
+            EMessage msg = saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
+            ShowMessagePause(msg);
 
             saveTaskManager.SerializeSaveTasks();
         }
@@ -223,22 +224,20 @@ namespace EasySaveConsole.Controller
             int start = int.Parse(rangeParts[0]);
             int end = int.Parse(rangeParts[1]);
             List<int> indexs = new List<int>();
-            if(start > end)
-            {
-                ShowMessagePause(EMessage.ErrorStartEndIndexSaveTaskMessage);
-                return;
-            }
-            else if(saveTaskManager.IsValidSaveTaskId(start) && saveTaskManager.IsValidSaveTaskId(end))
+            if (!saveTaskManager.IsValidSaveTaskId(start) && saveTaskManager.IsValidSaveTaskId(end))
             {
                 ShowMessagePause(EMessage.ErrorSaveTaskNotFoundMessage);
                 return;
+            }
+            else if(start > end)
+            {
+                ShowMessagePause(EMessage.ErrorStartEndIndexSaveTaskMessage);
             }
             for (int i = start; i <= end; i++)
             {
                 indexs.Add(i);
             }
             HandleSaveTasks(indexs, cliSaveTaskAction);
-            ShowQuestion(EMessage.PressKeyToContinue);
         }
 
         internal void ParseSaveTaskList(string SaveTask, ECliSaveTaskAction cliSaveTaskAction)
@@ -267,7 +266,10 @@ namespace EasySaveConsole.Controller
         }
         internal void HandleSaveTasks(List<int> indexs, ECliSaveTaskAction cliSaveTaskAction)
         {
-            indexs.Sort((a, b) => b.CompareTo(a));
+            if(cliSaveTaskAction == ECliSaveTaskAction.DeleteSaveTasks)
+            {
+                indexs.Sort((a, b) => b.CompareTo(a));
+            }
             foreach (int index in indexs)
             {
                 try
@@ -275,7 +277,7 @@ namespace EasySaveConsole.Controller
                     switch (cliSaveTaskAction)
                     {
                         case (ECliSaveTaskAction.StartSaveTasks):
-                            ShowMessage(messagesManager.GetMessageTranslate(saveTaskManager.ExecuteSaveTask(index)) + saveTaskManager.GetSaveTaskName(index));
+                            HandleSaveTaskExecution(index);
                             break;
                         case (ECliSaveTaskAction.DeleteSaveTasks):
                             ShowMessage(saveTaskManager.RemoveSaveTask(index));
@@ -296,6 +298,27 @@ namespace EasySaveConsole.Controller
                 }
             }
             ShowQuestion(EMessage.PressKeyToContinue);
+        }
+
+        internal void HandleSaveTaskExecution(int index)
+        {
+            bool DidEverythingSaveCorrectly = saveTaskManager.ExecuteSaveTask(index);
+            if (DidEverythingSaveCorrectly)
+                ShowMessage(messagesManager.GetMessageTranslate(EMessage.SuccessStartSaveTaskMessage) + saveTaskManager.GetSaveTaskName(index));
+            else
+            {
+                string str = messagesManager.GetMessageTranslate(EMessage.ErrorStartSaveTaskMessage);
+                List<string> UnsavedPaths = saveTaskManager.GetCurrentUnsavedPaths();
+                if (UnsavedPaths != null && UnsavedPaths.Count > 0)
+                {
+                    str += messagesManager.GetMessageTranslate(EMessage.ErrorStartSaveTaskPathListMessage);
+                    foreach (string path in UnsavedPaths)
+                    {
+                        str += "\n" + path;
+                    }
+                }
+                ShowMessage(str);
+            }
         }
     }
 }

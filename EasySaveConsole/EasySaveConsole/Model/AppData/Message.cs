@@ -17,6 +17,11 @@ namespace EasySaveConsole.Model
             ErrorUserEntryOptionMessage,
             PressKeyToContinue,
             ErrorMessage,
+            SuccessCreateSaveTaskMessage,
+            SaveTaskTypeCompleteName,
+            SaveTaskTypeDifferentialName,
+            ErrorStartSaveTaskPathListMessage,
+
             //Language
             LanguagesListMessage,
             LanguageChangeSuccessMessage,
@@ -68,7 +73,7 @@ namespace EasySaveConsole.Model
             DefaultLogTaskTypeChangedSuccessMessage,
             DefaultLogTaskTypeChangedErrorMessage,
             LogSaveTaskTypeListMessage,
-            AskLogTaskTypeMessage
+            AskLogTaskTypeMessage,
     }
 
     // Static class providing utility methods for message management
@@ -138,6 +143,10 @@ namespace EasySaveConsole.Model
             enumStrings.Add(EMessage.DefaultLogTaskTypeChangedErrorMessage, "DefaultLogTaskTypeChangedErrorMessage");
             enumStrings.Add(EMessage.LogSaveTaskTypeListMessage, "LogSaveTaskTypeListMessage");
             enumStrings.Add(EMessage.AskLogTaskTypeMessage, "AskLogTaskTypeMessage");
+            enumStrings.Add(EMessage.SuccessCreateSaveTaskMessage, "SuccessCreateSaveTaskMessage");
+            enumStrings.Add(EMessage.SaveTaskTypeCompleteName, "SaveTaskTypeCompleteName");
+            enumStrings.Add(EMessage.SaveTaskTypeDifferentialName, "SaveTaskTypeDifferentialName");
+            enumStrings.Add(EMessage.ErrorStartSaveTaskPathListMessage, "ErrorStartSaveTaskPathListMessage");
         }
     }
 
