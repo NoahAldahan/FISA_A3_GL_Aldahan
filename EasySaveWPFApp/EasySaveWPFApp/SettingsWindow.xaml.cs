@@ -49,12 +49,6 @@ namespace EasySaveWPFApp
             settingsViewModel.AddLanguageAction(ESettingsActions.SwitchLanguageToEnglish);
         }
 
-        // Log options radio buttons
-        private void JSONRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void XMLRadioButton_Checked(object sender, RoutedEventArgs e)
         {
 

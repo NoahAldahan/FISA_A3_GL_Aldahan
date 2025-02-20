@@ -17,13 +17,16 @@ namespace EasySaveWPFApp.Model
         public ProcessMonitor()
         {
             timer = new System.Timers.Timer(1000); // Vérification toutes les secondes
-            timer.Elapsed += CheckBusinessSoftware;
+            timer.Elapsed += async (sender, e) =>
+            {
+                await CheckBusinessSoftware();
+            };
             isSoftwareRunning = false;
             timer.AutoReset = true;
             timer.Start();
         }
 
-        private void CheckBusinessSoftware(object sender, ElapsedEventArgs e)
+        private async Task CheckBusinessSoftware()
         {
             bool currentlyRunning = Process.GetProcessesByName("cmd").Any();
 

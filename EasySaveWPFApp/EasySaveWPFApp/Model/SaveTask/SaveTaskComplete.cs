@@ -54,7 +54,6 @@ namespace EasySaveWPFApp.Model
             logDaily.CreateDailyFile();
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
 
-
             try
             {
                 // Get file attributes to determine if the source and target are directories or files.
