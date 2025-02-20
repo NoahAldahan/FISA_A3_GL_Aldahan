@@ -8,6 +8,17 @@
     "TotalFilesSize": 26,
     "NbFilesLeftToDo": 0,
     "Progression": 200,
-    "SaveDate": "2025-02-19T22:16:35.5797673+01:00"
+    "SaveDate": "2025-02-19T22:16:35.5797673\u002B01:00"
+  },
+  {
+    "Name": "Prout",
+    "SourcePath": "C:\\Users\\jeanv\\WS_Socket\\Server",
+    "TargetPath": "C:\\Users\\jeanv\\WS_Socket\\Server",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 27,
+    "TotalFilesSize": 340168,
+    "NbFilesLeftToDo": 27,
+    "Progression": 0,
+    "SaveDate": "2025-02-20T10:25:40.4483473+01:00"
   }
 ]
