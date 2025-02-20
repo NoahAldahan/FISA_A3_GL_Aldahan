@@ -111,7 +111,7 @@ Lorsque vous installez Visual Studio, pensez à cocher ces options :
 - .NET Framework
 ```
 
-- System.Text.Json
+- System.Text.Json (⚠️ Veuillez installer la version 9.0.0 pour éviter des problèmes de compatibilité)
 ```
 Dans Visual Studio, ouvrez Project, et cliquez sur Manage NuGetPackages
 Cherchez System.Text.JSON et installez le
