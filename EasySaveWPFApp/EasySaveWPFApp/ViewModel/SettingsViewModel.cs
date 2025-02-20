@@ -17,7 +17,7 @@ namespace EasySaveWPFApp.ViewModel
         SwitchSaveTypeToXML,
         EditedExtensions
     }
-    internal class SettingsViewModel
+    public class SettingsViewModel
     {
         // The list of unsaved actions (the user needs to click save to save them)
         List<ESettingsActions> UnsavedActions = new List<ESettingsActions>();
@@ -43,10 +43,10 @@ namespace EasySaveWPFApp.ViewModel
                 switch (action)
                 {
                     case ESettingsActions.SwitchLogTypeToJSON:
-                        //TODO : Implement this case
+                        LogUtilities.SetLogFormat(ELogFormat.JSON);
                         break;
                     case ESettingsActions.SwitchSaveTypeToXML:
-                        //TODO : Implement this case
+                        LogUtilities.SetLogFormat(ELogFormat.XML);
                         break;
                     case ESettingsActions.EditedExtensions:
                         saveTaskManager.SetEncryptingExtensions(NewEncryptingExtensions);
@@ -154,15 +154,13 @@ namespace EasySaveWPFApp.ViewModel
         // Returns true if the JSON radio button should be checked
         internal bool ShouldJSONRadioButtonBeChecked()
         {
-            //TODO : Implement this method
-            return false;
+            return LogUtilities.GetLogFormat() == ELogFormat.JSON;
         }
 
         // Returns true if the XML radio button should be checked
         internal bool ShouldXMLRadioButtonBeChecked()
         {
-            //TODO : Implement this method
-            return false;
+            return LogUtilities.GetLogFormat() == ELogFormat.XML;
         }
 
         // Try to add the extension to the list of unsaved extensions
@@ -228,6 +226,22 @@ namespace EasySaveWPFApp.ViewModel
                 }
             }
             return true;
+        }
+
+        internal void TrySwitchLogFormatToJSON()
+        {
+            if(LogUtilities.GetLogFormat() != ELogFormat.JSON && !UnsavedActions.Contains(ESettingsActions.SwitchLogTypeToJSON))
+            {
+                UnsavedActions.Add(ESettingsActions.SwitchLogTypeToJSON);
+            }
+        }
+
+        internal void TrySwitchLogFormatToXML()
+        {
+            if (LogUtilities.GetLogFormat() != ELogFormat.XML && !UnsavedActions.Contains(ESettingsActions.SwitchSaveTypeToXML))
+            {
+                UnsavedActions.Add(ESettingsActions.SwitchSaveTypeToXML);
+            }
         }
     }
 }

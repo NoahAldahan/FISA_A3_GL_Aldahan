@@ -17,14 +17,21 @@ namespace Log
         {
             stopWatch = new Stopwatch();
         }
-        public void CreateDailyFile()
+
+        public void CreateDailyFile(int logType = 0)
         {
-            JsonLogManager.CreateRepertories(LogDailyPath);
-            JsonLogManager.CreateDailyJsonFile(DateTime.Now, LogDailyPath);
+            if (logType == 0)
+            {
+                JsonLogManager.CreateRepertories(LogDailyPath);
+            }
+            else if (logType == 1)
+            {
+                XmlLogManager.CreateRepertories(LogDailyPath);
+            }
         }
 
 
-        public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath, long encryptionTime)
+        public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath, int logType = 0)
         {
             dailyInfo.Name = saveTaskName;
             dailyInfo.FileTransferTime = (stopWatch.ElapsedMilliseconds);
@@ -33,8 +40,14 @@ namespace Log
             FileInfo fileInfo = new FileInfo(SourcePath);
             dailyInfo.FileSize = fileInfo.Length;
             dailyInfo.DateTime = DateTime.Now;
-            dailyInfo.EncryptionTimeMs = encryptionTime; // Ajout du temps de cryptage
-            JsonLogManager.AddSaveToDailyFile(dailyInfo, LogDailyPath);
+            if (logType == 0)
+            {
+                JsonLogManager.AddJsonLogObjectDailyInfo(LogDailyPath, dailyInfo);
+            }
+            else if (logType == 1)
+            {
+                XmlLogManager.AddSaveToDailyFile(dailyInfo, LogDailyPath);
+            }
         }
     }
 }

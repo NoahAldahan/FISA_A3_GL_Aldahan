@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Log
 {
@@ -32,24 +33,33 @@ namespace Log
         }
     }
 
-
+    [XmlRoot("RealTimeInfo")]
     public struct RealTimeInfo
     {
+        [XmlAttribute("Name")]
         public string Name { get; set; }
+        [XmlAttribute("SourcePath")]
         public string SourcePath { get; set; }
+        [XmlAttribute("TargetPath")]
         public string TargetPath { get; set; }
+        [XmlAttribute("State")]
         public string State { get; set; }  // "END" ou autre état de transfert
+        [XmlAttribute("TotalFilesToCopy")]
         public int TotalFilesToCopy { get; set; }
+        [XmlAttribute("TotalFilesSize")]
         public long TotalFilesSize { get; set; }
+        [XmlAttribute("NbFilesLeftToDo")]
         public int NbFilesLeftToDo { get; set; }
+        [XmlAttribute("Progression")]
         public double Progression { get; set; } // En pourcentage
+        [XmlAttribute("SaveDate")]
         public DateTime SaveDate { get; set; }
 
-        public RealTimeInfo(string name, string sourceFilePath, string targetFilePath, string state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, int progression, DateTime saveDate)
+        public RealTimeInfo(string name, string sourcePath, string targetPath, string state, int totalFilesToCopy, long totalFilesSize, int nbFilesLeftToDo, int progression, DateTime saveDate)
         {
             Name = name;
-            SourcePath = sourceFilePath;
-            TargetPath = targetFilePath;
+            SourcePath = sourcePath;
+            TargetPath = targetPath;
             State = state;
             SaveDate = saveDate;
             TotalFilesToCopy = totalFilesToCopy;
@@ -78,7 +88,6 @@ namespace Log
             public long FileSize { get; set; }  // Taille du fichier en octets
             public double FileTransferTime { get; set; }  // Temps de transfert en secondes
             public DateTime DateTime { get; set; }  // Horodatage
-            public long EncryptionTimeMs { get; set; } // // Temps de cryptage en millisecondes
 
         public override string ToString()
         {
@@ -88,7 +97,7 @@ namespace Log
             return base.ToString();
         }
 
-        public DailyInfo(string name, string fileSource, string fileTarget, long fileSize, double fileTransferTime, DateTime time, long encryptionTime)
+        public DailyInfo(string name, string fileSource, string fileTarget, long fileSize, double fileTransferTime, DateTime time)
             {
                 Name = name;
                 FileSource = fileSource;
@@ -96,7 +105,6 @@ namespace Log
                 FileSize = fileSize;
                 FileTransferTime = fileTransferTime;
                 DateTime = time;
-                EncryptionTimeMs = encryptionTime;
             }
 
         }

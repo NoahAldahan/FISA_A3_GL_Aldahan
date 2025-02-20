@@ -1,0 +1,34 @@
+[
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
+    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
+    "FileSize": 6,
+    "FileTransferTime": 1,
+    "DateTime": "2025-02-20T11:41:56.9911599+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
+    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
+    "FileSize": 4,
+    "FileTransferTime": 0,
+    "DateTime": "2025-02-20T11:41:57.0129984+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
+    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
+    "FileSize": 6,
+    "FileTransferTime": 0,
+    "DateTime": "2025-02-20T11:41:57.0218518+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
+    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
+    "FileSize": 10,
+    "FileTransferTime": 0,
+    "DateTime": "2025-02-20T11:41:57.02816+01:00"
+  }
+]

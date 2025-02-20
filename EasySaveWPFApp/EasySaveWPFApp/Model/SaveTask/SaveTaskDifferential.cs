@@ -50,7 +50,9 @@ namespace EasySaveWPFApp.Model
                     // If the file doesn't exist or the source file is more recent than the target file
                     // We use targetFileInfo.FullName instead of TargetPath because we need the full path of the file
                     // (with the name of the file appended) that is going to be created or updated
-                    if (!File.Exists(targetFileInfo.FullName) || sourceFileInfo.LastWriteTime > JsonLogManager.GetLastSaveDate(this.logDaily.LogDailyPath, sourceFileInfo.FullName))
+                    if (!File.Exists(targetFileInfo.FullName) 
+                        || sourceFileInfo.LastWriteTime > JsonLogManager.GetLastSaveDateFromJson(this.logDaily.LogDailyPath, sourceFileInfo.FullName)
+                        || sourceFileInfo.LastWriteTime > XmlLogManager.GetLastSaveDateFromXml(this.logDaily.LogDailyPath, sourceFileInfo.FullName))
                     {
                         CopySingleFile(SourcePath, targetFileInfo.FullName, saveTaskManager);
                     }

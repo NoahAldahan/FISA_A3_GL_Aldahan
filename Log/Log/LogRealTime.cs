@@ -17,7 +17,7 @@ namespace Log
         {}
         //Create new SaveTask in json file
 
-        public void CreateRealTimeInfo(string saveTaskName, string SourcePath, string TargetPath, ERealTimeState state, int saveTaskType)
+        public void CreateRealTimeInfo(string saveTaskName, string SourcePath, string TargetPath, ERealTimeState state, int saveTaskType, int logType = 0)
         {
             //notify new Save
             (realTimeInfo.TotalFilesToCopy, this.realTimeInfo.TotalFilesSize) = GetTotalFilesInfosToCopy(SourcePath, saveTaskType);
@@ -28,7 +28,15 @@ namespace Log
             FileInfo fileInfo = new FileInfo(SourcePath);
             realTimeInfo.NbFilesLeftToDo = realTimeInfo.TotalFilesToCopy;
             realTimeInfo.State = state.GetValue();
-            JsonLogManager.AddSaveToRealTimeFile(realTimeInfo, LogRealTimePath);
+            realTimeInfo.Progression = 0;
+            if(logType == 0)
+            {
+                JsonLogManager.AddJsonLogObjectRealTime(LogRealTimePath, realTimeInfo);
+            }
+            else if (logType == 1)
+            {
+                XmlLogManager.AddSaveToRealTimeFile(realTimeInfo, LogRealTimePath);
+            }
         }
 
         public Tuple<int, int> GetTotalFilesInfosToCopy(string path, int saveTaskType)
@@ -52,7 +60,9 @@ namespace Log
                     foreach (string file in files)
                     {
                         DateTime lastWriteTime = File.GetLastWriteTime(file);
-                        DateTime lastSaveDate = JsonLogManager.GetLastSaveDate(LogDailyPath, file);
+                        DateTime lastSaveDateJson = JsonLogManager.GetLastSaveDateFromJson(LogDailyPath, file);
+                        DateTime lastSaveDateXml = XmlLogManager.GetLastSaveDateFromXml(LogDailyPath, file);
+                        DateTime lastSaveDate = lastSaveDateJson > lastSaveDateXml ? lastSaveDateJson : lastSaveDateXml;
                         if (lastWriteTime > lastSaveDate)
                         {
                             totalFiles += 1;
@@ -86,8 +96,9 @@ namespace Log
             return Tuple.Create(totalFiles, totalFilesSize);
         }
 
-        public void UpdateRealTimeProgress()
+        public void UpdateRealTimeProgress(int logType = 0)
         {
+
             realTimeInfo.NbFilesLeftToDo -= 1;
             realTimeInfo.Progression += ((1.0 / realTimeInfo.TotalFilesToCopy) * 100);
             if (realTimeInfo.NbFilesLeftToDo == 0)
@@ -95,7 +106,14 @@ namespace Log
                 realTimeInfo.Progression = Convert.ToInt32(realTimeInfo.Progression);
                 realTimeInfo.State = ERealTimeState.END.GetValue();
             }
-            JsonLogManager.UpdateRealTimeProgression(realTimeInfo, LogRealTimePath);
+            if(logType == 0)
+            {
+                JsonLogManager.UpdateRealTimeProgression(realTimeInfo, LogRealTimePath);
+            }
+            else if (logType == 1)
+            {
+                XmlLogManager.UpdateRealTimeProgression(realTimeInfo, LogRealTimePath);
+            }
         }
     }
 }

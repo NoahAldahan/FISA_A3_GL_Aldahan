@@ -25,9 +25,8 @@ namespace EasySaveWPFApp
         // Constructor: Initializes the settings window
         public SettingsWindow(SaveTaskManager saveTaskManager)
         {
+            this.settingsViewModel = new SettingsViewModel(saveTaskManager);
             InitializeComponent();
-
-            settingsViewModel = new SettingsViewModel(saveTaskManager);
 
             FrenchRadioButton.IsChecked = settingsViewModel.ShouldFrenchRadioButtonBeChecked();
             EnglishRadioButton.IsChecked = settingsViewModel.ShouldEnglishRadioButtonBeChecked();
@@ -52,12 +51,12 @@ namespace EasySaveWPFApp
         // Log options radio buttons
         private void JSONRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-
+            settingsViewModel.TrySwitchLogFormatToJSON();
         }
 
         private void XMLRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-
+            settingsViewModel.TrySwitchLogFormatToXML();
         }
 
         // Save and cancel buttons
