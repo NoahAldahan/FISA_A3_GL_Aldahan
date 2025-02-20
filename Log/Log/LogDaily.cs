@@ -31,7 +31,7 @@ namespace Log
         }
 
 
-        public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath, int logType = 0)
+        public void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath, long encryptionTime, int logType = 0)
         {
             dailyInfo.Name = saveTaskName;
             dailyInfo.FileTransferTime = (stopWatch.ElapsedMilliseconds);
@@ -39,6 +39,7 @@ namespace Log
             dailyInfo.FileTarget = TargetPath; 
             FileInfo fileInfo = new FileInfo(SourcePath);
             dailyInfo.FileSize = fileInfo.Length;
+            dailyInfo.EncryptionTimeMs = encryptionTime;
             dailyInfo.DateTime = DateTime.Now;
             if (logType == 0)
             {

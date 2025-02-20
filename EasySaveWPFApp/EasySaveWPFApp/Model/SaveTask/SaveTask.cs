@@ -143,7 +143,7 @@ namespace EasySaveWPFApp.Model
             }
 
             // Enregistrer dans le log avec le temps de cryptage
-            logDaily.AddDailyInfo(name, sourcePath, targetPath, (int)LogUtilities.GetLogFormat());
+            logDaily.AddDailyInfo(name, sourcePath, targetPath, encryptionTime,(int)LogUtilities.GetLogFormat());
             logRealTime.UpdateRealTimeProgress((int)LogUtilities.GetLogFormat());
         }
 

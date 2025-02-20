@@ -3,11 +3,22 @@
     "Name": "complettest",
     "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source",
     "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete",
-    "State": "END",
+    "State": "ACTIVE",
     "TotalFilesToCopy": 4,
     "TotalFilesSize": 26,
-    "NbFilesLeftToDo": 0,
-    "Progression": 100,
-    "SaveDate": "2025-02-20T11:41:56.9304493+01:00"
+    "NbFilesLeftToDo": 4,
+    "Progression": 0,
+    "SaveDate": "2025-02-20T11:54:43.64257+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source",
+    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 4,
+    "TotalFilesSize": 26,
+    "NbFilesLeftToDo": 4,
+    "Progression": 0,
+    "SaveDate": "2025-02-20T11:54:43.7948593+01:00"
   }
 ]
