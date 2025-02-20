@@ -1,0 +1,57 @@
+[
+  {
+    "Name": "testUNO",
+    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source\\",
+    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete",
+    "State": "END",
+    "TotalFilesToCopy": 4,
+    "TotalFilesSize": 26,
+    "NbFilesLeftToDo": 0,
+    "Progression": 200,
+    "SaveDate": "2025-02-19T22:16:35.5797673\u002B01:00"
+  },
+  {
+    "Name": "test",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "State": "END",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-20T09:20:31.2419517\u002B01:00"
+  },
+  {
+    "Name": "test",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": 7,
+    "Progression": 0,
+    "SaveDate": "2025-02-20T09:12:27.5771863\u002B01:00"
+  },
+  {
+    "Name": "test",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": 7,
+    "Progression": 0,
+    "SaveDate": "2025-02-20T09:20:31.2419517\u002B01:00"
+  },
+  {
+    "Name": "test",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "State": "ACTIVE",
+    "TotalFilesToCopy": 0,
+    "TotalFilesSize": 0,
+    "NbFilesLeftToDo": 0,
+    "Progression": 0,
+    "SaveDate": "2025-02-20T10:32:16.4695933+01:00"
+  }
+]

@@ -40,22 +40,7 @@ namespace EasySaveWPFApp
             this.Close();   
         }
 
-        private void TaskSource_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
-        }
-
         private void TaskName_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
-        }
-
-        private void DifferentialRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TaskDestination_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
 
         }

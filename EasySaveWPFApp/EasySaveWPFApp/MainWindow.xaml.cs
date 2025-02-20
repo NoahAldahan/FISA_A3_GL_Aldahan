@@ -45,7 +45,7 @@ namespace EasySaveWPFApp
             saveTaskWindow.ShowDialog();
         }
         private void StartSelected_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
             foreach (var row in selectedRows) 
             {
@@ -76,9 +76,6 @@ namespace EasySaveWPFApp
         {
             LaunchSettingsWindow();
         }
-
-        private void BackupTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        { }
 
         public void BackupTable_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
