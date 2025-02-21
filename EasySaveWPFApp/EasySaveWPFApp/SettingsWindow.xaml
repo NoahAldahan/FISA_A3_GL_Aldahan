@@ -9,8 +9,8 @@
 
         <!-- Format Log -->
         <TextBlock Text="{x:Static p:Resources.SettingsMenu_LogFormatText}" Margin="10,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <RadioButton x:Name="JSONRadioButton" Content="{x:Static p:Resources.SettingsMenu_JsonRadioButtonText}" Margin="10,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True"/>
-        <RadioButton x:Name="XMLRadioButton" Content="{x:Static p:Resources.SettingsMenu_XmlRadioButtonText}" Margin="100,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <RadioButton x:Name="JSONRadioButton" Content="{x:Static p:Resources.SettingsMenu_JsonRadioButtonText}" Margin="10,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="JSONRadioButton_Checked"/>
+        <RadioButton x:Name="XMLRadioButton" Content="{x:Static p:Resources.SettingsMenu_XmlRadioButtonText}" Margin="100,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="XMLRadioButton_Checked"/>
 
         <!-- Extensions à crypter -->
         <TextBlock Text="{x:Static p:Resources.SettingsMenu_EncryptingExtensionText}" Margin="10,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
