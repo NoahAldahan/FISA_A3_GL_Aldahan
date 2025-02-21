@@ -1,0 +1,1388 @@
+[
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:16:43.1664939+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:16:43.1836456+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 53,
+    "EncryptionTimeMs": 600,
+    "DateTime": "2025-02-21T09:16:43.8515+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 9,
+    "DateTime": "2025-02-21T09:16:43.8660426+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 16,
+    "EncryptionTimeMs": 233,
+    "DateTime": "2025-02-21T09:16:44.1185139+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:16:44.123593+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:16:44.1331537+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:16:44.3943245+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:16:44.4035265+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 19,
+    "EncryptionTimeMs": 466,
+    "DateTime": "2025-02-21T09:16:44.8981936+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:16:44.9025676+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 11,
+    "EncryptionTimeMs": 229,
+    "DateTime": "2025-02-21T09:16:45.1514887+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:16:45.1582185+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:16:45.1681919+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:18:42.6863086+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:18:42.7010041+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 30,
+    "EncryptionTimeMs": 494,
+    "DateTime": "2025-02-21T09:18:43.2389386+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:18:43.2428712+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 9,
+    "EncryptionTimeMs": 211,
+    "DateTime": "2025-02-21T09:18:43.4727154+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:18:43.4762321+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:18:43.4847131+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:19:03.3403535+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:19:03.353033+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 30,
+    "EncryptionTimeMs": 531,
+    "DateTime": "2025-02-21T09:19:03.9245675+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:19:03.9443216+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 9,
+    "EncryptionTimeMs": 211,
+    "DateTime": "2025-02-21T09:19:04.1729487+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:19:04.177938+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:19:04.1859825+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:20:19.3924971+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:20:19.4078537+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 31,
+    "EncryptionTimeMs": 483,
+    "DateTime": "2025-02-21T09:20:19.933875+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:20:19.9393918+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 17,
+    "EncryptionTimeMs": 226,
+    "DateTime": "2025-02-21T09:20:20.1970784+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:20:20.2011781+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:20:20.2130929+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:20:33.6572996+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:20:33.6734345+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 36,
+    "EncryptionTimeMs": 515,
+    "DateTime": "2025-02-21T09:20:34.2393897+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:20:34.2460809+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 10,
+    "EncryptionTimeMs": 209,
+    "DateTime": "2025-02-21T09:20:34.473857+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:20:34.4784859+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:20:34.4886326+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:21:00.9976878+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:21:01.0123429+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 24,
+    "EncryptionTimeMs": 486,
+    "DateTime": "2025-02-21T09:21:01.5354214+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:21:01.5446+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 12,
+    "EncryptionTimeMs": 223,
+    "DateTime": "2025-02-21T09:21:01.7902057+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:21:01.7953804+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:21:01.8073434+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:21:26.4205053+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:21:26.4333058+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 30,
+    "EncryptionTimeMs": 537,
+    "DateTime": "2025-02-21T09:21:27.0125213+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:21:27.0181666+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 12,
+    "EncryptionTimeMs": 213,
+    "DateTime": "2025-02-21T09:21:27.2527796+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:21:27.2566011+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:21:27.2675661+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:23:37.6921518+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:23:37.7088305+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 20,
+    "EncryptionTimeMs": 468,
+    "DateTime": "2025-02-21T09:23:38.2091627+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:23:38.2169314+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 11,
+    "EncryptionTimeMs": 242,
+    "DateTime": "2025-02-21T09:23:38.4851057+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:23:38.491067+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:23:38.5031522+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:28:03.7920945+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:28:06.4014072+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 62,
+    "EncryptionTimeMs": 511,
+    "DateTime": "2025-02-21T09:28:07.5534+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:28:08.7916879+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 27,
+    "EncryptionTimeMs": 315,
+    "DateTime": "2025-02-21T09:28:09.4633746+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:28:09.7830325+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:28:10.1241553+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:28:54.1687639+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:28:57.6854784+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 55,
+    "EncryptionTimeMs": 500,
+    "DateTime": "2025-02-21T09:28:58.2551371+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:28:58.2593855+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 16,
+    "EncryptionTimeMs": 225,
+    "DateTime": "2025-02-21T09:28:58.5082601+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:28:58.5169544+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:28:58.526501+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:29:02.8458464+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:29:02.8575903+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 28,
+    "EncryptionTimeMs": 486,
+    "DateTime": "2025-02-21T09:29:03.382781+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:03.3958572+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 20,
+    "EncryptionTimeMs": 243,
+    "DateTime": "2025-02-21T09:29:03.6731982+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:29:03.6785954+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:03.6913673+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:29:18.0035571+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:29:18.0164244+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 29,
+    "EncryptionTimeMs": 539,
+    "DateTime": "2025-02-21T09:29:18.5949821+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 10,
+    "DateTime": "2025-02-21T09:29:18.613078+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 15,
+    "EncryptionTimeMs": 235,
+    "DateTime": "2025-02-21T09:29:18.8674209+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:18.8736477+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:18.8904053+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:29:27.5821296+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:29:27.5961488+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 29,
+    "EncryptionTimeMs": 535,
+    "DateTime": "2025-02-21T09:29:28.1718367+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:28.1782381+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 236,
+    "DateTime": "2025-02-21T09:29:28.4395607+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:28.4442504+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:28.4579829+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:29:47.758636+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:29:47.7711145+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 28,
+    "EncryptionTimeMs": 514,
+    "DateTime": "2025-02-21T09:29:48.324581+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:48.3288429+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 240,
+    "DateTime": "2025-02-21T09:29:48.5930464+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:48.598676+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:29:48.6091503+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:30:34.0562855+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:30:34.0684402+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 28,
+    "EncryptionTimeMs": 487,
+    "DateTime": "2025-02-21T09:30:34.5948167+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:30:34.5993425+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 229,
+    "DateTime": "2025-02-21T09:30:34.8525642+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:30:34.8568357+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:30:34.8678417+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:35:57.225833+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:35:59.018783+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 50,
+    "EncryptionTimeMs": 598,
+    "DateTime": "2025-02-21T09:35:59.9786079+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:36:00.4329654+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 39,
+    "EncryptionTimeMs": 227,
+    "DateTime": "2025-02-21T09:36:01.0485766+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:36:01.6112708+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:36:02.0039254+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:36:47.2204053+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:36:48.5930564+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 39,
+    "EncryptionTimeMs": 537,
+    "DateTime": "2025-02-21T09:36:49.5986806+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:36:55.9163872+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 235,
+    "DateTime": "2025-02-21T09:36:56.1775931+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:36:56.1821424+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:36:56.194531+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:37:29.8128239+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:37:29.8268498+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 30,
+    "EncryptionTimeMs": 530,
+    "DateTime": "2025-02-21T09:37:30.399662+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:37:30.4116534+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 17,
+    "EncryptionTimeMs": 225,
+    "DateTime": "2025-02-21T09:37:30.6628695+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:37:30.6680552+01:00"
+  },
+  {
+    "Name": "complettest",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:37:30.6787948+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:38:03.9670287+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:38:03.9818714+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 46,
+    "EncryptionTimeMs": 530,
+    "DateTime": "2025-02-21T09:38:04.569916+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:38:04.5740266+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 16,
+    "EncryptionTimeMs": 225,
+    "DateTime": "2025-02-21T09:38:04.8242326+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:38:04.828403+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:38:04.8383995+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:38:29.6866044+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:38:29.703716+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 53,
+    "EncryptionTimeMs": 616,
+    "DateTime": "2025-02-21T09:38:30.3857872+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-21T09:38:30.3918435+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 16,
+    "EncryptionTimeMs": 220,
+    "DateTime": "2025-02-21T09:38:30.6420707+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:38:30.6477824+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:38:30.6654718+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:38:48.1288825+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-21T09:38:48.1445517+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 47,
+    "EncryptionTimeMs": 536,
+    "DateTime": "2025-02-21T09:38:48.7408709+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:38:48.7461264+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 17,
+    "EncryptionTimeMs": 227,
+    "DateTime": "2025-02-21T09:38:49.0030285+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:38:49.0070761+01:00"
+  },
+  {
+    "Name": "test2comp",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-21T09:38:49.0198105+01:00"
+  }
+]
