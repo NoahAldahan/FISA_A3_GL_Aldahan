@@ -1,0 +1,35 @@
+/* Style global de la navbar */
+.navbar {
+    background-color: #1E1E1E;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  /* Conteneur flex pour aligner les éléments */
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Logo */
+  .logo {
+    color: #3A86FF;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  /* Liste de navigation */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
