@@ -1,0 +1,90 @@
+.navbar {
+  background: #28243c;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 20px;
+}
+
+
+.logo {
+  font-weight: bold;
+  font-size: 2em; /* Réduit la taille de la police */
+  width: 2em;
+}
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.menu li {
+  margin-left: 3vw; /* Réduit l'espace entre les éléments */
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.active::after{
+  content: ''!important;
+  position: absolute!important;
+  bottom: 0!important;
+  left: 0!important;
+  height: 1px!important;
+  background-color: white!important;
+  width: 100%!important;
+}
+
+/* Styles pour les menus mobiles */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu a {
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+}
+
+@media screen and (max-width: 350px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+}

@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/styled": "^11.14.0",
+    "@mui/x-data-grid": "^7.27.0",
     "mui": "^0.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,0 +1,14 @@
+.Home{
+    color: white;
+}
+
+.fade {
+    opacity: 1;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  }
+  
+.fade.out {
+    opacity: 0;
+    transform: translateY(20px);
+  }
