@@ -11,7 +11,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DotNetEnv;
 using EasySaveWPFApp.ViewModel;
-using EasySaveWPFApp.Model;
 using EasySaveWPFApp.Utilities;
 using System.Collections.ObjectModel;
 

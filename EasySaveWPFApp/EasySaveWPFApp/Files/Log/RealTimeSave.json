@@ -12,13 +12,13 @@
   },
   {
     "Name": "test2comp",
-    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source",
-    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete",
-    "State": "ACTIVE",
-    "TotalFilesToCopy": 4,
-    "TotalFilesSize": 26,
-    "NbFilesLeftToDo": 4,
-    "Progression": 0,
-    "SaveDate": "2025-02-20T11:54:43.7948593+01:00"
+    "SourcePath": "C:\\Users\\Travail\\Desktop\\Source",
+    "TargetPath": "C:\\Users\\Travail\\Desktop\\Target",
+    "State": "END",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 55439,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-24T08:53:19.7515213+01:00"
   }
 ]

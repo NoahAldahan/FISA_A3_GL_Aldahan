@@ -155,6 +155,7 @@ namespace EasySaveWPFApp.ViewModel
         {
             saveTaskManager.SerializeSaveTasks();
             saveTaskManager.SerializeEncryptingExtensions();
+            saveTaskManager.SerializePriorityExtensions();
         }
     }
 }

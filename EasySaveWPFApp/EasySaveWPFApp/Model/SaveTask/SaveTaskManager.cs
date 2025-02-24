@@ -43,7 +43,7 @@ namespace EasySaveWPFApp.Model
         {
             foreach (var type in SaveTaskTypesStrings)
             {
-                if(type.Value == ESaveTaskTypesStr)
+                if (type.Value == ESaveTaskTypesStr)
                 {
                     return type.Key;
                 }
@@ -57,7 +57,7 @@ namespace EasySaveWPFApp.Model
 
         // List of all active save tasks.
         public ObservableCollection<SaveTask> SaveTasks { get; set; }
-            
+
         // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
 
@@ -67,6 +67,11 @@ namespace EasySaveWPFApp.Model
         // If a file has the given extension, it will be encrypted after being saved.
         // All encrypting extensions start with "." (e.g. ".txt", ".json").
         private List<string> EncryptingExtensions;
+
+        // The list of priority extensions.
+        // If a file has the given extension, it will be saved in priority.
+        // All priority extensions start with "." (e.g. ".txt", ".json").
+        private List<string> PriorityExtensions;
 
         private readonly ProcessMonitor processMonitor;
         private bool isSoftwareRunning;
@@ -79,6 +84,11 @@ namespace EasySaveWPFApp.Model
         internal List<string> GetEncryptingExtensions()
         {
             return new List<string>(EncryptingExtensions);
+        }
+
+        internal List<string> GetPriorityExtensions()
+        {
+            return new List<string>(PriorityExtensions);
         }
 
         // Returns a copy of the current list of save tasks to avoid unintended modifications.
@@ -94,6 +104,7 @@ namespace EasySaveWPFApp.Model
             // Load the saved tasks from the previous session.
             SaveTasks = new ObservableCollection<SaveTask>(JsonManager.DeserializeSaveTasks());
             EncryptingExtensions = new List<string>(JsonManager.DeserializeEncryptingExtensions());
+            PriorityExtensions = new List<string>(JsonManager.DeserializePriorityExtensions());
             CurrentUnsavedPaths = new List<string>();
             processMonitor = new ProcessMonitor();
             processMonitor.OnSoftwareStatusChanged += OnSoftwareStatusChanged;
@@ -119,9 +130,9 @@ namespace EasySaveWPFApp.Model
 
         internal SaveTask? GetSaveTaskByName(string Name)
         {
-            foreach (var task in SaveTasks) 
+            foreach (var task in SaveTasks)
             {
-                if (task.name.Equals(Name)) 
+                if (task.name.Equals(Name))
                 {
                     return task;
                 }
@@ -141,7 +152,7 @@ namespace EasySaveWPFApp.Model
             try
             {
                 SaveTask? saveTaskCurrent = GetSaveTaskByName(name);
-                if(saveTaskCurrent == null)
+                if (saveTaskCurrent == null)
                 {
                     return false;
                 }
@@ -149,7 +160,7 @@ namespace EasySaveWPFApp.Model
                 SaveTasks.RemoveAt(index);
                 return true;// EMessage.SuccessSuppressSaveTaskMessage;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return false;// EMessage.ErrorSuppressSaveTaskMessage;
             }
@@ -161,7 +172,7 @@ namespace EasySaveWPFApp.Model
             try
             {
                 SaveTask? saveTaskCurrent = GetSaveTaskByName(name);
-                if (saveTaskCurrent == null) 
+                if (saveTaskCurrent == null)
                 {
                     return false;
                 }
@@ -229,7 +240,7 @@ namespace EasySaveWPFApp.Model
                 newSaveTask.CurrentDirectoryPair.SourcePath = newSourcePath;
                 return true;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return false;
             }
@@ -248,7 +259,7 @@ namespace EasySaveWPFApp.Model
                 newSaveTask.CurrentDirectoryPair.TargetPath = newTargetPath;
                 return true;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return false;
             }
@@ -268,16 +279,16 @@ namespace EasySaveWPFApp.Model
                 newSaveTask.name = newName;
                 return true;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return false;
             }
-        }   
+        }
 
         internal bool SwitchSaveTask(string name)
         {
             SaveTask? currentSaveTask = GetSaveTaskByName(name);
-            if(currentSaveTask == null)
+            if (currentSaveTask == null)
             {
                 return false;
             }
@@ -286,7 +297,7 @@ namespace EasySaveWPFApp.Model
                 ModifySaveTaskType(name, ESaveTaskTypes.Differential);
                 return true;
             }
-            else if (currentSaveTask.BindSaveTaskType == ESaveTaskTypes.Differential) 
+            else if (currentSaveTask.BindSaveTaskType == ESaveTaskTypes.Differential)
             {
                 ModifySaveTaskType(name, ESaveTaskTypes.Complete);
                 return true;
@@ -320,8 +331,31 @@ namespace EasySaveWPFApp.Model
             EncryptingExtensions = JsonManager.DeserializeEncryptingExtensions();
         }
 
+
+        // Sets the encrypting extensions to the given list.
+        internal void SetPriorityExtensions(List<string> newPriorityExtensions)
+        {
+            PriorityExtensions.Clear();
+            PriorityExtensions = new List<string>(newPriorityExtensions);
+        }
+
+        // Serializes the encrypting extensions to a JSON file for persistence.
+        public void SerializePriorityExtensions()
+        {
+            JsonManager.SerializePriorityExtensions(PriorityExtensions);
+        }
+
+        // Deserializes the encrypting extensions from a JSON file.
+        public void DeserializePriorityExtensions()
+        {
+            PriorityExtensions = JsonManager.DeserializePriorityExtensions();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+
     }
 }
+

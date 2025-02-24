@@ -153,10 +153,10 @@
   <data name="SettingsMenu_EncryptingExtensionText" xml:space="preserve">
     <value>Extensions à crypter :</value>
   </data>
-  <data name="SettingsMenu_EnterExtensionPromptText" xml:space="preserve">
-    <value>Entrez une extension à rajouter à la liste</value>
+  <data name="SettingsMenu_EnterEncryptingExtensionPromptText" xml:space="preserve">
+    <value>Entrez une extension à rajouter à la liste d'extensions à crypter :</value>
   </data>
-  <data name="SettingsMenu_ExtensionsValidateButtonText" xml:space="preserve">
+  <data name="SettingsMenu_EncryptingExtensionsValidateButtonText" xml:space="preserve">
     <value>Confirmer</value>
   </data>
   <data name="SettingsMenu_JsonRadioButtonText" xml:space="preserve">
@@ -182,5 +182,14 @@
   </data>
   <data name="SettingsMenu_FrenchButtonText" xml:space="preserve">
     <value>Français</value>
+  </data>
+  <data name="SettingsMenu_EnterPriorityExtensionPromptText" xml:space="preserve">
+    <value>Entrez une extension à rajouter à la liste d'extensions prioritaires :</value>
+  </data>
+  <data name="SettingsMenu_PriorityExtensionsValidateButtonText" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="SettingsMenu_PriorityExtensionText" xml:space="preserve">
+    <value>Extensions prioritaires :</value>
   </data>
 </root>
