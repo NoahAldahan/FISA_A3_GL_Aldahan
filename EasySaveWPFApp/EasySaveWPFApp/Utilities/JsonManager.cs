@@ -71,6 +71,24 @@ namespace EasySaveWPFApp.Utilities
             }
         }
 
+        // Saves all save tasks to a JSON file for persistence.
+        static public string SerializeSaveTasksAPI(List<SaveTask> SaveTasks)
+        {
+            try
+            {
+                // Serialize the list of save tasks to a JSON format
+                string jsonContent = JsonSerializer.Serialize(SaveTasks);
+                return jsonContent;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error serializing Save tasks to JSON file: {ex.Message}");
+                return "";
+            }
+        }
+
+
+
         // Loads and deserializes all save tasks from the JSON file.
         static public List<SaveTask> DeserializeSaveTasks()
         {

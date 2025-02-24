@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Xml.Linq;
+using System.Windows;
 
 namespace EasySaveWPFApp.ViewModel
 {
@@ -46,7 +47,7 @@ namespace EasySaveWPFApp.ViewModel
         public ObservableCollection<SaveTask> BindSaveTasks
         {
             get => saveTaskManager.SaveTasks;
-            set { saveTaskManager.SaveTasks = value; OnPropertyChanged(nameof(saveTaskManager.SaveTasks)); }
+            set { saveTaskManager.SaveTasks = value; OnPropertyChanged(nameof(BindSaveTasks)); }
         }
         internal bool ModifySaveTaskSourcePath(string name, string path)
         {
@@ -75,6 +76,7 @@ namespace EasySaveWPFApp.ViewModel
             saveTaskManager.SerializeSaveTasks();
             return wasSuccessful;
         }
+
         internal void CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
         {
             if (saveTaskManager.IsSaveTaskNameExist(saveTaskName))

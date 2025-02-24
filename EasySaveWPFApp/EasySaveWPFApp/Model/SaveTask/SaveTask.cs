@@ -41,19 +41,19 @@ namespace EasySaveWPFApp.Model
         public string BindName
         {
             get => name;
-            set { name = value; OnPropertyChanged(nameof(name)); }
+            set { name = value; OnPropertyChanged(nameof(BindName)); }
         }
         
         public string BindSource
         {
             get => CurrentDirectoryPair.SourcePath;
-            set { CurrentDirectoryPair.SourcePath = value; OnPropertyChanged(nameof(CurrentDirectoryPair.SourcePath)); }
+            set { CurrentDirectoryPair.SourcePath = value; OnPropertyChanged(nameof(BindSource)); }
         }
 
         public string BindDestination
         {
             get => CurrentDirectoryPair.TargetPath;
-            set { CurrentDirectoryPair.TargetPath = value; OnPropertyChanged(nameof(CurrentDirectoryPair.TargetPath)); }
+            set { CurrentDirectoryPair.TargetPath = value; OnPropertyChanged(nameof(BindDestination)); }
         }
 
         public ESaveTaskTypes BindSaveTaskType

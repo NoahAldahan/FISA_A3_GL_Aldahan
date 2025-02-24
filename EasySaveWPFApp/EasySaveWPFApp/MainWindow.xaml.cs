@@ -11,7 +11,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DotNetEnv;
 using EasySaveWPFApp.ViewModel;
-using EasySaveWPFApp.Model;
+using EasySaveWPFApp.Api;
 using EasySaveWPFApp.Utilities;
 using System.Collections.ObjectModel;
 
@@ -26,6 +26,8 @@ namespace EasySaveWPFApp
         public SaveTaskViewModel saveTaskViewModel;
         SaveTaskWindow saveTaskWindow;
         SaveTaskManager saveTaskManager;
+        private readonly ApiServer apiServer;
+
         public MainWindow()
         {
             Env.Load(@".env");
@@ -36,6 +38,8 @@ namespace EasySaveWPFApp
             //DataContext
             DataContext = saveTaskViewModel;
             InitializeComponent();
+            apiServer = new ApiServer(saveTaskViewModel, saveTaskManager);
+            apiServer.Start();
         }
 
         private void AddRow_Click(object sender, RoutedEventArgs e)
@@ -135,6 +139,11 @@ namespace EasySaveWPFApp
             {
                 settingsWindow.Close();
             }
+        }
+
+        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            await apiServer.StopAsync();
         }
     }
 }

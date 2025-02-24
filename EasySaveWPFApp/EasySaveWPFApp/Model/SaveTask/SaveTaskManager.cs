@@ -11,6 +11,8 @@ using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text.Json;
+using System.Windows;
+using System.Security.Policy;
 
 namespace EasySaveWPFApp.Model
 {
@@ -192,28 +194,45 @@ namespace EasySaveWPFApp.Model
         {
             try
             {
-
-                SaveTask? oldSaveTask = GetSaveTaskByName(name);
-                if (oldSaveTask == null)
+                // Assure-toi que tu travailles sur le thread UI
+                if (Application.Current.Dispatcher.CheckAccess())
                 {
-                    return false;//error
+                    // Le thread actuel est déjà le thread UI, tu peux modifier directement la collection
+                    return ModifySaveTaskTypeInternal(name, newSaveTaskType);
                 }
-                SaveTask newSaveTask = SaveTaskFactory.CreateSave(
-                    newSaveTaskType,
-                    oldSaveTask.CurrentDirectoryPair.SourcePath,
-                    oldSaveTask.CurrentDirectoryPair.TargetPath,
-                    name
-                );
-                int index = SaveTasks.IndexOf(oldSaveTask);
-                // Replace the old save task with the new one.
-                SaveTasks.RemoveAt(index);
-                SaveTasks.Insert(index, newSaveTask);
-                return true;
+                else
+                {
+                    // Le thread actuel n'est pas le thread UI, donc invoque la modification sur le thread UI
+                    Application.Current.Dispatcher.Invoke(() =>
+                        ModifySaveTaskTypeInternal(name, newSaveTaskType)
+                    );
+                    return true;
+                }
             }
             catch (Exception ex)
             {
                 return false;
             }
+        }
+
+        private bool ModifySaveTaskTypeInternal(string name, ESaveTaskTypes newSaveTaskType)
+        {
+            SaveTask? oldSaveTask = GetSaveTaskByName(name);
+            if (oldSaveTask == null)
+            {
+                return false; // erreur
+            }
+            SaveTask newSaveTask = SaveTaskFactory.CreateSave(
+                newSaveTaskType,
+                oldSaveTask.CurrentDirectoryPair.SourcePath,
+                oldSaveTask.CurrentDirectoryPair.TargetPath,
+                name
+            );
+            int index = SaveTasks.IndexOf(oldSaveTask);
+            // Remplace l'ancienne tâche par la nouvelle
+            SaveTasks.RemoveAt(index);
+            SaveTasks.Insert(index, newSaveTask);
+            return true;
         }
 
         // Modifies the source path of a save task at the specified index.
@@ -226,7 +245,7 @@ namespace EasySaveWPFApp.Model
                 {
                     return false;//error
                 }
-                newSaveTask.CurrentDirectoryPair.SourcePath = newSourcePath;
+                newSaveTask.BindSource = newSourcePath;
                 return true;
             }
             catch (Exception ex) 
@@ -245,7 +264,7 @@ namespace EasySaveWPFApp.Model
                 {
                     return false;//error
                 }
-                newSaveTask.CurrentDirectoryPair.TargetPath = newTargetPath;
+                newSaveTask.BindDestination = newTargetPath;
                 return true;
             }
             catch (Exception ex) 
@@ -265,7 +284,7 @@ namespace EasySaveWPFApp.Model
                 {
                     return false;//error
                 }
-                newSaveTask.name = newName;
+                newSaveTask.BindName = newName;
                 return true;
             }
             catch (Exception ex) 
