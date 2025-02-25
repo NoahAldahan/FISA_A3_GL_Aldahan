@@ -13,7 +13,7 @@ public class FileManager(string path, string key)
     private string Key { get; } = key;
 
     /// <summary>
-    /// check if the file exists
+    /// Check if the file exists
     /// </summary>
     private bool CheckFile()
     {
@@ -41,20 +41,16 @@ public class FileManager(string path, string key)
     }
 
     /// <summary>
-    /// Convert a string in byte array
+    /// Convert a string into a byte array
     /// </summary>
-    /// <param name="text"></param>
-    /// <returns></returns>
     private static byte[] ConvertToByte(string text)
     {
         return Encoding.UTF8.GetBytes(text);
     }
 
     /// <summary>
+    /// XOR encryption method
     /// </summary>
-    /// <param name="fileBytes">Bytes of the file to convert</param>
-    /// <param name="keyBytes">Key to use</param>
-    /// <returns>Bytes of the encrypted file</returns>
     private static byte[] XorMethod(IReadOnlyList<byte> fileBytes, IReadOnlyList<byte> keyBytes)
     {
         var result = new byte[fileBytes.Count];
@@ -62,7 +58,7 @@ public class FileManager(string path, string key)
         {
             result[i] = (byte)(fileBytes[i] ^ keyBytes[i % keyBytes.Count]);
         }
-
         return result;
     }
 }
+

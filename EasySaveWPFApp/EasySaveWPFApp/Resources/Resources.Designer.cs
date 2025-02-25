@@ -151,6 +151,114 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        public static string SaveTask_StateActive {
+            get {
+                return ResourceManager.GetString("SaveTask_StateActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finie.
+        /// </summary>
+        public static string SaveTask_StateEnd {
+            get {
+                return ResourceManager.GetString("SaveTask_StateEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erreur.
+        /// </summary>
+        public static string SaveTask_StateError {
+            get {
+                return ResourceManager.GetString("SaveTask_StateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Etat invalide.
+        /// </summary>
+        public static string SaveTask_StateINVALID {
+            get {
+                return ResourceManager.GetString("SaveTask_StateINVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En pause.
+        /// </summary>
+        public static string SaveTask_StatePaused {
+            get {
+                return ResourceManager.GetString("SaveTask_StatePaused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrêtée.
+        /// </summary>
+        public static string SaveTask_StateStopped {
+            get {
+                return ResourceManager.GetString("SaveTask_StateStopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mettre en pause la sélection.
+        /// </summary>
+        public static string SaveTaskProgress_PauseSelectedButton {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_PauseSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recommencer la sélection.
+        /// </summary>
+        public static string SaveTaskProgress_PlaySelectedButton {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_PlaySelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Progression.
+        /// </summary>
+        public static string SaveTaskProgress_ProgressColumnTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_ProgressColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Etat.
+        /// </summary>
+        public static string SaveTaskProgress_StateColumnTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_StateColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopper la sélection.
+        /// </summary>
+        public static string SaveTaskProgress_StopSelectedButton {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_StopSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travail(s) de sauvegarde en cours.
+        /// </summary>
+        public static string SaveTaskProgress_Title {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annuler.
         /// </summary>
         public static string SettingsMenu_CancelButtonText {

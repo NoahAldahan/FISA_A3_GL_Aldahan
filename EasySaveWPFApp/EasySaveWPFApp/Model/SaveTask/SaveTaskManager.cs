@@ -63,7 +63,7 @@ namespace EasySaveWPFApp.Model
         // Factory instance to create new save tasks.
         internal SaveTaskFactory SaveTaskFactory { get; set; }
 
-        private List<string> CurrentUnsavedPaths;
+        private Dictionary<string, List<string>> CurrentUnsavedPathsLists;
 
         // The list of encrypting extensions.
         // If a file has the given extension, it will be encrypted after being saved.
@@ -73,9 +73,9 @@ namespace EasySaveWPFApp.Model
         private readonly ProcessMonitor processMonitor;
         private bool isSoftwareRunning;
 
-        internal List<string> GetCurrentUnsavedPaths()
+        internal Dictionary<string, List<string>> GetCurrentUnsavedPathsDictionary()
         {
-            return new List<string>(CurrentUnsavedPaths);
+            return CurrentUnsavedPathsLists;
         }
 
         internal List<string> GetEncryptingExtensions()
@@ -96,7 +96,7 @@ namespace EasySaveWPFApp.Model
             // Load the saved tasks from the previous session.
             SaveTasks = new ObservableCollection<SaveTask>(JsonManager.DeserializeSaveTasks());
             EncryptingExtensions = new List<string>(JsonManager.DeserializeEncryptingExtensions());
-            CurrentUnsavedPaths = new List<string>();
+            CurrentUnsavedPathsLists = new Dictionary<string, List<string>>();
             processMonitor = new ProcessMonitor();
             processMonitor.OnSoftwareStatusChanged += OnSoftwareStatusChanged;
             isSoftwareRunning = false;
@@ -104,7 +104,7 @@ namespace EasySaveWPFApp.Model
         private void OnSoftwareStatusChanged(bool isRunning)
         {
             isSoftwareRunning = isRunning;
-            Console.WriteLine($"Logiciel métier en cours d'exécution : {isRunning}");
+            Trace.WriteLine($"Logiciel métier en cours d'exécution : {isRunning}");
         }
 
         public bool IsSaveTaskNameExist(string name)
@@ -164,35 +164,43 @@ namespace EasySaveWPFApp.Model
         }
 
         // Starts the save task at index
-        internal bool ExecuteSaveTask(string name)
+        internal async Task<bool> ExecuteSaveTaskAsync(string name)
         {
             try
             {
                 SaveTask? saveTaskCurrent = GetSaveTaskByName(name);
                 if (saveTaskCurrent == null) 
                 {
+                    Trace.WriteLine("STM saveTaskCurrent = null");
                     return false;
                 }
                 if (isSoftwareRunning)
                 {
-                    Console.WriteLine("Impossible d'exécuter la sauvegarde car le logiciel métier est en cours d'exécution.");
+                    Trace.WriteLine("STM business software running");
+                    //Console.WriteLine("Impossible d'exécuter la sauvegarde car le logiciel métier est en cours d'exécution.");
                     return false;
                 }
-
-                CurrentUnsavedPaths.Clear();
-                if (saveTaskCurrent.Save(this))
+                bool SaveResult = await saveTaskCurrent.SaveAsync(this);
+                if (SaveResult)
                 {
+                    Trace.WriteLine("STM if save result");
                     return true;
                 }
+                Trace.WriteLine("STM else save result");
 
-                CurrentUnsavedPaths = saveTaskCurrent.GetUnsavedPaths();
+                CurrentUnsavedPathsLists.Add(saveTaskCurrent.name, saveTaskCurrent.GetUnsavedPaths());
                 return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erreur lors de l'exécution de la tâche : {ex.Message}");
+                Trace.WriteLine($"Erreur lors de l'exécution de la tâche : {ex.Message}");
                 return false;
             }
+        }
+
+        public void ClearUnsavedPathsLists()
+        {
+            CurrentUnsavedPathsLists.Clear();
         }
 
         // Modify the save task type

@@ -115,5 +115,10 @@ namespace Log
                 XmlLogManager.UpdateRealTimeProgression(realTimeInfo, LogRealTimePath);
             }
         }
+
+        public int GetTotalFilesLeftToDo()
+        {
+            return realTimeInfo.NbFilesLeftToDo;
+        }
     }
 }

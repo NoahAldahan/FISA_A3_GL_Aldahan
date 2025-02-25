@@ -1,0 +1,31 @@
+﻿<Window x:Class="EasySaveWPFApp.SaveTaskProgressWindows.ErrorDuringSTWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EasySaveWPFApp"
+        xmlns:p="clr-namespace:EasySaveWPFApp.Resources"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="321" Width="289">
+    
+    <Border Padding="10" BorderThickness="1" BorderBrush="Black" Background="White">
+        <StackPanel>
+            <TextBlock Text="Error: Some or all files weren't saved" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+            <TextBlock Text="List of files not saved:" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+
+            <StackPanel Margin="10">
+                <TextBlock Text="Save task 1:" FontWeight="Bold"/>
+                <TextBlock Text="- file1" Margin="20,0,0,0"/>
+                <TextBlock Text="- file2" Margin="20,0,0,0"/>
+                <TextBlock Text="- file3" Margin="20,0,0,0"/>
+
+                <TextBlock Text="Save task 2:" FontWeight="Bold" Margin="0,10,0,0"/>
+                <TextBlock Text="- file3" Margin="20,0,0,0"/>
+                <TextBlock Text="- file4" Margin="20,0,0,0"/>
+                <TextBlock Text="- file5" Margin="20,0,0,0"/>
+            </StackPanel>
+
+            <Button Content="Continue" Width="100" HorizontalAlignment="Right" Margin="0,20,0,0" Padding="5" Command="{Binding ContinueCommand}"/>
+        </StackPanel>
+    </Border>
+</Window>

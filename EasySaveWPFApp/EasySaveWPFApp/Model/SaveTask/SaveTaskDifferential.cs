@@ -1,6 +1,7 @@
 ﻿using Log;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,11 +27,26 @@ namespace EasySaveWPFApp.Model
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal override bool Save(SaveTaskManager saveTaskManager)
         {
+            BindSaveTaskProgressPercentage = 0.0f;
+            SetBindState(ERealTimeState.ACTIVE);
             logDaily.CreateDailyFile();
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
             logDaily.CreateDailyFile();
             UnsavedPaths.Clear();
-            UnsavedPaths = SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, saveTaskManager);
+            try
+            {
+                Trace.WriteLine("savediff starting try");
+                UnsavedPaths = SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, saveTaskManager);
+                Trace.WriteLine("savediff finished try");
+            }
+            catch (OperationCanceledException ex)
+            {
+                Trace.WriteLine("savediff OperationCanceledException ex");
+                // TODO : Add cancellation to log
+                //TODO : Show canceled files number in log
+                nFilesUnsavedCancelled = logRealTime.GetTotalFilesLeftToDo();
+            }
+            if (state != ERealTimeState.STOPPED) SetBindState(ERealTimeState.END);
             return (UnsavedPaths.Count() == 0);
         }
 
@@ -39,14 +55,19 @@ namespace EasySaveWPFApp.Model
         {
             try
             {
+                Trace.WriteLine("savediffrec start");
+
                 // Retrieve the file attributes to determine if the source is a file or directory.
                 FileAttributes sourceAttr = File.GetAttributes(SourcePath);
+                Trace.WriteLine("sourceAttr");
 
                 // Case 1: The source is a file
                 if (!sourceAttr.HasFlag(FileAttributes.Directory))
                 {
                     FileInfo sourceFileInfo = new FileInfo(SourcePath);
+                    Trace.WriteLine("sourceFileInfo");
                     FileInfo targetFileInfo = new FileInfo(Path.Combine(TargetPath, sourceFileInfo.Name));
+                    Trace.WriteLine("targetFileInfo");
                     // If the file doesn't exist or the source file is more recent than the target file
                     // We use targetFileInfo.FullName instead of TargetPath because we need the full path of the file
                     // (with the name of the file appended) that is going to be created or updated
@@ -54,46 +75,61 @@ namespace EasySaveWPFApp.Model
                         || sourceFileInfo.LastWriteTime > JsonLogManager.GetLastSaveDateFromJson(this.logDaily.LogDailyPath, sourceFileInfo.FullName)
                         || sourceFileInfo.LastWriteTime > XmlLogManager.GetLastSaveDateFromXml(this.logDaily.LogDailyPath, sourceFileInfo.FullName))
                     {
+                        Trace.WriteLine("before copy single file");
                         CopySingleFile(SourcePath, targetFileInfo.FullName, saveTaskManager);
+                        Trace.WriteLine("after copy single file");
                     }
                 }
                 // Case 2: The source is a directory
                 else
                 {
+                    Trace.WriteLine("else copy single file");
                     DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(SourcePath);
+                    Trace.WriteLine("sourceDirectoryInfo");
                     DirectoryInfo targetDirectoryInfo = new DirectoryInfo(TargetPath);
+                    Trace.WriteLine("sourceDirectoryInfo");
 
                     // If the source directory is empty and the target directory does not exist, create the target directory.
                     if (sourceDirectoryInfo.GetDirectories().Length == 0 && !targetDirectoryInfo.Exists)
                     {
-                        targetDirectoryInfo.Create();
+                        Trace.WriteLine("before create directory");
+                        CreateDirectory(TargetPath);
+                        Trace.WriteLine("after create directory");
                     }
                     else
                     {
                         // Iterate through all subdirectories and process them recursively.
                         foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
                         {
+                            Trace.WriteLine("before recursive call on folders");
                             SaveDifferentialRecursive(dir.FullName, Path.Combine(targetDirectoryInfo.FullName, dir.Name), saveTaskManager);
+                            Trace.WriteLine("after recursive call on folders");
                         }
                         foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
                         {
+                            Trace.WriteLine("before recursive call on files");
                             SaveDifferentialRecursive(file.FullName, targetDirectoryInfo.FullName, saveTaskManager);
+                            Trace.WriteLine("after recursive call on files");
                         }
                     }
                 }
             }
+            catch (OperationCanceledException opEx)
+            {
+                Trace.WriteLine("savediffrec OperationCanceledException opEx");
+                throw opEx;
+            }
             catch (Exception ex)
             {
+                Trace.WriteLine("savediffrec Exception ex");
                 UnsavedPaths.Add(SourcePath);
             }
-            
+            Trace.WriteLine("savediff before update progress");
+            UpdateProgress();
+            Trace.WriteLine("savediff after update progress");
             return UnsavedPaths;
         }
 
-        internal override string GetMessageSaveTaskType()
-        {
-            return "Différentiel";
-        }
         internal override ESaveTaskTypes GetSaveTaskType()
         {
             return ESaveTaskTypes.Differential;

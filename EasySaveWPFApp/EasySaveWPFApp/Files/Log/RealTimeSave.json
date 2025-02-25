@@ -3,22 +3,33 @@
     "Name": "complettest",
     "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source",
     "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete",
-    "State": "ACTIVE",
+    "State": "Active",
     "TotalFilesToCopy": 4,
     "TotalFilesSize": 26,
     "NbFilesLeftToDo": 4,
     "Progression": 0,
-    "SaveDate": "2025-02-20T11:54:43.64257+01:00"
+    "SaveDate": "2025-02-25T09:36:02.1451808+01:00"
   },
   {
-    "Name": "test2comp",
+    "Name": "diff",
     "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source",
-    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete",
-    "State": "ACTIVE",
+    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff",
+    "State": "Active",
+    "TotalFilesToCopy": 0,
+    "TotalFilesSize": 0,
+    "NbFilesLeftToDo": 0,
+    "Progression": 0,
+    "SaveDate": "2025-02-25T09:36:02.2648833+01:00"
+  },
+  {
+    "Name": "complete2",
+    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source2",
+    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete2",
+    "State": "END",
     "TotalFilesToCopy": 4,
     "TotalFilesSize": 26,
-    "NbFilesLeftToDo": 4,
-    "Progression": 0,
-    "SaveDate": "2025-02-20T11:54:43.7948593+01:00"
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-25T09:58:53.9901274+01:00"
   }
 ]
