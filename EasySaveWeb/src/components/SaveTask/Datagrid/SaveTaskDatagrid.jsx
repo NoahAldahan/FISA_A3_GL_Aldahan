@@ -3,7 +3,7 @@ import { useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import {darkThemeDatgrid } from "../../MuiTheme/DarkTheme"
+import {darkThemeDatgrid} from "../../MuiTheme/DarkTheme"
 import "./SaveTaskDataGrid.css"
 import Button from '@mui/material/Button';
 import SaveTaskService from '../../../service/SaveTaskService'
@@ -58,6 +58,7 @@ const handleSuppressSaveTask = (selectedRows, rows) => {
   return updatedRow;
 }
 
+
 const GetSaveTaskTypeToStr = (type) => {
   switch(type){
     case 1:
@@ -65,7 +66,7 @@ const GetSaveTaskTypeToStr = (type) => {
     case 2:
       return "Complete"
   }
-}
+} 
 
 const GetSaveTaskTypeToInt = (type) =>
 {
@@ -77,23 +78,30 @@ const GetSaveTaskTypeToInt = (type) =>
   }
 }
 
-export default function SaveTaskDataGrid({onOpenCreatePopup}) 
+export default function SaveTaskDataGrid({onOpenCreatePopup,updateDatagrid,setUpdateDatagrid }) 
 {
   const [rows, setRows] = useState();
   const [selectedRows, setSelectedRows] = useState([]);
-  useEffect(() => 
-    { 
-        SaveTaskService.getAllTasks().then(value => {
-          console.log(value);
-          setRows(value.map((item, index) => ({
-            id: index + 1, // Ajout d'un identifiant unique obligatoire pour le DataGrid
-            type: GetSaveTaskTypeToStr(item.BindSaveTaskType),
-            name: item.BindName,
-            sourcePath: item.BindSource,
-            targetPath: item.BindDestination
-          })));
-        })
-    }, []);
+
+  const handleLoadDatagridRows = () => {
+    SaveTaskService.getAllTasks().then(value => {
+      console.log(value);
+      setRows(value.map((item, index) => ({
+        id: index + 1, // Ajout d'un identifiant unique obligatoire pour le DataGrid
+        type: GetSaveTaskTypeToStr(item.BindSaveTaskType),
+        name: item.BindName,
+        sourcePath: item.BindSource,
+        targetPath: item.BindDestination
+      })));
+    })
+  }
+
+  useEffect(() => { 
+    handleLoadDatagridRows();
+    if(updateDatagrid){
+      setUpdateDatagrid(false);
+    }
+  }, [updateDatagrid]);
 
   return (<div className="savetask-datagrid">
     <h2>Grid Save Task</h2>

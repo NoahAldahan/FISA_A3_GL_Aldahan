@@ -7,6 +7,7 @@ import PopupCreateSaveTask from "../../components/SaveTask/Popup/Create/PopupCre
 function SaveTask() {
 
   const [statePopupCreate, setStatePopupCreate]  = useState(false);
+  const [updateDatagrid, setUpdateDatagrid] = useState(false);
 
     function onCloseCreatePopup(){
       setStatePopupCreate(false);
@@ -15,8 +16,8 @@ function SaveTask() {
       setStatePopupCreate(true);
     }
     return (<div className="save-task">
-        <SaveTaskDatagrid onOpenCreatePopup={onOpenCreatePopup} />
-        <PopupCreateSaveTask statePopupCreate={statePopupCreate} onClose={onCloseCreatePopup}  />
+        <SaveTaskDatagrid onOpenCreatePopup={onOpenCreatePopup} updateDatagrid={updateDatagrid} setUpdateDatagrid={setUpdateDatagrid} />
+        <PopupCreateSaveTask statePopupCreate={statePopupCreate} onClose={onCloseCreatePopup} setUpdateDatagrid={setUpdateDatagrid} />
         </div>);
   }
 

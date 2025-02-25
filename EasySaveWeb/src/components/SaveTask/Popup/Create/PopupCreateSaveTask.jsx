@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { darkThemePopup } from "../../../MuiTheme/DarkTheme";
 import SaveTaskService from "../../../../service/SaveTaskService";
 
-const SaveTaskPopup = ({statePopupCreate, onClose}) => {
+const SaveTaskPopup = ({statePopupCreate, onClose, setUpdateDatagrid}) => {
   // 🛠 State pour stocker les valeurs des champs
   const [taskData, setTaskData] = useState({
     type: "",
@@ -12,10 +12,6 @@ const SaveTaskPopup = ({statePopupCreate, onClose}) => {
     sourcePath: "",
     targetPath: "",
   });
-
-  function handleCreateSaveTask(){
-    console.log(taskData);
-  }
 
   // 🔄 Gérer le changement des champs
   const handleChange = (event) => {
@@ -28,8 +24,7 @@ const SaveTaskPopup = ({statePopupCreate, onClose}) => {
       alert("Tous les champs doivent être remplis !");
       return;
     }
-    SaveTaskService.createTask(taskData).then().catch();
-    handleCreateSaveTask(); // Envoie les données au parent
+    SaveTaskService.createTask(taskData).then(setUpdateDatagrid(true)).catch();
     onClose();
   };
 

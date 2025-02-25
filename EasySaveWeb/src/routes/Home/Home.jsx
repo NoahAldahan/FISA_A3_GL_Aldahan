@@ -69,7 +69,7 @@ export default function Home() {
       <Fade visible={produitVisible}>
         <div className="element-produit">
           <HomePageElement
-            title="Produit dérivée"
+            title="Produits dérivées"
             description="Les solutions de sauvegarde intelligentes sont un élément essentiel de la protection des données numériques. Elles incluent des options variées, telles que la sauvegarde automatique, la synchronisation en temps réel, et la planification personnalisée pour s’adapter aux besoins des utilisateurs. Ces solutions permettent de stocker les fichiers sur différents supports, qu’il s’agisse d’un disque dur local, d’un serveur distant, d’un NAS ou d’un service cloud sécurisé. Grâce à des technologies avancées comme le chiffrement des données et la compression optimisée, elles garantissent une protection efficace tout en minimisant l’espace de stockage utilisé. Que ce soit pour un usage personnel ou professionnel, ces outils assurent la sécurité et l’accessibilité des données en toute simplicité."
             img={goodies}
             inversion={true}
