@@ -69,7 +69,7 @@ export default function Home() {
       <Fade visible={produitVisible}>
         <div className="element-produit">
           <HomePageElement
-            title="Produit dérivée"
+            title="Produits dérivées"
             description="Les solutions de sauvegarde intelligentes sont un élément essentiel de la protection des données numériques. Elles incluent des options variées, telles que la sauvegarde automatique, la synchronisation en temps réel, et la planification personnalisée pour s’adapter aux besoins des utilisateurs. Ces solutions permettent de stocker les fichiers sur différents supports, qu’il s’agisse d’un disque dur local, d’un serveur distant, d’un NAS ou d’un service cloud sécurisé. Grâce à des technologies avancées comme le chiffrement des données et la compression optimisée, elles garantissent une protection efficace tout en minimisant l’espace de stockage utilisé. Que ce soit pour un usage personnel ou professionnel, ces outils assurent la sécurité et l’accessibilité des données en toute simplicité."
             img={goodies}
             inversion={true}
@@ -83,16 +83,6 @@ export default function Home() {
             title="Visibilité"
             description="La communication et la visibilité autour de EasySave mettent en avant ses fonctionnalités avancées tout en illustrant concrètement ses avantages avec des démonstrations et des cas d’usage. Le ton est rassurant et pédagogique, axé sur la sécurité et la simplicité d’utilisation pour attirer un large public. La publication de contenu est régulière et variée, incluant des tutoriels expliquant comment optimiser ses sauvegardes, des témoignages d’utilisateurs satisfaits, et des alertes sur les bonnes pratiques en cybersécurité. L’objectif est de bâtir une communauté engagée autour de la protection des données, tout en soulignant l’importance d’une gestion proactive des sauvegardes."
             img={carteVisite}
-          />
-        </div>
-      </Fade>
-      <Fade visible={bureauxVisible}>
-        <div className="element-bureaux">
-          <HomePageElement
-            title="Nos bureaux"
-            description="Les bureaux de EasySave offrent un environnement moderne et sécurisé, idéal pour le développement de solutions de sauvegarde avancées. L’ambiance de travail est à la fois collaborative et axée sur l’innovation, avec une équipe passionnée par la protection et l’optimisation des données. Les employés évoluent dans un espace technologique de pointe, équipé d’infrastructures performantes garantissant efficacité et confort. L’atmosphère est à la fois professionnelle et conviviale, encourageant le partage des idées et l’amélioration continue des fonctionnalités pour répondre aux besoins des utilisateurs."
-            img={devanture}
-            inversion={true}
           />
         </div>
       </Fade>
