@@ -8,10 +8,14 @@ using Microsoft.AspNetCore.Builder;
 using EasySaveWPFApp.Model;
 using EasySaveWPFApp.ViewModel;
 using EasySaveWPFApp.Utilities;
+using Microsoft.AspNetCore.WebSockets;
 using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 using System.Xml;
 using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
+using System.Net.WebSockets;
 using System.Reflection.Metadata;
+using System.Collections.Concurrent;
+using System.Text;
 
 
 namespace EasySaveWPFApp.Api
@@ -19,6 +23,7 @@ namespace EasySaveWPFApp.Api
     public class ApiServer
     {
         private IWebHost _host;
+        private ConcurrentBag<WebSocket> _webSockets = new ConcurrentBag<WebSocket>();
 
         internal SaveTaskManager saveTaskManager;
         internal SaveTaskViewModel saveTaskViewModel;
@@ -26,6 +31,53 @@ namespace EasySaveWPFApp.Api
         {
             this.saveTaskManager = saveTaskManager;
             this.saveTaskViewModel = saveTaskViewModel;
+        }
+
+        private async Task HandleWebSocketConnection(WebSocket webSocket)
+        {
+            var buffer = new byte[1024 * 4];
+            try
+            {
+                WebSocketReceiveResult result;
+                while(webSocket.State == WebSocketState.Open)
+                {
+                    result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+
+                    // Vérifier si le client demande la fermeture
+                    if (result.MessageType == WebSocketMessageType.Close)
+                    {
+                        await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, CancellationToken.None);
+                        break;
+                    }
+                    // Traitement du message reçu
+                    var receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    Console.WriteLine($"Message reçu : {receivedMessage}");
+
+                    // Exemple : Réponse vers le client
+                    var responseMessage = $"Serveur a reçu : {receivedMessage}";
+                    var responseBuffer = Encoding.UTF8.GetBytes(responseMessage);
+
+                    await webSocket.SendAsync(
+                        new ArraySegment<byte>(responseBuffer),
+                        WebSocketMessageType.Text,
+                        true,
+                        CancellationToken.None
+                    );
+                }
+            }
+            catch (WebSocketException wsEx)
+            {
+                Console.WriteLine($"Erreur WebSocket : {wsEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur générale : {ex.Message}");
+            }
+            finally
+            {
+                if (webSocket != null)
+                    webSocket.Dispose();
+            }
         }
 
         public void Start()
@@ -37,23 +89,46 @@ namespace EasySaveWPFApp.Api
                 })
                 .Configure(app =>
                 {
+                    app.UseWebSockets();
                     app.Use(async (context, next) =>
                     {
-                        // 🔥 Ajouter les en-têtes CORS à toutes les réponses
+                        //  Ajouter les en-têtes CORS à toutes les réponses
                         context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
                         context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
                         context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-                        // ✅ Répondre immédiatement aux requêtes OPTIONS pour éviter le blocage CORS
+                        // Répondre immédiatement aux requêtes OPTIONS pour éviter le blocage CORS
                         if (context.Request.Method == "OPTIONS")
                         {
                             context.Response.StatusCode = 200; // Répondre avec un statut OK
                             await context.Response.WriteAsync(""); // Répondre avec un corps vide
-                            return; // 🔥 Important : Empêche d'aller plus loin
+                            return; 
                         }
 
                         await next(); // Continuer vers les autres middlewares
                     });
+                    app.Use(async (context, next) => 
+                    {
+                        if (context.Request.Path == "/api/ws")
+                        {
+                            if (context.WebSockets.IsWebSocketRequest)
+                            {
+                                var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                                _webSockets.Add(webSocket); // Sauvegarde du websocket
+
+                                await HandleWebSocketConnection(webSocket);
+                            }
+                            else
+                            {
+                                context.Response.StatusCode = 400;
+                            }
+                        }
+                        else
+                        {
+                            await next();
+                        }
+                    });
+
                     app.Run(async context =>
                     {
 
@@ -61,7 +136,7 @@ namespace EasySaveWPFApp.Api
                         {
                             await context.Response.WriteAsync(GetSaveTasksToString());
                         }
-                        else if (context.Request.Path == "/api/sendmodification" && context.Request.Method == "POST")
+                        else if (context.Request.Path == "/api/sendmodification" && context.Request.Method == "PUT")
                         {
                             try
                             {
@@ -73,7 +148,7 @@ namespace EasySaveWPFApp.Api
                                 await context.Response.WriteAsync($"Erreur: {ex.Message}");
                             }
                         }
-                        else if (context.Request.Path == "/api/deletesavetasks" && context.Request.Method == "POST")
+                        else if (context.Request.Path == "/api/deletesavetasks" && context.Request.Method == "DELETE")
                         {
                             try
                             {

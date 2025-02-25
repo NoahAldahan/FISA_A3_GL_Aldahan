@@ -44,17 +44,18 @@ const handleRowUpdate = (updatedRow, originalRow) => {
 
 const handleSuppressSaveTask = (selectedRows, rows) => {
   console.log(selectedRows);
-  let deleteRow = [];
+  let deleteRowName = [];
   let updatedRow = []; 
   if(selectedRows.length == 0){
     return rows;
   }
   selectedRows.forEach((value) => 
   {
-    deleteRow = rows.filter(row => selectedRows.includes(row.id));
+    deleteRowName = rows.filter(row => selectedRows.includes(row.id)).map(row => row.name); // 🔥 Transforme en une liste de noms;
     updatedRow = rows.filter(row => !selectedRows.includes(row.id));
   });
-  console.log(deleteRow);
+  console.log(deleteRowName);
+  SaveTaskService.deleteTask(deleteRowName);
   return updatedRow;
 }
 

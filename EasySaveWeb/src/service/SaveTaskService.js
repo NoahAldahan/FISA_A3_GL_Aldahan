@@ -39,7 +39,7 @@ const SaveTaskService = {
   async updateTask(updatedData) {
     try {
       const response = await fetch(API_URL + "/api/sendmodification", {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
@@ -55,10 +55,15 @@ const SaveTaskService = {
   },
 
   // Supprimer une tâche
-  async deleteTask(taskId) {
+  async deleteTask(taskIds) {
     try {
-      const response = await fetch(`${API_URL}/${taskId}`, {
-        method: "DELETE"
+      const response = await fetch(API_URL + "/api/deletesavetasks", 
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(taskIds)
       });
 
       if (!response.ok) throw new Error("Erreur lors de la suppression de la tâche");

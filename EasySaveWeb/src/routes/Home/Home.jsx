@@ -32,7 +32,6 @@ export default function Home() {
         setVisible("element-produit", setProduitVisible, entry);
         setVisible("element-carte", setCarteVisible, entry);
         setVisible("element-bureaux", setBureauxVisible, entry);
-        setVisible("element-tiktokCreator", setTiktokCreator, entry);
       },
       {
         rootMargin: "-120px",
@@ -43,7 +42,6 @@ export default function Home() {
       document.querySelector('.element-produit'),
       document.querySelector('.element-carte'),
       document.querySelector('.element-bureaux'),
-      document.querySelector('.element-tiktokCreator')
     ];
 
     elements.forEach(element => {
