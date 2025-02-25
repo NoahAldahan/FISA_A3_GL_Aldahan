@@ -25,11 +25,11 @@
     "Name": "complete2",
     "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source2",
     "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete2",
-    "State": "Active",
+    "State": "END",
     "TotalFilesToCopy": 4,
     "TotalFilesSize": 26,
-    "NbFilesLeftToDo": 3,
-    "Progression": 25,
-    "SaveDate": "2025-02-25T09:36:02.1451923+01:00"
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-25T09:58:53.9901274+01:00"
   }
 ]

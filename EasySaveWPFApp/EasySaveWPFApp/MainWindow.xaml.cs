@@ -21,6 +21,7 @@ namespace EasySaveWPFApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window
     {
         public SaveTaskViewModel saveTaskViewModel;
@@ -44,7 +45,6 @@ namespace EasySaveWPFApp
             //DataContext
             DataContext = saveTaskViewModel;
             InitializeComponent();
-
             // ====== AJOUT : Initialisation et abonnement du ProcessMonitor ======
             processMonitor = new ProcessMonitor();
             processMonitor.OnSoftwareStatusChanged += (isRunning) =>
@@ -88,16 +88,24 @@ namespace EasySaveWPFApp
 
         private void AddRow_Click(object sender, RoutedEventArgs e)
         {
-            // Windows
+            //Windows
             saveTaskWindow = new SaveTaskWindow(saveTaskViewModel);
             saveTaskWindow.ShowDialog();
         }
         private void StartSelected_Click(object sender, RoutedEventArgs e)
         {
             var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
-            foreach (var row in selectedRows)
+
+            if (selectedRows.Count == 0) return;
+
+            SaveTaskProgressWindow SaveTaskProgressWindow = new SaveTaskProgressWindow(selectedRows, saveTaskViewModel, saveTaskManager);
+            try
             {
-                saveTaskViewModel.ExecuteSaveTask(row.name);
+                SaveTaskProgressWindow.ShowDialog();
+            }
+            catch
+            {
+                SaveTaskProgressWindow.Close();
             }
         }
 
@@ -143,28 +151,28 @@ namespace EasySaveWPFApp
                             if (!saveTaskViewModel.ModifySaveTaskName(name, newValue))
                             {
                                 textBox.Text = modifiedTask.BindName;
-                                return; // erreur ici de ModifySaveTaskName
+                                return; //error here from ModifySaveTaskName
                             }
                             break;
                         case "Source":
                             if (!saveTaskViewModel.ModifySaveTaskSourcePath(name, newValue))
                             {
                                 textBox.Text = modifiedTask.BindSource;
-                                return; // erreur ici de ModifySaveTaskName
+                                return; //error here from ModifySaveTaskName
                             }
                             break;
                         case "Destination":
                             if (!saveTaskViewModel.ModifySaveTaskTargetPath(name, newValue))
                             {
                                 textBox.Text = modifiedTask.BindDestination;
-                                return; // erreur ici de ModifySaveTaskName
+                                return; //error here from ModifySaveTaskName
                             }
                             break;
                         case "Type":
                             if (!saveTaskViewModel.ModifySaveTaskType(name, ESaveTaskTypes.Complete))
                             {
                                 textBox.Text = modifiedTask.BindDestination;
-                                return; // erreur ici de ModifySaveTaskName
+                                return; //error here from ModifySaveTaskName
                             }
                             break;
                     }
