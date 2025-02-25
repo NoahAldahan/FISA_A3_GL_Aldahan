@@ -77,28 +77,38 @@ namespace EasySaveWPFApp.ViewModel
             return wasSuccessful;
         }
 
-        internal void CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
+        internal bool CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
         {
+            // Check if we are on the UI thread, if not, invoke it on the UI thread
+            if (!Application.Current.Dispatcher.CheckAccess())
+            {
+                return (bool)Application.Current.Dispatcher.Invoke(() => CreateSaveTask(saveTaskName, saveTaskSource, saveTaskTarget, saveTaskType));
+            }
+
+            // Perform the task creation logic (this part will run on the UI thread)
             if (saveTaskManager.IsSaveTaskNameExist(saveTaskName))
             {
-                return;
+                return false;
             }
             if (!Utilities.Utilities.IsValidPath(saveTaskSource))
             {
                 // Show an error message if the source path is invalid
-                return;
+                return false;
             }
             if (!Utilities.Utilities.IsValidPath(saveTaskTarget))
             {
                 // Show an error message if the target path is invalid
-                return;
+                return false;
             }
             if (!Enum.IsDefined(typeof(ESaveTaskTypes), saveTaskType))
             {
-                return;
+                return false;
             }
+
+            // Add the save task to the manager
             saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
             saveTaskManager.SerializeSaveTasks();
+            return true;
         }
 
 

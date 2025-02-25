@@ -140,6 +140,12 @@ namespace EasySaveWPFApp.Model
         // Remove a save task at index
         internal bool RemoveSaveTask(string name)
         {
+            // Check if we're on the UI thread, if not, invoke it on the UI thread
+            if (!Application.Current.Dispatcher.CheckAccess())
+            {
+                return (bool)Application.Current.Dispatcher.Invoke(() => RemoveSaveTask(name)); // Return the result of the UI thread 
+            }
+
             try
             {
                 SaveTask? saveTaskCurrent = GetSaveTaskByName(name);

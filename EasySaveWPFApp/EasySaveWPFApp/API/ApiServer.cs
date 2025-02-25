@@ -10,6 +10,8 @@ using EasySaveWPFApp.ViewModel;
 using EasySaveWPFApp.Utilities;
 using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 using System.Xml;
+using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
+using System.Reflection.Metadata;
 
 
 namespace EasySaveWPFApp.Api
@@ -45,17 +47,7 @@ namespace EasySaveWPFApp.Api
                         {
                             try
                             {
-                                // Lire le body JSON
-                                using var reader = new StreamReader(context.Request.Body);
-                                var body = await reader.ReadToEndAsync();
-
-                                // Désérialisation en objet anonyme
-                                // Répond avec les données reçues
-                                context.Response.ContentType = "application/json";
-                                await context.Response.WriteAsync(JsonSerializer.Serialize(new
-                                {
-                                    status = ModifySaveTaskAPI(body)
-                                }));
+                                await SendResponse(context, new { status = ModifySaveTaskAPI(await ReadJsonRequestBody(context)) });
                             }
                             catch (Exception ex)
                             {
@@ -63,21 +55,23 @@ namespace EasySaveWPFApp.Api
                                 await context.Response.WriteAsync($"Erreur: {ex.Message}");
                             }
                         }
-                        else if (context.Request.Path == "/api/deletesavetask" && context.Request.Method == "POST")
+                        else if (context.Request.Path == "/api/deletesavetasks" && context.Request.Method == "POST")
                         {
                             try
                             {
-                                // Lire le body JSON
-                                using var reader = new StreamReader(context.Request.Body);
-                                var body = await reader.ReadToEndAsync();
-
-                                List<string> content = JsonSerializer.Deserialize<List<string>>(body);
-
-                                context.Response.ContentType = "application/json";
-                                await context.Response.WriteAsync(JsonSerializer.Serialize(new
-                                {
-                                    status = DeleteSaveTaskAPI(content)
-                                }));
+                                await SendResponse(context, DeleteSaveTasksAPI(JsonSerializer.Deserialize<List<string>>(await ReadJsonRequestBody(context))));
+                            }
+                            catch (Exception ex)
+                            {
+                                context.Response.StatusCode = 400;
+                                await context.Response.WriteAsync($"Erreur: {ex.Message}");
+                            }
+                        }
+                        else if (context.Request.Path == "/api/addsavetask" && context.Request.Method == "POST")
+                        {
+                            try
+                            {
+                                await SendResponse(context, new { status = AddSaveTaskAPI(await ReadJsonRequestBody(context)) });
                             }
                             catch (Exception ex)
                             {
@@ -102,6 +96,19 @@ namespace EasySaveWPFApp.Api
             {
                 await _host.StopAsync();
             }
+        }
+
+        public async Task<dynamic> ReadJsonRequestBody(HttpContext context)
+        {
+            using var reader = new StreamReader(context.Request.Body);
+            var body = await reader.ReadToEndAsync();
+            return body;
+        }
+
+        public async Task SendResponse<T>(HttpContext context, T content)
+        {
+            context.Response.ContentType = "application/json; charset=utf-8";
+            await context.Response.WriteAsync(JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true }));
         }
 
         public string GetSaveTasksToString()
@@ -140,7 +147,7 @@ namespace EasySaveWPFApp.Api
             return false;
         }
 
-        public string DeleteSaveTaskAPI(List<string> names)
+        public string DeleteSaveTasksAPI(List<string> names)
         {
             var result = new Dictionary<string, bool>();
 
@@ -153,5 +160,11 @@ namespace EasySaveWPFApp.Api
             return JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
         }
 
-    }
+        public bool AddSaveTaskAPI(string saveTask)
+        {
+            var data = JsonSerializer.Deserialize<JsonElement>(saveTask);
+            bool isSucessful = saveTaskViewModel.CreateSaveTask(data.GetProperty("name").GetString(), data.GetProperty("sourcePath").GetString(), data.GetProperty("targetPath").GetString(), ESaveTaskTypesExtension.ToESaveTaskTypes(data.GetProperty("type").GetString()));
+            return isSucessful;
+        }
+}
 }
