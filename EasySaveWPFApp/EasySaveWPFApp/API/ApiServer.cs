@@ -22,10 +22,12 @@ namespace EasySaveWPFApp.Api
 
         internal SaveTaskManager saveTaskManager;
         internal SaveTaskViewModel saveTaskViewModel;
-        internal ApiServer(SaveTaskViewModel saveTaskViewModel, SaveTaskManager saveTaskManager)
+        internal SaveTaskProgressViewModel saveTaskProgressViewModel;
+        internal ApiServer(SaveTaskViewModel saveTaskViewModel, SaveTaskManager saveTaskManager, SaveTaskProgressViewModel saveTaskProgressViewModel)
         {
             this.saveTaskManager = saveTaskManager;
             this.saveTaskViewModel = saveTaskViewModel;
+            this.saveTaskProgressViewModel = saveTaskProgressViewModel;
         }
 
         public void Start()
@@ -37,6 +39,7 @@ namespace EasySaveWPFApp.Api
                 })
                 .Configure(app =>
                 {
+
                     app.Use(async (context, next) =>
                     {
                         // 🔥 Ajouter les en-têtes CORS à toutes les réponses
@@ -61,11 +64,11 @@ namespace EasySaveWPFApp.Api
                         {
                             await context.Response.WriteAsync(GetSaveTasksToString());
                         }
-                        else if (context.Request.Path == "/api/sendmodification" && context.Request.Method == "POST")
+                        else if (context.Request.Path == "/api/sendmodification" && context.Request.Method == "PUT")
                         {
                             try
                             {
-                                await SendResponse(context, new { status = ModifySaveTaskAPI(await ReadJsonRequestBody(context)) });
+                                await SendResponse(context, new { status = ModifySaveTaskAPI(await ReadRequestBody(context)) });
                             }
                             catch (Exception ex)
                             {
@@ -73,11 +76,11 @@ namespace EasySaveWPFApp.Api
                                 await context.Response.WriteAsync($"Erreur: {ex.Message}");
                             }
                         }
-                        else if (context.Request.Path == "/api/deletesavetasks" && context.Request.Method == "POST")
+                        else if (context.Request.Path == "/api/deletesavetasks" && context.Request.Method == "DELETE")
                         {
                             try
                             {
-                                await SendResponse(context, DeleteSaveTasksAPI(JsonSerializer.Deserialize<List<string>>(await ReadJsonRequestBody(context))));
+                                await SendResponse(context, DeleteSaveTasksAPI(JsonSerializer.Deserialize<List<string>>(await ReadRequestBody(context))));
                             }
                             catch (Exception ex)
                             {
@@ -89,7 +92,7 @@ namespace EasySaveWPFApp.Api
                         {
                             try
                             {
-                                await SendResponse(context, new { status = AddSaveTaskAPI(await ReadJsonRequestBody(context)) });
+                                await SendResponse(context, new { status = AddSaveTaskAPI(await ReadRequestBody(context)) });
                             }
                             catch (Exception ex)
                             {
@@ -101,7 +104,19 @@ namespace EasySaveWPFApp.Api
                         {
                             try
                             {
-                                await SendResponse(context, RunSaveTasks(JsonSerializer.Deserialize<List<string>>(await ReadJsonRequestBody(context))));
+                                await SendResponse(context, RunSaveTasks(JsonSerializer.Deserialize<List<string>>(await ReadRequestBody(context))));
+                            }
+                            catch (Exception ex)
+                            {
+                                context.Response.StatusCode = 400;
+                                await context.Response.WriteAsync($"Erreur: {ex.Message}");
+                            }
+                        }
+                        else if (context.Request.Path == "/api/pausesavetasks" && context.Request.Method == "POST")
+                        {
+                            try
+                            {
+                                await SendResponse(context, PauseSaveTasks(await ReadRequestBody(context)));
                             }
                             catch (Exception ex)
                             {
@@ -128,7 +143,7 @@ namespace EasySaveWPFApp.Api
             }
         }
 
-        public async Task<dynamic> ReadJsonRequestBody(HttpContext context)
+        public async Task<dynamic> ReadRequestBody(HttpContext context)
         {
             using var reader = new StreamReader(context.Request.Body);
             var body = await reader.ReadToEndAsync();
@@ -210,5 +225,30 @@ namespace EasySaveWPFApp.Api
 
             return JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
         }
+
+        public bool PauseSaveTasks(List<SaveTask> names)
+        {
+            try
+            {
+                saveTaskProgressViewModel.PauseSaveTasks(names);
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+        //public bool StopSaveTasks(List<SaveTask> names)
+        //{
+        //    try
+        //    {
+        //        saveTaskProgressViewModel.PauseSaveTasks(names);
+        //        return true;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

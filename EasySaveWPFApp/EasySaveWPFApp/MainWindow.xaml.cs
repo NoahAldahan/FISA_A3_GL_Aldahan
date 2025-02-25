@@ -15,6 +15,7 @@ using EasySaveWPFApp.Api;
 using EasySaveWPFApp.Utilities;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace EasySaveWPFApp
 {
@@ -27,6 +28,8 @@ namespace EasySaveWPFApp
         public SaveTaskViewModel saveTaskViewModel;
         SaveTaskWindow saveTaskWindow;
         SaveTaskManager saveTaskManager;
+        SaveTaskProgressViewModel saveTaskProgressViewModel;
+
 
         // ====== AJOUTS POUR LE PROCESS MONITOR ET LA GESTION DE LA POP-UP ======
         // Instance du ProcessMonitor qui va vérifier le processus "cmd"
@@ -43,11 +46,12 @@ namespace EasySaveWPFApp
             saveTaskManager = new SaveTaskManager();
             // ViewModel
             saveTaskViewModel = new SaveTaskViewModel(saveTaskManager);
+            saveTaskProgressViewModel = new SaveTaskProgressViewModel(saveTaskManager.GetSaveTasksClone(), saveTaskManager);
             Closing += saveTaskViewModel.OnWindowClosing;
             //DataContext
             DataContext = saveTaskViewModel;
             InitializeComponent();
-            apiServer = new ApiServer(saveTaskViewModel, saveTaskManager);
+            apiServer = new ApiServer(saveTaskViewModel, saveTaskManager, saveTaskProgressViewModel);
             apiServer.Start();
             // ====== AJOUT : Initialisation et abonnement du ProcessMonitor ======
             processMonitor = new ProcessMonitor();
