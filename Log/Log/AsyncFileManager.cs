@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -69,8 +70,11 @@ namespace Log
                 Trace.WriteLine("before json content");
                 string jsonContent = "";
                 Trace.WriteLine("before serialize");
-                jsonContent = JsonSerializer.Serialize<T>(obj, new JsonSerializerOptions { WriteIndented = true });
-                Trace.WriteLine("before return : serialize");
+                JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+                options.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
+                // serialize
+                jsonContent = JsonSerializer.Serialize<T>(obj, options);
+
                 return jsonContent;
             }
         }

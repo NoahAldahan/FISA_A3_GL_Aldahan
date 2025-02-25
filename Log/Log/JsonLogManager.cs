@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.Json;
@@ -46,15 +47,16 @@ namespace Log
 
             try
             {
-                Trace.WriteLine("Start locked serialize");
+                if (jsonObjectList.Count > 0) Trace.WriteLine(Thread.CurrentThread.ManagedThreadId +  "  Start locked serialize" + jsonObjectList[0].ToString());
+                else Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked serialize jsonobecject list empty");
                 string updatedJson = AsyncFileManager.LockedSerialize(jsonObjectList);
-                Trace.WriteLine("Start locked write all text");
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked write all text");
                 AsyncFileManager.LockedWriteAllText(fileName, updatedJson);
-                Trace.WriteLine("Start locked write all text");
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked write all text");
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex.Message);
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  " + ex.Message);
                 throw new Exception("Log JSON UpdateRealTimeProgression, serialize and write all text");
             }
         }
