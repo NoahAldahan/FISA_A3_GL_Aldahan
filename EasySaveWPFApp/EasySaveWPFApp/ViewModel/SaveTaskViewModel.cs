@@ -103,7 +103,7 @@ namespace EasySaveWPFApp.ViewModel
         internal async Task<Dictionary<string, List<string>>> ExecuteSaveTaskAsync(string name)
         {
             bool DidEverythingSaveCorrectly = await saveTaskManager.ExecuteSaveTaskAsync(name);
-            Trace.WriteLine("ExecuteSaveTaskAsync STVM before IF");
+            Trace.WriteLine("ExecuteSaveTaskAsync STVM before IF :" + DidEverythingSaveCorrectly.ToString());
             if (DidEverythingSaveCorrectly)
             {
                 Trace.WriteLine("ExecuteSaveTaskAsync STVM IF");

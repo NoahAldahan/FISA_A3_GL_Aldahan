@@ -83,7 +83,14 @@ namespace EasySaveWPFApp.Model
         public float BindSaveTaskProgressPercentage
         {
             get => SaveTaskProgressPercentage;
-            set { SaveTaskProgressPercentage = value; OnPropertyChanged(nameof(BindSaveTaskProgressPercentage)); }
+            set {
+
+                if (value > 100.0f) SaveTaskProgressPercentage = 100.0f;
+                else if (value < 0.0f) SaveTaskProgressPercentage = 0.0f; 
+                else if (value == float.NegativeInfinity) SaveTaskProgressPercentage = 0.0f;
+                else if (value == float.PositiveInfinity) SaveTaskProgressPercentage = 100.0f;
+                else SaveTaskProgressPercentage = value; 
+                OnPropertyChanged(nameof(BindSaveTaskProgressPercentage)); }
         }
 
         public string BindSource
@@ -132,6 +139,7 @@ namespace EasySaveWPFApp.Model
             isSoftwareRunning = false;
             SaveTaskProgressPercentage = 0.0f;
             pauseEvent = new ManualResetEventSlim();
+            cancellationTokenSource = new CancellationTokenSource();
             nFilesUnsavedCancelled = 0;
             SetBindState(ERealTimeState.END);
         }
@@ -160,6 +168,7 @@ namespace EasySaveWPFApp.Model
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal async Task<bool> ExecuteSaveAsync(SaveTaskManager saveTaskManager)
         {
+            Trace.WriteLine("ESA");
             cancellationTokenSource = new CancellationTokenSource();
             BindSaveTaskProgressPercentage = 0.0f;
             logDaily.CreateDailyFile();
