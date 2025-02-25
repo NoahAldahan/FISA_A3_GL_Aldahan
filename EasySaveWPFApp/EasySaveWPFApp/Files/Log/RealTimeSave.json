@@ -25,11 +25,11 @@
     "Name": "Test",
     "SourcePath": "C:\\Users\\jeanv\\Documents\\Aller",
     "TargetPath": "C:\\Users\\jeanv\\Documents\\Retour",
-    "State": "Active",
+    "State": "Arr\u00EAt\u00E9e",
     "TotalFilesToCopy": 0,
     "TotalFilesSize": 0,
-    "NbFilesLeftToDo": 0,
-    "Progression": 0,
-    "SaveDate": "2025-02-25T16:03:16.622464+01:00"
+    "NbFilesLeftToDo": -1,
+    "Progression": "Infinity",
+    "SaveDate": "2025-02-25T16:13:13.5976131+01:00"
   }
 ]
