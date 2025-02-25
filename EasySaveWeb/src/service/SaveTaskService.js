@@ -1,12 +1,14 @@
-const API_URL = "https://your-api-url.com/savetasks"; // Remplace par l'URL réelle de ton API
+const API_URL = "http://localhost:5000"; // Remplace par l'URL réelle de ton API
 
 const SaveTaskService = {
   // Récupérer toutes les tâches
   async getAllTasks() {
     try {
-      const response = await fetch(API_URL);
+      const response = await fetch(API_URL + "/api/getsavetasks");
       if (!response.ok) throw new Error("Erreur lors de la récupération des tâches");
-      return await response.json();
+      {
+        return await response.json();
+      }
     } catch (error) {
       console.error("Erreur GET:", error);
       return null;
@@ -17,7 +19,7 @@ const SaveTaskService = {
   async createTask(taskData) 
   {
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(API_URL + "/api/addsavetask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -34,10 +36,10 @@ const SaveTaskService = {
   },
 
   // Mettre à jour une tâche existante
-  async updateTask(taskId, updatedData) {
+  async updateTask(updatedData) {
     try {
-      const response = await fetch(`${API_URL}/${taskId}`, {
-        method: "PUT",
+      const response = await fetch(API_URL + "/api/sendmodification", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json"
         },

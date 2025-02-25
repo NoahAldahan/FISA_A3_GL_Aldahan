@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button } from "@mui/material";
+import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, Select, MenuItem} from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { darkThemePopup } from "../../../MuiTheme/DarkTheme";
+import SaveTaskService from "../../../../service/SaveTaskService";
 
 const SaveTaskPopup = ({statePopupCreate, onClose}) => {
   // 🛠 State pour stocker les valeurs des champs
@@ -27,6 +28,7 @@ const SaveTaskPopup = ({statePopupCreate, onClose}) => {
       alert("Tous les champs doivent être remplis !");
       return;
     }
+    SaveTaskService.createTask(taskData).then().catch();
     handleCreateSaveTask(); // Envoie les données au parent
     onClose();
   };
@@ -35,18 +37,9 @@ const SaveTaskPopup = ({statePopupCreate, onClose}) => {
     <ThemeProvider theme={darkThemePopup}>
       <Dialog open={statePopupCreate} onClose={onClose} fullWidth maxWidth="sm">
         <DialogTitle>Créer une tâche</DialogTitle>
-        <DialogContent>
-          <TextField
-            fullWidth
-            label="Type de Sauvegarde"
-            variant="outlined"
-            margin="dense"
-            name="type"
-            value={taskData.type}
-            onChange={handleChange}
-          />
-          <TextField
-            fullWidth
+        <DialogContent sx={{ display: "flex",flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center"}}>
+          <TextField    
+            sx={{width: "60%"}}
             label="Nom de la tâche"
             variant="outlined"
             margin="dense"
@@ -55,7 +48,7 @@ const SaveTaskPopup = ({statePopupCreate, onClose}) => {
             onChange={handleChange}
           />
           <TextField
-            fullWidth
+            sx={{width: "60%"}}
             label="Chemin Source"
             variant="outlined"
             margin="dense"
@@ -64,7 +57,7 @@ const SaveTaskPopup = ({statePopupCreate, onClose}) => {
             onChange={handleChange}
           />
           <TextField
-            fullWidth
+            sx={{width: "60%"}}
             label="Chemin Cible"
             variant="outlined"
             margin="dense"
@@ -72,6 +65,16 @@ const SaveTaskPopup = ({statePopupCreate, onClose}) => {
             value={taskData.targetPath}
             onChange={handleChange}
           />
+        <Select
+            sx={{width: "60%"}}
+            variant="outlined"
+            name="type"
+            value={taskData.type}
+            onChange={handleChange}
+            >
+            <MenuItem value="Complete">Complete</MenuItem>
+            <MenuItem value="Differential">Différentiel</MenuItem>
+        </Select>
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose} color="secondary">

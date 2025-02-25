@@ -37,9 +37,27 @@ namespace EasySaveWPFApp.Api
                 })
                 .Configure(app =>
                 {
+                    app.Use(async (context, next) =>
+                    {
+                        // 🔥 Ajouter les en-têtes CORS à toutes les réponses
+                        context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                        context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                        context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+                        // ✅ Répondre immédiatement aux requêtes OPTIONS pour éviter le blocage CORS
+                        if (context.Request.Method == "OPTIONS")
+                        {
+                            context.Response.StatusCode = 200; // Répondre avec un statut OK
+                            await context.Response.WriteAsync(""); // Répondre avec un corps vide
+                            return; // 🔥 Important : Empêche d'aller plus loin
+                        }
+
+                        await next(); // Continuer vers les autres middlewares
+                    });
                     app.Run(async context =>
                     {
-                        if (context.Request.Path == "/api/getsavetasks" && context.Request.Method == "PUT")
+
+                        if (context.Request.Path == "/api/getsavetasks" && context.Request.Method == "GET")
                         {
                             await context.Response.WriteAsync(GetSaveTasksToString());
                         }
@@ -133,13 +151,13 @@ namespace EasySaveWPFApp.Api
                 {
                     case null:
                         return false;
-                    case "Name":
+                    case "name":
                         return saveTaskViewModel.ModifySaveTaskName(data.GetProperty("name").GetString(), data.GetProperty("newvalue").GetString());
-                    case "TargetPath":
+                    case "targetPath":
                         return saveTaskViewModel.ModifySaveTaskTargetPath(data.GetProperty("name").GetString(), data.GetProperty("newvalue").GetString());
-                    case "SourcePath":
+                    case "sourcePath":
                         return saveTaskViewModel.ModifySaveTaskSourcePath(data.GetProperty("name").GetString(), data.GetProperty("newvalue").GetString());
-                    case "Type":
+                    case "type":
                         return saveTaskViewModel.ModifySaveTaskType(data.GetProperty("name").GetString(), ESaveTaskTypesExtension.ToESaveTaskTypes(data.GetProperty("newvalue").GetString()));
                 }
             }
