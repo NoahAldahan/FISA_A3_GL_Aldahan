@@ -138,6 +138,69 @@ namespace EasySaveWPFApp.Model
         {
             return ESaveTaskTypes.Complete;
         }
+
+
+
+
+        // TEST
+
+
+        private List<string> TestCopyFilesRecursivelyForTwoFolders(DirectoryInfo sourceDirectoryInfo, DirectoryInfo targetDirectoryInfo, SaveTaskManager saveTaskManager)
+        {
+            try
+            {
+                List<string> priorityExtensions = saveTaskManager.GetPriorityExtensions(); // Get the priority extensions
+                HashSet<string> prioritySet = new HashSet<string>(priorityExtensions, StringComparer.OrdinalIgnoreCase);
+
+                // Iterate through all directories in the source and create them in the target.
+                foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
+                {
+                    if (isSoftwareRunning)
+                    {
+                        throw new Exception("Error unauthorized software is running");
+                    }
+                    CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name), saveTaskManager);
+                }
+
+                // Get all files and sort them so that priority files are processed first
+                List<FileInfo> allFiles = sourceDirectoryInfo.GetFiles().ToList();
+                var priorityFiles = allFiles.Where(f => prioritySet.Contains(f.Extension)).ToList();
+                var otherFiles = allFiles.Except(priorityFiles).ToList();
+
+                // Copy priority files first
+                foreach (FileInfo file in priorityFiles)
+                {
+                    TryCopyFile(file, targetDirectoryInfo, saveTaskManager);
+                }
+
+                // Copy remaining files
+                foreach (FileInfo file in otherFiles)
+                {
+                    TryCopyFile(file, targetDirectoryInfo, saveTaskManager);
+                }
+            }
+            catch (Exception e)
+            {
+                UnsavedPaths.Add(sourceDirectoryInfo.FullName);
+            }
+            return UnsavedPaths;
+        }
+
+        private void TryCopyFile(FileInfo file, DirectoryInfo targetDirectoryInfo, SaveTaskManager saveTaskManager)
+        {
+            try
+            {
+                if (isSoftwareRunning)
+                {
+                    throw new Exception("Error unauthorized software is running");
+                }
+                CopySingleFile(file.FullName, Path.Combine(targetDirectoryInfo.FullName, file.Name), saveTaskManager);
+            }
+            catch (Exception e)
+            {
+                UnsavedPaths.Add(file.FullName);
+            }
+        }
     }
 }
 

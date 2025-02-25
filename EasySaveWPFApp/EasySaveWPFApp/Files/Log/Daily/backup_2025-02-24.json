@@ -1756,252 +1756,6 @@
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:39.3655928+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:39.3847742+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:39.8753101+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T16:52:39.8942351+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:43.2391872+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:43.2590539+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:52:43.750498+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:52:43.7683026+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T16:52:44.2632085+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:44.2780314+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:44.7745133+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:44.7901374+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T16:52:48.5227466+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:48.5337395+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:52:49.0327332+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:52:49.0420916+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T16:52:49.5469707+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T16:52:49.5578958+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:50.058831+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:50.0748556+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:54.9000021+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T16:52:54.911259+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:52:55.4093321+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:52:55.4219163+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:55.921712+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 3,
-    "DateTime": "2025-02-24T16:52:55.9365799+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:52:56.4395801+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
     "FileTransferTime": 2,
     "EncryptionTimeMs": 1,
     "DateTime": "2025-02-24T16:52:56.4516366+01:00"
@@ -2094,7 +1848,6 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:53:14.7682012+01:00"
   },
   {
     "Name": "complettest",
@@ -2107,45 +1860,6 @@
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:53:15.2796947+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:53:15.2937845+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:53:15.7899255+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 3,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T16:53:15.8093961+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 2,
     "DateTime": "2025-02-24T16:53:20.5201232+01:00"
@@ -2157,16 +1871,10 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:53:21.0247619+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:53:21.0293985+01:00"
   },
   {
     "Name": "complettest",
@@ -2179,27 +1887,6 @@
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:53:22.5793868+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:53:23.0816938+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 3,
     "DateTime": "2025-02-24T16:53:23.114797+01:00"
@@ -2220,49 +1907,9 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:53:58.2201393+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:53:58.2461917+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:53:58.7348312+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:53:58.7571894+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:53:59.2507287+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 2,
     "DateTime": "2025-02-24T16:53:59.2790744+01:00"
@@ -2283,7 +1930,6 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:55:02.6858963+01:00"
   },
   {
     "Name": "complettest",
@@ -2305,9 +1951,6 @@
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 8,
     "DateTime": "2025-02-24T16:55:50.3330225+01:00"
@@ -2319,16 +1962,10 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:55:50.8296091+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T16:55:50.8589087+01:00"
   },
   {
     "Name": "complettest",
@@ -2350,63 +1987,6 @@
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 3,
-    "DateTime": "2025-02-24T16:55:55.345057+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T16:55:55.8615723+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:56:00.6490302+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 12,
-    "DateTime": "2025-02-24T16:56:01.1837381+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 3,
-    "DateTime": "2025-02-24T16:56:02.7159808+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T16:56:03.2331336+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 2,
     "DateTime": "2025-02-24T17:01:05.8193918+01:00"
@@ -2418,67 +1998,9 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:01:06.3514341+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:01:06.8709444+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:01:07.3874897+01:00"
-  },
-  {
-    "Name": "difftest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:12:37.9378802+01:00"
-  },
-  {
-    "Name": "difftest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T17:15:00.6527471+01:00"
-  },
-  {
-    "Name": "difftest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:15:38.7604402+01:00"
-  },
-  {
-    "Name": "difftest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 3,
-    "DateTime": "2025-02-24T17:18:51.9331212+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 3,
     "DateTime": "2025-02-24T17:25:08.8594113+01:00"
@@ -2499,94 +2021,13 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:25:09.4247702+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:25:09.9153625+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 4,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:25:09.9723723+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 3,
-    "DateTime": "2025-02-24T17:25:10.4780912+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 3,
-    "DateTime": "2025-02-24T17:25:10.495768+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:25:56.6505067+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:25:57.2311198+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T17:25:58.7822966+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 2,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T17:25:58.79449+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 1,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:25:59.299777+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 2,
     "DateTime": "2025-02-24T17:25:59.3148317+01:00"
@@ -2607,22 +2048,9 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:26:52.4431492+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
-    "FileTransferTime": 3,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:26:52.4562769+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 2,
     "DateTime": "2025-02-24T17:26:52.9624735+01:00"
@@ -2670,58 +2098,14 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:26:56.9739006+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\squid.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\squid.txt",
-    "FileSize": 4,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:26:56.989536+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 2,
-    "DateTime": "2025-02-24T17:26:57.4955744+01:00"
   },
   {
     "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\123.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\123.txt",
-    "FileSize": 6,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:26:57.5101058+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 0,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:26:58.0151603+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\abc.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\abc.txt",
-    "FileSize": 10,
-    "FileTransferTime": 2,
-    "EncryptionTimeMs": 1,
-    "DateTime": "2025-02-24T17:26:58.0293648+01:00"
-  },
-  {
-    "Name": "complettest",
-    "FileSource": "C:\\Users\\basti\\Documents\\testGL\\Source\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileTarget": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete\\quoi\\coub\u00E9\\squidgame.txt",
-    "FileSize": 6,
     "FileTransferTime": 1,
     "EncryptionTimeMs": 1,
     "DateTime": "2025-02-24T17:34:18.9253728+01:00"
@@ -2733,6 +2117,5 @@
     "FileSize": 4,
     "FileTransferTime": 0,
     "EncryptionTimeMs": 0,
-    "DateTime": "2025-02-24T17:34:19.4559928+01:00"
   }
 ]
