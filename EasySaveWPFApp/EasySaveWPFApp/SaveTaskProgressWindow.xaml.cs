@@ -13,6 +13,7 @@ using DotNetEnv;
 using EasySaveWPFApp.ViewModel;
 using EasySaveWPFApp.Utilities;
 using System.Collections.ObjectModel;
+using Log;
 
 namespace EasySaveWPFApp
 {

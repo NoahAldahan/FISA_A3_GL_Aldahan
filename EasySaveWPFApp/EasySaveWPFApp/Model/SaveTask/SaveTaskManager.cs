@@ -183,7 +183,8 @@ namespace EasySaveWPFApp.Model
                     //Console.WriteLine("Impossible d'exécuter la sauvegarde car le logiciel métier est en cours d'exécution.");
                     return false;
                 }
-                bool SaveResult = await saveTaskCurrent.SaveAsync(this);
+                // Ajouter une boucle réalisant l'exécution des tâches async deux fois, une fois avec l'état waiting_for_priority_extensions et une fois sans
+                bool SaveResult = await saveTaskCurrent.ExecuteSaveAsync(this);
                 if (SaveResult)
                 {
                     Trace.WriteLine("STM if save result");

@@ -28,7 +28,6 @@ namespace EasySaveWPFApp.Model
         internal override bool Save(SaveTaskManager saveTaskManager)
         {
             BindSaveTaskProgressPercentage = 0.0f;
-            SetBindState(ERealTimeState.ACTIVE);
             logDaily.CreateDailyFile();
             logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
             logDaily.CreateDailyFile();

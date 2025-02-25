@@ -228,4 +228,7 @@
   <data name="SettingsMenu_PriorityExtensionText" xml:space="preserve">
     <value>Extensions prioritaires :</value>
   </data>
+  <data name="SaveTask_StateWaitingForPriorityFiles" xml:space="preserve">
+    <value>En attente</value>
+  </data>
 </root>

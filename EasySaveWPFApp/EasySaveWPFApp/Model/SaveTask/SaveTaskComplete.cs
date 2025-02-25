@@ -30,7 +30,6 @@ namespace EasySaveWPFApp.Model
         internal override bool Save(SaveTaskManager saveTaskManager)
         {
             BindSaveTaskProgressPercentage = 0.0f;
-            SetBindState( ERealTimeState.ACTIVE);
             UnsavedPaths.Clear(); // Clear the list of unsaved paths.
             try
             {

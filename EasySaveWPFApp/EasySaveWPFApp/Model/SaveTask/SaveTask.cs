@@ -70,6 +70,8 @@ namespace EasySaveWPFApp.Model
                         return Resources.Resources.SaveTask_StatePaused;
                     case ERealTimeState.STOPPED:
                         return Resources.Resources.SaveTask_StateStopped;
+                    case ERealTimeState.WAITING_FOR_PRIORITY_FILES:
+                        return Resources.Resources.SaveTask_StateWaitingForPriorityFiles;
                     default:
                         return Resources.Resources.SaveTask_StateINVALID;
                 }
@@ -155,13 +157,17 @@ namespace EasySaveWPFApp.Model
         // Start the task asynchronously 
         // Returns true if the task was successful (all files were saved), false otherwise
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
-        internal async Task<bool> SaveAsync(SaveTaskManager saveTaskManager)
+        internal async Task<bool> ExecuteSaveAsync(SaveTaskManager saveTaskManager)
         {
             cancellationTokenSource = new CancellationTokenSource();
 
-            bool SavedEverything = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
-            Trace.WriteLine(SavedEverything? "Saved everything" : "saved not everything");
-            return SavedEverything;
+            SetBindState(ERealTimeState.WAITING_FOR_PRIORITY_FILES);
+            bool SavedEverythingPriority = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
+            SetBindState(ERealTimeState.ACTIVE);
+            bool SavedEverythingNotPriority = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
+            Trace.WriteLine(SavedEverythingPriority? "Saved everything for priority" : "saved not everything for priority");
+            Trace.WriteLine(SavedEverythingNotPriority ? "Saved everything else" : "saved not everything else");
+            return SavedEverythingPriority && SavedEverythingNotPriority;
         }
 
         // Method that will be called when a single file is copied (called by recursive and non-recursives)
@@ -169,48 +175,55 @@ namespace EasySaveWPFApp.Model
         // Can throw unauthorized access exception
         internal void CopySingleFile(string sourcePath, string targetPath, SaveTaskManager saveTaskManager)
         {
-            //TEMP
-            Trace.WriteLine($"Sleeping");
-            Thread.Sleep(500);
-            Trace.WriteLine($"Finished Sleeping");
-
-            if (state == ERealTimeState.STOPPED)
-                cancellationTokenSource.Token.ThrowIfCancellationRequested(); // Check if cancellation is requested
-            else if (state == ERealTimeState.PAUSED)
-                pauseEvent.Wait(); // This will pause the task if paused
-            else if (state != ERealTimeState.ACTIVE)
-                throw new Exception("Invalid state during file copy");
-
-
-            logDaily.stopWatch.Restart(); // Démarrer le chrono pour la copie
-            File.Copy(sourcePath, targetPath, true); // Copier le fichier
-            logDaily.stopWatch.Stop(); // Arrêter le chrono après la copie
-
-            long encryptionTime = 0; // Par défaut, pas de cryptage
-
-            // Vérifier si le fichier doit être crypté
-            if (saveTaskManager.GetEncryptingExtensions().Contains(Path.GetExtension(targetPath)))
+            string extension = Path.GetExtension(sourcePath);
+            List<string> priorityExtensions = saveTaskManager.GetPriorityExtensions();
+            
+            // Vérifier si le file extension du fichier copié appartient à la liste des priority extensions et qu'on cherche à sauvegarder les fichiers prioritaires
+            if ( (state != ERealTimeState.WAITING_FOR_PRIORITY_FILES && priorityExtensions.Contains(extension)) ||
+                (state == ERealTimeState.WAITING_FOR_PRIORITY_FILES && !priorityExtensions.Contains(extension)))
             {
-                try
+                Trace.WriteLine($"Sleeping");
+                Thread.Sleep(500);
+                Trace.WriteLine($"Finished Sleeping");
+
+                if (state == ERealTimeState.STOPPED)
+                    cancellationTokenSource.Token.ThrowIfCancellationRequested(); // Check if cancellation is requested
+                else if (state == ERealTimeState.PAUSED)
+                    pauseEvent.Wait(); // This will pause the task if paused
+                else if (state != ERealTimeState.ACTIVE)
+                    throw new Exception("Invalid state during file copy");
+
+
+                logDaily.stopWatch.Restart(); // Démarrer le chrono pour la copie
+                File.Copy(sourcePath, targetPath, true); // Copier le fichier
+                logDaily.stopWatch.Stop(); // Arrêter le chrono après la copie
+
+                long encryptionTime = 0; // Par défaut, pas de cryptage
+
+                // Vérifier si le fichier doit être crypté
+                if (saveTaskManager.GetEncryptingExtensions().Contains(Path.GetExtension(targetPath)))
                 {
-                    Stopwatch encryptionStopwatch = Stopwatch.StartNew(); // Démarrer le chrono pour le cryptage
-                    CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, JsonManager.EncryptionKey);
-                    encryptionStopwatch.Stop(); // Arrêter le chrono après le cryptage
-                    encryptionTime = encryptionStopwatch.ElapsedMilliseconds; // Temps de cryptage en ms
+                    try
+                    {
+                        Stopwatch encryptionStopwatch = Stopwatch.StartNew(); // Démarrer le chrono pour le cryptage
+                        CryptoSoftLibrary.CryptoSoftLibrary.EncryptFile(targetPath, JsonManager.EncryptionKey);
+                        encryptionStopwatch.Stop(); // Arrêter le chrono après le cryptage
+                        encryptionTime = encryptionStopwatch.ElapsedMilliseconds; // Temps de cryptage en ms
+                    }
+                    catch (Exception ex)
+                    {
+                        encryptionTime = -1; // Code erreur par défaut
+                        Trace.WriteLine($"Erreur lors du cryptage du fichier {targetPath} : {ex.Message}");
+                    }
                 }
-                catch (Exception ex)
-                {
-                    encryptionTime = -1; // Code erreur par défaut
-                    Trace.WriteLine($"Erreur lors du cryptage du fichier {targetPath} : {ex.Message}");
-                }
+
+                // Enregistrer dans le log avec le temps de cryptage
+                logDaily.AddDailyInfo(name, sourcePath, targetPath, encryptionTime, (int)LogUtilities.GetLogFormat());
+                logRealTime.UpdateRealTimeProgress((int)LogUtilities.GetLogFormat());
+
+                UpdateProgress();
+                Trace.WriteLine($"Successfully copied file, new progress :" + SaveTaskProgressPercentage.ToString());
             }
-
-            // Enregistrer dans le log avec le temps de cryptage
-            logDaily.AddDailyInfo(name, sourcePath, targetPath, encryptionTime,(int)LogUtilities.GetLogFormat());
-            logRealTime.UpdateRealTimeProgress((int)LogUtilities.GetLogFormat());
-
-            UpdateProgress();
-            Trace.WriteLine($"Successfully copied file, new progress :" + SaveTaskProgressPercentage.ToString());
         }
         // Updates Save task progress
         internal void UpdateProgress()

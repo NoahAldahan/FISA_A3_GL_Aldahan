@@ -151,7 +151,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Active.
+        ///   Recherche une chaîne localisée semblable à Active.
         /// </summary>
         public static string SaveTask_StateActive {
             get {
@@ -160,7 +160,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Finie.
+        ///   Recherche une chaîne localisée semblable à Finie.
         /// </summary>
         public static string SaveTask_StateEnd {
             get {
@@ -169,7 +169,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erreur.
+        ///   Recherche une chaîne localisée semblable à Erreur.
         /// </summary>
         public static string SaveTask_StateError {
             get {
@@ -178,7 +178,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Etat invalide.
+        ///   Recherche une chaîne localisée semblable à Etat invalide.
         /// </summary>
         public static string SaveTask_StateINVALID {
             get {
@@ -187,7 +187,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En pause.
+        ///   Recherche une chaîne localisée semblable à En pause.
         /// </summary>
         public static string SaveTask_StatePaused {
             get {
@@ -196,7 +196,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Arrêtée.
+        ///   Recherche une chaîne localisée semblable à Arrêtée.
         /// </summary>
         public static string SaveTask_StateStopped {
             get {
@@ -205,7 +205,16 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mettre en pause la sélection.
+        ///   Recherche une chaîne localisée semblable à En attente.
+        /// </summary>
+        public static string SaveTask_StateWaitingForPriorityFiles {
+            get {
+                return ResourceManager.GetString("SaveTask_StateWaitingForPriorityFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mettre en pause la sélection.
         /// </summary>
         public static string SaveTaskProgress_PauseSelectedButton {
             get {
@@ -214,7 +223,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recommencer la sélection.
+        ///   Recherche une chaîne localisée semblable à Recommencer la sélection.
         /// </summary>
         public static string SaveTaskProgress_PlaySelectedButton {
             get {
@@ -223,7 +232,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Progression.
+        ///   Recherche une chaîne localisée semblable à Progression.
         /// </summary>
         public static string SaveTaskProgress_ProgressColumnTitle {
             get {
@@ -232,7 +241,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Etat.
+        ///   Recherche une chaîne localisée semblable à Etat.
         /// </summary>
         public static string SaveTaskProgress_StateColumnTitle {
             get {
@@ -241,7 +250,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stopper la sélection.
+        ///   Recherche une chaîne localisée semblable à Stopper la sélection.
         /// </summary>
         public static string SaveTaskProgress_StopSelectedButton {
             get {
@@ -250,7 +259,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Travail(s) de sauvegarde en cours.
+        ///   Recherche une chaîne localisée semblable à Travail(s) de sauvegarde en cours.
         /// </summary>
         public static string SaveTaskProgress_Title {
             get {
@@ -259,7 +268,7 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Annuler.
+        ///   Recherche une chaîne localisée semblable à Annuler.
         /// </summary>
         public static string SettingsMenu_CancelButtonText {
             get {
