@@ -193,7 +193,10 @@ namespace EasySaveWPFApp.Model
                 Trace.WriteLine("Finished Sleeping");
 
                 if (state == ERealTimeState.STOPPED)
+                {
+                    Trace.WriteLine("throwExceptionStopped");
                     cancellationTokenSource.Token.ThrowIfCancellationRequested(); // Check if cancellation is requested
+                }
                 else if (state == ERealTimeState.PAUSED)
                     pauseEvent.Wait(); // This will pause the task if paused
                 else if (state != ERealTimeState.ACTIVE && state != ERealTimeState.WAITING_FOR_PRIORITY_FILES)
