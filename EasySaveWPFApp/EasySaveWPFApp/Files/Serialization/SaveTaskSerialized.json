@@ -1,1 +1,1 @@
-[{"$type":"SaveTaskComplete","CurrentDirectoryPair":{"SourcePath":"c:\\ee","TargetPath":"c:\\eerehe"},"BindName":"ttt","BindSource":"c:\\ee","BindDestination":"c:\\eerehe","BindSaveTaskType":2,"name":"ttt"}]
+[{"$type":"SaveTaskComplete","CurrentDirectoryPair":{"SourcePath":"C:\\Users\\Travail\\Desktop\\Source","TargetPath":"C:\\Users\\Travail\\Desktop\\Target"},"BindName":"ttt","BindState":"Finie","BindSaveTaskProgressPercentage":100,"BindSource":"C:\\Users\\Travail\\Desktop\\Source","BindDestination":"C:\\Users\\Travail\\Desktop\\Target","BindSaveTaskType":2,"name":"ttt"}]

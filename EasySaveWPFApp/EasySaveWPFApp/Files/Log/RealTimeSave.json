@@ -31,5 +31,16 @@
     "NbFilesLeftToDo": 0,
     "Progression": 100,
     "SaveDate": "2025-02-25T09:58:53.9901274+01:00"
+  },
+  {
+    "Name": "ttt",
+    "SourcePath": "C:\\Users\\Travail\\Desktop\\Source",
+    "TargetPath": "C:\\Users\\Travail\\Desktop\\Target",
+    "State": "END",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 55439,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-25T16:07:19.3038286+01:00"
   }
 ]

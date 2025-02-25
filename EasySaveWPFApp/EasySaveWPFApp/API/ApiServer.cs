@@ -79,6 +79,18 @@ namespace EasySaveWPFApp.Api
                                 await context.Response.WriteAsync($"Erreur: {ex.Message}");
                             }
                         }
+                        else if (context.Request.Path == "/api/executesavetasks" && context.Request.Method == "POST")
+                        {
+                            try
+                            {
+                                await SendResponse(context, RunSaveTasks(JsonSerializer.Deserialize<List<string>>(await ReadJsonRequestBody(context))));
+                            }
+                            catch (Exception ex)
+                            {
+                                context.Response.StatusCode = 400;
+                                await context.Response.WriteAsync($"Erreur: {ex.Message}");
+                            }
+                        }
                         else
                         {
                             context.Response.StatusCode = 404;
@@ -166,5 +178,19 @@ namespace EasySaveWPFApp.Api
             bool isSucessful = saveTaskViewModel.CreateSaveTask(data.GetProperty("name").GetString(), data.GetProperty("sourcePath").GetString(), data.GetProperty("targetPath").GetString(), ESaveTaskTypesExtension.ToESaveTaskTypes(data.GetProperty("type").GetString()));
             return isSucessful;
         }
-}
+
+        public async Task<string> RunSaveTasks(List<string> names)
+        {
+            var result = new Dictionary<string, bool>();
+            bool isSuccessful;
+
+            foreach (var name in names)
+            {
+                isSuccessful = await saveTaskManager.ExecuteSaveTaskAsync(name);
+                result[name] = isSuccessful; // Ajout de l'état de la tâche
+            }
+
+            return JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true });
+        }
+    }
 }
