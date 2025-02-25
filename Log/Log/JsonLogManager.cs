@@ -121,11 +121,16 @@ namespace Log
             {
                 foreach (var file in LogDailyDirectory.GetFiles("*.json").OrderByDescending(f => f.CreationTime))
                 {
+                    Trace.WriteLine($"JSON startforeach last save date");
                     string jsonContent = AsyncFileManager.LockedReadAllText(file.FullName);
+                    Trace.WriteLine("jsonContent");
                     List<DailyInfo> entities = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(jsonContent);
+                    Trace.WriteLine("entities = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(jsonContent");
                     DailyInfo foundEntity = entities.Find(e => e.FileSource == FilePath);
+                    Trace.WriteLine("foundEntity = entities.Find(e => e.FileSource == FilePath);");
                     if (foundEntity.DateTime != null)
                     {
+                        Trace.WriteLine($"{foundEntity.DateTime.ToString()}");
                         return foundEntity.DateTime;
                     }
                     else
@@ -133,12 +138,13 @@ namespace Log
                         continue;
                     }
                 }
+                Trace.WriteLine("return min value");
                 return DateTime.MinValue;
                 
             }
             catch(Exception ex)
             {
-                Console.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
+                Trace.WriteLine("Erreur lors de la recherche de dernière sauvegarde. {ex}");
                 return DateTime.MinValue;
             }
         }

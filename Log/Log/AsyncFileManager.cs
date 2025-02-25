@@ -70,7 +70,7 @@ namespace Log
                 string jsonContent = "";
                 Trace.WriteLine("before serialize");
                 jsonContent = JsonSerializer.Serialize<T>(obj, new JsonSerializerOptions { WriteIndented = true });
-                Trace.WriteLine("before return : serialize :" + jsonContent);
+                Trace.WriteLine("before return : serialize");
                 return jsonContent;
             }
         }

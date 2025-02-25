@@ -229,6 +229,6 @@
     <value>Extensions prioritaires :</value>
   </data>
   <data name="SaveTask_StateWaitingForPriorityFiles" xml:space="preserve">
-    <value>En attente</value>
+    <value>Copie priorité</value>
   </data>
 </root>

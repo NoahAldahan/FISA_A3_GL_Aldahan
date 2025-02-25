@@ -29,8 +29,6 @@ namespace EasySaveWPFApp.Model
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal override bool Save(SaveTaskManager saveTaskManager)
         {
-            BindSaveTaskProgressPercentage = 0.0f;
-            UnsavedPaths.Clear(); // Clear the list of unsaved paths.
             try
             {
                 FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -47,17 +45,15 @@ namespace EasySaveWPFApp.Model
                 return false;
             }
             UnsavedPaths = SaveComplete(saveTaskManager); // Perform the complete save process.
-            if (state != ERealTimeState.STOPPED) SetBindState(ERealTimeState.END);
+            if (state != ERealTimeState.STOPPED && state != ERealTimeState.WAITING_FOR_PRIORITY_FILES) SetBindState(ERealTimeState.END);
 
+            Trace.WriteLine("EndSave");
             return (UnsavedPaths.Count() == 0);
         }
 
         // Performs the complete backup by copying files from source to target.
         private List<string> SaveComplete(SaveTaskManager saveTaskManager)
         {
-            logDaily.CreateDailyFile();
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
-
             try
             {
                 // Get file attributes to determine if the source and target are directories or files.

@@ -27,11 +27,6 @@ namespace EasySaveWPFApp.Model
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal override bool Save(SaveTaskManager saveTaskManager)
         {
-            BindSaveTaskProgressPercentage = 0.0f;
-            logDaily.CreateDailyFile();
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Differential);
-            logDaily.CreateDailyFile();
-            UnsavedPaths.Clear();
             try
             {
                 Trace.WriteLine("savediff starting try");
@@ -45,7 +40,7 @@ namespace EasySaveWPFApp.Model
                 //TODO : Show canceled files number in log
                 nFilesUnsavedCancelled = logRealTime.GetTotalFilesLeftToDo();
             }
-            if (state != ERealTimeState.STOPPED) SetBindState(ERealTimeState.END);
+            if (state != ERealTimeState.STOPPED && state != ERealTimeState.WAITING_FOR_PRIORITY_FILES) SetBindState(ERealTimeState.END);
             return (UnsavedPaths.Count() == 0);
         }
 
@@ -70,9 +65,11 @@ namespace EasySaveWPFApp.Model
                     // If the file doesn't exist or the source file is more recent than the target file
                     // We use targetFileInfo.FullName instead of TargetPath because we need the full path of the file
                     // (with the name of the file appended) that is going to be created or updated
-                    if (!File.Exists(targetFileInfo.FullName)
-                        || sourceFileInfo.LastWriteTime > JsonLogManager.GetLastSaveDateFromJson(this.logDaily.LogDailyPath, sourceFileInfo.FullName)
-                        || sourceFileInfo.LastWriteTime > XmlLogManager.GetLastSaveDateFromXml(this.logDaily.LogDailyPath, sourceFileInfo.FullName))
+                    DateTime JSONLastDate = JsonLogManager.GetLastSaveDateFromJson(this.logDaily.LogDailyPath, sourceFileInfo.FullName);
+                    DateTime XMLLastDate = XmlLogManager.GetLastSaveDateFromXml(this.logDaily.LogDailyPath, sourceFileInfo.FullName);
+                    DateTime MostRecent = JSONLastDate > XMLLastDate ? JSONLastDate : XMLLastDate;
+
+                    if (!File.Exists(targetFileInfo.FullName) || (sourceFileInfo.LastWriteTime > MostRecent))
                     {
                         Trace.WriteLine("before copy single file");
                         CopySingleFile(SourcePath, targetFileInfo.FullName, saveTaskManager);
