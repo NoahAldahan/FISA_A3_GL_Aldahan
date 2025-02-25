@@ -10,6 +10,7 @@ using EasySaveWPFApp.Model;
 using System.Text.Json.Nodes;
 using Log;
 using System.Collections.ObjectModel;
+using CryptoSoftLibrary;
 
 namespace EasySaveWPFApp.Utilities
 {
@@ -41,7 +42,7 @@ namespace EasySaveWPFApp.Utilities
             try
             {
                 // Read and parse JSON file
-                string jsonContent = File.ReadAllText(AppSettingsPath);
+                string jsonContent = AsyncFileManager.LockedReadAllText(AppSettingsPath);
                 JsonDocument doc = JsonDocument.Parse(jsonContent);
                 JsonElement root = doc.RootElement;
 
@@ -62,8 +63,7 @@ namespace EasySaveWPFApp.Utilities
             {
                 // Serialize the list of save tasks to a JSON format
                 string jsonContent = JsonSerializer.Serialize(SaveTasks);
-                File.WriteAllText(SaveTaskSerializationPath, jsonContent);
-
+                AsyncFileManager.LockedWriteAllText(SaveTaskSerializationPath, jsonContent);
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace EasySaveWPFApp.Utilities
             try
             {
                 // Read JSON file content
-                jsonContent = File.ReadAllText(SaveTaskSerializationPath);
+                jsonContent = AsyncFileManager.LockedReadAllText(SaveTaskSerializationPath);
 
                 // If the file is empty, return an empty list
                 if (jsonContent == "")
@@ -112,7 +112,7 @@ namespace EasySaveWPFApp.Utilities
                 // Serialize the list of save tasks to a JSON format
                 string jsonContent = JsonSerializer.Serialize(EncryptingExtensions);
                 string path = EncryptingExtensionsSerializationPath;
-                File.WriteAllText(EncryptingExtensionsSerializationPath, jsonContent);
+                AsyncFileManager.LockedWriteAllText(EncryptingExtensionsSerializationPath, jsonContent);
             }
             catch (Exception ex)
             {
@@ -128,8 +128,7 @@ namespace EasySaveWPFApp.Utilities
             try
             {
                 // Read JSON file content
-                jsonContent = File.ReadAllText(EncryptingExtensionsSerializationPath);
-
+                jsonContent = AsyncFileManager.LockedReadAllText(EncryptingExtensionsSerializationPath); 
                 // If the file is empty, return an empty list
                 if (jsonContent == "")
                 {

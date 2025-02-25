@@ -127,7 +127,7 @@
     <value>Switch type</value>
   </data>
   <data name="MainWindow_NameColumnTitle" xml:space="preserve">
-    <value> Nom</value>
+    <value>Name</value>
   </data>
   <data name="MainWindow_SelectColumnTitle" xml:space="preserve">
     <value>Select</value>
@@ -182,5 +182,41 @@
   </data>
   <data name="SettingsMenu_FrenchButtonText" xml:space="preserve">
     <value>French</value>
+  </data>
+  <data name="SaveTaskProgress_Title" xml:space="preserve">
+    <value>Save task(s) launched</value>
+  </data>
+  <data name="SaveTaskProgress_ProgressColumnTitle" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="SaveTaskProgress_PlaySelectedButton" xml:space="preserve">
+    <value>Play selected</value>
+  </data>
+  <data name="SaveTaskProgress_StopSelectedButton" xml:space="preserve">
+    <value>Stop selected</value>
+  </data>
+  <data name="SaveTaskProgress_PauseSelectedButton" xml:space="preserve">
+    <value>Pause selected</value>
+  </data>
+  <data name="SaveTaskProgress_StateColumnTitle" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="SaveTask_StateActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="SaveTask_StateINVALID" xml:space="preserve">
+    <value>Invalid state</value>
+  </data>
+  <data name="SaveTask_StateError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="SaveTask_StateEnd" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="SaveTask_StateStopped" xml:space="preserve">
+    <value>Stopped</value>
+  </data>
+  <data name="SaveTask_StatePaused" xml:space="preserve">
+    <value>Paused</value>
   </data>
 </root>

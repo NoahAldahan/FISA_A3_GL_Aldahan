@@ -183,4 +183,40 @@
   <data name="SettingsMenu_FrenchButtonText" xml:space="preserve">
     <value>Français</value>
   </data>
+  <data name="SaveTaskProgress_Title" xml:space="preserve">
+    <value>Travail(s) de sauvegarde en cours</value>
+  </data>
+  <data name="SaveTaskProgress_ProgressColumnTitle" xml:space="preserve">
+    <value>Progression</value>
+  </data>
+  <data name="SaveTaskProgress_PlaySelectedButton" xml:space="preserve">
+    <value>Recommencer la sélection</value>
+  </data>
+  <data name="SaveTaskProgress_StopSelectedButton" xml:space="preserve">
+    <value>Stopper la sélection</value>
+  </data>
+  <data name="SaveTaskProgress_PauseSelectedButton" xml:space="preserve">
+    <value>Mettre en pause la sélection</value>
+  </data>
+  <data name="SaveTaskProgress_StateColumnTitle" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="SaveTask_StateActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="SaveTask_StateINVALID" xml:space="preserve">
+    <value>Etat invalide</value>
+  </data>
+  <data name="SaveTask_StateError" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="SaveTask_StateEnd" xml:space="preserve">
+    <value>Finie</value>
+  </data>
+  <data name="SaveTask_StateStopped" xml:space="preserve">
+    <value>Arrêtée</value>
+  </data>
+  <data name="SaveTask_StatePaused" xml:space="preserve">
+    <value>En pause</value>
+  </data>
 </root>

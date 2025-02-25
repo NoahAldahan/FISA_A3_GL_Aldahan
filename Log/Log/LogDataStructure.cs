@@ -10,17 +10,21 @@ namespace Log
 
     public enum ERealTimeState
     {
-        ACTIVE = 0,
-        END = 1,
-        ERROR = 2,
+        PAUSED = 0,
+        ACTIVE = 1,
+        STOPPED = 2,
+        END = 3,
+        ERROR = 4,
     }
 
     public static class ERealTimeStateExstensions
     {
         private static readonly Dictionary<ERealTimeState, string> MessageStrings = new Dictionary<ERealTimeState, string> {
-            { ERealTimeState.ACTIVE, "ACTIVE" },
+            { ERealTimeState.PAUSED, "Paused" },
+            { ERealTimeState.ACTIVE , "Active" },
+            { ERealTimeState.STOPPED, "Stopped" },
             { ERealTimeState.END, "END" },
-            {ERealTimeState.ERROR , "Error" },
+            { ERealTimeState.ERROR , "Error" },
         };
 
         internal static string GetValue(this ERealTimeState message)

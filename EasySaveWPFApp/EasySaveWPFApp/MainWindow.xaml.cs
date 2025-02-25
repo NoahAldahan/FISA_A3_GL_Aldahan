@@ -14,6 +14,7 @@ using EasySaveWPFApp.ViewModel;
 using EasySaveWPFApp.Model;
 using EasySaveWPFApp.Utilities;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace EasySaveWPFApp
 {
@@ -47,9 +48,17 @@ namespace EasySaveWPFApp
         private void StartSelected_Click(object sender, RoutedEventArgs e)
         { 
             var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
-            foreach (var row in selectedRows) 
+
+            if (selectedRows.Count == 0) return;
+
+            SaveTaskProgressWindow SaveTaskProgressWindow = new SaveTaskProgressWindow(selectedRows, saveTaskViewModel, saveTaskManager);
+            try
             {
-                saveTaskViewModel.ExecuteSaveTask(row.name);
+                SaveTaskProgressWindow.ShowDialog();
+            }
+            catch
+            {
+                SaveTaskProgressWindow.Close();
             }
         }
 
