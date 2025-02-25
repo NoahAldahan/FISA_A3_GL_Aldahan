@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
+using System.Diagnostics;
 
 namespace Log
 {
@@ -180,7 +181,7 @@ namespace Log
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
+                Trace.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
                 return DateTime.MinValue;
             }
         }

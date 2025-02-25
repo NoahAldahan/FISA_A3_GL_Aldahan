@@ -205,6 +205,15 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copie priorité.
+        /// </summary>
+        public static string SaveTask_StateWaitingForPriorityFiles {
+            get {
+                return ResourceManager.GetString("SaveTask_StateWaitingForPriorityFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mettre en pause la sélection.
         /// </summary>
         public static string SaveTaskProgress_PauseSelectedButton {
@@ -268,6 +277,15 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmer.
+        /// </summary>
+        public static string SettingsMenu_EncryptingExtensionsValidateButtonText {
+            get {
+                return ResourceManager.GetString("SettingsMenu_EncryptingExtensionsValidateButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extensions à crypter :.
         /// </summary>
         public static string SettingsMenu_EncryptingExtensionText {
@@ -286,20 +304,20 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrez une extension à rajouter à la liste.
+        ///   Looks up a localized string similar to Entrez une extension à rajouter à la liste d&apos;extensions à crypter :.
         /// </summary>
-        public static string SettingsMenu_EnterExtensionPromptText {
+        public static string SettingsMenu_EnterEncryptingExtensionPromptText {
             get {
-                return ResourceManager.GetString("SettingsMenu_EnterExtensionPromptText", resourceCulture);
+                return ResourceManager.GetString("SettingsMenu_EnterEncryptingExtensionPromptText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirmer.
+        ///   Looks up a localized string similar to Entrez une extension à rajouter à la liste d&apos;extensions prioritaires :.
         /// </summary>
-        public static string SettingsMenu_ExtensionsValidateButtonText {
+        public static string SettingsMenu_EnterPriorityExtensionPromptText {
             get {
-                return ResourceManager.GetString("SettingsMenu_ExtensionsValidateButtonText", resourceCulture);
+                return ResourceManager.GetString("SettingsMenu_EnterPriorityExtensionPromptText", resourceCulture);
             }
         }
         
@@ -336,6 +354,24 @@ namespace EasySaveWPFApp.Resources {
         public static string SettingsMenu_LogFormatText {
             get {
                 return ResourceManager.GetString("SettingsMenu_LogFormatText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmer.
+        /// </summary>
+        public static string SettingsMenu_PriorityExtensionsValidateButtonText {
+            get {
+                return ResourceManager.GetString("SettingsMenu_PriorityExtensionsValidateButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extensions prioritaires :.
+        /// </summary>
+        public static string SettingsMenu_PriorityExtensionText {
+            get {
+                return ResourceManager.GetString("SettingsMenu_PriorityExtensionText", resourceCulture);
             }
         }
         

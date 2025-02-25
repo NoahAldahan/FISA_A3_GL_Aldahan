@@ -35,6 +35,7 @@ namespace EasySaveWPFApp
             XMLRadioButton.IsChecked = settingsViewModel.ShouldXMLRadioButtonBeChecked();
 
             RefreshEncryptingExtensionsDisplay();
+            RefreshPriorityExtensionsDisplay();
         }
 
         // Language radio buttons
@@ -73,7 +74,7 @@ namespace EasySaveWPFApp
         }
 
         // Validate button for Encrypting extensions
-        private void ValidateExtensionButton(object sender, RoutedEventArgs e)
+        private void ValidateEncryptingExtensionButton(object sender, RoutedEventArgs e)
         {
             string EncryptingExtensionText = EncryptingExtensionTextBox.Text.Trim();
             // TODO : Popup for error message
@@ -117,7 +118,7 @@ namespace EasySaveWPFApp
                 deleteButton.Height = 20;
                 deleteButton.Width = 20;
                 deleteButton.Tag = extension;
-                deleteButton.Click += DeleteExtensionButton_Click;
+                deleteButton.Click += DeleteEncryptingExtensionButton_Click;
                 stackPanel.Children.Add(deleteButton);
 
                 TextBlock textBlock = new TextBlock();
@@ -130,13 +131,84 @@ namespace EasySaveWPFApp
             }
         }
 
-        // Delete an extension from the list of encrypting extensions
-        private void DeleteExtensionButton_Click(object sender, RoutedEventArgs e)
+        // Delete an extension from the list of priority extensions
+        private void DeleteEncryptingExtensionButton_Click(object sender, RoutedEventArgs e)
         {
             Button senderButton = (Button)sender;
             string ExtensionTag = (string)senderButton.Tag;
             settingsViewModel.RemoveEncryptingExtension(ExtensionTag);
             RefreshEncryptingExtensionsDisplay();
         }
+
+
+
+
+        // Validate button for priority extensions
+        private void ValidatePriorityExtensionButton(object sender, RoutedEventArgs e)
+        {
+            string PriorityExtensionText = PriorityExtensionTextBox.Text.Trim();
+            // TODO : Popup for error message
+            bool wasAdded = settingsViewModel.AddPriorityExtension(PriorityExtensionText);
+            PriorityExtensionTextBox.Text = "";
+            RefreshPriorityExtensionsDisplay();
+        }
+
+        // Display the list of priority extensions
+        // Dynamically generates extensions display
+        private void RefreshPriorityExtensionsDisplay()
+        {
+            List<string> priorityExtensions = settingsViewModel.GetNewPriorityExtensions();
+            PriorityExtensionsStackPanel.Children.Clear();
+            foreach (string extension in priorityExtensions)
+            {
+                /*
+                 * <Border BorderBrush="Black" BorderThickness="2" Height="35" Margin="5,0,0,0">
+                      <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                         <Button Content="X" Margin="5,5,5,5" Height ="20" Width="20" Click="Cancel_Click"/>
+                         <TextBlock Text=".doc" Margin="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                      </StackPanel>
+                   </Border>
+                 * */
+                Border border = new Border();
+                border.BorderBrush = Brushes.Black;
+                border.BorderThickness = new Thickness(2);
+                border.Height = 35;
+                border.Margin = new Thickness(5, 0, 0, 0);
+                PriorityExtensionsStackPanel.Children.Add(border);
+
+                StackPanel stackPanel = new StackPanel();
+                stackPanel.Orientation = Orientation.Horizontal;
+                stackPanel.HorizontalAlignment = HorizontalAlignment.Left;
+                stackPanel.VerticalAlignment = VerticalAlignment.Top;
+                border.Child = stackPanel;
+
+                Button deleteButton = new Button();
+                deleteButton.Content = "X";
+                deleteButton.Margin = new Thickness(5);
+                deleteButton.Height = 20;
+                deleteButton.Width = 20;
+                deleteButton.Tag = extension;
+                deleteButton.Click += DeletePriorityExtensionButton_Click;
+                stackPanel.Children.Add(deleteButton);
+
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = extension;
+                textBlock.VerticalAlignment = VerticalAlignment.Center;
+                textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+                textBlock.Margin = new Thickness(5);
+                textBlock.Tag = extension;
+                stackPanel.Children.Add(textBlock);
+            }
+        }
+
+        // Delete an extension from the list of priority extensions
+        private void DeletePriorityExtensionButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button senderButton = (Button)sender;
+            string ExtensionTag = (string)senderButton.Tag;
+            settingsViewModel.RemovePriorityExtension(ExtensionTag);
+            RefreshPriorityExtensionsDisplay();
+        }
+
     }
 }

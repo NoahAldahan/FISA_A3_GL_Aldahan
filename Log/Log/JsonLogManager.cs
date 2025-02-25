@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.Json;
@@ -46,15 +47,16 @@ namespace Log
 
             try
             {
-                Trace.WriteLine("Start locked serialize");
+                if (jsonObjectList.Count > 0) Trace.WriteLine(Thread.CurrentThread.ManagedThreadId +  "  Start locked serialize" + jsonObjectList[0].ToString());
+                else Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked serialize jsonobecject list empty");
                 string updatedJson = AsyncFileManager.LockedSerialize(jsonObjectList);
-                Trace.WriteLine("Start locked write all text");
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked write all text");
                 AsyncFileManager.LockedWriteAllText(fileName, updatedJson);
-                Trace.WriteLine("Start locked write all text");
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked write all text");
             }
             catch (Exception ex)
             {
-                Trace.WriteLine(ex.Message);
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  " + ex.Message);
                 throw new Exception("Log JSON UpdateRealTimeProgression, serialize and write all text");
             }
         }
@@ -121,11 +123,16 @@ namespace Log
             {
                 foreach (var file in LogDailyDirectory.GetFiles("*.json").OrderByDescending(f => f.CreationTime))
                 {
+                    Trace.WriteLine($"JSON startforeach last save date");
                     string jsonContent = AsyncFileManager.LockedReadAllText(file.FullName);
+                    Trace.WriteLine("jsonContent");
                     List<DailyInfo> entities = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(jsonContent);
+                    Trace.WriteLine("entities = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(jsonContent");
                     DailyInfo foundEntity = entities.Find(e => e.FileSource == FilePath);
+                    Trace.WriteLine("foundEntity = entities.Find(e => e.FileSource == FilePath);");
                     if (foundEntity.DateTime != null)
                     {
+                        Trace.WriteLine($"{foundEntity.DateTime.ToString()}");
                         return foundEntity.DateTime;
                     }
                     else
@@ -133,12 +140,13 @@ namespace Log
                         continue;
                     }
                 }
+                Trace.WriteLine("return min value");
                 return DateTime.MinValue;
                 
             }
             catch(Exception ex)
             {
-                Console.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
+                Trace.WriteLine("Erreur lors de la recherche de dernière sauvegarde. {ex}");
                 return DateTime.MinValue;
             }
         }

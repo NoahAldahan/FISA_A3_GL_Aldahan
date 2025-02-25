@@ -15,6 +15,7 @@ namespace Log
         STOPPED = 2,
         END = 3,
         ERROR = 4,
+        WAITING_FOR_PRIORITY_FILES = 5,
     }
 
     public static class ERealTimeStateExstensions
@@ -25,6 +26,7 @@ namespace Log
             { ERealTimeState.STOPPED, "Stopped" },
             { ERealTimeState.END, "END" },
             { ERealTimeState.ERROR , "Error" },
+            { ERealTimeState.WAITING_FOR_PRIORITY_FILES , "Waiting for priority files" },
         };
 
         internal static string GetValue(this ERealTimeState message)
