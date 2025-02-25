@@ -13,6 +13,7 @@ using System.ComponentModel;
 using EasySaveWPFApp.Utilities;
 using System.Threading;
 using DotNetEnv;
+using System.Diagnostics.Eventing.Reader;
 
 namespace EasySaveWPFApp.Model
 {
@@ -162,17 +163,23 @@ namespace EasySaveWPFApp.Model
             cancellationTokenSource = new CancellationTokenSource();
             BindSaveTaskProgressPercentage = 0.0f;
             logDaily.CreateDailyFile();
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)GetSaveTaskType());
+            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.WAITING_FOR_PRIORITY_FILES, (int)GetSaveTaskType());
             UnsavedPaths.Clear();
 
             SetBindState(ERealTimeState.WAITING_FOR_PRIORITY_FILES);
             Trace.WriteLine("StartedPriority");
+            // Set truc en active
             bool SavedEverythingPriority = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
-            SetBindState(ERealTimeState.ACTIVE);
-            Trace.WriteLine("StartedNotPriority");
-            bool SavedEverythingNotPriority = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
-            Trace.WriteLine(SavedEverythingPriority? "Saved everything for priority" : "saved not everything for priority");
-            Trace.WriteLine(SavedEverythingNotPriority ? "Saved everything else" : "saved not everything else");
+            bool SavedEverythingNotPriority = false;
+            if (state != ERealTimeState.ERROR && state != ERealTimeState.PAUSED && state != ERealTimeState.STOPPED)
+            {
+                SetBindState(ERealTimeState.ACTIVE);
+                Trace.WriteLine("StartedNotPriority");
+                SavedEverythingNotPriority = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
+                Trace.WriteLine(SavedEverythingPriority ? "Saved everything for priority" : "saved not everything for priority");
+                Trace.WriteLine(SavedEverythingNotPriority ? "Saved everything else" : "saved not everything else");
+            }
+            logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
             return SavedEverythingPriority && SavedEverythingNotPriority;
         }
 
@@ -193,9 +200,13 @@ namespace EasySaveWPFApp.Model
                 Trace.WriteLine("Finished Sleeping");
 
                 if (state == ERealTimeState.STOPPED)
-                    cancellationTokenSource.Token.ThrowIfCancellationRequested(); // Check if cancellation is requested
+                {
+                    cancellationTokenSource.Token.ThrowIfCancellationRequested();// Check if cancellation is requested
+                }
                 else if (state == ERealTimeState.PAUSED)
+                {
                     pauseEvent.Wait(); // This will pause the task if paused
+                }
                 else if (state != ERealTimeState.ACTIVE && state != ERealTimeState.WAITING_FOR_PRIORITY_FILES)
                     throw new Exception("Invalid state during file copy");
 
@@ -224,7 +235,7 @@ namespace EasySaveWPFApp.Model
 
                 // Enregistrer dans le log avec le temps de cryptage
                 logDaily.AddDailyInfo(name, sourcePath, targetPath, encryptionTime, (int)LogUtilities.GetLogFormat());
-                logRealTime.UpdateRealTimeProgress((int)LogUtilities.GetLogFormat());
+                logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
 
                 UpdateProgress();
                 Trace.WriteLine($"Successfully copied file, new progress :" + SaveTaskProgressPercentage.ToString());
@@ -270,6 +281,7 @@ namespace EasySaveWPFApp.Model
                 && state != ERealTimeState.END && state != ERealTimeState.ERROR)
             {
                 SetBindState(ERealTimeState.PAUSED);
+                logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
                 pauseEvent.Reset(); // Pause the task
             }
         }
@@ -279,6 +291,7 @@ namespace EasySaveWPFApp.Model
             if (state == ERealTimeState.PAUSED)
             {
                 SetBindState(ERealTimeState.ACTIVE);
+                logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
                 pauseEvent.Set(); // Resume the task
             }
         }
@@ -288,6 +301,7 @@ namespace EasySaveWPFApp.Model
             if (state != ERealTimeState.STOPPED && state != ERealTimeState.END && state != ERealTimeState.ERROR)
             {
                 SetBindState(ERealTimeState.STOPPED);
+                logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
                 cancellationTokenSource.Cancel(); // Request cancellation
             }
         }
