@@ -74,6 +74,11 @@ namespace Log
             Progression = progression;
         }
 
+        public void SetState(ERealTimeState newState)
+        {
+            State  = ERealTimeStateExstensions.GetValue(newState);
+        }
+
 
         // Method used to debug logs in the CLI
         public override string ToString()

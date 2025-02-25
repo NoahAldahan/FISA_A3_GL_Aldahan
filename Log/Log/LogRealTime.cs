@@ -96,15 +96,15 @@ namespace Log
             return Tuple.Create(totalFiles, totalFilesSize);
         }
 
-        public void UpdateRealTimeProgress(int logType = 0)
+        public void UpdateRealTimeProgress(string state, int logType = 0)
         {
-
+            realTimeInfo.State = state;
             realTimeInfo.NbFilesLeftToDo -= 1;
             realTimeInfo.Progression += ((1.0 / realTimeInfo.TotalFilesToCopy) * 100);
             if (realTimeInfo.NbFilesLeftToDo == 0)
             {
                 realTimeInfo.Progression = Convert.ToInt32(realTimeInfo.Progression);
-                realTimeInfo.State = ERealTimeState.END.GetValue();
+                // realTimeInfo.State = ERealTimeState.END.GetValue();
             }
             if(logType == 0)
             {

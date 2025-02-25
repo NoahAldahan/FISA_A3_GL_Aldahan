@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfRealTimeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <RealTimeInfo Name="complettest" SourcePath="C:\Users\basti\Documents\testGL\Source" TargetPath="C:\Users\basti\Documents\testGL\TargetComplete" State="END" TotalFilesToCopy="4" TotalFilesSize="26" NbFilesLeftToDo="0" Progression="100" SaveDate="2025-02-20T11:54:43.64257+01:00" />
-  <RealTimeInfo Name="test2comp" SourcePath="C:\Users\basti\Documents\testGL\Source" TargetPath="C:\Users\basti\Documents\testGL\TargetComplete" State="END" TotalFilesToCopy="4" TotalFilesSize="26" NbFilesLeftToDo="0" Progression="100" SaveDate="2025-02-20T11:54:43.7948593+01:00" />
-</ArrayOfRealTimeInfo>
