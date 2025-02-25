@@ -18,7 +18,6 @@ namespace EasySaveWPFApp.Model
         internal SaveTask CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath, string saveTaskName)
         {
             SaveTask saveTask;
-
             // Determine the type of save task to create.
             switch (saveTaskTypes)
             {

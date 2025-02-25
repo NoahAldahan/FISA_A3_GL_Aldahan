@@ -86,16 +86,6 @@ export default function Home() {
           />
         </div>
       </Fade>
-      <Fade visible={bureauxVisible}>
-        <div className="element-bureaux">
-          <HomePageElement
-            title="Nos bureaux"
-            description="Les bureaux de EasySave offrent un environnement moderne et sécurisé, idéal pour le développement de solutions de sauvegarde avancées. L’ambiance de travail est à la fois collaborative et axée sur l’innovation, avec une équipe passionnée par la protection et l’optimisation des données. Les employés évoluent dans un espace technologique de pointe, équipé d’infrastructures performantes garantissant efficacité et confort. L’atmosphère est à la fois professionnelle et conviviale, encourageant le partage des idées et l’amélioration continue des fonctionnalités pour répondre aux besoins des utilisateurs."
-            img={devanture}
-            inversion={true}
-          />
-        </div>
-      </Fade>
     </div>
   );
 }

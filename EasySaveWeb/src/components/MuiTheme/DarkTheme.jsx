@@ -1,6 +1,6 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-const darkTheme = createTheme({
+export const darkThemeDatgrid = createTheme({
     palette: {
       mode: 'dark',
       primary: {
@@ -25,7 +25,7 @@ const darkTheme = createTheme({
     },
     typography: {
       fontFamily: `'Inter', 'Roboto', 'Arial', sans-serif`, // Clean modern fonts
-      fontSize: 14,
+      fontSize: 20,
       button: {
         textTransform: 'none', // Keep button text normal case
       },
@@ -38,7 +38,7 @@ const darkTheme = createTheme({
             color: '#EAEAEA', // Text color
           },
           columnHeaders: {
-            backgroundColor: '#2A2A3C', // Header row background
+            backgroundColor: '#303048', // Header row background
             color: '#FFFFFF', // Header text color
           },
           row: {
@@ -53,7 +53,7 @@ const darkTheme = createTheme({
             },
           },
           footerContainer: {
-            backgroundColor: '#1E1E2F', // Footer background
+            backgroundColor: '#303048', // Footer background
             color: '#FFFFFF', // Footer text color
           },
           checkbox: {
@@ -85,4 +85,19 @@ const darkTheme = createTheme({
   });
   
 
-  export default darkTheme;
+  export const darkThemePopup = createTheme({
+    palette: {
+      mode: "dark",
+      background: {
+        default: "#121212",
+        paper: "#1e1e2e"
+      },
+      primary: {
+        main: "#6a5acd"
+      },
+      text: {
+        primary: "#ffffff",
+        secondary: "#b0b0b0"
+      }
+    }
+  });
