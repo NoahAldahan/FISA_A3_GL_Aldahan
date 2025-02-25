@@ -34,6 +34,7 @@ namespace EasySaveWPFApp
         // Référence à la fenêtre pop-up modale à ouvrir/fermer
         private BusinessSoftwareWindow popupWindow;
         // =====================================================================
+        
 
         public MainWindow()
         {

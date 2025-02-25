@@ -31,5 +31,16 @@
     "NbFilesLeftToDo": 0,
     "Progression": 100,
     "SaveDate": "2025-02-25T09:58:53.9901274+01:00"
+  },
+  {
+    "Name": "Test",
+    "SourcePath": "C:\\Users\\jeanv\\Documents\\Aller",
+    "TargetPath": "C:\\Users\\jeanv\\Documents\\Retour",
+    "State": "Active",
+    "TotalFilesToCopy": 25,
+    "TotalFilesSize": 58847200,
+    "NbFilesLeftToDo": 19,
+    "Progression": 24,
+    "SaveDate": "2025-02-25T15:10:19.9388219+01:00"
   }
 ]

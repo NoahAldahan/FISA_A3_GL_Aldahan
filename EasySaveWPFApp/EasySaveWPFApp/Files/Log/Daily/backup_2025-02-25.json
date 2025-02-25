@@ -736,5 +736,2075 @@
     "FileTransferTime": 1,
     "EncryptionTimeMs": 2,
     "DateTime": "2025-02-25T09:58:56.2670122+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\GuideUtilisateur.pdf",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\GuideUtilisateur.pdf",
+    "FileSize": 76620,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:27.3184921+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:53.6462508+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:54.2962644+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:55.027035+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:55.7497816+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:56.4482843+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 11,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:57.1325934+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:57.8870666+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 13,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:58.5636638+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 82,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:18:59.3402834+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 13,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:19:00.0041826+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:29.4966826+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:30.1463701+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:30.8289101+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:31.6073229+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:32.3650997+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:33.1100937+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:33.8822896+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 16,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:34.6218382+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 79,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:35.4644065+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:36.1845344+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:36.9649629+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:37.7117794+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JKXB8970.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JKXB8970.JPG",
+    "FileSize": 175184,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:38.4386672+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\KCEK0835.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\KCEK0835.JPG",
+    "FileSize": 156270,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:39.2007029+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\LJBH7728.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\LJBH7728.MP4",
+    "FileSize": 1000854,
+    "FileTransferTime": 9,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:39.9490334+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\MIZY9296.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\MIZY9296.JPG",
+    "FileSize": 128638,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:40.7039743+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\OZQD1495.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\OZQD1495.JPG",
+    "FileSize": 200051,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:41.4342303+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RGYC6275.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RGYC6275.MP4",
+    "FileSize": 4003979,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:42.179572+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RWEI3383.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RWEI3383.JPG",
+    "FileSize": 511670,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:43.0271326+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\SPCI3596.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\SPCI3596.MP4",
+    "FileSize": 3864509,
+    "FileTransferTime": 15,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:43.616844+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\STFQ8637.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\STFQ8637.JPG",
+    "FileSize": 188034,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:44.3492399+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\UNRM1052.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\UNRM1052.JPG",
+    "FileSize": 135228,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:45.0627682+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\VJPS3261.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\VJPS3261.JPG",
+    "FileSize": 249955,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:45.8102297+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\XJEV9936.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\XJEV9936.JPG",
+    "FileSize": 570976,
+    "FileTransferTime": 9,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:46.4557779+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\GuideUtilisateur.pdf",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\GuideUtilisateur.pdf",
+    "FileSize": 76620,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:20:47.1780586+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:14.6484242+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:15.3327134+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:16.1106299+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:16.8986389+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:17.5515546+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:18.3194986+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:19.0539805+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 12,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:19.8132311+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 95,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:20.6603085+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:21.4482382+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:22.2314475+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:22.8914265+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JKXB8970.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JKXB8970.JPG",
+    "FileSize": 175184,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:23.6666334+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\KCEK0835.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\KCEK0835.JPG",
+    "FileSize": 156270,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:24.4398657+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\LJBH7728.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\LJBH7728.MP4",
+    "FileSize": 1000854,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:25.2165228+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\MIZY9296.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\MIZY9296.JPG",
+    "FileSize": 128638,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:25.9650186+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\OZQD1495.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\OZQD1495.JPG",
+    "FileSize": 200051,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:26.7150708+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RGYC6275.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RGYC6275.MP4",
+    "FileSize": 4003979,
+    "FileTransferTime": 15,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:27.4774565+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RWEI3383.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RWEI3383.JPG",
+    "FileSize": 511670,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:28.2018117+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\SPCI3596.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\SPCI3596.MP4",
+    "FileSize": 3864509,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:28.9289655+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\STFQ8637.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\STFQ8637.JPG",
+    "FileSize": 188034,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:29.7011882+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\UNRM1052.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\UNRM1052.JPG",
+    "FileSize": 135228,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:30.5472762+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\VJPS3261.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\VJPS3261.JPG",
+    "FileSize": 249955,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:31.3424344+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\XJEV9936.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\XJEV9936.JPG",
+    "FileSize": 570976,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:22:32.0946458+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:50.7931811+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:51.5330415+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:52.2198205+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:52.8526095+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:53.4652831+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:54.1566091+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:54.8891231+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:55.6012672+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 35,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:56.2940865+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:56.8854872+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:57.4886883+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:58.1044016+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JKXB8970.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JKXB8970.JPG",
+    "FileSize": 175184,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:58.7309135+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\KCEK0835.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\KCEK0835.JPG",
+    "FileSize": 156270,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:26:59.4950851+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\LJBH7728.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\LJBH7728.MP4",
+    "FileSize": 1000854,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:00.3045908+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\MIZY9296.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\MIZY9296.JPG",
+    "FileSize": 128638,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:01.1091689+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\OZQD1495.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\OZQD1495.JPG",
+    "FileSize": 200051,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:01.7951627+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RGYC6275.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RGYC6275.MP4",
+    "FileSize": 4003979,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:02.6071777+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RWEI3383.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RWEI3383.JPG",
+    "FileSize": 511670,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:03.410975+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\SPCI3596.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\SPCI3596.MP4",
+    "FileSize": 3864509,
+    "FileTransferTime": 15,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:04.1962363+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\STFQ8637.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\STFQ8637.JPG",
+    "FileSize": 188034,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:05.0434543+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\UNRM1052.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\UNRM1052.JPG",
+    "FileSize": 135228,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:05.8653063+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\VJPS3261.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\VJPS3261.JPG",
+    "FileSize": 249955,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:06.6774174+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\XJEV9936.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\XJEV9936.JPG",
+    "FileSize": 570976,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:27:07.4896229+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:50.2060579+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:51.0278352+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:51.8970403+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:52.6861974+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:53.4389949+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:54.1497866+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:54.7702227+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 12,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:55.6402671+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 55,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:44:56.399817+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 38,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:05.4322555+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 25,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:06.3931884+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:07.235501+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:07.3573211+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:07.9469295+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JKXB8970.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JKXB8970.JPG",
+    "FileSize": 175184,
+    "FileTransferTime": 12,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:08.1608497+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:08.7494837+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\KCEK0835.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\KCEK0835.JPG",
+    "FileSize": 156270,
+    "FileTransferTime": 23,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:08.9673546+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:09.52576+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\LJBH7728.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\LJBH7728.MP4",
+    "FileSize": 1000854,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:09.7009332+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:10.2020495+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\MIZY9296.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\MIZY9296.JPG",
+    "FileSize": 128638,
+    "FileTransferTime": 25,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:10.4782621+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:11.0552904+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\OZQD1495.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\OZQD1495.JPG",
+    "FileSize": 200051,
+    "FileTransferTime": 17,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:11.2917474+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 8,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:11.9288255+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RGYC6275.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RGYC6275.MP4",
+    "FileSize": 4003979,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:12.1110845+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 69,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:12.6606209+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RWEI3383.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RWEI3383.JPG",
+    "FileSize": 511670,
+    "FileTransferTime": 9,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:12.8331387+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 17,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:13.4051945+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\SPCI3596.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\SPCI3596.MP4",
+    "FileSize": 3864509,
+    "FileTransferTime": 8,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:13.5509618+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:14.149405+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\STFQ8637.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\STFQ8637.JPG",
+    "FileSize": 188034,
+    "FileTransferTime": 8,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:14.3098422+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:14.8734159+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\UNRM1052.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\UNRM1052.JPG",
+    "FileSize": 135228,
+    "FileTransferTime": 10,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:15.0902925+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\VJPS3261.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\VJPS3261.JPG",
+    "FileSize": 249955,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:15.8699912+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\XJEV9936.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\XJEV9936.JPG",
+    "FileSize": 570976,
+    "FileTransferTime": 8,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:16.9253406+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\LJBH7728.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\LJBH7728.MP4",
+    "FileSize": 1000854,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:45:17.9044632+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:27.5335244+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:28.3335168+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:29.039473+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:29.923182+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:30.7787494+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:31.542817+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:32.3127519+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:33.0533063+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 124,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:33.8620321+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 13,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:34.5701419+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:35.4909582+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:36.3353203+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JKXB8970.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JKXB8970.JPG",
+    "FileSize": 175184,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:37.0554344+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\KCEK0835.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\KCEK0835.JPG",
+    "FileSize": 156270,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:37.7332636+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\LJBH7728.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\LJBH7728.MP4",
+    "FileSize": 1000854,
+    "FileTransferTime": 9,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:38.4196333+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\MIZY9296.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\MIZY9296.JPG",
+    "FileSize": 128638,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:39.2561763+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\OZQD1495.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\OZQD1495.JPG",
+    "FileSize": 200051,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:39.9648838+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RGYC6275.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RGYC6275.MP4",
+    "FileSize": 4003979,
+    "FileTransferTime": 17,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:40.705427+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RWEI3383.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RWEI3383.JPG",
+    "FileSize": 511670,
+    "FileTransferTime": 8,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:41.6466165+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\SPCI3596.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\SPCI3596.MP4",
+    "FileSize": 3864509,
+    "FileTransferTime": 23,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:42.528056+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\STFQ8637.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\STFQ8637.JPG",
+    "FileSize": 188034,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:43.2429411+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\UNRM1052.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\UNRM1052.JPG",
+    "FileSize": 135228,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:43.976937+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\VJPS3261.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\VJPS3261.JPG",
+    "FileSize": 249955,
+    "FileTransferTime": 8,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:44.9486394+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\XJEV9936.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\XJEV9936.JPG",
+    "FileSize": 570976,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:47:45.8137956+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:51.6864971+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:52.4445387+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:53.1709039+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:53.926947+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:54.529533+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:55.1933687+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:55.8482696+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 9,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:56.5592001+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 36,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:57.2788094+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:57.8913992+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:58.5213949+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:59.1388697+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JKXB8970.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JKXB8970.JPG",
+    "FileSize": 175184,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:50:59.9867345+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\KCEK0835.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\KCEK0835.JPG",
+    "FileSize": 156270,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:00.8695801+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\LJBH7728.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\LJBH7728.MP4",
+    "FileSize": 1000854,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:01.7408569+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\MIZY9296.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\MIZY9296.JPG",
+    "FileSize": 128638,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:02.6298462+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\OZQD1495.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\OZQD1495.JPG",
+    "FileSize": 200051,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:03.4948818+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RGYC6275.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RGYC6275.MP4",
+    "FileSize": 4003979,
+    "FileTransferTime": 8,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:04.1073694+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RWEI3383.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RWEI3383.JPG",
+    "FileSize": 511670,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:04.7268281+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\SPCI3596.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\SPCI3596.MP4",
+    "FileSize": 3864509,
+    "FileTransferTime": 19,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:05.6569767+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\STFQ8637.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\STFQ8637.JPG",
+    "FileSize": 188034,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:06.395587+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\UNRM1052.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\UNRM1052.JPG",
+    "FileSize": 135228,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:07.1943595+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\VJPS3261.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\VJPS3261.JPG",
+    "FileSize": 249955,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:08.0937581+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\XJEV9936.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\XJEV9936.JPG",
+    "FileSize": 570976,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T12:51:08.9785876+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:52.2609374+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:53.0999989+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:53.8258868+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:54.5706946+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:55.2731643+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:55.8888733+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:56.5799098+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 9,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:57.2080252+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 42,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:57.979491+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:58.6218936+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:59.3849268+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:54:59.9982681+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JKXB8970.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JKXB8970.JPG",
+    "FileSize": 175184,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:00.6969294+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\KCEK0835.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\KCEK0835.JPG",
+    "FileSize": 156270,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:01.4758221+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\LJBH7728.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\LJBH7728.MP4",
+    "FileSize": 1000854,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:02.2726632+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\MIZY9296.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\MIZY9296.JPG",
+    "FileSize": 128638,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:03.0434638+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\OZQD1495.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\OZQD1495.JPG",
+    "FileSize": 200051,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:03.7674348+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RGYC6275.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RGYC6275.MP4",
+    "FileSize": 4003979,
+    "FileTransferTime": 12,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:04.5156659+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\RWEI3383.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\RWEI3383.JPG",
+    "FileSize": 511670,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:05.262569+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\SPCI3596.MP4",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\SPCI3596.MP4",
+    "FileSize": 3864509,
+    "FileTransferTime": 8,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:05.8902407+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\STFQ8637.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\STFQ8637.JPG",
+    "FileSize": 188034,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:06.5459641+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\UNRM1052.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\UNRM1052.JPG",
+    "FileSize": 135228,
+    "FileTransferTime": 6,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:07.4267872+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\VJPS3261.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\VJPS3261.JPG",
+    "FileSize": 249955,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:08.289316+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\XJEV9936.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\XJEV9936.JPG",
+    "FileSize": 570976,
+    "FileTransferTime": 5,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:55:09.0339646+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:59:33.9962274+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:59:34.7571393+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:59:35.5067119+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:59:36.3134971+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:59:37.1129528+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T14:59:37.8783699+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:01:20.8320023+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:01:21.666415+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:01:22.3093624+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:01:23.1444504+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:01:23.9718742+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:01:24.7259436+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:01:25.3646301+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:16.8760222+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:17.6106873+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:18.334844+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:19.2446478+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:20.0202787+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:20.8096751+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IJCH0780.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IJCH0780.JPG",
+    "FileSize": 113513,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:21.4785459+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_3725.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_3725.JPG",
+    "FileSize": 3107040,
+    "FileTransferTime": 7,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:22.3148347+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4027.MOV",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4027.MOV",
+    "FileSize": 40399524,
+    "FileTransferTime": 42,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:23.0537454+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IMG_4109.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IMG_4109.JPG",
+    "FileSize": 2640123,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:23.7016477+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\IRSI0012.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\IRSI0012.JPG",
+    "FileSize": 228214,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:24.3319053+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JGVU6715.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JGVU6715.JPG",
+    "FileSize": 221811,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:25.147071+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\JKXB8970.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\JKXB8970.JPG",
+    "FileSize": 175184,
+    "FileTransferTime": 3,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:25.8969628+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\KCEK0835.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\KCEK0835.JPG",
+    "FileSize": 156270,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:02:26.580483+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:05:23.5783467+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:05:24.1954393+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:05:24.7875755+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:05:25.3849119+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 4,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:05:26.0184281+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\AUVR4501.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\AUVR4501.JPG",
+    "FileSize": 132291,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:10:20.5048132+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\EGFJ0624.JPG",
+    "FileSize": 162550,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:10:21.2346967+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\FSLM2354.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\FSLM2354.JPG",
+    "FileSize": 138803,
+    "FileTransferTime": 1,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:10:22.0160959+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GHOD4499.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GHOD4499.JPG",
+    "FileSize": 140242,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:10:22.793583+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GKIR2049.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GKIR2049.JPG",
+    "FileSize": 155509,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:10:23.5529751+01:00"
+  },
+  {
+    "Name": "Test",
+    "FileSource": "C:\\Users\\jeanv\\Documents\\Aller\\Photo Bolivie\\GSAR8105.JPG",
+    "FileTarget": "C:\\Users\\jeanv\\Documents\\Retour\\Photo Bolivie\\GSAR8105.JPG",
+    "FileSize": 145612,
+    "FileTransferTime": 2,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-25T15:10:24.3346067+01:00"
   }
 ]

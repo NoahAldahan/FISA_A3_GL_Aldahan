@@ -53,6 +53,8 @@ namespace EasySaveWPFApp
                     UnsavedPathsDictionary.Add(unsavedPathLists.Key, unsavedPathLists.Value);
                 }
             }
+            CheckAndShowSaveTaskStoppedWindow();
+            CheckAndShowUnsavedFilesWindow();
         }
 
         private void PlaySelected_Click(object sender, RoutedEventArgs e)
@@ -71,5 +73,27 @@ namespace EasySaveWPFApp
             saveTaskProgressViewModel.StopSaveTasks(selectedRows);
         }
 
+        private void CheckAndShowUnsavedFilesWindow()
+        {
+            if (UnsavedPathsDictionary.Count > 0)
+            {
+                UnsavedFilesWindow unsavedFilesWindow = new UnsavedFilesWindow(UnsavedPathsDictionary);
+                unsavedFilesWindow.ShowDialog();
+            }
+        }
+
+        private void CheckAndShowSaveTaskStoppedWindow()
+        {
+            List<SaveTask> stoppedSaveTask = new();
+            foreach(var item in saveTaskProgressViewModel.BindSaveTasksCurrentlySaving) 
+            {
+                if (item.nFilesUnsavedCancelled > 0)
+                {
+                    stoppedSaveTask.Add(item);
+                }
+            }
+            SaveTaskStoppedWindow saveTaskStoppedWindow = new SaveTaskStoppedWindow(stoppedSaveTask);
+            saveTaskStoppedWindow.ShowDialog();
+        }
     }
 }
