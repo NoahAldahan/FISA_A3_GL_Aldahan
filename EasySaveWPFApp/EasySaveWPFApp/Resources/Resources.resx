@@ -153,10 +153,10 @@
   <data name="SettingsMenu_EncryptingExtensionText" xml:space="preserve">
     <value>Extensions à crypter :</value>
   </data>
-  <data name="SettingsMenu_EnterExtensionPromptText" xml:space="preserve">
-    <value>Entrez une extension à rajouter à la liste</value>
+  <data name="SettingsMenu_EnterEncryptingExtensionPromptText" xml:space="preserve">
+    <value>Entrez une extension à rajouter à la liste d'extensions à crypter :</value>
   </data>
-  <data name="SettingsMenu_ExtensionsValidateButtonText" xml:space="preserve">
+  <data name="SettingsMenu_EncryptingExtensionsValidateButtonText" xml:space="preserve">
     <value>Confirmer</value>
   </data>
   <data name="SettingsMenu_JsonRadioButtonText" xml:space="preserve">
@@ -182,5 +182,65 @@
   </data>
   <data name="SettingsMenu_FrenchButtonText" xml:space="preserve">
     <value>Français</value>
+  </data>
+  <data name="SaveTaskProgress_Title" xml:space="preserve">
+    <value>Travail(s) de sauvegarde en cours</value>
+  </data>
+  <data name="SaveTaskProgress_ProgressColumnTitle" xml:space="preserve">
+    <value>Progression</value>
+  </data>
+  <data name="SaveTaskProgress_PlaySelectedButton" xml:space="preserve">
+    <value>Recommencer la sélection</value>
+  </data>
+  <data name="SaveTaskProgress_StopSelectedButton" xml:space="preserve">
+    <value>Stopper la sélection</value>
+  </data>
+  <data name="SaveTaskProgress_PauseSelectedButton" xml:space="preserve">
+    <value>Mettre en pause la sélection</value>
+  </data>
+  <data name="SaveTaskProgress_StateColumnTitle" xml:space="preserve">
+    <value>Etat</value>
+  </data>
+  <data name="SaveTask_StateActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="SaveTask_StateINVALID" xml:space="preserve">
+    <value>Etat invalide</value>
+  </data>
+  <data name="SaveTask_StateError" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="SaveTask_StateEnd" xml:space="preserve">
+    <value>Finie</value>
+  </data>
+  <data name="SaveTask_StateStopped" xml:space="preserve">
+    <value>Arrêtée</value>
+  </data>
+  <data name="SaveTask_StatePaused" xml:space="preserve">
+    <value>En pause</value>
+  </data>
+  <data name="SettingsMenu_EnterPriorityExtensionPromptText" xml:space="preserve">
+    <value>Entrez une extension à rajouter à la liste d'extensions prioritaires :</value>
+  </data>
+  <data name="SettingsMenu_PriorityExtensionsValidateButtonText" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="SettingsMenu_PriorityExtensionText" xml:space="preserve">
+    <value>Extensions prioritaires :</value>
+  </data>
+  <data name="SaveTask_StateWaitingForPriorityFiles" xml:space="preserve">
+    <value>Copie priorité</value>
+  </data>
+  <data name="SaveTaskStopped_SaveNameColumnTitle" xml:space="preserve">
+    <value>Nom de la sauvegarde</value>
+  </data>
+  <data name="SaveTaskStopped_Title" xml:space="preserve">
+    <value>Ces tâches de sauvegarde ont été arrêtées :</value>
+  </data>
+  <data name="SaveTaskStopped_WindowTitle" xml:space="preserve">
+    <value>Fichiers non sauvegardés</value>
+  </data>
+  <data name="SaveTaskStopped_UnsavedFileListColumnTitle" xml:space="preserve">
+    <value>Liste des fichiers non sauvegardés</value>
   </data>
 </root>

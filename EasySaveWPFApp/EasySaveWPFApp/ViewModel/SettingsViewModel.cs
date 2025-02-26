@@ -15,7 +15,8 @@ namespace EasySaveWPFApp.ViewModel
         SwitchLanguageToEnglish,
         SwitchLogTypeToJSON,
         SwitchSaveTypeToXML,
-        EditedExtensions
+        EditedEncryptingExtensions,
+        EditedPriorityExtensions
     }
     public class SettingsViewModel
     {
@@ -23,6 +24,8 @@ namespace EasySaveWPFApp.ViewModel
         List<ESettingsActions> UnsavedActions = new List<ESettingsActions>();
         // The new unsaved list of encrypting extensions (the user needs to click save to save them)
         List<string> NewEncryptingExtensions = new List<string>();
+        // The new unsaved list of priority extensions (the user needs to click save to save them)
+        List<string> NewPriorityExtensions = new List<string>();
         SaveTaskManager saveTaskManager;
 
         // Constructor: Initializes the settings controller
@@ -30,6 +33,7 @@ namespace EasySaveWPFApp.ViewModel
         {
             this.saveTaskManager = saveTaskManager;
             NewEncryptingExtensions = this.saveTaskManager.GetEncryptingExtensions();
+            NewPriorityExtensions = this.saveTaskManager.GetPriorityExtensions();
         }
 
         // Execute all actions that are in the list of unsaved actions
@@ -48,8 +52,11 @@ namespace EasySaveWPFApp.ViewModel
                     case ESettingsActions.SwitchSaveTypeToXML:
                         LogUtilities.SetLogFormat(ELogFormat.XML);
                         break;
-                    case ESettingsActions.EditedExtensions:
+                    case ESettingsActions.EditedEncryptingExtensions:
                         saveTaskManager.SetEncryptingExtensions(NewEncryptingExtensions);
+                        break;
+                    case ESettingsActions.EditedPriorityExtensions:
+                        saveTaskManager.SetPriorityExtensions(NewPriorityExtensions);
                         break;
                     case ESettingsActions.SwitchLanguageToFrench:
                         // TODO :popup : this will restart the application, Continue ? Yes/No
@@ -172,7 +179,7 @@ namespace EasySaveWPFApp.ViewModel
                 return false;
             }
             NewEncryptingExtensions.Add(EncryptingExtension);
-            TryAddEditedExtensionsAction();
+            TryAddEditedEncryptingExtensionsAction();
             return true;
         }
 
@@ -185,28 +192,74 @@ namespace EasySaveWPFApp.ViewModel
                 return false;
             }
             NewEncryptingExtensions.Remove(EncryptingExtension);
-            TryAddEditedExtensionsAction();
+            TryAddEditedEncryptingExtensionsAction();
+            return true;
+        }
+
+
+        // Try to add the extension to the list of unsaved extensions
+        // Returns true if the extension was added, false if it was already in the list
+        public bool AddPriorityExtension(string PriorityExtension)
+        {
+            if (NewPriorityExtensions.Contains(PriorityExtension) || !PriorityExtension.StartsWith(".") || PriorityExtension.Length < 2)
+            {
+                return false;
+            }
+            NewPriorityExtensions.Add(PriorityExtension);
+            TryAddEditedPriorityExtensionsAction();
+            return true;
+        }
+
+        // Try to remove the extension from the list of unsaved extensions
+        // Returns true if the extension was removed, false if it wasn't in the list
+        public bool RemovePriorityExtension(string PriorityExtension)
+        {
+            if (!NewPriorityExtensions.Contains(PriorityExtension))
+            {
+                return false;
+            }
+            NewPriorityExtensions.Remove(PriorityExtension);
+            TryAddEditedPriorityExtensionsAction();
             return true;
         }
 
         // Returns the new unsaved list of encrypting extensions
         public List<string> GetNewEncryptingExtensions()
         {
-            return new List<string> (NewEncryptingExtensions);
+            return new List<string>(NewEncryptingExtensions);
+        }
+
+        public List<string> GetNewPriorityExtensions()
+        {
+            return new List<string>(NewPriorityExtensions);
         }
 
         // Try to add the action EditedExtensions to the list of unsaved actions
-        private void TryAddEditedExtensionsAction()
+        private void TryAddEditedEncryptingExtensionsAction()
         {
             // If the two lists are equal (same elements in whatever order)
             List<string> savedEncryptingExtensions = saveTaskManager.GetEncryptingExtensions();
             if (!TwoListEqualsAnyOrder(NewEncryptingExtensions, saveTaskManager.GetEncryptingExtensions()))
             {
-                UnsavedActions.Add(ESettingsActions.EditedExtensions);
+                UnsavedActions.Add(ESettingsActions.EditedEncryptingExtensions);
             }
-            else if (UnsavedActions.Contains(ESettingsActions.EditedExtensions))
+            else if (UnsavedActions.Contains(ESettingsActions.EditedEncryptingExtensions))
             {
-                UnsavedActions.Remove(ESettingsActions.EditedExtensions);
+                UnsavedActions.Remove(ESettingsActions.EditedEncryptingExtensions);
+            }
+        }
+
+        private void TryAddEditedPriorityExtensionsAction()
+        {
+            // If the two lists are equal (same elements in whatever order)
+            List<string> savedPriorityExtensions = saveTaskManager.GetPriorityExtensions();
+            if (!TwoListEqualsAnyOrder(NewPriorityExtensions, saveTaskManager.GetPriorityExtensions()))
+            {
+                UnsavedActions.Add(ESettingsActions.EditedPriorityExtensions);
+            }
+            else if (UnsavedActions.Contains(ESettingsActions.EditedPriorityExtensions))
+            {
+                UnsavedActions.Remove(ESettingsActions.EditedPriorityExtensions);
             }
         }
 
@@ -230,7 +283,7 @@ namespace EasySaveWPFApp.ViewModel
 
         internal void TrySwitchLogFormatToJSON()
         {
-            if(LogUtilities.GetLogFormat() != ELogFormat.JSON && !UnsavedActions.Contains(ESettingsActions.SwitchLogTypeToJSON))
+            if (LogUtilities.GetLogFormat() != ELogFormat.JSON && !UnsavedActions.Contains(ESettingsActions.SwitchLogTypeToJSON))
             {
                 UnsavedActions.Add(ESettingsActions.SwitchLogTypeToJSON);
             }

@@ -1,0 +1,43 @@
+﻿<Window x:Class="EasySaveWPFApp.SaveTaskStoppedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:p="clr-namespace:EasySaveWPFApp.Resources" xmlns:model1="clr-namespace:EasySaveWPFApp.Model"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Unsaved Files" Height="400" Width="600" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <!-- Titre -->
+        <TextBlock Text="{x:Static p:Resources.SaveTaskStopped_Title }" 
+                   FontSize="16" FontWeight="Bold" 
+                   Margin="10" HorizontalAlignment="Left"/>
+
+        <!-- Liste des travaux de sauvegarde stoppés -->
+        <ListView Name="UnsavedFilesList" Margin="10,40,10,50">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static p:Resources.SaveTaskStopped_SaveNameColumnTitle }" Width="150"/>
+                    <GridViewColumn Header="{x:Static p:Resources.SaveTaskStopped_UnsavedFileListColumnTitle }" Width="350">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ItemsControl ItemsSource="{Binding Value}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Bouton pour fermer la fenêtre -->
+        <Button Content="Close" Width="100" Height="30" VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right" Margin="10" Click="CloseButton_Click"/>
+    </Grid>
+</Window>
+
+
+
+

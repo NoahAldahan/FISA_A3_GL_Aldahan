@@ -1,0 +1,76 @@
+@startuml
+title Modification d'une tâche de sauvegarde (modifiSaveTask)
+
+actor Client
+participant "SaveTaskService" as STS
+participant "API Server" as Server
+participant "SaveTaskViewModel" as ViewModel
+participant "SaveTaskManager" as STM
+participant "SaveTaskFactory" as STF
+participant "SaveTask" as ST
+participant "JSONSerializer" as JS
+participant "FileSystem" as FS
+
+activate Server
+Client -> STS: updateTask(changes)
+STS -> Server: PUT /api/sendmodification
+Server -> Server: ReadJsonRequestBody(context)
+Server -> Server: Désérialisation JSON en `data`
+
+activate ViewModel
+Server -> ViewModel: ModifySaveTaskAPI(data)
+
+activate STM
+ViewModel -> STM: GetSaveTaskByName(data.name)
+STM -> STM: Recherche de la tâche dans `SaveTasks`
+STM -> ViewModel: Retourne l'instance de `SaveTask`
+activate ST
+alt Modification d'un champ
+    alt Champ "name"
+        ViewModel -> STM: ModifySaveTaskName(string SaveTaskName, string newname)
+        STM -> ST: SetBindName(string newname)
+        ST-->STM
+        STM-->ViewModel
+    else Champ "sourcePath"
+        ViewModel -> STM: ModifySaveTaskSourcePath(string SaveTaskName, string newPath)
+        STM -> ST: SetBindSourcePath(string newPath)
+        ST-->STM
+        STM-->ViewModel
+    else Champ "targetPath"
+        ViewModel -> STM: ModifySaveTaskTargetPath(string SaveTaskName, string newPath)
+        STM -> ST: SetBindTargetPath(string newPath)
+        ST-->STM
+        STM-->ViewModel
+    else Champ "type"
+        ViewModel -> STM: SwitchSaveTaskType(string SaveTaskName)
+        STM -> STF: Créer une nouvelle instance `SaveTask`
+        activate STF
+        STF -> ST: Créer `SaveTask(newType, sourcePath, targetPath, name)`
+        STF --> STM: Retourner la nouvelle instance `SaveTask`
+        deactivate STF
+        STM -> STM: Remplacement de l'ancienne tâche par la nouvelle
+        STM -> ST: Supprimer l'ancienne instance
+        ST-->STM
+        deactivate ST
+        STM-->ViewModel
+    end
+end
+ViewModel -> Server: Retourner le statut (success/failure)
+deactivate ViewModel
+Server --> Client: { status: success/failure }
+
+== Sérialisation des tâches après modification ==
+Client -> STM: SerializeSaveTasks()
+STM -> JS: SerializeSaveTasks()
+activate JS
+JS --> STM: Retourner la chaîne JSON
+deactivate JS
+STM -> FS: WriteToFile(SerializationString, SerializationFile)
+activate FS
+FS-->STM
+deactivate FS
+STM-->Client
+deactivate STM
+deactivate Server
+
+@enduml

@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Log;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using System.Threading;
 
 namespace EasySaveWPFApp.Model
 {
@@ -28,8 +29,6 @@ namespace EasySaveWPFApp.Model
         // To get the paths of all the files and directories unsaved, call GetUnsavedPaths().
         internal override bool Save(SaveTaskManager saveTaskManager)
         {
-            UnsavedPaths.Clear(); // Clear the list of unsaved paths.
-            UnsavedPaths = SaveComplete(saveTaskManager); // Perform the complete save process.
             try
             {
                 FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
@@ -41,19 +40,21 @@ namespace EasySaveWPFApp.Model
             }
             catch (Exception e)
             {
+                Trace.WriteLine("save comp save(stm) Exception e");
                 UnsavedPaths.Add(CurrentDirectoryPair.SourcePath);
                 return false;
             }
+            UnsavedPaths = SaveComplete(saveTaskManager); // Perform the complete save process.
+            if (state != ERealTimeState.STOPPED && state != ERealTimeState.WAITING_FOR_PRIORITY_FILES
+                && state != ERealTimeState.ERROR) SetBindState(ERealTimeState.END);
 
-            return (UnsavedPaths.Count() == 0);
+            Trace.WriteLine("EndSave");
+            return (UnsavedPaths.Count() == 0 && nFilesUnsavedCancelled == 0);
         }
 
         // Performs the complete backup by copying files from source to target.
         private List<string> SaveComplete(SaveTaskManager saveTaskManager)
         {
-            logDaily.CreateDailyFile();
-            logRealTime.CreateRealTimeInfo(name, CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, ERealTimeState.ACTIVE, (int)ESaveTaskTypes.Complete);
-
             try
             {
                 // Get file attributes to determine if the source and target are directories or files.
@@ -78,12 +79,14 @@ namespace EasySaveWPFApp.Model
                     }
                     catch (Exception e)
                     {
+                        Trace.WriteLine("save complete second Exception e");
                         UnsavedPaths.Add(CurrentDirectoryPair.SourcePath);
                     }
                 }
             }
             catch (Exception e)
             {
+                Trace.WriteLine("save complete first Exception e");
                 UnsavedPaths.Add(CurrentDirectoryPair.SourcePath);
             }
             return UnsavedPaths;
@@ -115,25 +118,23 @@ namespace EasySaveWPFApp.Model
                     }
                     catch (Exception e)
                     {
+                        Trace.WriteLine("save complete copy files recursively Is software running + copy single file");
                         UnsavedPaths.Add(Path.Combine(sourceDirectoryInfo.FullName, file.Name));
                     }
                 }
             }
             catch (Exception e)
             {
+                Trace.WriteLine("save complete CopyFilesRecursivelyForTwoFolders big try catch");
                 UnsavedPaths.Add(sourceDirectoryInfo.FullName);
             }
             return UnsavedPaths;
-        }
-
-        internal override string GetMessageSaveTaskType()
-        {
-            return "Complète";
         }
         internal override ESaveTaskTypes GetSaveTaskType()
         {
             return ESaveTaskTypes.Complete;
         }
+
     }
 }
 

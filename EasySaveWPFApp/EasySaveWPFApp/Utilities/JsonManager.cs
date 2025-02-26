@@ -10,6 +10,7 @@ using EasySaveWPFApp.Model;
 using System.Text.Json.Nodes;
 using Log;
 using System.Collections.ObjectModel;
+using CryptoSoftLibrary;
 
 namespace EasySaveWPFApp.Utilities
 {
@@ -33,6 +34,9 @@ namespace EasySaveWPFApp.Utilities
         static public string EncryptingExtensionsSerializationPath = Path.Combine(Directory.GetCurrentDirectory(), Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
             Environment.GetEnvironmentVariable("EncryptingExtensionsSerializationPath"));
 
+        static public string PriorityExtensionsSerializationPath = Path.Combine(Directory.GetCurrentDirectory(), Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).Parent.FullName,
+    Environment.GetEnvironmentVariable("PriorityExtensionsSerializationPath"));
+
         static public string EncryptionKey = Environment.GetEnvironmentVariable("EncryptionKey");
 
         // Retrieves a setting value from the AppSettings JSON file.
@@ -41,7 +45,7 @@ namespace EasySaveWPFApp.Utilities
             try
             {
                 // Read and parse JSON file
-                string jsonContent = File.ReadAllText(AppSettingsPath);
+                string jsonContent = AsyncFileManager.LockedReadAllText(AppSettingsPath);
                 JsonDocument doc = JsonDocument.Parse(jsonContent);
                 JsonElement root = doc.RootElement;
 
@@ -62,8 +66,7 @@ namespace EasySaveWPFApp.Utilities
             {
                 // Serialize the list of save tasks to a JSON format
                 string jsonContent = JsonSerializer.Serialize(SaveTasks);
-                File.WriteAllText(SaveTaskSerializationPath, jsonContent);
-
+                AsyncFileManager.LockedWriteAllText(SaveTaskSerializationPath, jsonContent);
             }
             catch (Exception ex)
             {
@@ -80,7 +83,7 @@ namespace EasySaveWPFApp.Utilities
             try
             {
                 // Read JSON file content
-                jsonContent = File.ReadAllText(SaveTaskSerializationPath);
+                jsonContent = AsyncFileManager.LockedReadAllText(SaveTaskSerializationPath);
 
                 // If the file is empty, return an empty list
                 if (jsonContent == "")
@@ -112,7 +115,7 @@ namespace EasySaveWPFApp.Utilities
                 // Serialize the list of save tasks to a JSON format
                 string jsonContent = JsonSerializer.Serialize(EncryptingExtensions);
                 string path = EncryptingExtensionsSerializationPath;
-                File.WriteAllText(EncryptingExtensionsSerializationPath, jsonContent);
+                AsyncFileManager.LockedWriteAllText(EncryptingExtensionsSerializationPath, jsonContent);
             }
             catch (Exception ex)
             {
@@ -128,8 +131,7 @@ namespace EasySaveWPFApp.Utilities
             try
             {
                 // Read JSON file content
-                jsonContent = File.ReadAllText(EncryptingExtensionsSerializationPath);
-
+                jsonContent = AsyncFileManager.LockedReadAllText(EncryptingExtensionsSerializationPath); 
                 // If the file is empty, return an empty list
                 if (jsonContent == "")
                 {
@@ -139,6 +141,49 @@ namespace EasySaveWPFApp.Utilities
                 // Deserialize the JSON into a list of SaveTask objects
                 EncryptingExtensions = JsonSerializer.Deserialize<List<string>>(jsonContent);
                 return EncryptingExtensions;
+            }
+            catch (Exception ex)
+            {
+                return new List<string>(); // Return an empty list if an error occurs
+            }
+        }
+
+
+        public static void SerializePriorityExtensions(List<string> PriorityExtensions)
+        {
+            try
+            {
+                // Serialize the list of priority extensions to a JSON format
+                string jsonContent = JsonSerializer.Serialize(PriorityExtensions);
+                string path = PriorityExtensionsSerializationPath;
+                File.WriteAllText(PriorityExtensionsSerializationPath, jsonContent);
+            }
+            catch (Exception ex)
+            {
+                // TODO : Handle this exception with an error popup
+                //Console.WriteLine($"Error serializing Save tasks to JSON file: {ex.Message}");
+            }
+        }
+
+        public static List<string> DeserializePriorityExtensions()
+        {
+            string jsonContent = "";
+            List<string> PriorityExtensions = new List<string>();
+
+            try
+            {
+                // Read JSON file content
+                jsonContent = File.ReadAllText(PriorityExtensionsSerializationPath);
+
+                // If the file is empty, return an empty list
+                if (jsonContent == "")
+                {
+                    return PriorityExtensions;
+                }
+
+                // Deserialize the JSON into a list of SaveTask objects
+                PriorityExtensions = JsonSerializer.Deserialize<List<string>>(jsonContent);
+                return PriorityExtensions;
             }
             catch (Exception ex)
             {
