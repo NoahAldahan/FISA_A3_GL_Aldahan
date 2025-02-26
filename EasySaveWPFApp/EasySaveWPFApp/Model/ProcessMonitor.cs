@@ -9,7 +9,7 @@ namespace EasySaveWPFApp.Model
     public class ProcessMonitor
     {
         private readonly System.Timers.Timer timer;
-        private const string businessSoftware = "cmd.exe"; // Logiciel métier fixe
+        private const string businessSoftware = "odiky.exe"; // Logiciel métier fixe
         private bool isSoftwareRunning;
 
         // Événement déclenché lorsque l'état du logiciel change
@@ -29,7 +29,7 @@ namespace EasySaveWPFApp.Model
 
         private async Task CheckBusinessSoftware()
         {
-            bool currentlyRunning = Process.GetProcessesByName("cmd").Any();
+            bool currentlyRunning = Process.GetProcessesByName(businessSoftware).Any();
 
             if (currentlyRunning != isSoftwareRunning)
             {

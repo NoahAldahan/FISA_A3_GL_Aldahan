@@ -61,5 +61,635 @@
     "FileTransferTime": 0,
     "EncryptionTimeMs": 1,
     "DateTime": "2025-02-26T12:18:14.9916616+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T12:22:44.2416415+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T12:22:44.7657611+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 28,
+    "EncryptionTimeMs": 511,
+    "DateTime": "2025-02-26T12:22:45.8238964+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T12:22:46.349262+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 35,
+    "EncryptionTimeMs": 215,
+    "DateTime": "2025-02-26T12:22:47.1198258+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T12:22:47.6444969+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T12:22:48.166421+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T16:34:17.8643665+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T16:34:18.419434+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 96,
+    "EncryptionTimeMs": 549,
+    "DateTime": "2025-02-26T16:34:19.5907396+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 7,
+    "DateTime": "2025-02-26T16:34:20.1263534+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 71,
+    "EncryptionTimeMs": 207,
+    "DateTime": "2025-02-26T16:34:20.9265074+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-26T16:34:21.473175+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T16:34:22.0119947+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T16:35:55.5429658+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T16:35:56.0840017+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 166,
+    "EncryptionTimeMs": 647,
+    "DateTime": "2025-02-26T16:35:57.4215163+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T16:35:57.9667326+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 13,
+    "EncryptionTimeMs": 234,
+    "DateTime": "2025-02-26T16:35:58.7409017+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T16:35:59.2710118+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T16:35:59.7987239+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:04:23.4973554+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:04:24.0396217+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 146,
+    "EncryptionTimeMs": 623,
+    "DateTime": "2025-02-26T17:04:25.3398573+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:04:25.8713246+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 31,
+    "EncryptionTimeMs": 211,
+    "DateTime": "2025-02-26T17:04:26.6443111+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:04:27.1791554+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:04:27.7080439+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:06:04.3223198+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:06:04.8697856+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 88,
+    "EncryptionTimeMs": 588,
+    "DateTime": "2025-02-26T17:06:06.0761947+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:06:06.613824+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 53,
+    "EncryptionTimeMs": 215,
+    "DateTime": "2025-02-26T17:06:07.4078661+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:06:07.9496688+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:06:08.4825662+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:08:28.6677717+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:08:29.2096157+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 128,
+    "EncryptionTimeMs": 572,
+    "DateTime": "2025-02-26T17:08:30.4359255+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-26T17:08:30.970261+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 54,
+    "EncryptionTimeMs": 215,
+    "DateTime": "2025-02-26T17:08:31.7684482+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:08:32.3001948+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:08:32.830021+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:15:03.5479932+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:15:04.0920643+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 68,
+    "EncryptionTimeMs": 638,
+    "DateTime": "2025-02-26T17:15:05.3283884+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:15:05.8667595+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 210,
+    "DateTime": "2025-02-26T17:15:06.6288767+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:15:07.1661654+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:15:07.6985984+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:16:39.9459494+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:16:40.4758831+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 66,
+    "EncryptionTimeMs": 438,
+    "DateTime": "2025-02-26T17:16:41.5047333+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:16:42.0334104+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 16,
+    "EncryptionTimeMs": 215,
+    "DateTime": "2025-02-26T17:16:42.8051764+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:16:43.3374277+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-26T17:16:43.868569+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:31:44.2517068+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:31:44.7991078+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 130,
+    "EncryptionTimeMs": 526,
+    "DateTime": "2025-02-26T17:31:45.9798155+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:31:46.5273176+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 14,
+    "EncryptionTimeMs": 213,
+    "DateTime": "2025-02-26T17:31:47.2818242+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 2,
+    "DateTime": "2025-02-26T17:31:47.8270402+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:31:48.3651514+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie (2).txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:31:51.3804852+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj - Copie.txt",
+    "FileSize": 0,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 0,
+    "DateTime": "2025-02-26T17:31:51.9052342+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\hellworld\\fqskdfmlkj.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\hellworld\\fqskdfmlkj.txt",
+    "FileSize": 51255600,
+    "FileTransferTime": 132,
+    "EncryptionTimeMs": 456,
+    "DateTime": "2025-02-26T17:31:53.0241846+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (2).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (2).txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:31:53.5536291+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie (3).txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie (3).txt",
+    "FileSize": 23514624,
+    "FileTransferTime": 34,
+    "EncryptionTimeMs": 224,
+    "DateTime": "2025-02-26T17:31:54.3364909+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test - Copie.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test - Copie.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:31:54.8647757+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "FileSource": "C:\\Users\\matte\\OneDrive\\Bureau\\src\\test.txt",
+    "FileTarget": "C:\\Users\\matte\\OneDrive\\Bureau\\target\\test.txt",
+    "FileSize": 25,
+    "FileTransferTime": 0,
+    "EncryptionTimeMs": 1,
+    "DateTime": "2025-02-26T17:31:55.3882892+01:00"
   }
 ]

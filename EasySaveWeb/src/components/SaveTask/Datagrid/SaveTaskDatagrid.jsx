@@ -59,6 +59,22 @@ const handleSuppressSaveTask = (selectedRows, rows) => {
   return updatedRow;
 }
 
+const handleStartSaveTask = (webSocket, selectedRows, rows) => {
+  console.log(selectedRows);
+  let saveTaskToStart = [];
+
+  selectedRows.forEach((value) => 
+    {
+      saveTaskToStart = rows.filter(row => selectedRows.includes(row.id)).map(row => row.name); 
+    });
+    console.log(saveTaskToStart);
+    webSocket.sendMessage(
+      JSON.stringify  ({
+        "Action": "Start",
+        "Names": saveTaskToStart  
+      }));
+  } 
+
 
 const GetSaveTaskTypeToStr = (type) => {
   switch(type){
@@ -79,11 +95,10 @@ const GetSaveTaskTypeToInt = (type) =>
   }
 }
 
-export default function SaveTaskDataGrid({onOpenCreatePopup,updateDatagrid,setUpdateDatagrid }) 
+export default function SaveTaskDataGrid({onOpenCreatePopup,updateDatagrid,setUpdateDatagrid,webSocket}) 
 {
   const [rows, setRows] = useState();
   const [selectedRows, setSelectedRows] = useState([]);
-
   const handleLoadDatagridRows = () => {
     SaveTaskService.getAllTasks().then(value => {
       console.log(value);
@@ -99,7 +114,8 @@ export default function SaveTaskDataGrid({onOpenCreatePopup,updateDatagrid,setUp
 
   useEffect(() => { 
     handleLoadDatagridRows();
-    if(updateDatagrid){
+    if(updateDatagrid)
+    {
       setUpdateDatagrid(false);
     }
   }, [updateDatagrid]);
@@ -130,6 +146,7 @@ export default function SaveTaskDataGrid({onOpenCreatePopup,updateDatagrid,setUp
     <div className="savetask-action">
     <Button onClick={() => {onOpenCreatePopup()}} class='mui-btn' variant="contained">Create SaveTask</Button>
     <Button onClick={() => {setRows(handleSuppressSaveTask(selectedRows, rows))}} class='mui-btn' variant="contained">Delete SaveTask</Button>
+    <Button onClick={() => {handleStartSaveTask(webSocket, selectedRows, rows)}} class='mui-btn' variant="contained">Start SaveTask</Button>
     </div>
     </div>);
 }

@@ -7,14 +7,18 @@ import SaveTaskSocketService from "../../service/SaveTaskServiceWebSocket";
 
 function SaveTask() {
 
-
   useEffect(() => {
-    console.log("helloworld")
     const webSocket = new SaveTaskSocketService("ws://localhost:5000/api/ws");
     webSocket.connect();
+    setWebSocket(webSocket);
+    // return () => {
+    //   console.log("WebSocket closed");
+    //   webSocket.close(); // Assurez-vous que votre service a une méthode de déconnexion
+    // };
   }, []);
   const [statePopupCreate, setStatePopupCreate]  = useState(false);
   const [updateDatagrid, setUpdateDatagrid] = useState(false);
+  const [webSocket, setWebSocket] = useState();
 
     function onCloseCreatePopup()
     {
@@ -25,7 +29,7 @@ function SaveTask() {
       setStatePopupCreate(true);
     }
     return (<div className="save-task">
-        <SaveTaskDatagrid onOpenCreatePopup={onOpenCreatePopup} updateDatagrid={updateDatagrid} setUpdateDatagrid={setUpdateDatagrid} />
+        <SaveTaskDatagrid webSocket={webSocket} onOpenCreatePopup={onOpenCreatePopup} updateDatagrid={updateDatagrid} setUpdateDatagrid={setUpdateDatagrid} />
         <PopupCreateSaveTask statePopupCreate={statePopupCreate} onClose={onCloseCreatePopup} setUpdateDatagrid={setUpdateDatagrid} />
         </div>);
   }

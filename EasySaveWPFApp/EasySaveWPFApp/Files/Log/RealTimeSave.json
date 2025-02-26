@@ -20,5 +20,16 @@
     "NbFilesLeftToDo": 0,
     "Progression": 100,
     "SaveDate": "2025-02-26T12:18:30.4926445+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "State": "Finie",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": -1,
+    "Progression": 114.28571428571428,
+    "SaveDate": "2025-02-26T17:31:50.8684791+01:00"
   }
 ]

@@ -15,11 +15,23 @@ using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http;
 using System.Net.WebSockets;
 using System.Reflection.Metadata;
 using System.Collections.Concurrent;
+using EasySaveWPFApp.ViewModel;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Diagnostics;
 
 
 namespace EasySaveWPFApp.Api
 {
+
+    public class WebSocketMessage
+    {
+        [JsonPropertyName("Action")] // Correspondance exacte avec la clé JSON
+        public string Action { get; set; }
+
+        [JsonPropertyName("Names")]
+        public List<string> Names { get; set; }
+    }
     public class ApiServer
     {
         private IWebHost _host;
@@ -41,7 +53,7 @@ namespace EasySaveWPFApp.Api
                 WebSocketReceiveResult result;
                 while(webSocket.State == WebSocketState.Open)
                 {
-                    result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                        result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
 
                     // Vérifier si le client demande la fermeture
                     if (result.MessageType == WebSocketMessageType.Close)
@@ -52,18 +64,31 @@ namespace EasySaveWPFApp.Api
 
                     // Traitement du message reçu
                     var receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    try
+                    {
+                        WebSocketMessage? webSocketMessage = JsonSerializer.Deserialize<WebSocketMessage>(receivedMessage);
+
+                        if (webSocketMessage.Action == "Start")
+                        {
+                            foreach(string saveTaskName in webSocketMessage.Names)
+                            {
+                                saveTaskViewModel.BindSaveTasks.FirstOrDefault((task) => task.name == saveTaskName).SaveTaskProgressPercentageChangedCallback = (newvalue) =>
+                                {
+                                    Trace.WriteLine($"Nouvelle valeur détectée dans un autre thread {newvalue}");
+                                };
+                                await saveTaskViewModel.ExecuteSaveTaskAsync(saveTaskName);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                     Console.WriteLine($"Message reçu : {receivedMessage}");
 
                     // Exemple : Réponse vers le client
                     var responseMessage = $"Serveur a reçu : {receivedMessage}";
                     var responseBuffer = Encoding.UTF8.GetBytes(responseMessage);
-
-                    await webSocket.SendAsync(
-                        new ArraySegment<byte>(responseBuffer),
-                        WebSocketMessageType.Text,
-                        true,
-                        CancellationToken.None
-                    );
                 }
             }
             catch (WebSocketException wsEx)

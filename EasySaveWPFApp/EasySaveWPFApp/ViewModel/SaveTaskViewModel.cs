@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace EasySaveWPFApp.ViewModel
 {
@@ -91,7 +92,7 @@ namespace EasySaveWPFApp.ViewModel
                 return false;
             }
             if (!Utilities.Utilities.IsValidPath(saveTaskSource))
-            {
+            {   
                 // Show an error message if the source path is invalid
                 return false;
             }
@@ -114,6 +115,7 @@ namespace EasySaveWPFApp.ViewModel
 
         internal async Task<Dictionary<string, List<string>>> ExecuteSaveTaskAsync(string name)
         {
+            Trace.WriteLine("test");
             bool DidEverythingSaveCorrectly = await saveTaskManager.ExecuteSaveTaskAsync(name);
             Trace.WriteLine("ExecuteSaveTaskAsync STVM before IF :" + DidEverythingSaveCorrectly.ToString());
             if (DidEverythingSaveCorrectly)
@@ -129,7 +131,7 @@ namespace EasySaveWPFApp.ViewModel
         }
 
         internal void RemoveSaveTask(string name)
-        {
+        {   
             bool DidEverythingSaveCorrectly = saveTaskManager.RemoveSaveTask(name);
             if (DidEverythingSaveCorrectly)
                 return; //success saveTaskExecution  //ShowMessage(messagesManager.GetMessageTranslate(EMessage.SuccessStartSaveTaskMessage) + saveTaskManager.GetSaveTaskName(index));
@@ -146,8 +148,11 @@ namespace EasySaveWPFApp.ViewModel
             saveTaskManager.SwitchSaveTask(name);
             saveTaskManager.SerializeSaveTasks();
         }
-        protected void OnPropertyChanged(string propertyName) =>
+        internal void OnPropertyChanged(string propertyName)
+        {
+            Trace.WriteLine($"Propriété modifiée : {propertyName}");
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public void OnWindowClosing(object? sender, CancelEventArgs e)
         {
