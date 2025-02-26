@@ -39,6 +39,8 @@ namespace Log
                 throw new IOException($"Could not read the file '{filePath}' after multiple attempts.");
             }
         }
+
+
         public static void LockedWriteAllText(string filePath, string content)
         {
 
