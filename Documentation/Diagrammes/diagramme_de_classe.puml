@@ -2,63 +2,84 @@
 
 /' ==================== Packages ==================== '/
 package "Model" {
-    class SaveTaskFactory {
-        ~ CreateSave(saveTaskTypes: ESaveTaskTypes, sourcePath: string, targetPath: string): SaveTask
-    }
+
+class SaveTaskFactory {
+    - LogRealTime logRealTime
+    - LogDaily logDaily
+    
+    + CreateSave(ESaveTaskTypes saveTaskTypes, string sourcePath, string targetPath, string saveTaskName) : SaveTask
+}
 
 abstract class SaveTask <<abstract>> {
-        - DirectoryPair CurrentDirectoryPair
-        - bool isSoftwareRunning
-        - bool IsSaveSuccessful
-        - LogRealTime logRealTime
-        - LogDaily logDaily
-        - List<string> UnsavedPaths
-        - string name
-        + string BindName
-        + string BindSource
-        + string BindDestination
-        + ESaveTaskTypes BindSaveTaskType
-        + void SetLogRealTime(LogRealTime logRealTime)
-        + void SetLogDaily(LogDaily logDaily)
-        + List<string> GetUnsavedPaths()
-        + DirectoryPair GetDirectoryPair()
-        + string GetMessageSaveTaskType()
-        + ESaveTaskTypes GetSaveTaskType()
-        + bool Save(SaveTaskManager saveTaskManager)
-        + void CopySingleFile(string sourcePath, string targetPath, SaveTaskManager saveTaskManager)
-        + void NotifySoftwareRunning(bool isSoftwareRunning)
-        + void OnPropertyChanged(string propertyName)
-    }
+    - CancellationTokenSource cancellationTokenSource
+    - ManualResetEventSlim pauseEvent
+    - DirectoryPair CurrentDirectoryPair
+    - bool isSoftwareRunning
+    - bool IsSaveSuccessful
+    - float SaveTaskProgressPercentage
+    - LogRealTime logRealTime
+    - LogDaily logDaily
+    - List<string> UnsavedPaths
+    - int nFilesUnsavedCancelled
+    - string name
+    - ERealTimeState state
+    + string BindName
+    + string BindState
+    + float BindSaveTaskProgressPercentage
+    + string BindSource
+    + string BindDestination
+    + ESaveTaskTypes BindSaveTaskType
+    
+    + SetBindState(ERealTimeState state)
+    + SetLogRealTime(LogRealTime logRealTime)
+    + SetLogDaily(LogDaily logDaily)
+    + GetUnsavedPaths() : List<string>
+    + GetDirectoryPair() : DirectoryPair
+    + GetSaveTaskType() : ESaveTaskTypes
+    + Save(SaveTaskManager saveTaskManager) : bool
+    + ExecuteSaveAsync(SaveTaskManager saveTaskManager) : Task<bool>
+    + CopySingleFile(sourcePath, targetPath, saveTaskManager)
+    + UpdateProgress()
+    + CreateDirectory(directoryPath)
+    + NotifySoftwareRunning(isSoftwareRunning)
+    + Pause()
+    + Play()
+    + Stop()
+    - OnPropertyChanged(propertyName)
+    
+    # PropertyChanged : event PropertyChangedEventHandler?
+}
 
-    class SaveTaskDifferential {
-        - SaveDifferentialRecursive(string SourcePath, string TargetPath, SaveTaskManager saveTaskManager) : List<string>
-        + SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, string name)
-        + SaveTaskDifferential(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string SaveTaskName)
-        + Save(SaveTaskManager saveTaskManager) : bool
-        + GetMessageSaveTaskType() : string
-        + GetSaveTaskType() : ESaveTaskTypes
-    }
 
-    class SaveTaskComplete {
-        - DirectoryPair CurrentDirectoryPair
-        - bool isSoftwareRunning
-        - bool IsSaveSuccessful
-        - LogRealTime logRealTime
-        - LogDaily logDaily
-        - List<string> UnsavedPaths
-        - string name
-        + SaveTaskComplete(DirectoryPair CurrentDirectoryPair, string name)
-        + SaveTaskComplete(DirectoryPair CurrentDirectoryPair, LogDaily logDaily, LogRealTime logRealTime, string saveTaskName)
-        + bool Save(SaveTaskManager saveTaskManager)
-        + string GetMessageSaveTaskType()
-        + ESaveTaskTypes GetSaveTaskType()
-    }
 
-    class DirectoryPair {
-        ~ SourcePath: string
-        ~ TargetPath: string
-        ~ DirectoryPair(SourcePath: string, TargetPath: string)
-    }
+class SaveTaskDifferential {
+    - List<string> UnsavedPaths
+    - int nFilesUnsavedCancelled
+    
+    + Save(SaveTaskManager saveTaskManager) : bool
+    + SaveDifferentialRecursive(SourcePath, TargetPath, saveTaskManager) : List<string>
+    + GetSaveTaskType() : ESaveTaskTypes
+}
+
+class SaveTaskComplete {
+    - List<string> UnsavedPaths
+    - bool isSoftwareRunning
+    
+    + Save(SaveTaskManager saveTaskManager) : bool
+    + SaveComplete(SaveTaskManager saveTaskManager) : List<string>
+    + CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo, saveTaskManager) : List<string>
+    + GetSaveTaskType() : ESaveTaskTypes
+}
+
+
+class DirectoryPair {
+    - string SourcePath
+    - string TargetPath
+    
+    + DirectoryPair(SourcePath, TargetPath)
+    + DirectoryPair(dp)
+}
+
 
     enum ESaveTaskTypes <<enum>> {
         Differential
@@ -74,28 +95,36 @@ abstract class SaveTask <<abstract>> {
     }
 
 class SaveTaskManager {
-    - SaveTaskFactory : SaveTaskFactory
-    - SaveTasks : ObservableCollection<SaveTask>
-    - EncryptingExtensions : List<string>
-    - CurrentUnsavedPaths : List<string>
-    - processMonitor : ProcessMonitor
-    - isSoftwareRunning : bool
-    + SaveTaskManager()
-    + OnSoftwareStatusChanged(isRunning : bool)
-    + IsSaveTaskNameExist(name : string) : bool
-    + GetSaveTaskByName(Name : string) : SaveTask
-    + AddSaveTask(SaveTaskType : ESaveTaskTypes, sourcePath : string, targetPath : string, saveTaskName : string) : bool
-    + RemoveSaveTask(name : string) : bool
-    + ExecuteSaveTask(name : string) : bool
-    + ModifySaveTaskType(name : string, newSaveTaskType : ESaveTaskTypes) : bool
-    + ModifySaveTaskSourcePath(name : string, newSourcePath : string) : bool
-    + ModifySaveTaskTargetPath(name : string, newTargetPath : string) : bool
-    + ModifySaveTaskName(name : string, newName : string) : bool
-    + SwitchSaveTask(name : string) : bool
-    + SerializeSaveTasks()
-    + SetEncryptingExtensions(newEncryptingExtensions : List<string>)
-    + SerializeEncryptingExtensions()
-    + DeserializeEncryptingExtensions()
+    - ObservableCollection<SaveTask> SaveTasks
+    - SaveTaskFactory SaveTaskFactory
+    - Dictionary<string, List<string>> CurrentUnsavedPathsLists
+    - List<string> EncryptingExtensions
+    - List<string> PriorityExtensions
+    - ProcessMonitor processMonitor
+    - bool isSoftwareRunning
+
+    + List<string> GetEncryptingExtensions()
+    + List<string> GetPriorityExtensions()
+    + List<SaveTask> GetSaveTasksClone()
+    + bool IsSaveTaskNameExist(name: string)
+    + SaveTask? GetSaveTaskByName(name: string)
+    + bool AddSaveTask(SaveTaskType: ESaveTaskTypes, sourcePath: string, targetPath: string, saveTaskName: string)
+    + bool RemoveSaveTask(name: string)
+    + Task<bool> ExecuteSaveTaskAsync(name: string)
+    + void ClearUnsavedPathsLists()
+    + bool ModifySaveTaskType(name: string, newSaveTaskType: ESaveTaskTypes)
+    + bool ModifySaveTaskSourcePath(name: string, newSourcePath: string)
+    + bool ModifySaveTaskTargetPath(name: string, newTargetPath: string)
+    + bool ModifySaveTaskName(name: string, newName: string)
+    + bool SwitchSaveTask(name: string)
+    + void SerializeSaveTasks()
+    + void SetEncryptingExtensions(newEncryptingExtensions: List<string>)
+    + void SerializeEncryptingExtensions()
+    + void DeserializeEncryptingExtensions()
+    + void SetPriorityExtensions(newPriorityExtensions: List<string>)
+    + void SerializePriorityExtensions()
+    + void DeserializePriorityExtensions()
+    + event PropertyChangedEventHandler PropertyChanged
 }
 
 interface ESaveTaskObserver {
@@ -104,33 +133,52 @@ interface ESaveTaskObserver {
 
 
 class ProcessMonitor {
-  -System.Timers.Timer timer
-  -const string businessSoftware
-  -bool isSoftwareRunning
-  +event Action<bool> OnSoftwareStatusChanged
-  +ProcessMonitor()
-  -Task CheckBusinessSoftware()
-  +void Stop()
+    - System.Timers.Timer timer
+    - const string businessSoftware
+    - bool isSoftwareRunning
+    
+    + event Action<bool> OnSoftwareStatusChanged
+    + ProcessMonitor()
+    + void Stop()
+    - Task CheckBusinessSoftware()
 }
 
 class JsonManager {
-    - string AppSettingsPath
-    - string SaveTaskSerializationPath
-    - string LogPathDaily
-    - string LogPathRealTime
-    - string EncryptingExtensionsSerializationPath
-    - string EncryptionKey
-
-    + string GetSettings(string settings)
-    + void SerializeSaveTasks(ObservableCollection<SaveTask> SaveTasks)
-    + List<SaveTask> DeserializeSaveTasks()
-    + void SerializeEncryptingExtensions(List<string> EncryptingExtensions)
-    + List<string> DeserializeEncryptingExtensions()
+    {static} - string AppSettingsPath
+    {static} - string SaveTaskSerializationPath
+    {static} - string LogPathDaily
+    {static} - string LogPathRealTime
+    {static} - string EncryptingExtensionsSerializationPath
+    {static} - string PriorityExtensionsSerializationPath
+    {static} - string EncryptionKey
+    
+    {static} + string GetSettings(string settings)
+    {static} + void SerializeSaveTasks(ObservableCollection<SaveTask> SaveTasks)
+    {static} + List<SaveTask> DeserializeSaveTasks()
+    {static} + void SerializeEncryptingExtensions(List<string> EncryptingExtensions)
+    {static} + List<string> DeserializeEncryptingExtensions()
+    {static} + void SerializePriorityExtensions(List<string> PriorityExtensions)
+    {static} + List<string> DeserializePriorityExtensions()
 }
 
-    class Utilities {
-    + IsValidPath(path: string): bool
+class Utilities {
+    {static} + bool IsValidPath(string path)
+}
+
+
+    enum ELogFormat <<enum>> {
+        JSON
+        XML 
     }
+
+    class LogUtilities {
+        - ELogFormat CurrentLogFormat
+
+        - SetLogFormat(ELogFormat logFormat) : void
+        - GetLogFormat() : ELogFormat
+}
+
+
 
     ' enum EMessage <<enum>> {
     '     ErrorTranslate
@@ -181,52 +229,82 @@ class JsonManager {
 
 package "ViewModel" {
 
-    class SaveTaskViewModel {
-    +SaveTaskManager saveTaskManager
-    +List<String> EcliSaveTaskTypesStr
-    +ObservableCollection<SaveTask> BindSaveTasks
-    +CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
-    +ExecuteSaveTask(string name)
-    +RemoveSaveTask(string name)
-    +SwitchSaveTaskType(string name)
-    +ModifySaveTaskSourcePath(string name, string path)
-    +ModifySaveTaskTargetPath(string name, string path)
-    +ModifySaveTaskName(string currentName, string newName)
-    +ModifySaveTaskType(string name, ESaveTaskTypes type)
-    +OnWindowClosing(object? sender, CancelEventArgs e)
-    }
+class SaveTaskViewModel {
+    - SaveTaskManager saveTaskManager
+    - List<String> EcliSaveTaskTypesStr
+    + ObservableCollection<SaveTask> BindSaveTasks
+    + event PropertyChangedEventHandler PropertyChanged
+    + void CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
+    + bool ModifySaveTaskSourcePath(string name, string path)
+    + bool ModifySaveTaskTargetPath(string name, string path)
+    + bool ModifySaveTaskName(string currentName, string newName)
+    + bool ModifySaveTaskType(string name, ESaveTaskTypes type)
+    + async Task<Dictionary<string, List<string>>> ExecuteSaveTaskAsync(string name)
+    + void RemoveSaveTask(string name)
+    + void SwitchSaveTaskType(string name)
+    + void OnWindowClosing(object? sender, CancelEventArgs e)
+    + void OnPropertyChanged(string propertyName)
+    {static} - internal SaveTaskViewModel(SaveTaskManager saveTaskManager)
+}
     
     class LanguageResourceViewModel {
-        + static void SetLanguage(string cultureCode)
-    }
+    {static} + void SetLanguage(string cultureCode)
+}
+
 
         enum ESettingsActions <<enum>> {
         SwitchLanguageToFrench
         SwitchLanguageToEnglish
         SwitchLogTypeToJSON
         SwitchSaveTypeToXML
-        EditedExtensions
+        EditedEncryptingExtensions
+        EditedPriorityExtensions
     }
 
     ' Définition de la classe SettingsViewModel
     class SettingsViewModel {
-        - List<ESettingsActions> UnsavedActions
-        - List<string> NewEncryptingExtensions
+    - List<ESettingsActions> UnsavedActions
+    - List<string> NewEncryptingExtensions
+    - List<string> NewPriorityExtensions
+    - SaveTaskManager saveTaskManager
+    + void ExecuteAllUnsavedActions()
+    + void AddLanguageAction(ESettingsActions eSettingsActions)
+    + bool ShouldEnglishRadioButtonBeChecked()
+    + bool ShouldFrenchRadioButtonBeChecked()
+    + bool ShouldJSONRadioButtonBeChecked()
+    + bool ShouldXMLRadioButtonBeChecked()
+    + bool AddEncryptingExtension(string EncryptingExtension)
+    + bool RemoveEncryptingExtension(string EncryptingExtension)
+    + bool AddPriorityExtension(string PriorityExtension)
+    + bool RemovePriorityExtension(string PriorityExtension)
+    + List<string> GetNewEncryptingExtensions()
+    + List<string> GetNewPriorityExtensions()
+    + void SetLanguage(string cultureCode)
+    + static void ReloadMainWindow()
+    + internal SettingsViewModel(SaveTaskManager saveTaskManager)
+    - void PutAllLanguageActionsToBottomOfList()
+    - void TryPutActionToBottomOfList(ESettingsActions eSettingsActions)
+    - bool IsLanguageDifferentToCurrent(ESettingsActions eSettingsActions)
+    - void TryAddEditedEncryptingExtensionsAction()
+    - void TryAddEditedPriorityExtensionsAction()
+    - bool TwoListEqualsAnyOrder(List<string> list1, List<string> list2)
+    - void TrySwitchLogFormatToJSON()
+    - void TrySwitchLogFormatToXML()
+}
+
+    ' Définition de la classe SaveTaskProgressViewModel
+    class SaveTaskProgressViewModel {
         - SaveTaskManager saveTaskManager
-        --
-        + SettingsViewModel(SaveTaskManager saveTaskManager)
-        + ExecuteAllUnsavedActions()
-        + AddLanguageAction(ESettingsActions eSettingsActions)
-        + SetLanguage(string cultureCode)
-        + static ReloadMainWindow()
-        + ShouldEnglishRadioButtonBeChecked() : bool
-        + ShouldFrenchRadioButtonBeChecked() : bool
-        + ShouldJSONRadioButtonBeChecked() : bool
-        + ShouldXMLRadioButtonBeChecked() : bool
-        + AddEncryptingExtension(string EncryptingExtension) : bool
-        + RemoveEncryptingExtension(string EncryptingExtension) : bool
-        + GetNewEncryptingExtensions() : List<string>
+        - ObservableCollection<SaveTask> SaveTasksCurrentlySaving
+        + ObservableCollection<SaveTask> BindSaveTasksCurrentlySaving
+        + event PropertyChangedEventHandler PropertyChanged
+        + void PlaySaveTasks(List<SaveTask> SaveTasks)
+        + void PauseSaveTasks(List<SaveTask> SaveTasks)
+        + void StopSaveTasks(List<SaveTask> SaveTasks)
+        + void OnPropertyChanged(string propertyName)
+        {static} - internal SaveTaskProgressViewModel(List<SaveTask> SaveTasksStarted, SaveTaskManager saveTaskManager)
     }
+
 
     /' Relations '/
     SaveTaskViewModel o--> SaveTaskManager : "<<contains>>"
@@ -237,106 +315,207 @@ package "ViewModel" {
     Utilities <-- SaveTaskManager : "<<uses>>"
 }
 
+
+
 package "View" {
-      class MainWindow {
-        + MainWindow()
-        - void AddRow_Click(object sender, RoutedEventArgs e)
-        - void StartSelected_Click(object sender, RoutedEventArgs e)
-        - void ModifySelected_Click(object sender, RoutedEventArgs e)
-        - void DeleteSelected_Click(object sender, RoutedEventArgs e)
-        - void SettingsButton_Click(object sender, RoutedEventArgs e)
-        - void BackupTable_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        - void LaunchSettingsWindow()
-        - SaveTaskViewModel saveTaskViewModel
-        - SaveTaskWindow saveTaskWindow
-        - SaveTaskManager saveTaskManager
-    }
+
+
+class MainWindow {
+    - SaveTaskViewModel saveTaskViewModel
+    - SaveTaskWindow saveTaskWindow
+    - SaveTaskManager saveTaskManager
+    - ProcessMonitor processMonitor
+    - BusinessSoftwareWindow popupWindow
+
+    + MainWindow()
+    + void AddRow_Click(object sender, RoutedEventArgs e)
+    + void StartSelected_Click(object sender, RoutedEventArgs e)
+    + void ModifySelected_Click(object sender, RoutedEventArgs e)
+    + void DeleteSelected_Click(object sender, RoutedEventArgs e)
+    + void SettingsButton_Click(object sender, RoutedEventArgs e)
+    + void BackupTable_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+    + void LaunchSettingsWindow()
+}
 
     class SaveTaskWindow {
-        + SaveTaskWindow(SaveTaskViewModel saveTaskViewModel)
-        --
-        - void SaveButton_Click(object sender, RoutedEventArgs e)
-        - void CancelButton_Click(object sender, RoutedEventArgs e)
-        - SaveTaskViewModel saveTaskViewModel
-    }
+    - SaveTaskViewModel saveTaskViewModel
 
-        class SettingsWindow {
-        + SettingsWindow(SaveTaskManager saveTaskManager)
-        --
-        - void FrenchLanguageRadioButton_Checked(object sender, RoutedEventArgs e)
-        - void EnglishLanguageRadioButton_Checked(object sender, RoutedEventArgs e)
-        - void Save_Click(object sender, RoutedEventArgs e)
-        - void Cancel_Click(object sender, RoutedEventArgs e)
-        - void ValidateExtensionButton(object sender, RoutedEventArgs e)
-        - void RefreshEncryptingExtensionsDisplay()
-        - void DeleteExtensionButton_Click(object sender, RoutedEventArgs e)
-        --
-        - SettingsViewModel settingsViewModel
-    }
+    + SaveTaskWindow(SaveTaskViewModel saveTaskViewModel)
+    + void SaveButton_Click(object sender, RoutedEventArgs e)
+    + void CancelButton_Click(object sender, RoutedEventArgs e)
+    + void TaskName_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+}
+
+    class SettingsWindow {
+    - SettingsViewModel settingsViewModel
+
+    + SettingsWindow(SaveTaskManager saveTaskManager)
+    + void FrenchLanguageRadioButton_Checked(object sender, RoutedEventArgs e)
+    + void EnglishLanguageRadioButton_Checked(object sender, RoutedEventArgs e)
+    + void JSONRadioButton_Checked(object sender, RoutedEventArgs e)
+    + void XMLRadioButton_Checked(object sender, RoutedEventArgs e)
+    + void Save_Click(object sender, RoutedEventArgs e)
+    + void Cancel_Click(object sender, RoutedEventArgs e)
+    + void ValidateEncryptingExtensionButton(object sender, RoutedEventArgs e)
+    + void RefreshEncryptingExtensionsDisplay()
+    + void DeleteEncryptingExtensionButton_Click(object sender, RoutedEventArgs e)
+    + void ValidatePriorityExtensionButton(object sender, RoutedEventArgs e)
+    + void RefreshPriorityExtensionsDisplay()
+    + void DeletePriorityExtensionButton_Click(object sender, RoutedEventArgs e)
+}
+
+    class BusinessSoftwareWindow {
+        + BusinessSoftwareWindow()
+
+        + ClosePopup(object sender, RoutedEventArgs e) : void
+}
+
+class SaveTaskProgressWindow {
+    - SaveTaskProgressViewModel saveTaskProgressViewModel
+    - Dictionary<string, List<string>> UnsavedPathsDictionary
+    - List<Task> SaveTaskTasksReferences
+    + SaveTaskProgressWindow(List<SaveTask> SaveTasksStarted, SaveTaskViewModel saveTaskViewModel, SaveTaskManager saveTaskManager)
+    + ExecuteAllSaveTasksAsync(List<SaveTask> SaveTasksStarted, SaveTaskViewModel saveTaskViewModel) : void
+    + OnAllTasksCompleted() : void
+    + ExecuteSaveTaskAsync(string name, List<SaveTask> SaveTasksStarted, SaveTaskViewModel saveTaskViewModel) : Task
+    + PlaySelected_Click(object sender, RoutedEventArgs e) : void
+    + PauseSelected_Click(object sender, RoutedEventArgs e) : void
+    + StopSelected_Click(object sender, RoutedEventArgs e) : void
+    + CheckAndShowUnsavedFilesWindow() : void
+    + CheckAndShowSaveTaskStoppedWindow() : void
+}
+
+class SaveTaskStoppedWindow {
+    - List<SaveTask> stoppedTasks
+
+    + SaveTaskStoppedWindow(List<SaveTask> stoppedTasks1)
+    + CloseButton_Click(object sender, RoutedEventArgs e) : void
+}
+
+    class UnsavedFilesWindow {
+        + ObservableCollection<KeyValuePair<string, List<string>>> UnsavedFiles
+
+        + UnsavedFilesWindow(Dictionary<string, List<string>> unsavedPathsDictionary)
+        + CloseButton_Click(object sender, RoutedEventArgs e) : void
+}
+
 
     MainWindow *--> SaveTaskManager : "<<instanciates>>"
     MainWindow *--> SaveTaskViewModel : "<<instanciates>>"
     MainWindow --> SaveTaskWindow : "<<creates>>"
+    MainWindow --> BusinessSoftwareWindow : "<<creates>>"
     MainWindow --> SaveTask : "<<uses>>"
     SettingsWindow *--> SettingsViewModel : "<<instanciates>>"
     SaveTaskWindow o--> SaveTaskViewModel : "<<contains>>"
     SettingsViewModel ---> MainWindow : "<<reloads>>"
+    SaveTaskProgressWindow *--> UnsavedFilesWindow : "<<instanciates>>"
+    SaveTaskProgressWindow *--> SaveTaskStoppedWindow : "<<instanciates>>"
 }
 
 package "logDLL"{
+
+
     abstract class Log <<abstract>>{
     +string LogRealTimePath
     +string LogDailyPath
     +Log(string LogDailyPath, string LogRealTimePath)
     }
+
+
     class JsonLogManager {
-        +UpdateRealTimeProgression(realTimeInfo: RealTimeInfo, LogRealTimePath: string): void
-        +GetFileDailyName(Date: DateTime, LogDailyPath: string): string
-        +CreateDailyJsonFile(Date: DateTime, LogDailyPath: string): void
-        +AddSaveToDailyFile(DailyInfo: DailyInfo, LogDailyPath: string): void
-        +AddSaveToRealTimeFile(realTimeInfo: RealTimeInfo, LogRealTimePath: string): void
-        +AddJsonLogObject(FilePath: string, LogObject: object): void
-        +GetLastSaveDate(LogDailyPath: string, FilePath: string): DateTime
-    }
+    + static void UpdateRealTimeProgression(RealTimeInfo realTimeInfo, string LogRealTimePath)
+    + static void CreateRepertories(string path)
+    + static string GetFileDailyName(DateTime Date, string LogDailyPath)
+    + static string GetFileRealTimeName(string LogRealTimePath)
+    + static void CreateDailyJsonFile(DateTime Date, string LogDailyPath)
+    + static void CreateRealTimeJsonFile(string LogRealTimePath)
+    + static DateTime GetLastSaveDateFromJson(string LogDailyPath, string FilePath)
+    + static void AddJsonLogObjectRealTime(string FilePath, RealTimeInfo realTimeInfo)
+    + static void AddJsonLogObjectDailyInfo(string FilePath, DailyInfo dailyInfo)
+}
+
         ' Déclaration de la classe LogDaily
+
     class LogDaily {
-        - dailyInfo : DailyInfo
-        - stopWatch : Stopwatch
-        + LogDaily(LogDailyPath : String, LogRealTimePath : String)
-        + CreateDailyFile() : void
-        + AddDailyInfo(saveTaskName : String, SourcePath : String, TargetPath : String) : void
-    }
+    - DailyInfo dailyInfo
+    - Stopwatch stopWatch
+    + LogDaily(string LogDailyPath, string LogRealTimePath)
+    + void CreateDailyFile(int logType = 0)
+    + void AddDailyInfo(string saveTaskName, string SourcePath, string TargetPath, long encryptionTime, int logType = 0)
+}
 
-    class LogRealTime {
-        + RealTimeInfo realTimeInfo
-        --
-        + LogRealTime(string LogDailyPath, string LogRealTimePath)
-        + void CreateRealTimeInfo(string saveTaskName, string SourcePath, string TargetPath, ERealTimeState state, int saveTaskType)
-        + Tuple<int, int> GetTotalFilesInfosToCopy(string path, int saveTaskType)
-        + void UpdateRealTimeProgress()
-    }
+class LogRealTime {
+    - realTimeInfo : RealTimeInfo
+    + CreateRealTimeInfo(saveTaskName: string, SourcePath: string, TargetPath: string, state: ERealTimeState, saveTaskType: int, logType: int) : void
+    + GetTotalFilesInfosToCopy(path: string, saveTaskType: int) : Tuple<int, int>
+    + UpdateRealTimeProgress(state: string, logType: int) : void
+    + GetTotalFilesLeftToDo() : int
+}
 
-    struct RealTimeInfo {
-    - Name: string
-    - SourcePath: string
-    - TargetPath: string
-    - State: ERealTimeState
-    - TotalFilesToCopy: int
-    - TotalFilesSize: long
-    - NbFilesLeftToDo: int
-    - Progression: double
-    - SaveDate: DateTime
-    }
 
-    ' Définition de la structure DailyInfo
     struct DailyInfo {
-        - Name: string
-        - FileSource: string
-        - FileTarget: string
-        - FileSize: long
-        - FileTransferTime: double
-        - DateTime: DateTime
+    - Name : string
+    - FileSource : string
+    - FileTarget : string
+    - FileSize : long
+    - FileTransferTime : double
+    - EncryptionTimeMs : long
+    - DateTime : DateTime
+    + ToString() : string
+}
+
+    
+    class AsyncFileManager {
+        - int MaxRetries
+        - int RetryDelay
+        - object WriteFileLock
+        - object ReadFileLock
+        - object SerializeLock
+
+        + LockedReadAllText(string filePath) : string
+        + LockedWriteAllText(string filePath, string content) : void
+        + LockedSerialize<T>(T obj) : string
+        + LockedDeserialize<T>(string jsonContent) : T
+}
+
+    class XmlLogManager {
+        - int MaxRetries
+        - int RetryDelay
+        - object WriteFileLock
+        - object ReadFileLock
+        - object SerializeLock
+
+        + UpdateRealTimeProgression(RealTimeInfo realTimeInfo, string LogRealTimePath) : void
+        + CreateRepertories(string path) : void
+        + GetFileDailyName(DateTime Date, string LogDailyPath) : string
+        + GetFileRealTimeName(string LogRealTimePath) : string
+        + CreateDailyXmlFile(DateTime Date, string LogDailyPath) : void
+        + CreateRealTimeXmlFile(string LogRealTimePath) : void
+        + AddSaveToDailyFile(DailyInfo dailyInfo, string LogDailyPath) : void
+        + AddSaveToRealTimeFile(RealTimeInfo realTimeInfo, string LogRealTimePath) : void
+        + AddXmlLogObject<T>(string FilePath, T LogObject) : void
+        - SerializeXml<T>(string filePath, T data) : void
+        - DeserializeXml<T>(string filePath) : T
+        + GetLastSaveDateFromXml(string LogDailyPath, string FilePath) : DateTime
     }
+
+    enum ERealTimeState <<enum>> {
+    PAUSED
+    ACTIVE
+    STOPPED
+    END 
+    ERROR 
+    WAITING_FOR_PRIORITY_FILES
+}
+
+    class ERealTimeStateExstensions {
+    - MessageStrings : Dictionary<ERealTimeState, string>
+    + GetValue(message: ERealTimeState) : string
+}
+
+
+
+
 
     LogDaily --|> Log
     LogRealTime --|> Log
@@ -348,6 +527,16 @@ package "logDLL"{
     SaveTaskFactory --> LogDaily : "<<creates>>"
     SaveTask o--> LogDaily : "<<uses>>"
     SaveTask o--> LogRealTime : "<<uses>>"
+    SaveTask --> LogUtilities : "<<uses>>"
+    SettingsViewModel --> LogUtilities : "<<uses>>"
+    LogUtilities --> ELogFormat : "<<creates>>"
+    SaveTaskProgressWindow *--> SaveTaskProgressViewModel : "<<instanciates>>"
+    JsonManager --> AsyncFileManager : "<<uses>>"
+    JsonLogManager  --> AsyncFileManager : "<<uses>>"
+    XmlLogManager --> AsyncFileManager : "<<uses>>"
+    RealTimeInfo --> ERealTimeStateExstensions : "<<uses>>"
+    ERealTimeStateExstensions --> ERealTimeState : "<<uses>>"
+    LogRealTime --> ERealTimeState : "<<uses>>"
 }
 
 @enduml
