@@ -1,24 +1,2 @@
 [
-  {
-    "Name": "compl2",
-    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source",
-    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff",
-    "State": "Paused",
-    "TotalFilesToCopy": 5,
-    "TotalFilesSize": 32,
-    "NbFilesLeftToDo": 3,
-    "Progression": 40,
-    "SaveDate": "2025-02-25T16:01:30.704744+01:00"
-  },
-  {
-    "Name": "test2comp",
-    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source2",
-    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff2",
-    "State": "Paused",
-    "TotalFilesToCopy": 5,
-    "TotalFilesSize": 32,
-    "NbFilesLeftToDo": 3,
-    "Progression": 40,
-    "SaveDate": "2025-02-25T16:01:30.7738353+01:00"
-  }
 ]
