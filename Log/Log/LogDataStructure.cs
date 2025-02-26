@@ -10,17 +10,23 @@ namespace Log
 
     public enum ERealTimeState
     {
-        ACTIVE = 0,
-        END = 1,
-        ERROR = 2,
+        PAUSED = 0,
+        ACTIVE = 1,
+        STOPPED = 2,
+        END = 3,
+        ERROR = 4,
+        WAITING_FOR_PRIORITY_FILES = 5,
     }
 
     public static class ERealTimeStateExstensions
     {
         private static readonly Dictionary<ERealTimeState, string> MessageStrings = new Dictionary<ERealTimeState, string> {
-            { ERealTimeState.ACTIVE, "ACTIVE" },
+            { ERealTimeState.PAUSED, "Paused" },
+            { ERealTimeState.ACTIVE , "Active" },
+            { ERealTimeState.STOPPED, "Stopped" },
             { ERealTimeState.END, "END" },
-            {ERealTimeState.ERROR , "Error" },
+            { ERealTimeState.ERROR , "Error" },
+            { ERealTimeState.WAITING_FOR_PRIORITY_FILES , "Waiting for priority files" },
         };
 
         internal static string GetValue(this ERealTimeState message)
@@ -66,6 +72,11 @@ namespace Log
             TotalFilesSize = totalFilesSize;
             NbFilesLeftToDo = nbFilesLeftToDo;
             Progression = progression;
+        }
+
+        public void SetState(ERealTimeState newState)
+        {
+            State  = ERealTimeStateExstensions.GetValue(newState);
         }
 
 

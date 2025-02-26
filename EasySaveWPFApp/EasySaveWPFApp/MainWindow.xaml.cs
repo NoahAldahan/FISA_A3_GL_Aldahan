@@ -14,6 +14,7 @@ using EasySaveWPFApp.ViewModel;
 using EasySaveWPFApp.Api;
 using EasySaveWPFApp.Utilities;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace EasySaveWPFApp
 {
@@ -28,6 +29,15 @@ namespace EasySaveWPFApp
         SaveTaskManager saveTaskManager;
         private readonly ApiServer apiServer;
 
+
+        // ====== AJOUTS POUR LE PROCESS MONITOR ET LA GESTION DE LA POP-UP ======
+        // Instance du ProcessMonitor qui va vérifier le processus "cmd"
+        private ProcessMonitor processMonitor;
+        // Référence à la fenêtre pop-up modale à ouvrir/fermer
+        private BusinessSoftwareWindow popupWindow;
+        // =====================================================================
+        
+
         public MainWindow()
         {
             Env.Load(@".env");
@@ -38,6 +48,45 @@ namespace EasySaveWPFApp
             //DataContext
             DataContext = saveTaskViewModel;
             InitializeComponent();
+            // ====== AJOUT : Initialisation et abonnement du ProcessMonitor ======
+            processMonitor = new ProcessMonitor();
+            processMonitor.OnSoftwareStatusChanged += (isRunning) =>
+            {
+                // On utilise le Dispatcher pour exécuter le code sur le thread UI
+                Dispatcher.Invoke(() =>
+                {
+                    if (isRunning)
+                    {
+                        // Si le processus est détecté et que la pop-up n'est pas déjà ouverte
+                        if (popupWindow == null)
+                        {
+                            popupWindow = new BusinessSoftwareWindow();
+                            popupWindow.Owner = this;
+                            // Désactiver la fenêtre principale pour simuler une modalité
+                            this.IsEnabled = false;
+                            // Ouvrir la pop-up en mode modal (ShowDialog) de manière asynchrone
+                            Dispatcher.BeginInvoke(new Action(() =>
+                            {
+                                popupWindow.ShowDialog();
+                                // Une fois la pop-up fermée, réactiver la fenêtre principale
+                                this.IsEnabled = true;
+                                popupWindow = null;
+                            }));
+                        }
+                    }
+                    else
+                    {
+                        // Si le processus n'est plus en cours et que la pop-up est ouverte, on la ferme
+                        if (popupWindow != null)
+                        {
+                            popupWindow.Close();
+                            popupWindow = null;
+                            this.IsEnabled = true;
+                        }
+                    }
+                });
+            };
+            // =====================================================================
             apiServer = new ApiServer(saveTaskViewModel, saveTaskManager);
             apiServer.Start();
         }
@@ -45,15 +94,23 @@ namespace EasySaveWPFApp
         private void AddRow_Click(object sender, RoutedEventArgs e)
         {
             //Windows
-            saveTaskWindow = new(saveTaskViewModel);
+            saveTaskWindow = new SaveTaskWindow(saveTaskViewModel);
             saveTaskWindow.ShowDialog();
         }
         private void StartSelected_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
-            foreach (var row in selectedRows) 
+
+            if (selectedRows.Count == 0) return;
+
+            SaveTaskProgressWindow SaveTaskProgressWindow = new SaveTaskProgressWindow(selectedRows, saveTaskViewModel, saveTaskManager);
+            try
             {
-                saveTaskViewModel.ExecuteSaveTask(row.name);
+                SaveTaskProgressWindow.ShowDialog();
+            }
+            catch
+            {
+                SaveTaskProgressWindow.Close();
             }
         }
 
@@ -69,7 +126,7 @@ namespace EasySaveWPFApp
         private void DeleteSelected_Click(object sender, RoutedEventArgs e)
         {
             var selectedRows = BackupTable.SelectedItems.Cast<SaveTask>().ToList();
-            foreach(var row in selectedRows)
+            foreach (var row in selectedRows)
             {
                 saveTaskViewModel.RemoveSaveTask(row.name);
             }

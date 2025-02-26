@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Threading;
 
 namespace Log
 {
@@ -17,9 +22,9 @@ namespace Log
             {
                 try
                 {
-                    string json = File.ReadAllText(fileName);
+                    string json = AsyncFileManager.LockedReadAllText(fileName);
                     // Désérialiser en liste d'objets
-                    jsonObjectList = JsonSerializer.Deserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
+                    jsonObjectList = AsyncFileManager.LockedDeserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
                 }
                 catch (Exception ex)
                 {
@@ -42,11 +47,16 @@ namespace Log
 
             try
             {
-                string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(fileName, updatedJson);
+                if (jsonObjectList.Count > 0) Trace.WriteLine(Thread.CurrentThread.ManagedThreadId +  "  Start locked serialize" + jsonObjectList[0].ToString());
+                else Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked serialize jsonobecject list empty");
+                string updatedJson = AsyncFileManager.LockedSerialize(jsonObjectList);
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked write all text");
+                AsyncFileManager.LockedWriteAllText(fileName, updatedJson);
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked write all text");
             }
             catch (Exception ex)
             {
+                Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  " + ex.Message);
                 throw new Exception("Log JSON UpdateRealTimeProgression, serialize and write all text");
             }
         }
@@ -113,11 +123,16 @@ namespace Log
             {
                 foreach (var file in LogDailyDirectory.GetFiles("*.json").OrderByDescending(f => f.CreationTime))
                 {
-                    string jsonContent = File.ReadAllText(file.FullName);
-                    List<DailyInfo> entities = JsonSerializer.Deserialize<List<DailyInfo>>(jsonContent);
+                    Trace.WriteLine($"JSON startforeach last save date");
+                    string jsonContent = AsyncFileManager.LockedReadAllText(file.FullName);
+                    Trace.WriteLine("jsonContent");
+                    List<DailyInfo> entities = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(jsonContent);
+                    Trace.WriteLine("entities = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(jsonContent");
                     DailyInfo foundEntity = entities.Find(e => e.FileSource == FilePath);
+                    Trace.WriteLine("foundEntity = entities.Find(e => e.FileSource == FilePath);");
                     if (foundEntity.DateTime != null)
                     {
+                        Trace.WriteLine($"{foundEntity.DateTime.ToString()}");
                         return foundEntity.DateTime;
                     }
                     else
@@ -125,12 +140,13 @@ namespace Log
                         continue;
                     }
                 }
+                Trace.WriteLine("return min value");
                 return DateTime.MinValue;
                 
             }
             catch(Exception ex)
             {
-                Console.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
+                Trace.WriteLine("Erreur lors de la recherche de dernière sauvegarde. {ex}");
                 return DateTime.MinValue;
             }
         }
@@ -143,7 +159,7 @@ namespace Log
                 string json = "";
                 if (File.Exists(FilePath))
                 {
-                    json = File.ReadAllText(FilePath);
+                    json = AsyncFileManager.LockedReadAllText(FilePath);
                 }
                     
                 // Désérialiser en liste d'objets
@@ -152,16 +168,16 @@ namespace Log
                     json = "[]";
                 }
 
-                List<RealTimeInfo> jsonObjectList = JsonSerializer.Deserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
+                List<RealTimeInfo> jsonObjectList = AsyncFileManager.LockedDeserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
                 // Remove any existing object with the same Name
                 jsonObjectList.RemoveAll(rt => rt.Name == realTimeInfo.Name);
                 jsonObjectList.Add(realTimeInfo);
-                string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(FilePath, updatedJson);
+                string updatedJson = AsyncFileManager.LockedSerialize(jsonObjectList);
+                AsyncFileManager.LockedWriteAllText(FilePath, updatedJson);
             }
             catch (Exception ex)
             {
-                throw new Exception("Log JSON AddJsonLogObjectRealTime");
+                throw new Exception("Log JSON AddJsonLogObjectRealTime +" +ex.Message+ realTimeInfo.Progression.ToString());
             }
         }
 
@@ -172,18 +188,19 @@ namespace Log
             {
                 string json = "";
                 if (File.Exists(FilePath))
-                    json = File.ReadAllText(FilePath);
+                    json = AsyncFileManager.LockedReadAllText(FilePath);
 
                 // Désérialiser en liste d'objets
                 if (string.IsNullOrEmpty(json))
                 {
                     json = "[]";
                 }
-                List<DailyInfo> jsonObjectList = JsonSerializer.Deserialize<List<DailyInfo>>(json) ?? new List<DailyInfo>();
+                List<DailyInfo> jsonObjectList = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(json) ?? new List<DailyInfo>();
                 // Remove any existing object with the same Name
                 jsonObjectList.Add(dailyInfo);
-                string updatedJson = JsonSerializer.Serialize(jsonObjectList, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(FilePath, updatedJson);
+                
+                string updatedJson = AsyncFileManager.LockedSerialize(jsonObjectList);
+                AsyncFileManager.LockedWriteAllText(FilePath, updatedJson);
             }
             catch (Exception ex)
             {

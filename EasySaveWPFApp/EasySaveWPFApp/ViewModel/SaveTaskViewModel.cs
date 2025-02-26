@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Xml.Linq;
+using System.Diagnostics;
 using System.Windows;
 
 namespace EasySaveWPFApp.ViewModel
@@ -26,14 +27,13 @@ namespace EasySaveWPFApp.ViewModel
         DeleteSaveTasks = 5, // Action to modify an existing save task
         Quit = 6,            // Action to quit the save task menu
     }
-    // Controller class for managing save tasks in the CLI
+    // ViewModel class for managing save tasks
     public class SaveTaskViewModel : INotifyPropertyChanged
     {
         // Manager for handling save tasks
         public SaveTaskManager saveTaskManager { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-
 
         public List<String> EcliSaveTaskTypesStr { get; set; }
 
@@ -112,24 +112,19 @@ namespace EasySaveWPFApp.ViewModel
         }
 
 
-        internal void ExecuteSaveTask(string name)
+        internal async Task<Dictionary<string, List<string>>> ExecuteSaveTaskAsync(string name)
         {
-            bool DidEverythingSaveCorrectly = saveTaskManager.ExecuteSaveTask(name);
+            bool DidEverythingSaveCorrectly = await saveTaskManager.ExecuteSaveTaskAsync(name);
+            Trace.WriteLine("ExecuteSaveTaskAsync STVM before IF :" + DidEverythingSaveCorrectly.ToString());
             if (DidEverythingSaveCorrectly)
-                return; //success saveTaskExecution  //ShowMessage(messagesManager.GetMessageTranslate(EMessage.SuccessStartSaveTaskMessage) + saveTaskManager.GetSaveTaskName(index));
+            {
+                Trace.WriteLine("ExecuteSaveTaskAsync STVM IF");
+                return new Dictionary<string, List<string>>(); //success saveTaskExecution  //ShowMessage(messagesManager.GetMessageTranslate(EMessage.SuccessStartSaveTaskMessage) + saveTaskManager.GetSaveTaskName(index));
+            }
             else
             {
-                string str = "ErrorStartSaveTaskMessage"; //ErrorStartSaveTaskMessage
-                List<string> UnsavedPaths = saveTaskManager.GetCurrentUnsavedPaths();
-                if (UnsavedPaths != null && UnsavedPaths.Count > 0)
-                {
-                    str += "EMessage.ErrorStartSaveTaskPathListMessage : ";//messagesManager.GetMessageTranslate(EMessage.ErrorStartSaveTaskPathListMessage);
-                    foreach (string path in UnsavedPaths)
-                    {
-                        str += "\n" + path;
-                    }
-                }
-                ////error saveTaskExecution //ShowMessage(str);
+                Trace.WriteLine("ExecuteSaveTaskAsync STVM ELSE");
+                return saveTaskManager.GetCurrentUnsavedPathsDictionary();
             }
         }
 
@@ -140,17 +135,8 @@ namespace EasySaveWPFApp.ViewModel
                 return; //success saveTaskExecution  //ShowMessage(messagesManager.GetMessageTranslate(EMessage.SuccessStartSaveTaskMessage) + saveTaskManager.GetSaveTaskName(index));
             else
             {
-                string str = "ErrorStartSaveTaskMessage"; //ErrorStartSaveTaskMessage
-                List<string> UnsavedPaths = saveTaskManager.GetCurrentUnsavedPaths();
-                if (UnsavedPaths != null && UnsavedPaths.Count > 0)
-                {
-                    str += "EMessage.ErrorStartSaveTaskPathListMessage : ";//messagesManager.GetMessageTranslate(EMessage.ErrorStartSaveTaskPathListMessage);
-                    foreach (string path in UnsavedPaths)
-                    {
-                        str += "\n" + path;
-                    }
-                }
-                ////error saveTaskExecution //ShowMessage(str);
+
+                // TODO : show error in pop up
             }
             saveTaskManager.SerializeSaveTasks();
         }
@@ -167,6 +153,7 @@ namespace EasySaveWPFApp.ViewModel
         {
             saveTaskManager.SerializeSaveTasks();
             saveTaskManager.SerializeEncryptingExtensions();
+            saveTaskManager.SerializePriorityExtensions();
         }
     }
 }

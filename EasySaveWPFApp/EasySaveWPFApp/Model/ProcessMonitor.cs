@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Timers;
+using System.Windows;
 
 namespace EasySaveWPFApp.Model
 {
@@ -33,7 +34,7 @@ namespace EasySaveWPFApp.Model
             if (currentlyRunning != isSoftwareRunning)
             {
                 isSoftwareRunning = currentlyRunning;
-                OnSoftwareStatusChanged?.Invoke(isSoftwareRunning); // Déclenche l'événement
+                OnSoftwareStatusChanged?.Invoke(isSoftwareRunning);
             }
         }
 

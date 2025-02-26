@@ -151,11 +151,173 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        public static string SaveTask_StateActive {
+            get {
+                return ResourceManager.GetString("SaveTask_StateActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finie.
+        /// </summary>
+        public static string SaveTask_StateEnd {
+            get {
+                return ResourceManager.GetString("SaveTask_StateEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erreur.
+        /// </summary>
+        public static string SaveTask_StateError {
+            get {
+                return ResourceManager.GetString("SaveTask_StateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Etat invalide.
+        /// </summary>
+        public static string SaveTask_StateINVALID {
+            get {
+                return ResourceManager.GetString("SaveTask_StateINVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En pause.
+        /// </summary>
+        public static string SaveTask_StatePaused {
+            get {
+                return ResourceManager.GetString("SaveTask_StatePaused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrêtée.
+        /// </summary>
+        public static string SaveTask_StateStopped {
+            get {
+                return ResourceManager.GetString("SaveTask_StateStopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copie priorité.
+        /// </summary>
+        public static string SaveTask_StateWaitingForPriorityFiles {
+            get {
+                return ResourceManager.GetString("SaveTask_StateWaitingForPriorityFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mettre en pause la sélection.
+        /// </summary>
+        public static string SaveTaskProgress_PauseSelectedButton {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_PauseSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recommencer la sélection.
+        /// </summary>
+        public static string SaveTaskProgress_PlaySelectedButton {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_PlaySelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Progression.
+        /// </summary>
+        public static string SaveTaskProgress_ProgressColumnTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_ProgressColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Etat.
+        /// </summary>
+        public static string SaveTaskProgress_StateColumnTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_StateColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopper la sélection.
+        /// </summary>
+        public static string SaveTaskProgress_StopSelectedButton {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_StopSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travail(s) de sauvegarde en cours.
+        /// </summary>
+        public static string SaveTaskProgress_Title {
+            get {
+                return ResourceManager.GetString("SaveTaskProgress_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nom de la sauvegarde.
+        /// </summary>
+        public static string SaveTaskStopped_SaveNameColumnTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskStopped_SaveNameColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ces tâches de sauvegarde ont été arrêtées :.
+        /// </summary>
+        public static string SaveTaskStopped_Title {
+            get {
+                return ResourceManager.GetString("SaveTaskStopped_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liste des fichiers non sauvegardés.
+        /// </summary>
+        public static string SaveTaskStopped_UnsavedFileListColumnTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskStopped_UnsavedFileListColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fichiers non sauvegardés.
+        /// </summary>
+        public static string SaveTaskStopped_WindowTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskStopped_WindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annuler.
         /// </summary>
         public static string SettingsMenu_CancelButtonText {
             get {
                 return ResourceManager.GetString("SettingsMenu_CancelButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmer.
+        /// </summary>
+        public static string SettingsMenu_EncryptingExtensionsValidateButtonText {
+            get {
+                return ResourceManager.GetString("SettingsMenu_EncryptingExtensionsValidateButtonText", resourceCulture);
             }
         }
         
@@ -178,20 +340,20 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entrez une extension à rajouter à la liste.
+        ///   Looks up a localized string similar to Entrez une extension à rajouter à la liste d&apos;extensions à crypter :.
         /// </summary>
-        public static string SettingsMenu_EnterExtensionPromptText {
+        public static string SettingsMenu_EnterEncryptingExtensionPromptText {
             get {
-                return ResourceManager.GetString("SettingsMenu_EnterExtensionPromptText", resourceCulture);
+                return ResourceManager.GetString("SettingsMenu_EnterEncryptingExtensionPromptText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirmer.
+        ///   Looks up a localized string similar to Entrez une extension à rajouter à la liste d&apos;extensions prioritaires :.
         /// </summary>
-        public static string SettingsMenu_ExtensionsValidateButtonText {
+        public static string SettingsMenu_EnterPriorityExtensionPromptText {
             get {
-                return ResourceManager.GetString("SettingsMenu_ExtensionsValidateButtonText", resourceCulture);
+                return ResourceManager.GetString("SettingsMenu_EnterPriorityExtensionPromptText", resourceCulture);
             }
         }
         
@@ -228,6 +390,24 @@ namespace EasySaveWPFApp.Resources {
         public static string SettingsMenu_LogFormatText {
             get {
                 return ResourceManager.GetString("SettingsMenu_LogFormatText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmer.
+        /// </summary>
+        public static string SettingsMenu_PriorityExtensionsValidateButtonText {
+            get {
+                return ResourceManager.GetString("SettingsMenu_PriorityExtensionsValidateButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extensions prioritaires :.
+        /// </summary>
+        public static string SettingsMenu_PriorityExtensionText {
+            get {
+                return ResourceManager.GetString("SettingsMenu_PriorityExtensionText", resourceCulture);
             }
         }
         
