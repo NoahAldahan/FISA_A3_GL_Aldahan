@@ -177,7 +177,7 @@ namespace Log
             }
             catch (Exception ex)
             {
-                throw new Exception("Log JSON AddJsonLogObjectRealTime");
+                throw new Exception("Log JSON AddJsonLogObjectRealTime +" +ex.Message+ realTimeInfo.Progression.ToString());
             }
         }
 

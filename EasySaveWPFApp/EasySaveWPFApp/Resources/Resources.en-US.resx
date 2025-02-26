@@ -231,4 +231,16 @@
   <data name="SaveTask_StateWaitingForPriorityFiles" xml:space="preserve">
     <value>Priority copy</value>
   </data>
+  <data name="SaveTaskStopped_SaveNameColumnTitle" xml:space="preserve">
+    <value>Save name</value>
+  </data>
+  <data name="SaveTaskStopped_Title" xml:space="preserve">
+    <value>These SaveTasks were aborted :</value>
+  </data>
+  <data name="SaveTaskStopped_WindowTitle" xml:space="preserve">
+    <value>Unsaved files</value>
+  </data>
+  <data name="SaveTaskStopped_UnsavedFileListColumnTitle" xml:space="preserve">
+    <value>Unsaved file list</value>
+  </data>
 </root>

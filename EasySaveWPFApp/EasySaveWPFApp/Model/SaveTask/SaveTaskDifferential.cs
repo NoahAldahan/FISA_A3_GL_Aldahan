@@ -31,17 +31,16 @@ namespace EasySaveWPFApp.Model
             {
                 Trace.WriteLine("savediff starting try");
                 UnsavedPaths = SaveDifferentialRecursive(CurrentDirectoryPair.SourcePath, CurrentDirectoryPair.TargetPath, saveTaskManager);
+                nFilesUnsavedCancelled = logRealTime.GetTotalFilesLeftToDo();
                 Trace.WriteLine("savediff finished try");
             }
-            catch (OperationCanceledException ex)
+            catch (Exception ex)
             {
-                Trace.WriteLine("savediff OperationCanceledException ex");
-                // TODO : Add cancellation to log
-                //TODO : Show canceled files number in log
                 nFilesUnsavedCancelled = logRealTime.GetTotalFilesLeftToDo();
             }
-            if (state != ERealTimeState.STOPPED && state != ERealTimeState.WAITING_FOR_PRIORITY_FILES) SetBindState(ERealTimeState.END);
-            return (UnsavedPaths.Count() == 0);
+            if (state != ERealTimeState.STOPPED && state != ERealTimeState.WAITING_FOR_PRIORITY_FILES
+                && state != ERealTimeState.ERROR) SetBindState(ERealTimeState.END);
+            return (UnsavedPaths.Count() == 0 && nFilesUnsavedCancelled == 0);
         }
 
         // Recursively saves only the updated files and directories since the last save.
@@ -119,6 +118,7 @@ namespace EasySaveWPFApp.Model
             {
                 Trace.WriteLine("savediffrec Exception ex");
                 UnsavedPaths.Add(SourcePath);
+                SetBindState(ERealTimeState.ERROR);
             }
             Trace.WriteLine("savediff before update progress");
             UpdateProgress();

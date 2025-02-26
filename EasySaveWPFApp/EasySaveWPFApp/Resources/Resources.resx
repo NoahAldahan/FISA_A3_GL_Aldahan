@@ -231,4 +231,16 @@
   <data name="SaveTask_StateWaitingForPriorityFiles" xml:space="preserve">
     <value>Copie priorité</value>
   </data>
+  <data name="SaveTaskStopped_SaveNameColumnTitle" xml:space="preserve">
+    <value>Nom de la sauvegarde</value>
+  </data>
+  <data name="SaveTaskStopped_Title" xml:space="preserve">
+    <value>Ces tâches de sauvegarde ont été arrêtées :</value>
+  </data>
+  <data name="SaveTaskStopped_WindowTitle" xml:space="preserve">
+    <value>Fichiers non sauvegardés</value>
+  </data>
+  <data name="SaveTaskStopped_UnsavedFileListColumnTitle" xml:space="preserve">
+    <value>Liste des fichiers non sauvegardés</value>
+  </data>
 </root>

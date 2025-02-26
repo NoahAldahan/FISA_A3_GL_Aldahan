@@ -268,6 +268,42 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nom de la sauvegarde.
+        /// </summary>
+        public static string SaveTaskStopped_SaveNameColumnTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskStopped_SaveNameColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ces tâches de sauvegarde ont été arrêtées :.
+        /// </summary>
+        public static string SaveTaskStopped_Title {
+            get {
+                return ResourceManager.GetString("SaveTaskStopped_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liste des fichiers non sauvegardés.
+        /// </summary>
+        public static string SaveTaskStopped_UnsavedFileListColumnTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskStopped_UnsavedFileListColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fichiers non sauvegardés.
+        /// </summary>
+        public static string SaveTaskStopped_WindowTitle {
+            get {
+                return ResourceManager.GetString("SaveTaskStopped_WindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annuler.
         /// </summary>
         public static string SettingsMenu_CancelButtonText {

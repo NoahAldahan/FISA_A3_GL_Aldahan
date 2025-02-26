@@ -197,7 +197,7 @@ namespace EasySaveWPFApp.Model
             }
             catch (Exception ex)
             {
-                Trace.WriteLine($"Erreur lors de l'exécution de la tâche : {ex.Message}");
+                Trace.WriteLine("Erreur lors de l'exécution de la tâche : " + ex.Message);
                 return false;
             }
         }
