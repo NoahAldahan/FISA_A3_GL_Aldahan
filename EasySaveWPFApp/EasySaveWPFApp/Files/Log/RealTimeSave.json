@@ -1,46 +1,24 @@
 [
   {
-    "Name": "complete2",
-    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source2",
-    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete2",
-    "State": "Stopped",
-    "TotalFilesToCopy": 5,
-    "TotalFilesSize": 32,
-    "NbFilesLeftToDo": 1,
-    "Progression": 80,
-    "SaveDate": "2025-02-25T21:15:50.31167+01:00"
-  },
-  {
-    "Name": "complettest",
-    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source",
-    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetComplete",
-    "State": "Stopped",
-    "TotalFilesToCopy": 5,
-    "TotalFilesSize": 32,
-    "NbFilesLeftToDo": 1,
-    "Progression": 80,
-    "SaveDate": "2025-02-25T21:21:25.9945795+01:00"
-  },
-  {
-    "Name": "diff",
-    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source",
-    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff",
-    "State": "Over",
-    "TotalFilesToCopy": 0,
-    "TotalFilesSize": 0,
-    "NbFilesLeftToDo": 0,
-    "Progression": 100,
-    "SaveDate": "2025-02-25T21:21:53.6324588+01:00"
-  },
-  {
     "Name": "diff2",
-    "SourcePath": "C:\\Users\\basti\\Documents\\testGL\\Source2",
-    "TargetPath": "C:\\Users\\basti\\Documents\\testGL\\TargetDiff2",
-    "State": "Over",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "State": "Finie",
     "TotalFilesToCopy": 0,
     "TotalFilesSize": 0,
     "NbFilesLeftToDo": 0,
     "Progression": 100,
-    "SaveDate": "2025-02-25T21:21:53.718347+01:00"
+    "SaveDate": "2025-02-26T12:18:30.3811924+01:00"
+  },
+  {
+    "Name": "Test",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "State": "Finie",
+    "TotalFilesToCopy": 0,
+    "TotalFilesSize": 0,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-26T12:18:30.4926445+01:00"
   }
 ]
