@@ -16,10 +16,12 @@ function SaveTask() {
   const [statePopupCreate, setStatePopupCreate]  = useState(false);
   const [updateDatagrid, setUpdateDatagrid] = useState(false);
 
-    function onCloseCreatePopup(){
+    function onCloseCreatePopup()
+    {
       setStatePopupCreate(false);
     }
-    function onOpenCreatePopup(){
+    function onOpenCreatePopup()
+    {
       setStatePopupCreate(true);
     }
     return (<div className="save-task">

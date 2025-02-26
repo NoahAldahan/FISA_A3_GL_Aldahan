@@ -49,6 +49,7 @@ namespace EasySaveWPFApp.Api
                         await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, CancellationToken.None);
                         break;
                     }
+
                     // Traitement du message reçu
                     var receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
                     Console.WriteLine($"Message reçu : {receivedMessage}");
