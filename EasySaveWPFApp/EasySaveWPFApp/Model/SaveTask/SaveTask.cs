@@ -79,19 +79,28 @@ namespace EasySaveWPFApp.Model
                 }
             }
         }
-        public void SetBindState(ERealTimeState state) { this.state = state; OnPropertyChanged(nameof(BindState)); }
+        public void SetBindState(ERealTimeState state) { this.state = state; OnPropertyChanged(nameof(BindState)); 
+            this.SaveTaskProgressStateChangedCallback?.Invoke(BindState.ToString()); }
+        [JsonIgnore]
+        public Action<string> SaveTaskProgressPercentageChangedCallback { get; set; }
+
+        [JsonIgnore]
+        public Action<string> SaveTaskProgressStateChangedCallback { get; set; }
 
         public float BindSaveTaskProgressPercentage
         {
             get => SaveTaskProgressPercentage;
             set {
-
+                Trace.WriteLine($"Propriété modifiée progress");
                 if (value > 100.0f) SaveTaskProgressPercentage = 100.0f;
                 else if (value < 0.0f) SaveTaskProgressPercentage = 0.0f; 
                 else if (value == float.NegativeInfinity) SaveTaskProgressPercentage = 0.0f;
                 else if (value == float.PositiveInfinity) SaveTaskProgressPercentage = 100.0f;
-                else SaveTaskProgressPercentage = value; 
-                OnPropertyChanged(nameof(BindSaveTaskProgressPercentage)); }
+                else SaveTaskProgressPercentage = value;
+                Trace.WriteLine(SaveTaskProgressPercentage);
+                OnPropertyChanged(nameof(BindSaveTaskProgressPercentage)); 
+                this.SaveTaskProgressPercentageChangedCallback?.Invoke(SaveTaskProgressPercentage.ToString());
+            }
         }
 
         public string BindSource

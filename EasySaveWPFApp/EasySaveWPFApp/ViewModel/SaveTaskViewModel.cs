@@ -12,6 +12,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Xml.Linq;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace EasySaveWPFApp.ViewModel
 {
@@ -48,6 +50,43 @@ namespace EasySaveWPFApp.ViewModel
             get => saveTaskManager.SaveTasks;
             set { saveTaskManager.SaveTasks = value; OnPropertyChanged(nameof(BindSaveTasks)); }
         }
+
+        internal List<SaveTask> GetSaveTasksByNames(List<string> saveTaskNames)
+        {
+            return BindSaveTasks
+                .Where(task => saveTaskNames.Contains(task.BindName))
+                .ToList();
+        }
+        internal void PauseSaveTaskByName(string saveTaskName)
+        {
+            SaveTask? saveTask = saveTaskManager.GetSaveTaskByName(saveTaskName);
+            if (saveTask != null)
+            {
+                saveTask.Pause();
+            }
+
+        }
+
+        internal void PlaySaveTaskByName(string saveTaskName)
+        {
+            SaveTask? saveTask = saveTaskManager.GetSaveTaskByName(saveTaskName);
+            if (saveTask != null)
+            {
+                saveTask.Play();
+            }
+
+        }
+
+        internal void StopSaveTaskByName(string saveTaskName)
+        {
+            SaveTask? saveTask = saveTaskManager.GetSaveTaskByName(saveTaskName);
+            if (saveTask != null)
+            {
+                saveTask.Stop();
+            }
+
+        }
+
         internal bool ModifySaveTaskSourcePath(string name, string path)
         {
             bool wasSuccessful = saveTaskManager.ModifySaveTaskSourcePath(name, path);
@@ -75,33 +114,45 @@ namespace EasySaveWPFApp.ViewModel
             saveTaskManager.SerializeSaveTasks();
             return wasSuccessful;
         }
-        internal void CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
+
+        internal bool CreateSaveTask(string saveTaskName, string saveTaskSource, string saveTaskTarget, ESaveTaskTypes saveTaskType)
         {
+            // Check if we are on the UI thread, if not, invoke it on the UI thread
+            if (!Application.Current.Dispatcher.CheckAccess())
+            {
+                return (bool)Application.Current.Dispatcher.Invoke(() => CreateSaveTask(saveTaskName, saveTaskSource, saveTaskTarget, saveTaskType));
+            }
+
+            // Perform the task creation logic (this part will run on the UI thread)
             if (saveTaskManager.IsSaveTaskNameExist(saveTaskName))
             {
-                return;
+                return false;
             }
             if (!Utilities.Utilities.IsValidPath(saveTaskSource))
-            {
+            {   
                 // Show an error message if the source path is invalid
-                return;
+                return false;
             }
             if (!Utilities.Utilities.IsValidPath(saveTaskTarget))
             {
                 // Show an error message if the target path is invalid
-                return;
+                return false;
             }
             if (!Enum.IsDefined(typeof(ESaveTaskTypes), saveTaskType))
             {
-                return;
+                return false;
             }
+
+            // Add the save task to the manager
             saveTaskManager.AddSaveTask((ESaveTaskTypes)saveTaskType, saveTaskSource, saveTaskTarget, saveTaskName);
             saveTaskManager.SerializeSaveTasks();
+            return true;
         }
 
 
         internal async Task<Dictionary<string, List<string>>> ExecuteSaveTaskAsync(string name)
         {
+            Trace.WriteLine("test");
             bool DidEverythingSaveCorrectly = await saveTaskManager.ExecuteSaveTaskAsync(name);
             Trace.WriteLine("ExecuteSaveTaskAsync STVM before IF :" + DidEverythingSaveCorrectly.ToString());
             if (DidEverythingSaveCorrectly)
@@ -117,7 +168,7 @@ namespace EasySaveWPFApp.ViewModel
         }
 
         internal void RemoveSaveTask(string name)
-        {
+        {   
             bool DidEverythingSaveCorrectly = saveTaskManager.RemoveSaveTask(name);
             if (DidEverythingSaveCorrectly)
                 return; //success saveTaskExecution  //ShowMessage(messagesManager.GetMessageTranslate(EMessage.SuccessStartSaveTaskMessage) + saveTaskManager.GetSaveTaskName(index));
@@ -134,8 +185,11 @@ namespace EasySaveWPFApp.ViewModel
             saveTaskManager.SwitchSaveTask(name);
             saveTaskManager.SerializeSaveTasks();
         }
-        protected void OnPropertyChanged(string propertyName) =>
+        internal void OnPropertyChanged(string propertyName)
+        {
+            Trace.WriteLine($"Propriété modifiée : {propertyName}");
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public void OnWindowClosing(object? sender, CancelEventArgs e)
         {

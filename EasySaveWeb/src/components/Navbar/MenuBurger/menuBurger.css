@@ -1,0 +1,114 @@
+/** menu burger **/
+#menuBurger{
+    margin: 2px;
+    width: stretch;
+    z-index: 2;
+}
+
+#menuBurger:hover{
+    cursor: pointer;
+}
+
+#barre {
+    margin-top: 3px;
+    height: 3px;
+    width: 17.5px;/* (margin-top + height)* 2,9167 */
+    background-color: white;
+}
+.barre-open:nth-child(1)
+{
+    transform-origin: left top;
+    animation: rotateBarre 0.5s linear forwards;
+}
+.barre-open:nth-child(2)
+{
+    animation: rotateHideBarre 0.5s linear forwards;
+}
+.barre-open:nth-child(3)
+{
+    transform-origin: left bottom;
+    /* animation: rotateBarreInv 0.5s linear forwards; */
+    animation: rotateBarreInv 0.5s linear forwards;
+}
+
+
+.barre-close:nth-child(1)
+{
+    transform-origin: left top;
+    animation: reverseRotateBarre 0.5s linear forwards;
+    animation-fill-mode: both;
+}
+.barre-close:nth-child(2)
+{
+    animation: reverseRotateHideBarre 0.5s linear forwards;
+}
+.barre-close:nth-child(3)
+{
+    transform-origin: left bottom;
+    /* animation: rotateBarreInv 0.5s linear forwards; */
+    animation: reverseRotateBarreInv 0.5s linear forwards;
+    animation-fill-mode: both;
+}
+/** navbar **/
+#navbarBurger{
+    display: flex;
+    z-index: 1;
+    background-color: rgb(40, 40, 40);
+    width: 5em;
+    font-size: 2em;
+    height: 99%;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.navbarBurger-init{
+    position: absolute;
+    top: 0.1em;
+    left: -10em;
+}
+.navbarBurger-close{
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    animation: slideLeft  0.5s linear forwards;
+}
+.navbarBurger-open {
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    animation: slideRight 0.5s linear;
+}
+
+@keyframes slideRight{
+    0% { transform: translateX(-6em); }
+    100% {}
+}
+@keyframes slideLeft{
+    0% { }
+    100% { transform: translateX(-6em);}
+} 
+@keyframes rotateBarre {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(45deg);}
+}
+@keyframes rotateHideBarre {
+    0% { transform: rotate(0deg); opacity: 100; }
+    100% { transform: rotate(45deg); opacity: 0 ; }
+}
+@keyframes rotateBarreInv {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(-45deg);}
+}
+
+@keyframes reverseRotateBarre {
+    0% { transform: rotate(45deg); }
+    100% { transform: rotate(0deg); }
+}
+@keyframes reverseRotateHideBarre {
+    0% { transform: rotate(-45deg); opacity: 0; }
+    100% { transform: rotate(0deg); opacity: 100 ; }
+}
+@keyframes reverseRotateBarreInv {
+    0% { transform: rotate(-45deg); }
+    100% { transform: rotate(0deg); }
+}

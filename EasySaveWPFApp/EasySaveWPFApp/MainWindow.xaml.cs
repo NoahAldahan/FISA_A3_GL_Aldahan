@@ -11,6 +11,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DotNetEnv;
 using EasySaveWPFApp.ViewModel;
+using EasySaveWPFApp.Api;
 using EasySaveWPFApp.Utilities;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -26,6 +27,8 @@ namespace EasySaveWPFApp
         public SaveTaskViewModel saveTaskViewModel;
         SaveTaskWindow saveTaskWindow;
         SaveTaskManager saveTaskManager;
+        private readonly ApiServer apiServer;
+
 
         // ====== AJOUTS POUR LE PROCESS MONITOR ET LA GESTION DE LA POP-UP ======
         // Instance du ProcessMonitor qui va vérifier le processus "cmd"
@@ -84,6 +87,8 @@ namespace EasySaveWPFApp
                 });
             };
             // =====================================================================
+            apiServer = new ApiServer(saveTaskViewModel, saveTaskManager);
+            apiServer.Start();
         }
 
         private void AddRow_Click(object sender, RoutedEventArgs e)
@@ -191,6 +196,11 @@ namespace EasySaveWPFApp
             {
                 settingsWindow.Close();
             }
+        }
+
+        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            await apiServer.StopAsync();
         }
     }
 }
