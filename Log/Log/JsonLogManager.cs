@@ -28,6 +28,7 @@ namespace Log
                 }
                 catch (Exception ex)
                 {
+                    Trace.WriteLine("UpdateRealTimeProgression " + ex.Message);
                     throw new Exception("Log JSON UpdateRealTimeProgression, readalltext and deserialize");
                 }
             }
@@ -94,6 +95,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("CreateDailyJsonFile " + ex.Message);
                 throw new Exception("Log JSON CreateDailyJsonFile");
             }
         }
@@ -112,6 +114,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("CreateRealTimeJsonFile " + ex.Message);
                 throw new Exception("Log JSON CreateRealTimeJsonFile");
             }
         }
@@ -177,6 +180,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("AddJsonLogObjectRealTime " + ex.Message);
                 throw new Exception("Log JSON AddJsonLogObjectRealTime +" +ex.Message+ realTimeInfo.Progression.ToString());
             }
         }
@@ -204,6 +208,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("AddJsonLogObjectDailyInfo " + ex.Message);
                 throw new Exception("Log JSON AddJsonLogObjectDailyInfo");
             }
         }

@@ -36,6 +36,7 @@ namespace Log
                     }
                 }
 
+                Trace.WriteLine("Exception LockedReadAllText");
                 throw new IOException($"Could not read the file '{filePath}' after multiple attempts.");
             }
         }
@@ -59,6 +60,7 @@ namespace Log
                     }
                 }
 
+                Trace.WriteLine("Exception LockedWriteAllText");
                 throw new IOException($"Could not write to the file '{filePath}' after multiple attempts.");
             }
         }

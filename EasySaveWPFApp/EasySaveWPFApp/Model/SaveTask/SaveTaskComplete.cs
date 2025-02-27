@@ -49,7 +49,8 @@ namespace EasySaveWPFApp.Model
                 && state != ERealTimeState.ERROR) SetBindState(ERealTimeState.END);
 
             Trace.WriteLine("EndSave");
-            return (UnsavedPaths.Count() == 0 && nFilesUnsavedCancelled == 0);
+            if (state == ERealTimeState.WAITING_FOR_PRIORITY_FILES) return UnsavedPaths.Count() == 0;
+            else return (UnsavedPaths.Count() == 0 && nFilesUnsavedCancelled == 0);
         }
 
         // Performs the complete backup by copying files from source to target.

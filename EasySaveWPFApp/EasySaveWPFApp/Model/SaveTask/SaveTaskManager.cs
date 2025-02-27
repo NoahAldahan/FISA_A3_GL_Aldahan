@@ -76,6 +76,8 @@ namespace EasySaveWPFApp.Model
         private readonly ProcessMonitor processMonitor;
         private bool isSoftwareRunning;
 
+        private float CurrentTotalFileSizesCopying;
+
         internal Dictionary<string, List<string>> GetCurrentUnsavedPathsDictionary()
         {
             return CurrentUnsavedPathsLists;
