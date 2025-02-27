@@ -437,5 +437,41 @@ namespace EasySaveWPFApp.Resources {
                 return ResourceManager.GetString("SettingsMenu_XmlRadioButtonText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nom de la tâche.
+        /// </summary>
+        public static string UnsavedFilesWindow_NomDeSaveTaskColumnTitle {
+            get {
+                return ResourceManager.GetString("UnsavedFilesWindow_NomDeSaveTaskColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemin des fichiers.
+        /// </summary>
+        public static string UnsavedFilesWindow_PathsColumnTitle {
+            get {
+                return ResourceManager.GetString("UnsavedFilesWindow_PathsColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certains fichiers n&apos;ont pas pu être sauvegardés :.
+        /// </summary>
+        public static string UnsavedFilesWindow_Title {
+            get {
+                return ResourceManager.GetString("UnsavedFilesWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fichiers non sauvegardés.
+        /// </summary>
+        public static string UnsavedFilesWindow_WindowTitle {
+            get {
+                return ResourceManager.GetString("UnsavedFilesWindow_WindowTitle", resourceCulture);
+            }
+        }
     }
 }

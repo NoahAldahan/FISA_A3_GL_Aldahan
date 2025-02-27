@@ -243,4 +243,16 @@
   <data name="SaveTaskStopped_UnsavedFileListColumnTitle" xml:space="preserve">
     <value>Unsaved file list</value>
   </data>
+  <data name="UnsavedFilesWindow_WindowTitle" xml:space="preserve">
+    <value>Unsaved files</value>
+  </data>
+  <data name="UnsavedFilesWindow_PathsColumnTitle" xml:space="preserve">
+    <value>Files paths</value>
+  </data>
+  <data name="UnsavedFilesWindow_NomDeSaveTaskColumnTitle" xml:space="preserve">
+    <value>Save task name</value>
+  </data>
+  <data name="UnsavedFilesWindow_Title" xml:space="preserve">
+    <value>Some files haven't been saved :</value>
+  </data>
 </root>
