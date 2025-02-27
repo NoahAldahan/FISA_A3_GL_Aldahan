@@ -1,14 +1,15 @@
 ﻿<Window x:Class="EasySaveWPFApp.BusinessSoftwareWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Software Running" Height="150" Width="300" 
+        xmlns:p="clr-namespace:EasySaveWPFApp.Resources" xmlns:model1="clr-namespace:EasySaveWPFApp.Model"
+        Title="Business software" Height="150" Width="300" 
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" WindowStyle="None" Background="White">
     <Grid>
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="2">
             <Grid>
                 <!-- Message -->
-                <TextBlock Text="Business software detected the process 'cmd', save tasks are paused until the process is exited. "
+                <TextBlock Text="{x:Static p:Resources.BusinessSoftwareWindow_Text}"
                            HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="14" FontWeight="Bold" Foreground="Black"
                            TextWrapping="Wrap" Margin="10"/>

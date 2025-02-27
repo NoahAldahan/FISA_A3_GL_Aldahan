@@ -100,7 +100,7 @@ namespace EasySaveWPFApp.Model
         }
 
         // Constructor: Initializes the save task manager and loads previously saved tasks from JSON.
-        internal SaveTaskManager()
+        internal SaveTaskManager(ProcessMonitor processMonitor)
         {
             SaveTaskFactory = new SaveTaskFactory();
             // Load the saved tasks from the previous session.
@@ -108,8 +108,8 @@ namespace EasySaveWPFApp.Model
             EncryptingExtensions = new List<string>(JsonManager.DeserializeEncryptingExtensions());
             PriorityExtensions = new List<string>(JsonManager.DeserializePriorityExtensions());
             CurrentUnsavedPathsLists = new Dictionary<string, List<string>>();
-            processMonitor = new ProcessMonitor();
-            processMonitor.OnSoftwareStatusChanged += OnSoftwareStatusChanged;
+            this.processMonitor = processMonitor;
+            this.processMonitor.OnSoftwareStatusChanged += OnSoftwareStatusChanged;
             isSoftwareRunning = false;
         }
         private void OnSoftwareStatusChanged(bool isRunning)

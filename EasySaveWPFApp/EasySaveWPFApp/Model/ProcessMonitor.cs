@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Timers;
@@ -9,7 +10,7 @@ namespace EasySaveWPFApp.Model
     public class ProcessMonitor
     {
         private readonly System.Timers.Timer timer;
-        private const string businessSoftware = "odiky.exe"; // Logiciel métier fixe
+        private const string businessSoftware = "chrome"; // Logiciel métier fixe. DO NOT ADD .exe
         private bool isSoftwareRunning;
 
         // Événement déclenché lorsque l'état du logiciel change
@@ -29,10 +30,12 @@ namespace EasySaveWPFApp.Model
 
         private async Task CheckBusinessSoftware()
         {
+            Trace.WriteLine("Checking software status");
             bool currentlyRunning = Process.GetProcessesByName(businessSoftware).Any();
 
             if (currentlyRunning != isSoftwareRunning)
             {
+                Trace.WriteLine("Software status changed: "+currentlyRunning.ToString());
                 isSoftwareRunning = currentlyRunning;
                 OnSoftwareStatusChanged?.Invoke(isSoftwareRunning);
             }
@@ -41,6 +44,11 @@ namespace EasySaveWPFApp.Model
         public void Stop()
         {
             timer.Stop();
+        }
+
+        internal void OnMainWindowClosing(object? sender, CancelEventArgs e)
+        {
+            Stop();
         }
     }
 }

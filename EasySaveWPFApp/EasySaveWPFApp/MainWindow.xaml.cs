@@ -41,15 +41,16 @@ namespace EasySaveWPFApp
         public MainWindow()
         {
             Env.Load(@".env");
-            saveTaskManager = new SaveTaskManager();
+            processMonitor = new ProcessMonitor();
+            saveTaskManager = new SaveTaskManager(processMonitor);
             // ViewModel
             saveTaskViewModel = new SaveTaskViewModel(saveTaskManager);
             Closing += saveTaskViewModel.OnWindowClosing;
+            Closing += processMonitor.OnMainWindowClosing;
             //DataContext
             DataContext = saveTaskViewModel;
             InitializeComponent();
             // ====== AJOUT : Initialisation et abonnement du ProcessMonitor ======
-            processMonitor = new ProcessMonitor();
             processMonitor.OnSoftwareStatusChanged += (isRunning) =>
             {
                 // On utilise le Dispatcher pour exécuter le code sur le thread UI
