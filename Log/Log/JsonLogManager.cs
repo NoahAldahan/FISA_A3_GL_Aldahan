@@ -8,26 +8,30 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading;
 
 namespace Log
 {
     public class JsonLogManager
     {
+        private static readonly object SerializeLock = new object();
         internal static void UpdateRealTimeProgression(RealTimeInfo realTimeInfo, string LogRealTimePath)
         {
             List<RealTimeInfo> jsonObjectList = new List<RealTimeInfo>();
             string fileName = GetFileRealTimeName(LogRealTimePath);
+            
             if (File.Exists(fileName))
             {
                 try
                 {
                     string json = AsyncFileManager.LockedReadAllText(fileName);
                     // Désérialiser en liste d'objets
-                    jsonObjectList = AsyncFileManager.LockedDeserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
+                    jsonObjectList = LockedJsonDeserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
                 }
                 catch (Exception ex)
                 {
+                    Trace.WriteLine("UpdateRealTimeProgression " + ex.Message);
                     throw new Exception("Log JSON UpdateRealTimeProgression, readalltext and deserialize");
                 }
             }
@@ -49,7 +53,7 @@ namespace Log
             {
                 if (jsonObjectList.Count > 0) Trace.WriteLine(Thread.CurrentThread.ManagedThreadId +  "  Start locked serialize" + jsonObjectList[0].ToString());
                 else Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked serialize jsonobecject list empty");
-                string updatedJson = AsyncFileManager.LockedSerialize(jsonObjectList);
+                string updatedJson = LockedJsonSerialize(jsonObjectList);
                 Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked write all text");
                 AsyncFileManager.LockedWriteAllText(fileName, updatedJson);
                 Trace.WriteLine(Thread.CurrentThread.ManagedThreadId + "  Start locked write all text");
@@ -94,6 +98,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("CreateDailyJsonFile " + ex.Message);
                 throw new Exception("Log JSON CreateDailyJsonFile");
             }
         }
@@ -112,6 +117,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("CreateRealTimeJsonFile " + ex.Message);
                 throw new Exception("Log JSON CreateRealTimeJsonFile");
             }
         }
@@ -126,7 +132,7 @@ namespace Log
                     Trace.WriteLine($"JSON startforeach last save date");
                     string jsonContent = AsyncFileManager.LockedReadAllText(file.FullName);
                     Trace.WriteLine("jsonContent");
-                    List<DailyInfo> entities = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(jsonContent);
+                    List<DailyInfo> entities = LockedJsonDeserialize<List<DailyInfo>>(jsonContent);
                     Trace.WriteLine("entities = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(jsonContent");
                     DailyInfo foundEntity = entities.Find(e => e.FileSource == FilePath);
                     Trace.WriteLine("foundEntity = entities.Find(e => e.FileSource == FilePath);");
@@ -168,15 +174,16 @@ namespace Log
                     json = "[]";
                 }
 
-                List<RealTimeInfo> jsonObjectList = AsyncFileManager.LockedDeserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
+                List<RealTimeInfo> jsonObjectList = LockedJsonDeserialize<List<RealTimeInfo>>(json) ?? new List<RealTimeInfo>();
                 // Remove any existing object with the same Name
                 jsonObjectList.RemoveAll(rt => rt.Name == realTimeInfo.Name);
                 jsonObjectList.Add(realTimeInfo);
-                string updatedJson = AsyncFileManager.LockedSerialize(jsonObjectList);
+                string updatedJson = LockedJsonSerialize(jsonObjectList);
                 AsyncFileManager.LockedWriteAllText(FilePath, updatedJson);
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("AddJsonLogObjectRealTime " + ex.Message);
                 throw new Exception("Log JSON AddJsonLogObjectRealTime +" +ex.Message+ realTimeInfo.Progression.ToString());
             }
         }
@@ -195,17 +202,44 @@ namespace Log
                 {
                     json = "[]";
                 }
-                List<DailyInfo> jsonObjectList = AsyncFileManager.LockedDeserialize<List<DailyInfo>>(json) ?? new List<DailyInfo>();
+                List<DailyInfo> jsonObjectList = LockedJsonDeserialize<List<DailyInfo>>(json) ?? new List<DailyInfo>();
                 // Remove any existing object with the same Name
                 jsonObjectList.Add(dailyInfo);
                 
-                string updatedJson = AsyncFileManager.LockedSerialize(jsonObjectList);
+                string updatedJson = LockedJsonSerialize(jsonObjectList);
                 AsyncFileManager.LockedWriteAllText(FilePath, updatedJson);
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("AddJsonLogObjectDailyInfo " + ex.Message);
                 throw new Exception("Log JSON AddJsonLogObjectDailyInfo");
             }
         }
+        public static string LockedJsonSerialize<T>(T obj)
+        {
+            Trace.WriteLine("before locked");
+            lock (SerializeLock)
+            {
+
+                Trace.WriteLine("before json content");
+                string jsonContent = "";
+                Trace.WriteLine("before serialize");
+                JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+                options.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
+                // serialize
+                jsonContent = JsonSerializer.Serialize<T>(obj, options);
+
+                return jsonContent;
+            }
+        }
+        public static T LockedJsonDeserialize<T>(string jsonContent)
+        {
+            lock (SerializeLock)
+            {
+                T obj = JsonSerializer.Deserialize<T>(jsonContent);
+                return obj;
+            }
+        }
+
     }
 }

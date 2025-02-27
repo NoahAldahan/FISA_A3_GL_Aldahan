@@ -115,6 +115,23 @@ namespace EasySaveWPFApp.Model
         private void OnSoftwareStatusChanged(bool isRunning)
         {
             isSoftwareRunning = isRunning;
+            foreach(SaveTask task in SaveTasks)
+            {
+                if (isRunning)
+                {
+                    if(task.state == ERealTimeState.ACTIVE || task.state == ERealTimeState.WAITING_FOR_PRIORITY_FILES)
+                    {
+                        task.Pause();
+                    }
+                }
+                else
+                {
+                    if (task.state == ERealTimeState.PAUSED)
+                    {
+                        task.Play();
+                    }
+                }
+            }
             Trace.WriteLine($"Logiciel métier en cours d'exécution : {isRunning}");
         }
 

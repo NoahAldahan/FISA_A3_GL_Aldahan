@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
@@ -90,17 +91,21 @@ namespace Log
             
             catch (Exception ex)
             {
-                Console.WriteLine($"Erreur lors du comptage des fichiers : {ex.Message}");
+                Trace.WriteLine("Erreur lors du comptage des fichiers : "+ ex.Message);
                 return Tuple.Create(-1, -1); // Indiquer une erreur
             }
             return Tuple.Create(totalFiles, totalFilesSize);
         }
 
-        public void UpdateRealTimeProgress(string state, int logType = 0)
+        public void UpdateRealTimeProgress(string state, bool decrementFilesLeftToDo, int logType = 0)
         {
             realTimeInfo.State = state;
-            if(realTimeInfo.TotalFilesToCopy > 0) 
+            if(realTimeInfo.NbFilesLeftToDo > 0 && decrementFilesLeftToDo)
+            {
+                Trace.WriteLine("Is Decrementing NbFilesLeftToDo, NbFilesLeftToDo " + realTimeInfo.NbFilesLeftToDo.ToString());
                 realTimeInfo.NbFilesLeftToDo -= 1;
+            }
+            else Trace.WriteLine("Is not decrementing NbFilesLeftToDo, NbFilesLeftToDo " + realTimeInfo.NbFilesLeftToDo.ToString());
             realTimeInfo.Progression += ((1.0 / realTimeInfo.TotalFilesToCopy) * 100);
             if (realTimeInfo.NbFilesLeftToDo == 0)
             {
@@ -114,11 +119,6 @@ namespace Log
             {
                 XmlLogManager.UpdateRealTimeProgression(realTimeInfo, LogRealTimePath);
             }
-        }
-
-        public int GetTotalFilesLeftToDo()
-        {
-            return realTimeInfo.NbFilesLeftToDo;
         }
     }
 }

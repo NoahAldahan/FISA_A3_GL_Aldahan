@@ -44,7 +44,10 @@ namespace EasySaveWPFApp.Model
         internal List<string> UnsavedPaths;
         // Number of files left for save when cancelled
         internal int nFilesUnsavedCancelled;
-
+        // Boolean to check if the priority save loop is over
+        bool IsPriorityLoopOver;
+        // Boolean to check if the non priority save loop is over
+        bool IsNonPriorityLoopOver;
         // Name of the backup task.
         [JsonInclude]
         internal string name;
@@ -151,6 +154,8 @@ namespace EasySaveWPFApp.Model
             cancellationTokenSource = new CancellationTokenSource();
             nFilesUnsavedCancelled = 0;
             SetBindState(ERealTimeState.END);
+            IsPriorityLoopOver = false;
+            IsNonPriorityLoopOver = false;
         }
 
         // Overloaded constructor with additional parameters for logging instances.
@@ -185,10 +190,12 @@ namespace EasySaveWPFApp.Model
             UnsavedPaths.Clear();
 
             SetBindState(ERealTimeState.WAITING_FOR_PRIORITY_FILES);
+            IsPriorityLoopOver = false;
             Trace.WriteLine("StartedPriority");
             // Set truc en active
             bool SavedEverythingPriority = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
             bool SavedEverythingNotPriority = false;
+            IsPriorityLoopOver = true;
             if (state != ERealTimeState.ERROR && state != ERealTimeState.PAUSED && state != ERealTimeState.STOPPED)
             {
                 SetBindState(ERealTimeState.ACTIVE);
@@ -197,8 +204,8 @@ namespace EasySaveWPFApp.Model
                 Trace.WriteLine(SavedEverythingPriority ? "Saved everything for priority" : "saved not everything for priority");
                 Trace.WriteLine(SavedEverythingNotPriority ? "Saved everything else" : "saved not everything else");
             }
-            logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
-            return SavedEverythingPriority && SavedEverythingNotPriority;
+            logRealTime.UpdateRealTimeProgress(BindState, false, (int)LogUtilities.GetLogFormat());
+            return (SavedEverythingPriority && SavedEverythingNotPriority);
         }
 
         // Method that will be called when a single file is copied (called by recursive and non-recursives)
@@ -227,7 +234,10 @@ namespace EasySaveWPFApp.Model
                     pauseEvent.Wait(); // This will pause the task if paused
                 }
                 else if (state != ERealTimeState.ACTIVE && state != ERealTimeState.WAITING_FOR_PRIORITY_FILES)
+                {
+                    Trace.WriteLine("Invalid state during file copy");
                     throw new Exception("Invalid state during file copy");
+                }
 
                 logDaily.stopWatch.Restart(); // Démarrer le chrono pour la copie
                 File.Copy(sourcePath, targetPath, true); // Copier le fichier
@@ -254,7 +264,7 @@ namespace EasySaveWPFApp.Model
 
                 // Enregistrer dans le log avec le temps de cryptage
                 logDaily.AddDailyInfo(name, sourcePath, targetPath, encryptionTime, (int)LogUtilities.GetLogFormat());
-                logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
+                logRealTime.UpdateRealTimeProgress(BindState, true, (int)LogUtilities.GetLogFormat());
 
                 UpdateProgress();
                 Trace.WriteLine($"Successfully copied file, new progress :" + SaveTaskProgressPercentage.ToString());
@@ -263,8 +273,8 @@ namespace EasySaveWPFApp.Model
         // Updates Save task progress
         internal void UpdateProgress()
         {
-            int NFilesLeft = logRealTime.GetTotalFilesLeftToDo();
-            int NTotalFiles = logRealTime.GetTotalFilesInfosToCopy(CurrentDirectoryPair.SourcePath, (int)GetSaveTaskType()).Item1;
+            int NFilesLeft = logRealTime.realTimeInfo.NbFilesLeftToDo;
+            int NTotalFiles = logRealTime.realTimeInfo.TotalFilesToCopy;
             Trace.WriteLine(NTotalFiles.ToString() + " files to copy, " + NFilesLeft.ToString() + " files left");
             if (NTotalFiles == 0) BindSaveTaskProgressPercentage = 100.0f;
             else
@@ -300,7 +310,7 @@ namespace EasySaveWPFApp.Model
                 && state != ERealTimeState.END && state != ERealTimeState.ERROR)
             {
                 SetBindState(ERealTimeState.PAUSED);
-                logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
+                logRealTime.UpdateRealTimeProgress(BindState, false, (int)LogUtilities.GetLogFormat());
                 pauseEvent.Reset(); // Pause the task
             }
         }
@@ -309,8 +319,13 @@ namespace EasySaveWPFApp.Model
         {
             if (state == ERealTimeState.PAUSED)
             {
-                SetBindState(ERealTimeState.ACTIVE);
-                logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
+                if(IsPriorityLoopOver && IsNonPriorityLoopOver)
+                    SetBindState(ERealTimeState.END);
+                else if (!IsPriorityLoopOver)
+                    SetBindState(ERealTimeState.WAITING_FOR_PRIORITY_FILES);
+                else if (!IsNonPriorityLoopOver)
+                    SetBindState(ERealTimeState.ACTIVE);
+                logRealTime.UpdateRealTimeProgress(BindState, false, (int)LogUtilities.GetLogFormat());
                 pauseEvent.Set(); // Resume the task
             }
         }
@@ -320,7 +335,7 @@ namespace EasySaveWPFApp.Model
             if (state != ERealTimeState.STOPPED && state != ERealTimeState.END && state != ERealTimeState.ERROR)
             {
                 SetBindState(ERealTimeState.STOPPED);
-                logRealTime.UpdateRealTimeProgress(BindState, (int)LogUtilities.GetLogFormat());
+                logRealTime.UpdateRealTimeProgress(BindState, false, (int)LogUtilities.GetLogFormat());
                 cancellationTokenSource.Cancel(); // Request cancellation
             }
         }

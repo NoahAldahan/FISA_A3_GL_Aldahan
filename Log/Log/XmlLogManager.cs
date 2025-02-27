@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace Log
 {
     public class XmlLogManager
     {
+        private static readonly object SerializeLock = new object();
         internal static void UpdateRealTimeProgression(RealTimeInfo realTimeInfo, string LogRealTimePath)
         {
             List<RealTimeInfo> xmlObjectList = new List<RealTimeInfo>();
@@ -19,10 +22,11 @@ namespace Log
             {
                 try
                 {
-                    xmlObjectList = DeserializeXml<List<RealTimeInfo>>(fileName) ?? new List<RealTimeInfo>();
+                    xmlObjectList = LockedXmlDeserialize<List<RealTimeInfo>>(fileName) ?? new List<RealTimeInfo>();
                 }
                 catch (Exception ex)
                 {
+                    Trace.WriteLine("UpdateRealTimeProgression : " + ex.Message);
                     throw new Exception("Log XML UpdateRealTimeProgression");
                 }
             }
@@ -35,7 +39,7 @@ namespace Log
             {
                 xmlObjectList.Add(realTimeInfo);
             }
-            SerializeXml(fileName, xmlObjectList);
+            LockedXmlSerialize(fileName, xmlObjectList);
         }
 
         internal static void CreateRepertories(string path)
@@ -68,6 +72,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("CreateDailyXmlFile : " + ex.Message);
                 throw new Exception("Log XML CreateDailyXmlFile");
             }
         }
@@ -84,6 +89,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("CreateRealTimeXmlFile : " + ex.Message);
                 throw new Exception("Log XML CreateRealTimeXmlFile");
             }
         }
@@ -106,10 +112,11 @@ namespace Log
             {
                 try
                 {
-                    xmlObjectList = DeserializeXml<List<T>>(FilePath) ?? new List<T>();
+                    xmlObjectList = LockedXmlDeserialize<List<T>>(FilePath) ?? new List<T>();
                 }
                 catch (Exception ex)
                 {
+                    Trace.WriteLine("AddXmlLogObject : " + ex.Message);
                     throw new Exception("Log XML AddXmlLogObject");
                 }
             }
@@ -128,7 +135,7 @@ namespace Log
                 }
             }
             xmlObjectList.Add(LogObject);
-            SerializeXml(FilePath, xmlObjectList);
+            LockedXmlSerialize(FilePath, xmlObjectList);
         }
 
         private static void SerializeXml<T>(string filePath, T data)
@@ -143,6 +150,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("Log XML SerializeXml : " + ex.Message);
                 throw new Exception("Log XML SerializeXml");
             }
         }
@@ -159,6 +167,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("DeserializeXml : " + ex.Message);
                 throw new Exception("Log XML DeserializeXml");
             }
         }
@@ -170,7 +179,7 @@ namespace Log
             {
                 foreach (var file in LogDailyDirectory.GetFiles("*.xml").OrderByDescending(f => f.CreationTime))
                 {
-                    List<DailyInfo> entities = DeserializeXml<List<DailyInfo>>(file.FullName);
+                    List<DailyInfo> entities = LockedXmlDeserialize<List<DailyInfo>>(file.FullName);
                     DailyInfo foundEntity = entities.Find(e => e.FileSource == FilePath);
                     if (foundEntity.DateTime != null)
                     {
@@ -183,6 +192,21 @@ namespace Log
             {
                 Trace.WriteLine($"Erreur lors de la recherche de dernière sauvegarde. {ex}");
                 return DateTime.MinValue;
+            }
+        }
+        public static void LockedXmlSerialize<T>(string filePath, T data) where T : class
+        {
+            Trace.WriteLine("before locked xml");
+            lock (SerializeLock)
+            {
+                SerializeXml<T>(filePath, data);
+            }
+        }
+        public static T LockedXmlDeserialize<T>(string jsonContent) where T : class
+        {
+            lock (SerializeLock)
+            {
+                return DeserializeXml<T>(jsonContent);
             }
         }
     }
