@@ -20,7 +20,7 @@ namespace EasySaveWPFApp.Model
     // Specifies that the class can be serialized as a derived type in JSON format.
     [JsonDerivedType(typeof(SaveTaskComplete), "SaveTaskComplete")]
     [JsonDerivedType(typeof(SaveTaskDifferential), "SaveTaskDifferential")]
-    public abstract class SaveTask : ESaveTaskObserver, INotifyPropertyChanged
+    public abstract class SaveTask : INotifyPropertyChanged
     {
         protected CancellationTokenSource cancellationTokenSource;
         protected ManualResetEventSlim pauseEvent;
@@ -28,8 +28,6 @@ namespace EasySaveWPFApp.Model
         // Stores the source and target directory pair for the backup task.
         [JsonInclude]
         internal DirectoryPair CurrentDirectoryPair { get; set; }
-
-        internal bool isSoftwareRunning;
 
         // Boolean flag to track whether the save operation was successful.
         protected bool IsSaveSuccessful;
@@ -295,11 +293,6 @@ namespace EasySaveWPFApp.Model
 
             DirectoryInfo targetDirectoryInfo = new DirectoryInfo(directoryPath);
             targetDirectoryInfo.Create();
-        }
-
-        public void NotifySoftwareRunning(bool isSoftwareRunning)
-        {
-            this.isSoftwareRunning = isSoftwareRunning;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
