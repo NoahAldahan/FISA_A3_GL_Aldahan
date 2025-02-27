@@ -17,7 +17,6 @@ namespace Log
         private static int RetryDelay = 1000;
         private static readonly object WriteFileLock = new object();
         private static readonly object ReadFileLock = new object();
-        private static readonly object SerializeLock = new object();
         public static string LockedReadAllText(string filePath)
         {
             lock (ReadFileLock) // Ensures only one thread in this app reads at a time
@@ -62,32 +61,6 @@ namespace Log
 
                 Trace.WriteLine("Exception LockedWriteAllText");
                 throw new IOException($"Could not write to the file '{filePath}' after multiple attempts.");
-            }
-        }
-
-        public static string LockedSerialize<T>(T obj)
-        {
-            Trace.WriteLine("before locked");
-            lock (SerializeLock)
-            {
-
-                Trace.WriteLine("before json content");
-                string jsonContent = "";
-                Trace.WriteLine("before serialize");
-                JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
-                options.NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals;
-                // serialize
-                jsonContent = JsonSerializer.Serialize<T>(obj, options);
-
-                return jsonContent;
-            }
-        }
-        public static T LockedDeserialize<T>(string jsonContent)
-        {
-            lock (SerializeLock)
-            {
-                T obj = JsonSerializer.Deserialize<T>(jsonContent);
-                return obj;
             }
         }
     }
