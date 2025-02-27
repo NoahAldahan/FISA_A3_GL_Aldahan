@@ -14,7 +14,6 @@ abstract class SaveTask <<abstract>> {
     - CancellationTokenSource cancellationTokenSource
     - ManualResetEventSlim pauseEvent
     - DirectoryPair CurrentDirectoryPair
-    - bool isSoftwareRunning
     - bool IsSaveSuccessful
     - float SaveTaskProgressPercentage
     - LogRealTime logRealTime
@@ -41,7 +40,6 @@ abstract class SaveTask <<abstract>> {
     + CopySingleFile(sourcePath, targetPath, saveTaskManager)
     + UpdateProgress()
     + CreateDirectory(directoryPath)
-    + NotifySoftwareRunning(isSoftwareRunning)
     + Pause()
     + Play()
     + Stop()
@@ -63,7 +61,6 @@ class SaveTaskDifferential {
 
 class SaveTaskComplete {
     - List<string> UnsavedPaths
-    - bool isSoftwareRunning
     
     + Save(SaveTaskManager saveTaskManager) : bool
     + SaveComplete(SaveTaskManager saveTaskManager) : List<string>
@@ -125,10 +122,6 @@ class SaveTaskManager {
     + void SerializePriorityExtensions()
     + void DeserializePriorityExtensions()
     + event PropertyChangedEventHandler PropertyChanged
-}
-
-interface ESaveTaskObserver {
-    +void NotifySoftwareRunning(bool isSoftwareRunning)
 }
 
 
@@ -216,8 +209,6 @@ class Utilities {
     SaveTask *--> DirectoryPair : "<<instanciates>>"
     SaveTask <|--- SaveTaskDifferential : "<<inherits>>"
     SaveTask <|--- SaveTaskComplete : "<<inherits>>"
-    SaveTask --|> ESaveTaskObserver : "<<inherits>>"
-    SaveTask --> ProcessMonitor : "<<Observe>>"
     SaveTaskManager o--> SaveTask : "<<contains>>"
     ESaveTaskTypes <-- SaveTaskFactory : "<<uses>>"
     SaveTaskFactory --> DirectoryPair : "<<creates>>"
