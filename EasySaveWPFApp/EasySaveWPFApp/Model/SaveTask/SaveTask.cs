@@ -44,7 +44,10 @@ namespace EasySaveWPFApp.Model
         internal List<string> UnsavedPaths;
         // Number of files left for save when cancelled
         internal int nFilesUnsavedCancelled;
-
+        // Boolean to check if the priority save loop is over
+        bool IsPriorityLoopOver;
+        // Boolean to check if the non priority save loop is over
+        bool IsNonPriorityLoopOver;
         // Name of the backup task.
         [JsonInclude]
         internal string name;
@@ -142,6 +145,8 @@ namespace EasySaveWPFApp.Model
             cancellationTokenSource = new CancellationTokenSource();
             nFilesUnsavedCancelled = 0;
             SetBindState(ERealTimeState.END);
+            IsPriorityLoopOver = false;
+            IsNonPriorityLoopOver = false;
         }
 
         // Overloaded constructor with additional parameters for logging instances.
@@ -176,10 +181,12 @@ namespace EasySaveWPFApp.Model
             UnsavedPaths.Clear();
 
             SetBindState(ERealTimeState.WAITING_FOR_PRIORITY_FILES);
+            IsPriorityLoopOver = false;
             Trace.WriteLine("StartedPriority");
             // Set truc en active
             bool SavedEverythingPriority = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
             bool SavedEverythingNotPriority = false;
+            IsPriorityLoopOver = true;
             if (state != ERealTimeState.ERROR && state != ERealTimeState.PAUSED && state != ERealTimeState.STOPPED)
             {
                 SetBindState(ERealTimeState.ACTIVE);
@@ -303,7 +310,12 @@ namespace EasySaveWPFApp.Model
         {
             if (state == ERealTimeState.PAUSED)
             {
-                SetBindState(ERealTimeState.ACTIVE);
+                if(IsPriorityLoopOver && IsNonPriorityLoopOver)
+                    SetBindState(ERealTimeState.END);
+                else if (!IsPriorityLoopOver)
+                    SetBindState(ERealTimeState.WAITING_FOR_PRIORITY_FILES);
+                else if (!IsNonPriorityLoopOver)
+                    SetBindState(ERealTimeState.ACTIVE);
                 logRealTime.UpdateRealTimeProgress(BindState, false, (int)LogUtilities.GetLogFormat());
                 pauseEvent.Set(); // Resume the task
             }
