@@ -23,6 +23,7 @@ namespace Log
                 }
                 catch (Exception ex)
                 {
+                    Trace.WriteLine("UpdateRealTimeProgression : " + ex.Message);
                     throw new Exception("Log XML UpdateRealTimeProgression");
                 }
             }
@@ -68,6 +69,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("CreateDailyXmlFile : " + ex.Message);
                 throw new Exception("Log XML CreateDailyXmlFile");
             }
         }
@@ -84,6 +86,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("CreateRealTimeXmlFile : " + ex.Message);
                 throw new Exception("Log XML CreateRealTimeXmlFile");
             }
         }
@@ -110,6 +113,7 @@ namespace Log
                 }
                 catch (Exception ex)
                 {
+                    Trace.WriteLine("AddXmlLogObject : " + ex.Message);
                     throw new Exception("Log XML AddXmlLogObject");
                 }
             }
@@ -143,6 +147,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("Log XML SerializeXml : " + ex.Message);
                 throw new Exception("Log XML SerializeXml");
             }
         }
@@ -159,6 +164,7 @@ namespace Log
             }
             catch (Exception ex)
             {
+                Trace.WriteLine("DeserializeXml : " + ex.Message);
                 throw new Exception("Log XML DeserializeXml");
             }
         }

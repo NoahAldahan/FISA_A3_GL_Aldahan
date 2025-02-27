@@ -53,6 +53,7 @@ namespace EasySaveWPFApp
 
         private void OnAllTasksCompleted()
         {
+            Trace.WriteLine("OnAllTasksCompleted");
             CheckAndShowSaveTaskStoppedWindow();
             CheckAndShowUnsavedFilesWindow();
         }

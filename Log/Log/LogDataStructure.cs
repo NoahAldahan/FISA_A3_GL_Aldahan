@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ namespace Log
             {
                 return value;
             }
+            Trace.WriteLine("GeValue exception ");
             throw new ArgumentException($"No string value defined for message: {message}");
         }
     }
