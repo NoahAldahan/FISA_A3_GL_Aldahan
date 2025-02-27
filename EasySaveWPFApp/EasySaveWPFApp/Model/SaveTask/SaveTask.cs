@@ -182,6 +182,7 @@ namespace EasySaveWPFApp.Model
 
             SetBindState(ERealTimeState.WAITING_FOR_PRIORITY_FILES);
             IsPriorityLoopOver = false;
+            IsNonPriorityLoopOver = false;
             Trace.WriteLine("StartedPriority");
             // Set truc en active
             bool SavedEverythingPriority = await Task.Run(() => Save(saveTaskManager), cancellationTokenSource.Token);
@@ -195,6 +196,7 @@ namespace EasySaveWPFApp.Model
                 Trace.WriteLine(SavedEverythingPriority ? "Saved everything for priority" : "saved not everything for priority");
                 Trace.WriteLine(SavedEverythingNotPriority ? "Saved everything else" : "saved not everything else");
             }
+            IsNonPriorityLoopOver = true;
             logRealTime.UpdateRealTimeProgress(BindState, false, (int)LogUtilities.GetLogFormat());
             return (SavedEverythingPriority && SavedEverythingNotPriority);
         }
