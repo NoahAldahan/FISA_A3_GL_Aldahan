@@ -50,6 +50,14 @@ namespace EasySaveWPFApp.ViewModel
             get => saveTaskManager.SaveTasks;
             set { saveTaskManager.SaveTasks = value; OnPropertyChanged(nameof(BindSaveTasks)); }
         }
+
+        internal List<SaveTask> GetSaveTasksByNames(List<string> saveTaskNames)
+        {
+            return BindSaveTasks
+                .Where(task => saveTaskNames.Contains(task.BindName))
+                .ToList();
+        }
+
         internal bool ModifySaveTaskSourcePath(string name, string path)
         {
             bool wasSuccessful = saveTaskManager.ModifySaveTaskSourcePath(name, path);

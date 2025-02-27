@@ -78,9 +78,13 @@ namespace EasySaveWPFApp.Model
                 }
             }
         }
-        public void SetBindState(ERealTimeState state) { this.state = state; OnPropertyChanged(nameof(BindState)); }
-
+        public void SetBindState(ERealTimeState state) { this.state = state; OnPropertyChanged(nameof(BindState)); 
+            this.SaveTaskProgressStateChangedCallback?.Invoke(BindState.ToString()); }
+        [JsonIgnore]
         public Action<string> SaveTaskProgressPercentageChangedCallback { get; set; }
+
+        [JsonIgnore]
+        public Action<string> SaveTaskProgressStateChangedCallback { get; set; }
 
         public float BindSaveTaskProgressPercentage
         {

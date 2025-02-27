@@ -22,14 +22,36 @@
     "SaveDate": "2025-02-26T12:18:30.4926445+01:00"
   },
   {
-    "Name": "AskFranceAodiki",
+    "Name": "testtest",
     "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target2",
+    "State": "Finie",
+    "TotalFilesToCopy": 0,
+    "TotalFilesSize": 0,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-27T18:15:41.8920388+01:00"
+  },
+  {
+    "Name": "AskFrance",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target1",
+    "State": "En pause",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": 3,
+    "Progression": 57.14285714285714,
+    "SaveDate": "2025-02-27T18:17:44.8781267+01:00"
+  },
+  {
+    "Name": "AskFranceAodiki",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src1",
     "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
     "State": "Finie",
     "TotalFilesToCopy": 7,
     "TotalFilesSize": 74770299,
-    "NbFilesLeftToDo": -1,
-    "Progression": 114.28571428571428,
-    "SaveDate": "2025-02-26T17:31:50.8684791+01:00"
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-27T18:18:07.7709717+01:00"
   }
 ]

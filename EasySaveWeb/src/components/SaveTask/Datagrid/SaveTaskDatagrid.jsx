@@ -95,7 +95,7 @@ const GetSaveTaskTypeToInt = (type) =>
   }
 }
 
-export default function SaveTaskDataGrid({onOpenCreatePopup,updateDatagrid,setUpdateDatagrid,webSocket}) 
+export default function SaveTaskDataGrid({onOpenCreatePopup,updateDatagrid,setUpdateDatagrid,webSocket, onOpenSavingTasksCreatePopup}) 
 {
   const [rows, setRows] = useState();
   const [selectedRows, setSelectedRows] = useState([]);
@@ -145,8 +145,8 @@ export default function SaveTaskDataGrid({onOpenCreatePopup,updateDatagrid,setUp
     </ThemeProvider>
     <div className="savetask-action">
     <Button onClick={() => {onOpenCreatePopup()}} class='mui-btn' variant="contained">Create SaveTask</Button>
-    <Button onClick={() => {setRows(handleSuppressSaveTask(selectedRows, rows))}} class='mui-btn' variant="contained">Delete SaveTask</Button>
-    <Button onClick={() => {handleStartSaveTask(webSocket, selectedRows, rows)}} class='mui-btn' variant="contained">Start SaveTask</Button>
+    <Button onClick={() => {setRows(handleSuppressSaveTask(selectedRows, rows));}} class='mui-btn' variant="contained">Delete SaveTask</Button>
+    <Button onClick={() => {handleStartSaveTask(webSocket, selectedRows, rows);onOpenSavingTasksCreatePopup();}} class='mui-btn' variant="contained">Start SaveTask</Button>
     </div>
     </div>);
 }

@@ -38,13 +38,72 @@ namespace EasySaveWPFApp.Api
         private ConcurrentBag<WebSocket> _webSockets = new ConcurrentBag<WebSocket>();
 
         internal SaveTaskManager saveTaskManager;
-        internal SaveTaskViewModel saveTaskViewModel;
+        internal SaveTaskViewModel saveTaskViewModel;   
         internal ApiServer(SaveTaskViewModel saveTaskViewModel, SaveTaskManager saveTaskManager)
         {
             this.saveTaskManager = saveTaskManager;
             this.saveTaskViewModel = saveTaskViewModel;
         }
 
+        internal void bindSaveTaskCallBack(string saveTaskName, WebSocket webSocket)
+        {
+            saveTaskViewModel.BindSaveTasks.FirstOrDefault((task) => task.name == saveTaskName).SaveTaskProgressPercentageChangedCallback = async (newValue) =>
+            {
+                Trace.WriteLine($"Nouvelle valeur détectée dans un autre thread {newValue}");
+                // Création du message JSON à envoyer
+                var progressMessage = new
+                {
+                    Action = "ProgressUpdate",  
+                    TaskName = saveTaskName,
+                    Progress = newValue,
+                };
+                sendActionMessage(webSocket, progressMessage);
+            };
+            saveTaskViewModel.BindSaveTasks.FirstOrDefault((task) => task.name == saveTaskName).SaveTaskProgressStateChangedCallback = async (newValue) =>
+            {
+                Trace.WriteLine($"Nouvelle valeur détectée dans un autre thread {newValue}");
+                // Création du message JSON à envoyer
+                var progressMessage = new
+                {
+                    Action = "StateUpdate",
+                    TaskName = saveTaskName,
+                    State = newValue,
+                };
+                sendActionMessage(webSocket, progressMessage);
+            };
+        }
+
+        internal async Task sendMessageStartSaveTask(WebSocket webSocket, List<string> saveTaskNames)
+        {
+            var startSaveTasks = new
+            {
+                Action = "StartSaveTasks",
+                SaveTasks = JsonManager.SerializeSaveTasksAPI(saveTaskViewModel.GetSaveTasksByNames(saveTaskNames))
+            };
+
+            string jsonMessage = JsonSerializer.Serialize(startSaveTasks);
+            var bytesMessage = Encoding.UTF8.GetBytes(jsonMessage);
+            var bufferMessage = new ArraySegment<byte>(bytesMessage);
+
+            // Envoi du message WebSocket
+            if (webSocket.State == WebSocketState.Open)
+            {
+                await webSocket.SendAsync(bufferMessage, WebSocketMessageType.Text, true, CancellationToken.None);
+            }
+        }
+
+        internal async Task sendActionMessage(WebSocket webSocket, object Action)
+        {
+            string jsonMessage = JsonSerializer.Serialize(Action);
+            var bytesMessage = Encoding.UTF8.GetBytes(jsonMessage);
+            var bufferMessage = new ArraySegment<byte>(bytesMessage);
+
+            // Envoi du message WebSocket
+            if (webSocket.State == WebSocketState.Open)
+            {
+                await webSocket.SendAsync(bufferMessage, WebSocketMessageType.Text, true, CancellationToken.None);
+            }
+        }
         private async Task HandleWebSocketConnection(WebSocket webSocket)
         {
             var buffer = new byte[1024 * 4];
@@ -70,13 +129,11 @@ namespace EasySaveWPFApp.Api
 
                         if (webSocketMessage.Action == "Start")
                         {
-                            foreach(string saveTaskName in webSocketMessage.Names)
+                            await sendMessageStartSaveTask(webSocket, webSocketMessage.Names);//start de la saveTask
+                            foreach (string saveTaskName in webSocketMessage.Names)
                             {
-                                saveTaskViewModel.BindSaveTasks.FirstOrDefault((task) => task.name == saveTaskName).SaveTaskProgressPercentageChangedCallback = (newvalue) =>
-                                {
-                                    Trace.WriteLine($"Nouvelle valeur détectée dans un autre thread {newvalue}");
-                                };
-                                await saveTaskViewModel.ExecuteSaveTaskAsync(saveTaskName);
+                                bindSaveTaskCallBack(saveTaskName, webSocket);
+                                saveTaskViewModel.ExecuteSaveTaskAsync(saveTaskName);
                             }
                         }
                     }
@@ -237,6 +294,8 @@ namespace EasySaveWPFApp.Api
             saveTasks = JsonManager.SerializeSaveTasksAPI(tasks);
             return saveTasks;
         }
+
+
 
         public bool ModifySaveTaskAPI(string body)
         {
