@@ -97,9 +97,34 @@ EasySave 2.0 est une application console développée avec .Net Core. Son object
 
 Pour utiliser l'application :
 
-Télecharger l'application .exe de la version de votre choix dans les releases et lancez-la.
+Télecharger l'application .exe de la version de votre choix dans les releases et lancez-la. Pour la version 3.0, le lancement de l'application peut durer plusieurs minutes.
 
-Pour accéder et modifier le code source :
+Pour utiliser le site web afin d'intéragir avec l'application :
+
+Télecharger EasySaveWeb
+Installer npm
+Lancer PowerShell en mode administrateur
+Changer les execution policy en Remote signed : 
+```
+powershell Set-ExecutionPolicy RemoteSigned
+```
+Naviguer dans powershell jusqu'au dossier to easysafeweb
+Lancer la commande :
+```
+npm install
+```
+puis
+```
+npm install react-router-dom
+```
+et enfin
+
+```
+npm run dev
+```
+Finalement : Lancer EasySaveWPFApp.exe (EasySave 3.0) et se connecter à l'adresse produite par npm de la forme
+Pour accéder et modifier le code source : http://localhost:XXXX/ ou XXXX représente un port.
+
 - Visual Studio 2022
 ```
 Téléchargez et installez depuis ce lien Visual Studio 2022
@@ -139,7 +164,7 @@ _Pour une explication étape par étape, référez vous au [guide utilisateur](D
 - [x] Version 1
     - [x] Version 1.1
 - [x] Version 2
-- [ ] Version 3
+- [x] Version 3
 
 ## Contributeurs
 
