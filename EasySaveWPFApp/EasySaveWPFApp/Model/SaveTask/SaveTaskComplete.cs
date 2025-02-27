@@ -63,14 +63,14 @@ namespace EasySaveWPFApp.Model
                 FileAttributes targetAttr = File.GetAttributes(CurrentDirectoryPair.TargetPath);
 
                 // Case 1: Both source and target are directories
-                if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory) && !isSoftwareRunning)
+                if (sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
                 {
                     DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.SourcePath);
                     DirectoryInfo targetDirectoryInfo = new DirectoryInfo(CurrentDirectoryPair.TargetPath);
                     CopyFilesRecursivelyForTwoFolders(sourceDirectoryInfo, targetDirectoryInfo, saveTaskManager);
                 }
                 // Case 2: Source is a file, target is a directory
-                else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory) && !isSoftwareRunning)
+                else if (!sourceAttr.HasFlag(FileAttributes.Directory) && targetAttr.HasFlag(FileAttributes.Directory))
                 {
                     string FileName = Path.GetFileName(CurrentDirectoryPair.SourcePath);
 
@@ -101,20 +101,12 @@ namespace EasySaveWPFApp.Model
                 // Iterate through all directories in the source and create them in the target.
                 foreach (DirectoryInfo dir in sourceDirectoryInfo.GetDirectories())
                 {
-                    if (isSoftwareRunning)
-                    {
-                        throw new Exception("Error unauthorized  software is running");
-                    }
                     CopyFilesRecursivelyForTwoFolders(dir, targetDirectoryInfo.CreateSubdirectory(dir.Name), saveTaskManager);
                 }
                 foreach (FileInfo file in sourceDirectoryInfo.GetFiles())
                 {
                     try
                     {
-                        if (isSoftwareRunning)
-                        {
-                            throw new Exception("Error unauthorized  software is running");
-                        }
                         CopySingleFile(file.FullName, Path.Combine(targetDirectoryInfo.FullName, file.Name), saveTaskManager);
                     }
                     catch (Exception e)

@@ -137,7 +137,6 @@ namespace EasySaveWPFApp.Model
             this.CurrentDirectoryPair = CurrentDirectoryPair;
             this.name = name;
             this.UnsavedPaths = new List<string>();
-            isSoftwareRunning = false;
             SaveTaskProgressPercentage = 0.0f;
             pauseEvent = new ManualResetEventSlim();
             cancellationTokenSource = new CancellationTokenSource();

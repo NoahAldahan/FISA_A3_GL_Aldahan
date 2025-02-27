@@ -255,4 +255,7 @@
   <data name="UnsavedFilesWindow_Title" xml:space="preserve">
     <value>Certains fichiers n'ont pas pu être sauvegardés :</value>
   </data>
+  <data name="BusinessSoftwareWindow_Text" xml:space="preserve">
+    <value>Le logiciel métier a été détecté. Les tâches de sauvegarde resteront en pause tant qu'il ne sera pas fermé.</value>
+  </data>
 </root>

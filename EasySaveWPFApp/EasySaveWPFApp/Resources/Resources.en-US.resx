@@ -255,4 +255,7 @@
   <data name="UnsavedFilesWindow_Title" xml:space="preserve">
     <value>Some files haven't been saved :</value>
   </data>
+  <data name="BusinessSoftwareWindow_Text" xml:space="preserve">
+    <value>Business software detected the process 'cmd', save tasks are paused until the process is exited.</value>
+  </data>
 </root>

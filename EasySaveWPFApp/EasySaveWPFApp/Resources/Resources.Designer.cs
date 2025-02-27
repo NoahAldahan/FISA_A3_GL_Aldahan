@@ -61,6 +61,15 @@ namespace EasySaveWPFApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Le logiciel métier a été détecté. Les tâches de sauvegarde resteront en pause tant qu&apos;il ne sera pas fermé..
+        /// </summary>
+        public static string BusinessSoftwareWindow_Text {
+            get {
+                return ResourceManager.GetString("BusinessSoftwareWindow_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to +.
         /// </summary>
         public static string MainWindow_AddSaveTaskButtonText {
