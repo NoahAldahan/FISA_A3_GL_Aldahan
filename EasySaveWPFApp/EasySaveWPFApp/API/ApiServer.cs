@@ -126,7 +126,6 @@ namespace EasySaveWPFApp.Api
                     try
                     {
                         WebSocketMessage? webSocketMessage = JsonSerializer.Deserialize<WebSocketMessage>(receivedMessage);
-
                         if (webSocketMessage.Action == "Start")
                         {
                             await sendMessageStartSaveTask(webSocket, webSocketMessage.Names);//start de la saveTask
@@ -134,6 +133,27 @@ namespace EasySaveWPFApp.Api
                             {
                                 bindSaveTaskCallBack(saveTaskName, webSocket);
                                 saveTaskViewModel.ExecuteSaveTaskAsync(saveTaskName);
+                            }
+                        }
+                        else if(webSocketMessage.Action == "Pause")
+                        {
+                            foreach (string saveTaskName in webSocketMessage.Names)
+                            {
+                                saveTaskViewModel.PauseSaveTaskByName(saveTaskName);
+                            }
+                        }
+                        else if (webSocketMessage.Action == "Play")
+                        {
+                            foreach (string saveTaskName in webSocketMessage.Names)
+                            {
+                                saveTaskViewModel.PlaySaveTaskByName(saveTaskName);
+                            }
+                        }
+                        else if (webSocketMessage.Action == "Stop")
+                        {
+                            foreach (string saveTaskName in webSocketMessage.Names)
+                            {
+                                saveTaskViewModel.StopSaveTaskByName(saveTaskName);
                             }
                         }
                     }

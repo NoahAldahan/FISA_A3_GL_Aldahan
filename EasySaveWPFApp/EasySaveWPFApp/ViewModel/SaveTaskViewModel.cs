@@ -57,6 +57,35 @@ namespace EasySaveWPFApp.ViewModel
                 .Where(task => saveTaskNames.Contains(task.BindName))
                 .ToList();
         }
+        internal void PauseSaveTaskByName(string saveTaskName)
+        {
+            SaveTask? saveTask = saveTaskManager.GetSaveTaskByName(saveTaskName);
+            if (saveTask != null)
+            {
+                saveTask.Pause();
+            }
+
+        }
+
+        internal void PlaySaveTaskByName(string saveTaskName)
+        {
+            SaveTask? saveTask = saveTaskManager.GetSaveTaskByName(saveTaskName);
+            if (saveTask != null)
+            {
+                saveTask.Play();
+            }
+
+        }
+
+        internal void StopSaveTaskByName(string saveTaskName)
+        {
+            SaveTask? saveTask = saveTaskManager.GetSaveTaskByName(saveTaskName);
+            if (saveTask != null)
+            {
+                saveTask.Stop();
+            }
+
+        }
 
         internal bool ModifySaveTaskSourcePath(string name, string path)
         {

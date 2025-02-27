@@ -1,16 +1,5 @@
 [
   {
-    "Name": "diff2",
-    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
-    "State": "Finie",
-    "TotalFilesToCopy": 0,
-    "TotalFilesSize": 0,
-    "NbFilesLeftToDo": 0,
-    "Progression": 100,
-    "SaveDate": "2025-02-26T12:18:30.3811924+01:00"
-  },
-  {
     "Name": "Test",
     "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
     "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
@@ -53,5 +42,49 @@
     "NbFilesLeftToDo": 0,
     "Progression": 100,
     "SaveDate": "2025-02-27T18:18:07.7709717+01:00"
+  },
+  {
+    "Name": "diff2",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src2",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target1",
+    "State": "Finie",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-27T19:25:04.2407757+01:00"
+  },
+  {
+    "Name": "diff",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src2",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target1",
+    "State": "Finie",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-27T19:29:59.1698155+01:00"
+  },
+  {
+    "Name": "complettest",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target",
+    "State": "Finie",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-27T19:31:27.3221121+01:00"
+  },
+  {
+    "Name": "complete2",
+    "SourcePath": "C:\\Users\\matte\\OneDrive\\Bureau\\src2",
+    "TargetPath": "C:\\Users\\matte\\OneDrive\\Bureau\\target1",
+    "State": "Finie",
+    "TotalFilesToCopy": 7,
+    "TotalFilesSize": 74770299,
+    "NbFilesLeftToDo": 0,
+    "Progression": 100,
+    "SaveDate": "2025-02-27T19:31:27.3485166+01:00"
   }
 ]

@@ -32,6 +32,7 @@ class SaveTaskSocketService {
   
     // Notifier tous les observateurs des mises à jour de progression
     notifyActionObservers(data) {
+      console.log("notify", data);
       this.actionObservers.forEach(callback => callback(data));
     }
     
@@ -54,12 +55,15 @@ class SaveTaskSocketService {
       };
     }
     sendMessage(message) {
+      console.log("message", message);
       if (this.socket?.readyState === WebSocket.OPEN) {
         this.socket.send(message);
       } else {
         console.error("⚠️ WebSocket non connecté ou en cours de connexion");
       }
     }
+
+    
   
     close() {
       if (this.socket) {

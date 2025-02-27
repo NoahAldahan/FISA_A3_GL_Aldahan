@@ -60,7 +60,7 @@ const handleSuppressSaveTask = (selectedRows, rows) => {
 }
 
 const handleStartSaveTask = (webSocket, selectedRows, rows) => {
-  console.log(selectedRows);
+  console.log("start helloworld");
   let saveTaskToStart = [];
 
   selectedRows.forEach((value) => 

@@ -7,7 +7,38 @@ import { Box } from "@mui/material";
 const PopupSavingTasks = ({ open, onClose, webSocket }) => {
 
     const [savetasks, setSaveTasks] = useState([]);
-    const [updateCounter, setUpdateCounter] = useState(0);
+
+    
+    const handlePauseTasks = (saveTaskName) => {
+        // Envoi du message WebSocket
+        webSocket.sendMessage(
+            JSON.stringify({
+                "Action": "Pause",
+                "Names": [saveTaskName]  
+            })
+        );
+    };
+    
+    const handlePlayTasks = (saveTaskName) => {
+        // Envoi du message WebSocket
+        webSocket.sendMessage(
+            JSON.stringify({
+                "Action": "Play",
+                "Names": [saveTaskName]  
+            })
+        );
+    };
+
+    const handleStopTasks = (saveTaskName) => {
+        // Envoi du message WebSocket
+        webSocket.sendMessage(
+            JSON.stringify({
+                "Action": "Stop",
+                "Names": [saveTaskName]  
+            })
+        );
+    };
+
 
     useEffect(() => {
         if (webSocket) {
@@ -15,6 +46,7 @@ const PopupSavingTasks = ({ open, onClose, webSocket }) => {
             switch(data.Action)
             {
                 case "StartSaveTasks":{
+                    console.log("start");
                     const updatedSaveTasks = JSON.parse(data.SaveTasks).map(task => ({
                         ...task,  // Copie toutes les propriétés existantes
                         Progress: task.Progress || 0  // Ajoute une propriété Progress (valeur par défaut : 0)
@@ -36,15 +68,21 @@ const PopupSavingTasks = ({ open, onClose, webSocket }) => {
                     break;
                 }
                 case "StateUpdate": {
+                    console.log("before : ", savetasks);
                     setSaveTasks(prevTasks => {
+                        console.log("prev", prevTasks)
                         const updatedTasks = prevTasks.map(task => 
                             task.name === data.TaskName 
                                 ? { ...task, BindState: data.State }
                                 : task
                         );
-                    
                         return [...updatedTasks];  // 🔥 On crée un nouvel array pour forcer React à détecter le changement
                     });  
+                    console.log("after : ", savetasks);
+                    break;
+                }
+                default:{
+                    console.log("default");
                     break;
                 }
             }
@@ -58,8 +96,6 @@ const PopupSavingTasks = ({ open, onClose, webSocket }) => {
           };
         }
       }, [webSocket]);
-      console.log("🔄 Composant re-rendu !"); // Affichera un message à chaque re-render
-
   return (
     <ThemeProvider theme={darkThemePopup}>
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
@@ -113,6 +149,7 @@ const PopupSavingTasks = ({ open, onClose, webSocket }) => {
                     alignSelf: "center", // Centre le bouton
                     "&:hover": { backgroundColor: "rgb(69, 69, 153)" } // Effet au survol
                   }}
+                  onClick={() => {handlePauseTasks(task.BindName)}}
                 >
                   Pause
                 </Button>
@@ -125,6 +162,20 @@ const PopupSavingTasks = ({ open, onClose, webSocket }) => {
                     alignSelf: "center", // Centre le bouton
                     "&:hover": { backgroundColor: "rgb(69, 69, 153)" } // Effet au survol
                   }}
+                  onClick={() => {handlePlayTasks(task.BindName)}}
+                >
+                  Play
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: "rgb(89, 89, 183)",
+                    color: "#FFFF",
+                    marginTop: 1,
+                    marginLeft: 2,
+                    alignSelf: "center", // Centre le bouton
+                    "&:hover": { backgroundColor: "rgb(69, 69, 153)" } // Effet au survol
+                  }}
+                  onClick={() => {handleStopTasks(task.BindName)}}
                 >
                   Stop
                 </Button>
