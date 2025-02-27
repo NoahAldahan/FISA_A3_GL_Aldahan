@@ -30,7 +30,6 @@ namespace EasySaveWPFApp.Model
 
         private async Task CheckBusinessSoftware()
         {
-            Trace.WriteLine("Checking software status");
             bool currentlyRunning = Process.GetProcessesByName(businessSoftware).Any();
 
             if (currentlyRunning != isSoftwareRunning)
@@ -44,11 +43,6 @@ namespace EasySaveWPFApp.Model
         public void Stop()
         {
             timer.Stop();
-        }
-
-        internal void OnMainWindowClosing(object? sender, CancelEventArgs e)
-        {
-            Stop();
         }
     }
 }

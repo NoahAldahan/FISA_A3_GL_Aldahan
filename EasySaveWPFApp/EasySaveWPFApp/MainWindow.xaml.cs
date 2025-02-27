@@ -46,7 +46,7 @@ namespace EasySaveWPFApp
             // ViewModel
             saveTaskViewModel = new SaveTaskViewModel(saveTaskManager);
             Closing += saveTaskViewModel.OnWindowClosing;
-            Closing += processMonitor.OnMainWindowClosing;
+            Closing += OnMainWindowClosing;
             //DataContext
             DataContext = saveTaskViewModel;
             InitializeComponent();
@@ -90,6 +90,11 @@ namespace EasySaveWPFApp
             // =====================================================================
             apiServer = new ApiServer(saveTaskViewModel, saveTaskManager);
             apiServer.Start();
+        }
+
+        private void Window_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void AddRow_Click(object sender, RoutedEventArgs e)
@@ -199,8 +204,9 @@ namespace EasySaveWPFApp
             }
         }
 
-        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void OnMainWindowClosing(object? sender, System.ComponentModel.CancelEventArgs e)
         {
+            processMonitor.Stop();
             await apiServer.StopAsync();
         }
     }
