@@ -108,7 +108,7 @@ Changer les execution policy en Remote signed :
 ```
 powershell Set-ExecutionPolicy RemoteSigned
 ```
-Naviguer dans powershell jusqu'au dossier to easysafeweb
+Naviguer dans PowerShell jusqu'au dossier to EasySaveWeb
 Lancer la commande :
 ```
 npm install
