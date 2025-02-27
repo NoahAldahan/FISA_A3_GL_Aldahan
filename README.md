@@ -9,7 +9,7 @@
 <h3 align="center">EasySave</h3>
 
 #### **1. A propos**
-EasySave 2.0 est une application console développée avec .Net Core. Son objectif est de permettre la gestion et l’exécution de travaux de sauvegarde (backup) de manière simple et efficace, tout en garantissant une compatibilité pour des utilisateurs anglophones et francophones.
+EasySave 3.0 est une application console développée avec .Net Core. Son objectif est de permettre la gestion et l’exécution de travaux de sauvegarde (backup) de manière simple et efficace, tout en garantissant une compatibilité pour des utilisateurs anglophones et francophones.
 
 ---
 
@@ -122,8 +122,11 @@ et enfin
 ```
 npm run dev
 ```
-Finalement : Lancer EasySaveWPFApp.exe (EasySave 3.0) et se connecter à l'adresse produite par npm de la forme
-Pour accéder et modifier le code source : http://localhost:XXXX/ ou XXXX représente un port.
+Finalement : Lancer EasySaveWPFApp.exe (EasySave 3.0) et se connecter à l'adresse produite par npm de la forme :
+http://localhost:XXXX/ ou XXXX représente un port.
+
+
+Pour accéder et modifier le code source : 
 
 - Visual Studio 2022
 ```
